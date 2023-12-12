@@ -6,7 +6,7 @@ import App from './App.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/my-test">
+    <BrowserRouter basename="/team-project-SlimTrack360">
       <App />
     </BrowserRouter>
   </React.StrictMode>

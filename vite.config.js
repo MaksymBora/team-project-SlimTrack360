@@ -13,7 +13,7 @@ export default defineConfig({
       },
     ],
   },
-  base: '/my-test/',
+  base: '/team-project-SlimTrack360/',
   build: {
     outDir: './dist',
     commonjsOptions: {
