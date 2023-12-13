@@ -207,8 +207,8 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    color: ${theme.color.white};
-    background-color: ${theme.color.black};
+    color: ${theme.color.primaryWhite};
+    background-color: ${theme.color.primaryBlack};
   }
   /* ========================= /Common styles ========================= */
 
