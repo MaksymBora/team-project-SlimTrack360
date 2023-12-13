@@ -7,18 +7,18 @@ const SignUp = lazy(() => import('../../Pages/SignUp/SignUp'));
 const Dashboard = lazy(() => import('../../Pages/Dashboard/Dashboard'));
 const Diary = lazy(() => import('../../Pages/Diary/Diary'));
 const ForgotPass = lazy(() => import('../../Pages/ForgotPass/ForgotPass'));
-const ProfileSettings = lazy(
-  () => import('../../Pages/ProfileSettings/ProfileSettings')
+const ProfileSettings = lazy(() =>
+  import('../../Pages/ProfileSettings/ProfileSettings')
 );
 const Recommented = lazy(() => import('../../Pages/Recommented/Recommented'));
 const Main = lazy(() => import('../../Pages/Main/Main'));
 const SignUpGoal = lazy(() => import('../../Pages/SignupGoal/SignupGoal'));
 const SignUpAge = lazy(() => import('../../Pages/SignupAge/SignupAge'));
-const SignUpParams = lazy(
-  () => import('../../Pages/SignupParams/SignupParams')
+const SignUpParams = lazy(() =>
+  import('../../Pages/SignupParams/SignupParams')
 );
-const SignUpActivity = lazy(
-  () => import('../../Pages/SignupActivity/SignupActivity')
+const SignUpActivity = lazy(() =>
+  import('../../Pages/SignupActivity/SignupActivity')
 );
 
 export {
