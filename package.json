@@ -21,6 +21,7 @@
     "@testing-library/react": "^14.1.2",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "axios": "^1.6.2",
+    "emotion-normalize": "^11.0.1",
     "flowbite": "^2.2.0",
     "flowbite-react": "^0.7.0",
     "modern-normalize": "^2.0.0",
@@ -33,7 +34,8 @@
     "react-router": "^6.20.1",
     "react-router-dom": "^6.15.0",
     "react-spinners": "^0.13.8",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "styled-components": "^6.1.1"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.62",
