@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 export const Modal = ({ onClose }) => {
   const [waterAmount, setWaterAmount] = useState('');
@@ -7,11 +8,30 @@ export const Modal = ({ onClose }) => {
     setWaterAmount(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Тут має бути магія
-    console.log(`Confirm: ${waterAmount} ml water`);
-    onClose();
+    try {
+      const response = await axios.post(
+        'потрібний ендпоінт',
+        {
+          waterAmount,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log(`Confirm: ${waterAmount} ml water`);
+        onClose();
+      } else {
+        console.error('Error sending data to server');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return ReactDOM.createPortal(
