@@ -167,6 +167,18 @@ export const GlobalStyles = createGlobalStyle`
   select::-ms-expand {
     display: none;
   }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 5, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   /* ========================= /Reset styles ========================= */
 
   /* ========================= Fonts ========================= */
