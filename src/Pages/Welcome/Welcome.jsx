@@ -1,7 +1,6 @@
 import Container from '../SignUp/Container/Container';
 import { Img, Wrapper } from '../SignUp/SignUp.styled';
 import { Div } from './Welcome.styled';
-
 // png
 import _1DesktopImg from '../../Pages/SignUp/images/Illustration_desk@1x.png';
 import _2DesktopImg from '../../Pages/SignUp/images/Illustration_desk@2x.png';
