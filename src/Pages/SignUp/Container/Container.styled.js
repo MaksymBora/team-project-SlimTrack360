@@ -10,7 +10,7 @@ export const Box = styled.div`
     // flex-direction: column;
     // align-items: center;
     width: 768px;
-    padding: 40px 227px 286px 227px;
+    padding: 40px 195px 286px 195px;
   }
 
   @media screen and (min-width: 1440px) {

@@ -1,5 +1,7 @@
 import Container from '../SignUp/Container/Container';
-import { Div, Img, Wrapper } from '../SignUp/SignUp.styled';
+import { Img, Wrapper } from '../SignUp/SignUp.styled';
+import { Div } from './Welcome.styled';
+
 // png
 import _1DesktopImg from '../../Pages/SignUp/images/Illustration_desk@1x.png';
 import _2DesktopImg from '../../Pages/SignUp/images/Illustration_desk@2x.png';
@@ -10,8 +12,12 @@ import _2MobImg from '../../Pages/SignUp/images/Illustration_mob@2x.png';
 // webp
 import _1DesktopWebP from '../../Pages/SignUp/images/Illustration_desk@1x.webp';
 import _2DesktopWebP from '../../Pages/SignUp/images/Illustration_desk@2x.webp';
+import _1TabletWebP from '../../Pages/SignUp/images/Illustration_tab@1x.webp';
+import _2TabletWebP from '../../Pages/SignUp/images/Illustration_tab@2x.webp';
 import _1MobWebP from '../../Pages/SignUp/images/Illustration_mob@1x.webp';
 import _2MobWebP from '../../Pages/SignUp/images/Illustration_mob@2x.webp';
+import { WelcomeContent } from '../../components/Welcome/WelcomeContent';
+
 const Welcome = () => {
   return (
     <>
@@ -23,7 +29,6 @@ const Welcome = () => {
                 media="(min-width: 1440px)"
                 srcSet={`${_1DesktopWebP} 1x, ${_2DesktopWebP} 2x`}
                 type="image/webp"
-                width={592}
               />
               <source
                 media="(min-width: 1440px)"
@@ -32,7 +37,7 @@ const Welcome = () => {
               />
               <source
                 media="(min-width: 768px)"
-                srcSet={`${_1DesktopImg} 1x, ${_1DesktopImg} 2x`}
+                srcSet={`${_1TabletWebP} 1x, ${_2TabletWebP} 2x`}
                 type="image/webp"
               />
               <source
@@ -52,6 +57,7 @@ const Welcome = () => {
               />
               <Img src={_1DesktopImg} alt="Responsive" />
             </picture>
+            <WelcomeContent />
           </Div>
         </Container>
       </Wrapper>

@@ -24,6 +24,7 @@
     "emotion-normalize": "^11.0.1",
     "flowbite": "^2.2.0",
     "flowbite-react": "^0.7.0",
+    "keyframes": "^2.3.0",
     "modern-normalize": "^2.0.0",
     "nanoid": "^5.0.4",
     "normalize.css": "^8.0.1",

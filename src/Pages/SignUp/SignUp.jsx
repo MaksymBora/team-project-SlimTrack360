@@ -25,7 +25,6 @@ const SignUp = () => {
                 media="(min-width: 1440px)"
                 srcSet={`${_1DesktopWebP} 1x, ${_2DesktopWebP} 2x`}
                 type="image/webp"
-                width={592}
               />
               <source
                 media="(min-width: 1440px)"
