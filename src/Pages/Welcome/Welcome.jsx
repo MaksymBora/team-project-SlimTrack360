@@ -15,6 +15,7 @@ import _1TabletWebP from '../../Pages/SignUp/images/Illustration_tab@1x.webp';
 import _2TabletWebP from '../../Pages/SignUp/images/Illustration_tab@2x.webp';
 import _1MobWebP from '../../Pages/SignUp/images/Illustration_mob@1x.webp';
 import _2MobWebP from '../../Pages/SignUp/images/Illustration_mob@2x.webp';
+
 import { WelcomeContent } from '../../components/Welcome/WelcomeContent';
 
 const Welcome = () => {
