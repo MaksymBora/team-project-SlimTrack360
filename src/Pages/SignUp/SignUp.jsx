@@ -11,6 +11,8 @@ import _2MobImg from './images/Illustration_mob@2x.png';
 // webp
 import _1DesktopWebP from './images/Illustration_desk@1x.webp';
 import _2DesktopWebP from './images/Illustration_desk@2x.webp';
+import _1TabletWebP from './images/Illustration_tab@1x.webp';
+import _2TabletWebP from './images/Illustration_tab@2x.webp';
 import _1MobWebP from './images/Illustration_mob@1x.webp';
 import _2MobWebP from './images/Illustration_mob@2x.webp';
 
@@ -33,7 +35,7 @@ const SignUp = () => {
               />
               <source
                 media="(min-width: 768px)"
-                srcSet={`${_1DesktopImg} 1x, ${_1DesktopImg} 2x`}
+                srcSet={`${_1TabletWebP} 1x, ${_2TabletWebP} 2x`}
                 type="image/webp"
               />
               <source

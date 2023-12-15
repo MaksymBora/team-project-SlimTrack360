@@ -77,6 +77,7 @@ export const Input = styled.input`
   background-color: transparent;
   width: 280px;
   border: none;
+  color: ${theme.color.primaryWhite};
   @media screen and (min-width: 768px) {
     width: 360px;
   }
@@ -134,4 +135,13 @@ export const Options = styled.div`
   @media screen and (min-width: 1440px) {
     // padding-top: 168px;
   }
+`;
+export const Attention = styled.div`
+  color: #e74a3b;
+  text-align: left;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
 `;
