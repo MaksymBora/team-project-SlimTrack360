@@ -67,10 +67,6 @@ export const Modal = ({ onClose }) => {
 
 // const openModal = () => setIsModalOpen(true);
 // const closeModal = () => setIsModalOpen(false);
-// const [isModalOpen, setIsModalOpen] = useState(false);
-
-// const openModal = () => setIsModalOpen(true);
-// const closeModal = () => setIsModalOpen(false);
 
 // useEffect(() => {
 //   const handleKeyPress = (event) => {
