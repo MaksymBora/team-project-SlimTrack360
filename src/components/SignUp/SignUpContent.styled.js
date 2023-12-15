@@ -52,10 +52,10 @@ export const Subtitle = styled.h3`
 `;
 export const Label = styled.label``;
 export const Title = styled.div`
-  display: inline-flex;
   padding: 8px 10px;
-  flex-direction: column;
-  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 10px;
   width: 300px;
   border-radius: 12px;
@@ -63,9 +63,15 @@ export const Title = styled.div`
   background: ${theme.color.primaryBlack2};
   @media screen and (min-width: 768px) {
     width: 380px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
   @media screen and (min-width: 1440px) {
     width: 212px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 `;
 export const Input = styled.input`
