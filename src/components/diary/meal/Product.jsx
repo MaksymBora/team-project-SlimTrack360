@@ -16,7 +16,7 @@ const Product = () => {
     <>
       <ProductContainer>
         <ProductTitleContainer>
-          <Paragraph>index+1</Paragraph>
+          <Paragraph>1</Paragraph>
           <ProductName>name</ProductName>
         </ProductTitleContainer>
 

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 
 export const ContainerDiary = styled.div`
-  padding: 20px 0 52px;
+  padding: 20px 34px 52px 34px;
   background-color: ${theme.color.primaryBlack};
 `;
 

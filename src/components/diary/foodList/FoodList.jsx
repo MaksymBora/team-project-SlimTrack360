@@ -12,16 +12,6 @@ const FoodList = () => {
       <ButtonStyle>
         <TextIndexSpan>+ Record your meal</TextIndexSpan>
       </ButtonStyle>
-      {/* {isModalOpen && (
-        <RecordDiaryModal
-          type={type}
-          onClose={closeModal}
-          onSubmit={data => {
-            dispatch(postFoodIntake({ type, product: data }));
-            handleDataUpdate();
-          }}
-        />
-      )} */}
     </Container>
   );
 };
