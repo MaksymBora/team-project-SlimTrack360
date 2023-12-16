@@ -26,6 +26,7 @@
     "faker": "^5.5.3",
     "flowbite": "^2.2.0",
     "flowbite-react": "^0.7.0",
+    "keyframes": "^2.3.0",
     "formik": "^2.4.5",
     "modern-normalize": "^2.0.0",
     "nanoid": "^5.0.4",
