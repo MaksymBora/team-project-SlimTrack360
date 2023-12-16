@@ -56,7 +56,7 @@ export const MealTitle = styled.h3`
   color: ${theme.color.primaryWhite};
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    font-size: font-size: 22px;
+    font-size: 22px;
     line-height: 32px;
   }
 `;
@@ -86,8 +86,6 @@ export const MealsList = styled.ul`
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     height: calc(100% - 44px);
   }
-  overflow-x: hidden;
-  overflow-y: scroll;
 
   &::-webkit-scrollbar {
     background-color: ${theme.color.primaryBlack2};
@@ -203,6 +201,7 @@ export const ButtonConfirm = styled.button`
   padding: 8px 10px;
   width: 100%;
   background-color: ${theme.color.primaryGreenLite};
+  border: 1.5px solid ${theme.color.primaryGreenLite};
   color: ${theme.color.primaryBlack2};
   border-radius: 12px;
   font-size: 14px;
@@ -217,6 +216,7 @@ export const ButtonCancel = styled.button`
   padding: 8px 10px;
   width: 100%;
   background-color: inherit;
+  border: transparent;
   border-radius: 12px;
   font-size: 14px;
   font-weight: 400; //PoppinsRegular

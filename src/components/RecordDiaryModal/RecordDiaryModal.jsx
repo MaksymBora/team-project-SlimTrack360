@@ -119,6 +119,7 @@ const RecordDiaryModal = ({
 }) => {
   const handleSubmit = () => {
     console.log('Відправка даних на бекенд');
+
     onClose();
   };
 
@@ -166,6 +167,11 @@ const RecordDiaryModal = ({
                                   id={`mealsIntake.${index}.name`}
                                   placeholder="The name of the product or dish"
                                   type="text"
+                                  onKeyDown={(e) => {
+                                    if (/\d/.test(e.key)) {
+                                      e.preventDefault();
+                                    }
+                                  }}
                                   required
                                 />
                                 {errors['mealsIntake.${index}.name'] &&
@@ -186,7 +192,6 @@ const RecordDiaryModal = ({
                                   min={0}
                                   required
                                 />
-
                                 <StyledError
                                   name={`mealsIntake.${index}.carbonohidrates`}
                                   component="div"
@@ -261,28 +266,36 @@ const RecordDiaryModal = ({
                           );
                         })}
                       </MealsList>
-                      {!item && (
-                        <ButtonAddMore
-                          type="button"
-                          onClick={() => {
+                      <ButtonAddMore
+                        type="button"
+                        onClick={() => {
+                          if (
+                            values &&
+                            values.mealsIntake &&
+                            values.mealsIntake.length > 0
+                          ) {
                             const mealsIntake =
                               values.mealsIntake[values.mealsIntake.length - 1];
-                            const fieldEmpty = Object.values(mealsIntake).some(
+                            const fieldEmpty = Object.values(
+                              mealsIntake || {}
+                            ).some(
                               (value) =>
                                 typeof value === 'string' && !value.trim()
                             );
-                            fieldEmpty
-                              ? 'Please fill all fields before clicking on adding more!'
-                              : insert(
-                                  values.mealsIntake.length,
-                                  mealsIntakeTemplate
-                                );
-                          }}
-                        >
-                          <Icon name="icon-add-more" width={16} height={16} />
-                          Add more
-                        </ButtonAddMore>
-                      )}
+                            if (!fieldEmpty) {
+                              insert(
+                                values.mealsIntake.length,
+                                mealsIntakeTemplate
+                              );
+                            }
+                          } else {
+                            insert(0, mealsIntakeTemplate);
+                          }
+                        }}
+                      >
+                        <Icon name="icon-add-more" width={16} height={16} />
+                        Add more
+                      </ButtonAddMore>
                     </FieldArrayWrapper>
                   );
                 }}
