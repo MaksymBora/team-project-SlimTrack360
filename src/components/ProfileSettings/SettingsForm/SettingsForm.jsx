@@ -23,13 +23,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const initialData = {
-  activity: '1.55',
+  levelActivity: '1.55',
   age: 22,
-  gender: 'female',
+  sex: 'female',
   height: 165,
-  id: '1',
   name: 'Olena',
-  weight: 85,
+  currentWeight: 85,
+  avatarUrl: null,
 };
 
 const SettingsForm = () => {
@@ -49,25 +49,14 @@ const SettingsForm = () => {
     setNewAvatar(file);
   };
 
-  console.log('newAvatar', newAvatar);
-
   const handleUpload = async () => {
     try {
       if (!newAvatar) {
-        console.log('no avatar');
         return;
       }
 
       const formData = new FormData();
-      formData.append('file', newAvatar);
-
-      // const res = await fetch('/upload', {
-      //   method: 'PATCH',
-      //   body: formData,
-      // });
-
-      // const data = await res.json();
-      // console.log('uploadedFile', data);
+      formData.append('avatarUrl', newAvatar);
     } catch (error) {
       console.log('error', error);
     }
@@ -96,7 +85,7 @@ const SettingsForm = () => {
 
         <SettingsFormField value="height" formik={formik} />
 
-        <SettingsFormField value="weight" formik={formik} />
+        <SettingsFormField value="currentWeight" formik={formik} />
 
         <ActivityBoxField>
           <FormFieldTitle>Your activity</FormFieldTitle>
