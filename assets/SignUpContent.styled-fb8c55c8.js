@@ -1,4 +1,4 @@
-import{s as e,j as l,t as n}from"./index-cdcea6a8.js";const c=e.div`
+import{s as e,j as l,t as n}from"./index-75ea8a25.js";const c=e.div`
   width: 320px;
   margin: 0 auto;
   padding: 24px 10px 40px 10px;
