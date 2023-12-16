@@ -12,6 +12,7 @@ module.exports = {
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: {
     react: {
+      pragma: 'React',
       version: 'detect',
     },
   },
@@ -27,5 +28,7 @@ module.exports = {
     'import/extensions': 0,
     'no-console': 'off',
     'prefer-destructuring': 'off',
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off', // Добавлено это правило
   },
 };

@@ -1,0 +1,6 @@
+/* ------стили для Dashboard\CaloriesGraph.jsx------ */
+
+.caloriesTitle {
+  display: flex;
+  justify-content: space-between;
+}
