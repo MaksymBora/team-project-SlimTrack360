@@ -9,7 +9,7 @@ import { GlobalStyles, theme } from './styles';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename="/team-project-SlimTrack360/welcome">
+      <BrowserRouter basename="/team-project-SlimTrack360/">
         <GlobalStyles />
         <App />
       </BrowserRouter>
