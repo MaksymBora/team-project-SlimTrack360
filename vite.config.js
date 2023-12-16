@@ -12,7 +12,7 @@ export default defineConfig({
       pages: '/src/pages',
     },
   },
-  base: '/team-project-SlimTrack360/welcome',
+  base: '/team-project-SlimTrack360/welcome/',
   build: {
     outDir: './dist',
     commonjsOptions: {
