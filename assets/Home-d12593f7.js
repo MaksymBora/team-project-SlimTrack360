@@ -1,0 +1,1 @@
+import{j as e,s}from"./index-2e7481a6.js";import{I as t}from"./Icon-e5935e3d.js";const o=()=>e.jsxs(e.Fragment,{children:[e.jsx("p",{children:"Welcome!"}),e.jsx("svg",{width:"24px",height:"24px",children:e.jsx("use",{href:`${s}#icon-edit-2`})}),e.jsx(t,{name:"icon-edit-2",width:"24px",height:"24px"})]});export{o as default};
