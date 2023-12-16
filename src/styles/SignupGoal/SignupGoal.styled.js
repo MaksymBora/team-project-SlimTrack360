@@ -7,17 +7,32 @@ export const Container = styled.div`
   padding-right: 10px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 24px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    width: 834px;
+    padding: 40px 27px 366px 27px;
+    align-items: center;
+  }
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    width: 1440px;
+    padding: 40px 150px 86px 150px;
+    gap: 104px;
+  }
+`;
+
+export const Wrapper = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 834px;
-    padding-left: 27px;
-    padding-right: 27px;
   }
+
   @media screen and (min-width: 1440px) {
-    width: 1440px;
-    padding-left: 34px;
-    padding-right: 34px;
+    flex-direction: column;
+    align-items: stretch;
   }
 `;
