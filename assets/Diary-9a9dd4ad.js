@@ -1,4 +1,4 @@
-import{a as e,t as n,j as i,L as U}from"./index-218affad.js";import{I as Y}from"./Icon-5017235f.js";const S=e.div`
+import{a as e,t as n,j as i,L as U}from"./index-78827313.js";import{I as Y}from"./Icon-708db72f.js";const S=e.div`
   padding: 20px 34px 52px 34px;
   background-color: ${n.color.primaryBlack};
 `,M=e.h2`
