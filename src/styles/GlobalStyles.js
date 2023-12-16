@@ -117,6 +117,8 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     line-height: 1;
+    color: ${theme.color.primaryWhite};
+    background-color: ${theme.color.primaryBlack};
   }
 
   ol,
