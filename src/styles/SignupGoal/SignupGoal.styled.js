@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-// import { theme } from '../../styles/index';
+import { theme } from '../../styles/index';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 320px;
@@ -58,4 +59,55 @@ export const DescWrapper = styled.div`
   @media screen and (min-width: 1440px) {
     align-items: stretch;
   }
+`;
+
+export const StylePicture = styled.picture`
+  margin-bottom: 24px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 60px;
+  }
+`;
+
+export const StyleTitle = styled.h1`
+  color: ${theme.color.primaryWhite};
+  font-family: inherit;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 16px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+  @media screen and (min-width: 1440px) {
+  }
+`;
+
+export const StyleSubtitle = styled.h1`
+  color: ${theme.color.primaryGrey};
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.33;
+  margin-bottom: 24px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+    line-height: 1.45;
+    text-align: center;
+  }
+  @media screen and (min-width: 1440px) {
+    text-align: left;
+  }
+`;
+
+export const StyleBackLink = styled(Link)`
+  color: ${theme.color.primaryGrey};
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.42;
+  display: block;
+  text-align: center;
 `;

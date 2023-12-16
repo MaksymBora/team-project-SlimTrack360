@@ -1,5 +1,4 @@
 import GoalForm from '../../components/SignupGoal/GoalForm';
-import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 
 import goalsDesc1xPng from '../../assets/imgGoal/goals-desctop-1x-min.png';
@@ -25,6 +24,10 @@ import goalsMob3xWebp from '../../assets/imgGoal/goals-mobile-3x-min.webp';
 import {
   Container,
   DescWrapper,
+  StyleBackLink,
+  StylePicture,
+  StyleSubtitle,
+  StyleTitle,
   StylesSection,
   Wrapper,
 } from '../../styles/SignupGoal/SignupGoal.styled';
@@ -36,7 +39,7 @@ const SignUpGoal = () => {
     <StylesSection>
       <Container>
         <Wrapper>
-          <picture>
+          <StylePicture>
             <source
               media="(min-width: 1440px)"
               srcSet={`${goalsDesc1xWebp} 1x, ${goalsDesc2xWebp} 2x, ${goalsDesc3xWebp} 3x`}
@@ -68,12 +71,14 @@ const SignUpGoal = () => {
               type="image/png"
             />
             <img src={goalsTab1xPng} alt="Goal" />
-          </picture>
+          </StylePicture>
           <DescWrapper>
-            <h1>Your goal</h1>
-            <h2>Choose a goal so that we can help you effectively</h2>
+            <StyleTitle>Your goal</StyleTitle>
+            <StyleSubtitle>
+              Choose a goal so that we can help you effectively
+            </StyleSubtitle>
             <GoalForm />
-            <Link to={backLinkLocationRef.current}>Back</Link>
+            <StyleBackLink to={backLinkLocationRef.current}>Back</StyleBackLink>
           </DescWrapper>
         </Wrapper>
       </Container>
