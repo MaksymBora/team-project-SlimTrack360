@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { recommendedReducer } from './recommended/recommendedSlice';
+// import { configureStore } from '@reduxjs/toolkit';
+// import { recommendedReducer } from './recommended/recommendedSlice';
 
-export const store = configureStore({
-  reducer: {
-    recommended: recommendedReducer,
-  },
-});
+// export const store = configureStore({
+//   reducer: {
+//     recommended: recommendedReducer,
+//   },
+// });
