@@ -29,6 +29,7 @@ import {
   StyleSubtitle,
   StyleTitle,
   StylesSection,
+  SubtitleGenderForm,
   Wrapper,
 } from '../../styles/SignupAge/SignupAge.styled';
 import GenderForm from '../../components/SignupAge/GenderForm';
@@ -84,8 +85,8 @@ const SignUpAge = () => {
             <StyleSubtitle>
               Choose a goal so that we can help you effectively
             </StyleSubtitle>
-            <p>Gender</p>
             <StyleBtnColumn>
+              <SubtitleGenderForm>Gender</SubtitleGenderForm>
               <GenderForm />
               <StyleBackLink onClick={handleBackClick}>Back</StyleBackLink>
             </StyleBtnColumn>

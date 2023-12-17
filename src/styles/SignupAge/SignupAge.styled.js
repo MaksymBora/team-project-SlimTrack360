@@ -52,15 +52,13 @@ export const Wrapper = styled.div`
 
 export const DescWrapper = styled.div`
   @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 380px;
   }
 
   @media screen and (min-width: 1440px) {
     align-items: stretch;
     padding-top: 80px;
-    width: 444px;
+    width: 380px;
   }
 `;
 
@@ -84,8 +82,10 @@ export const StyleTitle = styled.h1`
   @media screen and (min-width: 768px) {
     font-size: 30px;
     line-height: 1.2;
+    text-align: center;
   }
   @media screen and (min-width: 1440px) {
+    text-align: left;
   }
 `;
 
@@ -106,6 +106,23 @@ export const StyleSubtitle = styled.h1`
   }
 `;
 
+export const SubtitleGenderForm = styled.h3`
+  color: ${theme.color.primaryWhite};
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  margin-bottom: 12px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: flex-start;
+  }
+  @media screen and (min-width: 1440px) {
+    text-align: left;
+  }
+`;
+
 export const StyleBackLink = styled(Link)`
   color: ${theme.color.primaryGrey};
   font-family: inherit;
@@ -118,17 +135,10 @@ export const StyleBackLink = styled(Link)`
   &:focus {
     color: ${theme.color.primaryGreenLite};
   }
-
-  @media screen and (min-width: 1440px) {
-    text-align: start;
-  }
 `;
 
 export const StyleBtnColumn = styled.div`
   @media screen and (min-width: 1440px) {
-    display: flex;
-    flex-direction: column;
     width: 212px;
-    align-items: center;
   }
 `;
