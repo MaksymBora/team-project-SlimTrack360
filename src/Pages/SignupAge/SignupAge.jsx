@@ -31,7 +31,7 @@ import {
   StylesSection,
   Wrapper,
 } from '../../styles/SignupAge/SignupAge.styled';
-import GenderlForm from '../../components/SignupAge/GtnderForm';
+import GenderForm from '../../components/SignupAge/GenderForm';
 
 const SignUpAge = () => {
   const backLinkLocationRef = useRef('/signup-data/1');
@@ -86,7 +86,7 @@ const SignUpAge = () => {
             </StyleSubtitle>
             <p>Gender</p>
             <StyleBtnColumn>
-              <GenderlForm />
+              <GenderForm />
               <StyleBackLink onClick={handleBackClick}>Back</StyleBackLink>
             </StyleBtnColumn>
           </DescWrapper>
