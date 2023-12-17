@@ -9,7 +9,6 @@ import {
   Paragraph,
 } from '../meal/Product.styled';
 import Icon from '../../common/Icon';
-// import {theme} from '../../../styles/theme'
 
 const Product = () => {
   return (
@@ -38,7 +37,7 @@ const Product = () => {
             height={'16px'}
             fill={'#B6B6B6'}
           />
-          Edit svg
+          Edit
         </EditButton>
       </ProductContainer>
     </>
