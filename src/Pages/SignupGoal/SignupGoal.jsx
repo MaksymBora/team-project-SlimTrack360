@@ -1,5 +1,4 @@
-import GoalForm from '../../components/SignupGoal/GoalForm';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 import goalsDesc1xPng from '../../assets/imgGoal/goals-desctop-1x-min.png';
 import goalsDesc2xPng from '../../assets/imgGoal/goals-desctop-2x-min.png';
@@ -32,9 +31,16 @@ import {
   StylesSection,
   Wrapper,
 } from '../../styles/SignupGoal/SignupGoal.styled';
+import GoalForm from '../../components/SignupGoal/GoalForm';
 
 const SignUpGoal = () => {
-  const backLinkLocationRef = useRef(location.state?.from ?? '/signup');
+  const backLinkLocationRef = useRef('/signup');
+  const handleBackClick = () => {
+    window.location.href = backLinkLocationRef.current;
+  };
+  useEffect(() => {
+    backLinkLocationRef.current = ' /team-project-SlimTrack360/signup';
+  }, []);
 
   return (
     <StylesSection>
@@ -80,9 +86,7 @@ const SignUpGoal = () => {
             </StyleSubtitle>
             <StyleBtnColumn>
               <GoalForm />
-              <StyleBackLink to={backLinkLocationRef.current}>
-                Back
-              </StyleBackLink>
+              <StyleBackLink onClick={handleBackClick}>Back</StyleBackLink>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>

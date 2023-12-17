@@ -34,12 +34,12 @@ import {
 import ActivityForm from '../../components/SignupActivity/ActivityForm';
 
 const SignUpGoal = () => {
-  const backLinkLocationRef = useRef('/signup-data/1');
+  const backLinkLocationRef = useRef('/signup-data/3');
   const handleBackClick = () => {
     window.location.href = backLinkLocationRef.current;
   };
   useEffect(() => {
-    backLinkLocationRef.current = ' /team-project-SlimTrack360/signup-data/1';
+    backLinkLocationRef.current = ' /team-project-SlimTrack360/signup-data/3';
   }, []);
 
   return (
