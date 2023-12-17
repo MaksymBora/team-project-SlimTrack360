@@ -1,6 +1,12 @@
 import Modal from 'react-modal';
 import { Formik, FieldArray } from 'formik';
+import { useDispatch } from 'react-redux';
+import {
+  postFoodIntake,
+  updateFoodIntake,
+} from '../../Redux/foodIntake/operations';
 import * as yup from 'yup';
+import { nanoid } from 'nanoid';
 import Icon from '../../components/common/Icon';
 
 import {
@@ -117,9 +123,32 @@ const RecordDiaryModal = ({
   categoryImage,
   item,
 }) => {
-  const handleSubmit = () => {
-    console.log('Відправка даних на бекенд');
+  const dispatch = useDispatch();
 
+  // Відправка даних на бекенд
+  const handleSubmit = async (values, { resetForm }) => {
+    const currentDate = new Date().toISOString(); // Отримуємо поточну дату у форматі ISO
+    const formattedDate = currentDate.substring(0, 10); // Беремо перші 10 символів
+    const products = values.mealsIntake.map((product) => ({
+      productId: nanoid(),
+      ...product,
+    }));
+
+    const dataForBackend = {
+      date: formattedDate,
+      [category.toLowerCase()]: {
+        products,
+      },
+    };
+    // console.log('dataForBackend', dataForBackend);
+
+    if (item) {
+      dispatch(updateFoodIntake({ productId: item._id, dataForBackend }));
+    } else {
+      dispatch(postFoodIntake(dataForBackend));
+    }
+    // dispatch(fetchStatistics('today'));
+    resetForm();
     onClose();
   };
 
@@ -158,7 +187,7 @@ const RecordDiaryModal = ({
                   return (
                     <FieldArrayWrapper>
                       <MealsList>
-                        {values.mealsIntake.map((__, index) => {
+                        {values.mealsIntake.map((product, index) => {
                           return (
                             <MealItem key={index}>
                               <FieldWrapper>
@@ -280,6 +309,10 @@ const RecordDiaryModal = ({
                           ) {
                             const mealsIntake =
                               values.mealsIntake[values.mealsIntake.length - 1];
+                            console.log(
+                              'Масив спожита їжа:',
+                              values.mealsIntake
+                            );
                             const fieldEmpty = Object.values(
                               mealsIntake || {}
                             ).some(
