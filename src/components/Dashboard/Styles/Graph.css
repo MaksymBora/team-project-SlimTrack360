@@ -1,0 +1,70 @@
+/* --PC----стили для Dashboard\все 3 графика------ */
+
+.caloriesTitle,
+.weightTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.graphTitle {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.45;
+}
+
+.graphValue {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+}
+/* -----Weight table------ */
+/* .weight-container{
+  max-width: 1372px;
+} */
+.weightTitle {
+  margin-bottom: 6px;
+}
+.table-container {
+  display: block;
+  flex-direction: row; /* Изменили на flex-direction: row */
+  /* overflow-x: auto; Добавили стиль для прокрутки горизонтальной оси, если контент не вмещается */
+}
+
+.upper-row,
+.lower-row {
+  display: flex;
+  flex-direction: row; /* Изменяем на flex-direction: column */
+  text-align: center;
+}
+.upper-row {
+  font-size: 14px;
+  line-height: 1.43;
+}
+
+.lower-row {
+  font-size: 10px;
+  line-height: 1.4;
+  color: #b6b6b6;
+}
+
+.table-cell {
+  text-align: center;
+  border: 1px solid #292928;
+  padding: 8px;
+  flex: 1; /* Добавили flex: 1 */
+  /* max-width: calc(50% - 8px); Устанавливаем максимальную ширину для каждой ячейки (50% ширины контейнера минус отступ) */
+  box-sizing: border-box;
+  font-weight: 400;
+  /* font-size: 14px;
+line-height: 1.43; */
+  color: #8a8a86;
+}
+
+/* Добавляем стили для ячеек в верхнем ряду */
+.upper-row .table-cell {
+  border-bottom: none; /* Убираем нижнюю границу для ячеек в верхнем ряду */
+}
+
+.upper-row .table-cell:not(:last-child) {
+  border-right: 1px solid #292928; /* Добавляем правую границу для всех ячеек в верхнем ряду, кроме последней */
+}

@@ -1,18 +1,21 @@
 // src\components\Dashboard\WaterGraph.jsx
 // import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { options } from './GraphsConfig';
+import { commonOptions, waterYAxisOptions } from './GraphsConfig';
 import { GraphContainer, ChartContainer } from './Styles/Graphs.styled';
+import './Styles/Graph.css';
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const data = {
-  labels,
+  labels: Array.from({ length: 31 }, (_, i) => i + 1),
   datasets: [
     {
-      label: 'Water Dataset',
-      data: labels.map(() => Math.floor(Math.random() * 1000)),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      label: '',
+      data: Array.from({ length: 31 }, () => Math.floor(Math.random() * 1000)),
+      borderColor: '#e3ffa8',
+      borderWidth: 1,
+      pointBackgroundColor: '#e3ffa8',
+      pointRadius: 0,
+      fill: false,
     },
   ],
 };
@@ -20,9 +23,18 @@ const data = {
 const WaterGraph = () => {
   return (
     <GraphContainer>
-      <h2>Water</h2>
+      <div className="caloriesTitle">
+        <h2 className="graphTitle">Water</h2>
+        <h3 className="graphValue">Average value: 1700 ml</h3>
+      </div>
       <ChartContainer>
-        <Line options={options} data={data} />
+        <Line
+          options={{
+            ...commonOptions,
+            scales: { x: commonOptions.scales.x, y: waterYAxisOptions },
+          }}
+          data={data}
+        />
       </ChartContainer>
     </GraphContainer>
   );

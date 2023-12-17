@@ -1,28 +1,39 @@
 // src\components\Dashboard\WeightGraph.jsx
-// import React from 'react';
-import { Line } from 'react-chartjs-2';
-import { options } from './GraphsConfig';
-import { GraphContainer, ChartContainer } from './Styles/Graphs.styled';
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Waight Dataset',
-      data: labels.map(() => Math.floor(Math.random() * 1000)),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-  ],
-};
+import { GraphContainer, ChartContainer } from './Styles/Graphs.styled';
+import './Styles/Graph.css';
 
 const WeightGraph = () => {
+  const upperRowValues = Array.from({ length: 31 }, () =>
+    (Math.random() * (80 - 60) + 60).toFixed(0)
+  );
+  const lowerRowValues = Array.from({ length: 31 }, (_, i) =>
+    (i + 1).toString()
+  );
+
   return (
-    <GraphContainer>
-      <h2>Weight</h2>
-      <ChartContainer>
-        <Line options={options} data={data} />
+    <GraphContainer className="weight-container">
+      <div className="weightTitle">
+        <h2 className="graphTitle">Weight</h2>
+        <h3 className="graphValue">Average value: 68 kg</h3>
+      </div>
+      <ChartContainer className="weight-graph-line">
+        <div className="table-container">
+          <div className="upper-row">
+            {upperRowValues.map((value, index) => (
+              <div key={index} className="table-cell">
+                {value}
+              </div>
+            ))}
+          </div>
+          <div className="lower-row">
+            {lowerRowValues.map((value, index) => (
+              <div key={index} className="table-cell">
+                {value}
+              </div>
+            ))}
+          </div>
+        </div>
       </ChartContainer>
     </GraphContainer>
   );
