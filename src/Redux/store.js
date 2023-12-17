@@ -3,7 +3,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { recommendedReducer } from './recommended/recommendedSlice';
 import { authReducer } from './userAuth/userAuthSlice';
-import { foodIntakeReducer } from './foodIntake/foodIntakeSlice';
+import foodIntakeReducer from './foodIntake/foodIntakeSlice';
 import { waterIntakeReducer } from './waterIntake/waterIntakeSlice';
 import { statisticsReducer } from './statisctics/statisticsSlice';
 
