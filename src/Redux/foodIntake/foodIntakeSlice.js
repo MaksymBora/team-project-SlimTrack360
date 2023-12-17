@@ -35,9 +35,9 @@ const initialState = {
 const foodIntakeSlice = createSlice({
   name: 'foodIntake',
   initialState,
-  extraReducers: (builder) => {
-    builder.addCase();
-  },
+  // extraReducers: (builder) => {
+  //   builder.addCase();
+  // },
 });
 
 export const foodIntakeReducer = foodIntakeSlice.reducer;

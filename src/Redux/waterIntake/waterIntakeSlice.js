@@ -8,9 +8,9 @@ const initialState = {
 const waterIntakeSlice = createSlice({
   name: 'waterIntake',
   initialState,
-  extraReducers: (builder) => {
-    builder.addCase();
-  },
+  //   extraReducers: (builder) => {
+  //     builder.addCase();
+  //   },
 });
 
 export const waterIntakeReducer = waterIntakeSlice.reducer;
