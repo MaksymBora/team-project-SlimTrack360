@@ -60,10 +60,44 @@ export const StylesLabelForm = styled.label`
   font-weight: 400;
   line-height: 1.42;
   margin-left: 8px;
+  cursor: pointer;
 
-  @media screen and (min-width: 768px) {
+  &::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: ${theme.color.primaryGreenLite};
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    opacity: 0;
   }
+`;
 
-  @media screen and (min-width: 1440px) {
+export const CustomRadioInput = styled.input`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+
+  &:checked + label::after {
+    opacity: 1;
+  }
+`;
+
+export const CustomRadio = styled.span`
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border: 1px solid ${theme.color.primaryGrey};
+    display: inline-block;
+    border-radius: 100%;
   }
 `;

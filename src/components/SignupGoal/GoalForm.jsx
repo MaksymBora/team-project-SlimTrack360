@@ -1,4 +1,6 @@
 import {
+  CustomRadio,
+  CustomRadioInput,
   StylesBtnForm,
   StylesForm,
   StylesLabelForm,
@@ -9,25 +11,35 @@ export const GoalForm = () => {
   return (
     <StylesForm>
       <StylesRadioBtn>
-        <span>
-          <input type="radio" id="lose_fat" name="goal" value="lose_fat" />
+        <CustomRadio>
+          <CustomRadioInput
+            type="radio"
+            id="lose_fat"
+            name="goal"
+            value="lose_fat"
+          />
           <StylesLabelForm htmlFor="lose_fat">Lose Fat</StylesLabelForm>
-        </span>
+        </CustomRadio>
 
-        <span>
-          <input type="radio" id="maintain" name="goal" value="maintain" />
+        <CustomRadio>
+          <CustomRadioInput
+            type="radio"
+            id="maintain"
+            name="goal"
+            value="maintain"
+          />
           <StylesLabelForm htmlFor="maintain">Maintain</StylesLabelForm>
-        </span>
+        </CustomRadio>
 
-        <span>
-          <input
+        <CustomRadio>
+          <CustomRadioInput
             type="radio"
             id="gain_muscle"
             name="goal"
             value="gain_muscle"
           />
           <StylesLabelForm htmlFor="gain_muscle">Gain Muscle</StylesLabelForm>
-        </span>
+        </CustomRadio>
       </StylesRadioBtn>
 
       <StylesBtnForm type="button">Next</StylesBtnForm>
