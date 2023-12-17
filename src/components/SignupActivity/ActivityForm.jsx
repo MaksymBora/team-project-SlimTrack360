@@ -12,12 +12,7 @@ export const ActivityForm = () => {
     <StylesForm>
       <StylesRadioBtn>
         <CustomRadio>
-          <CustomRadioInput
-            type="radio"
-            id="1.2"
-            name="not_activity"
-            value="1.2"
-          />
+          <CustomRadioInput type="radio" id="1.2" name="activity" value="1.2" />
           <StylesLabelForm htmlFor="1.2">
             1.2 - if you do not have physical activity and sedentary work
           </StylesLabelForm>
@@ -27,7 +22,7 @@ export const ActivityForm = () => {
           <CustomRadioInput
             type="radio"
             id="1.375"
-            name="light_activity"
+            name="activity"
             value="1.375"
           />
           <StylesLabelForm htmlFor="1.375">
@@ -39,7 +34,7 @@ export const ActivityForm = () => {
           <CustomRadioInput
             type="radio"
             id="1.55"
-            name="average_activity"
+            name="activity"
             value="1.55"
           />
           <StylesLabelForm htmlFor="1.55">
@@ -51,7 +46,7 @@ export const ActivityForm = () => {
           <CustomRadioInput
             type="radio"
             id="1.725"
-            name="fully_activity"
+            name="activity"
             value="1.725"
           />
           <StylesLabelForm htmlFor="1.725">
@@ -60,12 +55,7 @@ export const ActivityForm = () => {
         </CustomRadio>
 
         <CustomRadio>
-          <CustomRadioInput
-            type="radio"
-            id="1.9"
-            name="strength_activity"
-            value="1.9"
-          />
+          <CustomRadioInput type="radio" id="1.9" name="activity" value="1.9" />
           <StylesLabelForm htmlFor="1.9">
             1.9 - if your work is related to physical labor, you train 2 times a
             day and include strength exercises in your training program
@@ -73,7 +63,7 @@ export const ActivityForm = () => {
         </CustomRadio>
       </StylesRadioBtn>
 
-      <StylesBtnForm type="button">Next</StylesBtnForm>
+      <StylesBtnForm type="button">Sign Up</StylesBtnForm>
     </StylesForm>
   );
 };

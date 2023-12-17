@@ -5,30 +5,31 @@ export const StylesForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
-    width: 380px;
+    align-items: center;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 212px;
+    width: 328px;
+    align-items: stretch;
   }
 `;
 
 export const StylesRadioBtn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
+    width: 458px;
   }
 
   @media screen and (min-width: 1440px) {
     flex-direction: column;
     gap: 16px;
+    width: 328px;
   }
 `;
 
@@ -50,6 +51,14 @@ export const StylesBtnForm = styled.button`
     cursor: pointer;
     border: 1px solid ${theme.color.primaryGreenLite};
   }
+
+  @media screen and (min-width: 768px) {
+    width: 380px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+  }
 `;
 
 export const StylesLabelForm = styled.label`
@@ -59,7 +68,7 @@ export const StylesLabelForm = styled.label`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
-  margin-left: 8px;
+  margin-left: 18px;
   cursor: pointer;
 
   &::after {
@@ -74,10 +83,14 @@ export const StylesLabelForm = styled.label`
     transform: translate(50%, -50%);
     opacity: 0;
   }
+
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    width: 100%;
+  }
 `;
 
 export const CustomRadioInput = styled.input`
-  position: absolute;
   width: 1px;
   height: 1px;
   opacity: 0;
@@ -99,5 +112,6 @@ export const CustomRadio = styled.span`
     border: 1px solid ${theme.color.primaryGrey};
     display: inline-block;
     border-radius: 100%;
+    position: absolute;
   }
 `;
