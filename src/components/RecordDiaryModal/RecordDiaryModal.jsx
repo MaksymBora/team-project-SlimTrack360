@@ -174,8 +174,8 @@ const RecordDiaryModal = ({
                                   }}
                                   required
                                 />
-                                {errors['mealsIntake.${index}.name'] &&
-                                touched['mealsIntake.${index}.name'] ? (
+                                {errors[`mealsIntake.${index}.name`] &&
+                                touched[`mealsIntake.${index}.name`] ? (
                                   <StyledError
                                     name={`mealsIntake.${index}.name`}
                                     component="div"
@@ -190,6 +190,7 @@ const RecordDiaryModal = ({
                                   placeholder="Carbonoh."
                                   type="number"
                                   min={0}
+                                  max={1000}
                                   required
                                 />
                                 <StyledError
@@ -205,10 +206,11 @@ const RecordDiaryModal = ({
                                   placeholder="Protein"
                                   type="number"
                                   min={0}
+                                  max={1000}
                                   required
                                 />
-                                {errors['mealsIntake.${index}.protein'] &&
-                                touched['mealsIntake.${index}.protein'] ? (
+                                {errors[`mealsIntake.${index}.protein`] &&
+                                touched[`mealsIntake.${index}.protein`] ? (
                                   <StyledError
                                     name={`mealsIntake.${index}.protein`}
                                     component="div"
@@ -223,10 +225,11 @@ const RecordDiaryModal = ({
                                   placeholder="Fat"
                                   type="number"
                                   min={0}
+                                  max={1000}
                                   required
                                 />
-                                {errors['mealsIntake.${index}.fat'] &&
-                                touched['mealsIntake.${index}.fat'] ? (
+                                {errors[`mealsIntake.${index}.fat`] &&
+                                touched[`mealsIntake.${index}.fat`] ? (
                                   <StyledError
                                     name={`mealsIntake.${index}.fat`}
                                     component="div"
@@ -241,10 +244,11 @@ const RecordDiaryModal = ({
                                   placeholder="Calories"
                                   type="number"
                                   min={0}
+                                  max={1000}
                                   required
                                 />
-                                {errors['mealsIntake.${index}.calories'] &&
-                                touched['mealsIntake.${index}.calories'] ? (
+                                {errors[`mealsIntake.${index}.calories`] &&
+                                touched[`mealsIntake.${index}.calories`] ? (
                                   <StyledError
                                     name={`mealsIntake.${index}.calories`}
                                     component="div"
@@ -293,7 +297,12 @@ const RecordDiaryModal = ({
                           }
                         }}
                       >
-                        <Icon name="icon-add-more" width={16} height={16} />
+                        <Icon
+                          name="icon-add"
+                          icon-add-more
+                          width={16}
+                          height={16}
+                        />
                         Add more
                       </ButtonAddMore>
                     </FieldArrayWrapper>

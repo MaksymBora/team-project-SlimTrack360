@@ -23,7 +23,6 @@ export const ModalWrapper = styled.div`
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 708px;
     height: 408px;
-    /* max-height: 95vh; */
     padding: 24px;
   }
 `;
@@ -69,7 +68,7 @@ export const StyledForm = styled(Form)`
   justify-content: space-between;
 `;
 export const FieldArrayWrapper = styled.div`
-  max-height: 320px; //mobile:'320px'
+  max-height: 320px;
   margin-bottom: 16px;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
@@ -79,7 +78,7 @@ export const FieldArrayWrapper = styled.div`
 export const MealsList = styled.ul`
   overflow-y: auto;
   height: 210px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   display: flex;
   flex-direction: column;
 
@@ -101,16 +100,27 @@ export const MealsList = styled.ul`
 `;
 
 export const MealItem = styled.li`
-  display: grid;
-  grid-gap: 8px;
-  margin-bottom: 16px;
-  grid-template-columns: repeat(2, 1fr);
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 12px;
+    
   & > div:nth-child(-n + 3) {
-    grid-column-start: 1;
-    grid-column-end: 4;
- }
+    flex-basis: 100%; 
+    margin-bottom: 16px;
+  }
+
+  & > div:nth-last-child(-n + 3) {
+    flex-basis: calc(43.48%);
+  }
+
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    & > div:nth-child(-n + 3) {
+      margin-bottom: 0; 
+    }
+    margin-bottom: 12px;
+    display:grid;
     grid-gap: 12px;
     grid-template-columns: 38.15% 15.26% 13.12% 9.30% 11.94% 3.05%; // з урахуванням скрола 5px
     
@@ -175,6 +185,7 @@ export const ButtonAddMore = styled.button`
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  padding: 0;
 
   background-color: inherit;
   font-size: 14px;
