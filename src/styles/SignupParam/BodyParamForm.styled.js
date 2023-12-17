@@ -15,21 +15,6 @@ export const StylesForm = styled.form`
   }
 `;
 
-export const StylesRadioBtn = styled.div`
-  display: flex;
-  gap: 96px;
-  margin-bottom: 24px;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
-
-  @media screen and (min-width: 1440px) {
-    flex-direction: column;
-    gap: 16px;
-  }
-`;
-
 export const StylesBtnForm = styled.button`
   border-radius: 12px;
   background: ${theme.color.primaryGreenLite};
@@ -50,70 +35,25 @@ export const StylesBtnForm = styled.button`
   }
 `;
 
-export const StylesLabelForm = styled.label`
-  color: ${theme.color.primaryWhite};
-  font-family: inherit;
-  font-family: Poppins;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42;
-  margin-left: 8px;
-  cursor: pointer;
-
-  &::after {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: ${theme.color.primaryGreenLite};
-    border-radius: 100%;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translate(50%, -50%);
-    opacity: 0;
-  }
-`;
-
-export const CustomRadioInput = styled.input`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-
-  &:checked + label::after {
-    opacity: 1;
-  }
-`;
-
-export const CustomRadio = styled.span`
+export const HeightInputWrapper = styled.span`
   display: flex;
-  align-items: center;
-  position: relative;
-
-  &::before {
-    content: '';
-    width: 12px;
-    height: 12px;
-    border: 1px solid ${theme.color.primaryGrey};
-    display: inline-block;
-    border-radius: 100%;
-  }
+  flex-direction: column;
+  margin-bottom: 24px;
 `;
-
-export const AgeInputWrapper = styled.span`
+export const WeightInputWrapper = styled.span`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
 `;
 
-export const AgeInputLabel = styled.label`
+export const InputLabel = styled.label`
   margin-bottom: 12px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
 `;
 
-export const AgeInputStiles = styled.input`
+export const InputStiles = styled.input`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;

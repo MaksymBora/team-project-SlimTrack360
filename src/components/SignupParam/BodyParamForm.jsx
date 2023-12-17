@@ -1,31 +1,32 @@
 import {
-  AgeInputLabel,
-  AgeInputStiles,
-  AgeInputWrapper,
+  HeightInputWrapper,
+  InputLabel,
+  InputStiles,
   StylesBtnForm,
   StylesForm,
-} from '../../styles/SignupAge/GenderForm.styled';
+  WeightInputWrapper,
+} from '../../styles/SignupParam/BodyParamForm.styled';
 
 export const BodyParamForm = () => {
   return (
     <StylesForm>
-      <AgeInputWrapper>
-        <AgeInputLabel htmlFor="heighInput">Height</AgeInputLabel>
-        <AgeInputStiles
+      <HeightInputWrapper>
+        <InputLabel htmlFor="heighInput">Height</InputLabel>
+        <InputStiles
           type="number"
           id="heighInput"
           placeholder="Enter your height"
         />
-      </AgeInputWrapper>
+      </HeightInputWrapper>
 
-      <AgeInputWrapper>
-        <AgeInputLabel htmlFor="weightInput">Weight</AgeInputLabel>
-        <AgeInputStiles
+      <WeightInputWrapper>
+        <InputLabel htmlFor="weightInput">Weight</InputLabel>
+        <InputStiles
           type="number"
           id="weightInput"
           placeholder="Enter your weight"
         />
-      </AgeInputWrapper>
+      </WeightInputWrapper>
 
       <StylesBtnForm type="button">Next</StylesBtnForm>
     </StylesForm>
