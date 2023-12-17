@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectIsLoading, selectError } from '../../Redux/waterIntake/selector';
 import ReactDOM from 'react-dom';
 import {
   Cancel,
@@ -10,10 +12,13 @@ import {
   Overlay,
   Title,
 } from './Modal.styled';
-import { addWater } from '../../API/apiWater';
+import { addWater } from '../../Redux/waterIntake/operations';
 
 export const Modal = ({ onClose }) => {
   const [waterAmount, setWaterAmount] = useState('');
+  // const value = useSelector(selectValue);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   const handleInputChange = (e) => {
     setWaterAmount(e.target.value);
@@ -46,11 +51,14 @@ export const Modal = ({ onClose }) => {
           <Label>How much water</Label>
           <Input
             type="text"
-            placeholder="Enter mililiters"
+            placeholder="Enter milliliters"
             value={waterAmount}
             onChange={handleInputChange}
           />
-          <Confirm type="submit">Confirm</Confirm>
+          <Confirm type="submit" disabled={isLoading}>
+            {isLoading ? 'Loading...' : 'Confirm'}
+          </Confirm>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
           <Cancel type="button" onClick={onClose}>
             Cancel
           </Cancel>
