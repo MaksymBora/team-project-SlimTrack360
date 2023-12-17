@@ -1,20 +1,8 @@
 import styled from 'styled-components';
-import { theme } from '../../styles/index';
 // import DesktopImg from '../../assets/images/SignUp/Desktop_Illustration.png';
 // import TabletImg from '../../assets/images/SignUp/Tablet_Illustration.png';
 // import MobileImg from '../../assets/images/SignUp/Mobile_Illustration.png';
-export const Wrapper = styled.section`
-  min-height: 100vh;
-  padding-bottom: 40px;
-  background-color: ${theme.color.primaryBlack};
-  background-size: cover;
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1440px) {
-  }
-`;
+export const Wrapper = styled.section``;
 export const Div = styled.div`
   max-width: 767px;
   display: flex;

@@ -50,9 +50,10 @@ export const Subtitle = styled.h3`
     text-align: left;
   }
 `;
-export const Label = styled.label``;
-export const Title = styled.div`
+export const Label = styled.label`
+  margin: auto;
   padding: 8px 10px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -61,6 +62,13 @@ export const Title = styled.div`
   border-radius: 12px;
   border: 1px solid ${theme.color.primaryGreenLite};
   background: ${theme.color.primaryBlack2};
+  &.input-error {
+    border-color: #e74a3b;
+  }
+  // &.input-success {
+  //   border-color: #2d9f6c;
+  // }
+
   @media screen and (min-width: 768px) {
     width: 380px;
     display: flex;
@@ -72,8 +80,10 @@ export const Title = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    // margin: auto;
   }
 `;
+// export const Title = styled.div;
 export const Input = styled.input`
   font-family: Poppins;
   font-size: 14px;
@@ -90,13 +100,28 @@ export const Input = styled.input`
   @media screen and (min-width: 1440px) {
     width: 192px;
   }
+  &:focus {
+    outline: none;
+  }
 `;
+export const Attention = styled.p`
+  color: #e74a3b;
+  text-align: left;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  padding-top: 4px;
+  padding-bottom: 14px;
+`;
+
 export const Wrapper = styled.div`
   padding-top: 24px;
   padding-bottom: 40px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  // gap: 20px;
 `;
 export const Button = styled.button`
   padding: 8px 10px;
@@ -113,6 +138,10 @@ export const Button = styled.button`
   font-weight: 500;
   line-height: 20px;
   //   margin-bottom: 48px;
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
 `;
 export const Subsection = styled.p`
   color: ${theme.color.primaryGrey};
@@ -141,13 +170,4 @@ export const Options = styled.div`
   @media screen and (min-width: 1440px) {
     // padding-top: 168px;
   }
-`;
-export const Attention = styled.div`
-  color: #e74a3b;
-  text-align: left;
-  font-family: Poppins;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 14px;
 `;
