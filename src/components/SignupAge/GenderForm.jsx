@@ -1,4 +1,7 @@
 import {
+  AgeInputLabel,
+  AgeInputStiles,
+  AgeInputWrapper,
   CustomRadio,
   CustomRadioInput,
   StylesBtnForm,
@@ -26,6 +29,15 @@ export const GenderForm = () => {
           <StylesLabelForm htmlFor="female">Female</StylesLabelForm>
         </CustomRadio>
       </StylesRadioBtn>
+
+      <AgeInputWrapper>
+        <AgeInputLabel htmlFor="ageInput">Your age</AgeInputLabel>
+        <AgeInputStiles
+          type="number"
+          id="ageInput"
+          placeholder="Enter your age"
+        />
+      </AgeInputWrapper>
 
       <StylesBtnForm type="button">Next</StylesBtnForm>
     </StylesForm>
