@@ -122,7 +122,7 @@ export const StyleBtnColumn = styled.div`
   @media screen and (min-width: 1440px) {
     display: flex;
     flex-direction: column;
-    width: 192px;
+    width: 212px;
     align-items: center;
   }
 `;

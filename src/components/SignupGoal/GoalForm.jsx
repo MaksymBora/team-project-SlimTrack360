@@ -1,6 +1,7 @@
 import {
   StylesBtnForm,
   StylesForm,
+  StylesLabelForm,
   StylesRadioBtn,
 } from '../../styles/SignupGoal/GoalForm.styled';
 
@@ -10,12 +11,12 @@ export const GoalForm = () => {
       <StylesRadioBtn>
         <span>
           <input type="radio" id="lose_fat" name="goal" value="lose_fat" />
-          <label htmlFor="lose_fat">Lose Fat</label>
+          <StylesLabelForm htmlFor="lose_fat">Lose Fat</StylesLabelForm>
         </span>
 
         <span>
           <input type="radio" id="maintain" name="goal" value="maintain" />
-          <label htmlFor="maintain">Maintain</label>
+          <StylesLabelForm htmlFor="maintain">Maintain</StylesLabelForm>
         </span>
 
         <span>
@@ -25,7 +26,7 @@ export const GoalForm = () => {
             name="goal"
             value="gain_muscle"
           />
-          <label htmlFor="gain_muscle">Gain Muscle</label>
+          <StylesLabelForm htmlFor="gain_muscle">Gain Muscle</StylesLabelForm>
         </span>
       </StylesRadioBtn>
 

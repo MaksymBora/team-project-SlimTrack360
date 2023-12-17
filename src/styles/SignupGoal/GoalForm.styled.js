@@ -7,8 +7,12 @@ export const StylesForm = styled.form`
   gap: 24px;
   margin-bottom: 20px;
 
+  @media screen and (min-width: 768px) {
+    width: 380px;
+  }
+
   @media screen and (min-width: 1440px) {
-    width: 192px;
+    width: 212px;
   }
 `;
 
@@ -19,6 +23,7 @@ export const StylesRadioBtn = styled.div`
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
+    justify-content: space-between;
   }
 
   @media screen and (min-width: 1440px) {
@@ -37,6 +42,22 @@ export const StylesBtnForm = styled.input`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
+
+export const StylesLabelForm = styled.label`
+  color: ${theme.color.primaryWhite};
+  font-family: inherit;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+  margin-left: 8px;
 
   @media screen and (min-width: 768px) {
   }
