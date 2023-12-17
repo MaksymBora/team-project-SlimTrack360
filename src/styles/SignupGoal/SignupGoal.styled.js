@@ -113,6 +113,12 @@ export const StyleBackLink = styled(Link)`
   line-height: 1.42;
   display: block;
   text-align: center;
+  transition: ${theme.transition.main};
+  &:hover,
+  &:focus {
+    color: ${theme.color.primaryGreenLite};
+  }
+
   @media screen and (min-width: 1440px) {
     text-align: start;
   }

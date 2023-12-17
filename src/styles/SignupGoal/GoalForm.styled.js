@@ -32,7 +32,7 @@ export const StylesRadioBtn = styled.div`
   }
 `;
 
-export const StylesBtnForm = styled.input`
+export const StylesBtnForm = styled.button`
   border-radius: 12px;
   background: ${theme.color.primaryGreenLite};
   padding: 8px 10px;
@@ -42,11 +42,13 @@ export const StylesBtnForm = styled.input`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
+  border: 1px solid;
+  transition: ${theme.transition.main};
 
-  @media screen and (min-width: 768px) {
-  }
-
-  @media screen and (min-width: 1440px) {
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    border: 1px solid ${theme.color.primaryGreenLite};
   }
 `;
 

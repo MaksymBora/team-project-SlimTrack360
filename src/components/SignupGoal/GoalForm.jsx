@@ -30,7 +30,7 @@ export const GoalForm = () => {
         </span>
       </StylesRadioBtn>
 
-      <StylesBtnForm type="submit" value="Next" />
+      <StylesBtnForm type="button">Next</StylesBtnForm>
     </StylesForm>
   );
 };
