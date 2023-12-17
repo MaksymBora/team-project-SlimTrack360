@@ -1,6 +1,6 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
-import genderAgeDesc1xPng from '../../assets/imgGenderAge/goals-desctop-1x-min.png';
+import genderAgeDesc1xPng from '../../assets/imgGenderAge/genderAge-desctop-1x-min.png';
 import genderAgeDesc2xPng from '../../assets/imgGenderAge/genderAge-desctop-2x-min.png';
 import genderAgeDesc3xPng from '../../assets/imgGenderAge/genderAge-desctop-3x-min.png';
 import genderAgeTab1xPng from '../../assets/imgGenderAge/genderAge-tablet-1x-min.png';
@@ -34,7 +34,13 @@ import {
 import GenderlForm from '../../components/SignupAge/GtnderForm';
 
 const SignUpAge = () => {
-  const backLinkLocationRef = useRef(location.state?.from ?? 'signup-data/1');
+  const backLinkLocationRef = useRef('/signup-data/1');
+  const handleBackClick = () => {
+    window.location.href = backLinkLocationRef.current;
+  };
+  useEffect(() => {
+    backLinkLocationRef.current = ' /team-project-SlimTrack360/signup-data/1';
+  }, []);
 
   return (
     <StylesSection>
@@ -81,9 +87,7 @@ const SignUpAge = () => {
             <p>Gender</p>
             <StyleBtnColumn>
               <GenderlForm />
-              <StyleBackLink to={backLinkLocationRef.current}>
-                Back
-              </StyleBackLink>
+              <StyleBackLink onClick={handleBackClick}>Back</StyleBackLink>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>
