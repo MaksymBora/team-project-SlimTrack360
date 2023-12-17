@@ -25,6 +25,7 @@ import {
   Container,
   DescWrapper,
   StyleBackLink,
+  StyleBtnColumn,
   StylePicture,
   StyleSubtitle,
   StyleTitle,
@@ -77,8 +78,12 @@ const SignUpGoal = () => {
             <StyleSubtitle>
               Choose a goal so that we can help you effectively
             </StyleSubtitle>
-            <GoalForm />
-            <StyleBackLink to={backLinkLocationRef.current}>Back</StyleBackLink>
+            <StyleBtnColumn>
+              <GoalForm />
+              <StyleBackLink to={backLinkLocationRef.current}>
+                Back
+              </StyleBackLink>
+            </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>
       </Container>

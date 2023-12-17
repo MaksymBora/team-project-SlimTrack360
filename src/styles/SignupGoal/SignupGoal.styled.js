@@ -46,6 +46,7 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 104px;
+    align-items: stretch;
   }
 `;
 
@@ -58,6 +59,8 @@ export const DescWrapper = styled.div`
 
   @media screen and (min-width: 1440px) {
     align-items: stretch;
+    padding-top: 80px;
+    width: 444px;
   }
 `;
 
@@ -110,4 +113,16 @@ export const StyleBackLink = styled(Link)`
   line-height: 1.42;
   display: block;
   text-align: center;
+  @media screen and (min-width: 1440px) {
+    text-align: start;
+  }
+`;
+
+export const StyleBtnColumn = styled.div`
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    flex-direction: column;
+    width: 192px;
+    align-items: center;
+  }
 `;
