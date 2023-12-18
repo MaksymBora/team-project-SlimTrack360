@@ -60,22 +60,22 @@ const SignUpAge = () => {
               type="image/webp"
             />
             <source
-              media="(min-width: 768px)"
+              media="(min-width: 834px)"
               srcSet={`${genderAgeTab1xWebp} 1x, ${genderAgeTab2xWebp} 2x, ${genderAgeTab3xWebp} 3x`}
               type="image/webp"
             />
             <source
-              media="(min-width: 768px)"
+              media="(min-width: 834px)"
               srcSet={`${genderAgeTab1xPng} 1x, ${genderAgeTab2xPng} 2x, ${genderAgeTab3xPng} 3x`}
               type="image/png"
             />
             <source
-              media="(max-width: 767px)"
+              media="(max-width: 833px)"
               srcSet={`${genderAgeMob1xWebp} 1x, ${genderAgeMob2xWebp} 2x, ${genderAgeMob3xWebp} 3x`}
               type="image/webp"
             />
             <source
-              media="(max-width: 767px)"
+              media="(max-width: 833px)"
               srcSet={`${genderAgeMob1xPng} 1x, ${genderAgeMob2xPng} 2x, ${genderAgeMob3xPng} 3x`}
               type="image/png"
             />
@@ -96,6 +96,7 @@ const SignUpAge = () => {
                       id="male"
                       name="gender"
                       value="male"
+                      defaultChecked
                     />
                     <StylesLabelForm htmlFor="male">Male</StylesLabelForm>
                   </CustomRadio>

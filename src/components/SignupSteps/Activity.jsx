@@ -56,22 +56,22 @@ const SignUpActivity = () => {
               type="image/webp"
             />
             <source
-              media="(min-width: 768px)"
+              media="(min-width: 834px)"
               srcSet={`${activityTab1xWebp} 1x, ${activityTab2xWebp} 2x, ${activityTab3xWebp} 3x`}
               type="image/webp"
             />
             <source
-              media="(min-width: 768px)"
+              media="(min-width: 834px)"
               srcSet={`${activityTab1xPng} 1x, ${activityTab2xPng} 2x, ${activityTab3xPng} 3x`}
               type="image/png"
             />
             <source
-              media="(max-width: 767px)"
+              media="(max-width: 833px)"
               srcSet={`${activityMob1xWebp} 1x, ${activityMob2xWebp} 2x, ${activityMob3xWebp} 3x`}
               type="image/webp"
             />
             <source
-              media="(max-width: 767px)"
+              media="(max-width: 833px)"
               srcSet={`${activityMob1xPng} 1x, ${activityMob2xPng} 2x, ${activityMob3xPng} 3x`}
               type="image/png"
             />
@@ -91,6 +91,7 @@ const SignUpActivity = () => {
                       id="1.2"
                       name="activity"
                       value="1.2"
+                      defaultChecked
                     />
                     <StylesLabelForm htmlFor="1.2">
                       1.2 - if you do not have physical activity and sedentary

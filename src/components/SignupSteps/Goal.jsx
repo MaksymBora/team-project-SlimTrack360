@@ -56,22 +56,22 @@ const SignUpGoal = () => {
               type="image/webp"
             />
             <source
-              media="(min-width: 768px)"
+              media="(min-width: 834px)"
               srcSet={`${goalsTab1xWebp} 1x, ${goalsTab2xWebp} 2x, ${goalsTab3xWebp} 3x`}
               type="image/webp"
             />
             <source
-              media="(min-width: 768px)"
+              media="(min-width: 834px)"
               srcSet={`${goalsTab1xPng} 1x, ${goalsTab2xPng} 2x, ${goalsTab3xPng} 3x`}
               type="image/png"
             />
             <source
-              media="(max-width: 767px)"
+              media="(max-width: 833px)"
               srcSet={`${goalsMob1xWebp} 1x, ${goalsMob2xWebp} 2x, ${goalsMob3xWebp} 3x`}
               type="image/webp"
             />
             <source
-              media="(max-width: 767px)"
+              media="(max-width: 833px)"
               srcSet={`${goalsMob1xPng} 1x, ${goalsMob2xPng} 2x, ${goalsMob3xPng} 3x`}
               type="image/png"
             />
@@ -91,6 +91,7 @@ const SignUpGoal = () => {
                       id="lose_fat"
                       name="goal"
                       value="lose_fat"
+                      defaultChecked
                     />
                     <StylesLabelForm htmlFor="lose_fat">
                       Lose Fat

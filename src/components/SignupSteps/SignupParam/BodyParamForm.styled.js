@@ -6,7 +6,7 @@ export const StylesForm = styled.form`
   flex-direction: column;
   margin-bottom: 20px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 380px;
   }
 

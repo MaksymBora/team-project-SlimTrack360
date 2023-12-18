@@ -7,7 +7,7 @@ export const StylesForm = styled.form`
   gap: 24px;
   margin-bottom: 16px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     align-items: center;
   }
 
@@ -22,7 +22,7 @@ export const StylesRadioBtn = styled.div`
   flex-direction: column;
   gap: 16px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 458px;
   }
 
@@ -52,7 +52,7 @@ export const StylesBtnForm = styled.button`
     border: 1px solid ${theme.color.primaryGreenLite};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 380px;
   }
 
@@ -84,7 +84,7 @@ export const StylesLabelForm = styled.label`
     opacity: 0;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     display: inline-block;
     width: 100%;
   }

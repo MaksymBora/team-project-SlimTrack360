@@ -7,7 +7,7 @@ export const StylesForm = styled.form`
   gap: 24px;
   margin-bottom: 20px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 380px;
   }
 
@@ -21,7 +21,7 @@ export const StylesRadioBtn = styled.div`
   flex-direction: column;
   gap: 24px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     flex-direction: row;
     justify-content: space-between;
   }

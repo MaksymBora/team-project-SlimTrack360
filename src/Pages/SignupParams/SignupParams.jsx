@@ -61,22 +61,22 @@ export default SignUpParams; // <<----Потім видалити цей екс�
 //               type="image/webp"
 //             />
 //             <source
-//               media="(min-width: 768px)"
+//               media="(min-width: 834px)"
 //               srcSet={`${bodyParamTab1xWebp} 1x, ${bodyParamTab2xWebp} 2x, ${bodyParamTab3xWebp} 3x`}
 //               type="image/webp"
 //             />
 //             <source
-//               media="(min-width: 768px)"
+//               media="(min-width: 834px)"
 //               srcSet={`${bodyParamTab1xPng} 1x, ${bodyParamTab2xPng} 2x, ${bodyParamTab3xPng} 3x`}
 //               type="image/png"
 //             />
 //             <source
-//               media="(max-width: 767px)"
+//               media="(max-width: 833px)"
 //               srcSet={`${bodyParamMob1xWebp} 1x, ${bodyParamMob2xWebp} 2x, ${bodyParamMob3xWebp} 3x`}
 //               type="image/webp"
 //             />
 //             <source
-//               media="(max-width: 767px)"
+//               media="(max-width: 833px)"
 //               srcSet={`${bodyParamMob1xPng} 1x, ${bodyParamMob2xPng} 2x, ${bodyParamMob3xPng} 3x`}
 //               type="image/png"
 //             />

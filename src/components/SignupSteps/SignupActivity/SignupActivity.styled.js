@@ -3,23 +3,21 @@ import { theme } from '../../../styles/index';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-  width: 320px;
-  padding-left: 10px;
-  padding-right: 10px;
+  width: 300px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 768px) {
-    width: 834px;
+  @media screen and (min-width: 834px) {
+    width: 800px;
     align-items: center;
-    padding-left: 195px;
-    padding-right: 195px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   @media screen and (min-width: 1440px) {
-    width: 1440px;
-    padding-left: 150px;
-    padding-right: 150px;
+    width: 1372px;
+    padding-left: 10px;
+    padding-right: 10px;
     gap: 104px;
   }
 `;
@@ -28,7 +26,7 @@ export const StylesSection = styled.section`
   padding-bottom: 20px;
   padding-top: 24px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     padding-top: 40px;
   }
 
@@ -40,7 +38,7 @@ export const StylesSection = styled.section`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     align-items: center;
   }
   @media screen and (min-width: 1440px) {
@@ -51,7 +49,7 @@ export const Wrapper = styled.div`
 `;
 
 export const DescWrapper = styled.div`
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,7 +65,7 @@ export const DescWrapper = styled.div`
 export const StylePicture = styled.picture`
   margin-bottom: 24px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     margin-bottom: 60px;
   }
 `;
@@ -81,7 +79,7 @@ export const StyleTitle = styled.h1`
   line-height: 1.25;
   margin-bottom: 16px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     font-size: 30px;
     line-height: 1.2;
   }
@@ -97,7 +95,7 @@ export const StyleSubtitle = styled.h2`
   margin-bottom: 24px;
   width: 298px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     font-size: 22px;
     line-height: 1.45;
     text-align: center;
