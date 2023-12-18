@@ -29,6 +29,7 @@ const Main = () => {
     const dateToday = {
       date,
     };
+
     dispatch(fetchFood());
     dispatch(getWaterToday(dateToday));
   }, [totalWaterToday, dispatch]);

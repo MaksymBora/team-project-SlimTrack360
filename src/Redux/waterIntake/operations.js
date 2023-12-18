@@ -8,8 +8,8 @@ const waterDb = axios.create({
 
 // axios.defaults.baseURL = 'https://healthyhub-emsa.onrender.com/api';
 
-// const setAuthHeader = () => {
-//   axios.defaults.headers.common['Authorization'] =
+// export const setAuthHeader = () => {
+//   axios.defaults.headers.common.Authorization =
 //     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2I3OTkzY2UwZDI2ODFiY2NkYjM4ZiIsImlhdCI6MTcwMjgxOTk3MywiZXhwIjoyMDE4Mzk1OTczfQ.jlPHMm1Un20iMulopfXbbfaMwtsvSAlpln-WsPCszbU';
 // };
 
