@@ -64,7 +64,7 @@ const SignUp = () => {
           </Div>
         </Container>
       </Wrapper>
-      {step === 2 && <goal />}
+      {/* {step === 2 && <goal />} */}
     </>
   );
 };

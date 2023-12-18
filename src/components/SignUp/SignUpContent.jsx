@@ -1,10 +1,6 @@
 import { useFormik } from 'formik';
-
-// import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { register } from '../../Redux/userAuth/operations';
 import { basicSchema } from './schemas';
-
 import {
   Div,
   Form,
@@ -20,25 +16,10 @@ import {
   Attention,
 } from './SignUpContent.styled';
 
-// const onSubmit = async (values, actions) => {
-//   console.log('submitted');
-//   await new Promise((resolve) => setTimeout(resolve, 1000));
-//   actions.resetForm();
-// };
-
 export const SignUpContent = ({ setStep }) => {
-  // const dispatch = useDispatch();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
-    // dispatch(
-    //   register({
-    //     name: form.elements.name.value,
-    //     email: form.elements.email.value,
-    //     password: form.elements.password.value,
-    //   })
-    // );
 
     const data = {
       name: form.elements.name.value,
@@ -49,7 +30,6 @@ export const SignUpContent = ({ setStep }) => {
     localStorage.setItem('reg', JSON.stringify(data));
 
     setStep((prevState) => (prevState += 1));
-    // form.reset();
   };
 
   const { values, errors, touched, handleBlur, handleChange } = useFormik({
