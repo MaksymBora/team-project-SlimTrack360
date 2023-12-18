@@ -16,7 +16,6 @@ import { addWater } from '../../Redux/waterIntake/operations';
 
 export const ModalTakeWater = ({ onClose }) => {
   const [waterAmount, setWaterAmount] = useState('');
-  // const value = useSelector(selectValue);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
@@ -29,14 +28,13 @@ export const ModalTakeWater = ({ onClose }) => {
     const value = parseFloat(waterAmount);
 
     if (!isNaN(value)) {
-      const data = {
-        date: new Date().toISOString(),
-        water: value,
-      };
+      // const data = {
+      //   date: new Date().toISOString(),
+      //   water: value,
+      // };
 
       addWater(value);
 
-      console.log(data);
       onClose();
     } else {
       console.error('Input is not a number');

@@ -14,8 +14,25 @@ import { WaterInfo } from '../../components/MainPage/WaterInfo/WaterInfo';
 import { FoodInfo } from '../../components/MainPage/FoodInfo/FoodInfo';
 import { DiaryInfo } from '../../components/MainPage/DiaryInfo/DiaryInfo';
 import RecommendedFood from '../../components/MainPage/RecommendedFood/RecommendedFood';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectValue } from '../../Redux/waterIntake/selector';
+import { getWaterToday } from '../../Redux/waterIntake/operations';
+import { fetchFood } from '../../Redux/recommended/operations';
+import { date } from '../../utils/dateToday.js';
 
 const Main = () => {
+  const totalWaterToday = useSelector(selectValue);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const dateToday = {
+      date,
+    };
+    dispatch(fetchFood());
+    dispatch(getWaterToday(dateToday));
+  }, [totalWaterToday, dispatch]);
+
   return (
     <Container>
       <TitleWrap>

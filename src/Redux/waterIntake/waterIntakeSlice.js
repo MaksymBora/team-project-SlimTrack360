@@ -39,6 +39,8 @@ const initialState = {
   id: null,
   date: null,
   value: null,
+  isLoading: false,
+  error: null,
 };
 
 const waterIntakeSlice = createSlice({
@@ -46,14 +48,14 @@ const waterIntakeSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(addWater.fulfilled, handleAddFulfiled)
       .addCase(addWater.pending, handlePending)
+      .addCase(addWater.fulfilled, handleAddFulfiled)
       .addCase(addWater.rejected, handleRejected)
-      .addCase(resetWater.fulfilled, handleResetFulfilled)
       .addCase(resetWater.pending, handlePending)
+      .addCase(resetWater.fulfilled, handleResetFulfilled)
       .addCase(resetWater.rejected, handleRejected)
-      .addCase(getWaterToday.fulfilled, handleGetWaterTodayFulfilled)
       .addCase(getWaterToday.pending, handlePending)
+      .addCase(getWaterToday.fulfilled, handleGetWaterTodayFulfilled)
       .addCase(getWaterToday.rejected, handleRejected);
   },
 });

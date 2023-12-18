@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Loader } from '../../../utils/Loader';
 
 import {
@@ -17,17 +17,17 @@ import {
 } from './RecommendedFood.styled';
 import ItemFood from '../../Recommended/Item/Item';
 import Icon from '../../common/Icon';
-import { fetchFood } from '../../../Redux/recommended/operations';
+// import { fetchFood } from '../../../Redux/recommended/operations';
 
 const RecommendedFood = () => {
   const foodList = useSelector(selectFourItems);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectError);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchFood());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchFood());
+  // }, [dispatch]);
 
   return (
     <div>
