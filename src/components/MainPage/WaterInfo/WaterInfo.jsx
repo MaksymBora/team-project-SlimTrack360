@@ -16,14 +16,9 @@ import {
   Bar,
   Percentage,
 } from './WaterInfo.styled';
-
 import Icon from '../../common/Icon';
-
 import { WaterChart } from '../WaterChart/WaterChart';
 import { ModalTakeWater } from '../../ModalTakeWater/ModalTakeWater';
-import { useEffect, useState } from 'react';
-
-import { Modal } from '../../ModalTakeWater/ModalTakeWater';
 
 let waterConsumtion = 1000; // редакс води waterIntake
 let waterGoal = 1500; /// редакс води waterIntake
@@ -39,18 +34,14 @@ const changedColor = waterPercent <= 84 ? 'rgba(182, 195, 255, 1)' : 'green';
 export const WaterInfo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-
   const handleOpenModal = () => {
     setIsModalOpen((prevState) => !prevState);
   };
 
-
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === 'Escape' && isModalOpen) {
-
         handleOpenModal();
-
       }
     };
 
@@ -89,11 +80,9 @@ export const WaterInfo = () => {
             </LeftInfo>
           </ValueWrap>
           <Button onClick={handleOpenModal}>
-
             <Icon name={'icon-add-converted'} width={'16px'} height={'16px'} />
             Add water intake
           </Button>
-          {isModalOpen && <Modal onClose={closeModal} />}
           <ButtonTrash>
             <Icon
               name={'icon-trash-03'}
