@@ -7,7 +7,7 @@ export const PageName = styled.h2`
   line-height: 24px;
   margin-bottom: 16px;
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+  @media screen and (min-width: 834px) {
     font-size: 22px;
     line-height: 32px;
   }
@@ -17,7 +17,7 @@ export const FoodList = styled.ul`
   max-width: 300px;
   margin-bottom: 16px;
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+  @media screen and (min-width: 834px) {
     max-width: 780px;
     display: flex;
     flex-wrap: wrap;
@@ -30,14 +30,14 @@ export const FoodList = styled.ul`
 `;
 
 export const Item = styled.li`
-  background-color: ${theme.color.secondaryGrey};
+  background-color: ${theme.color.primaryBlack2};
   margin-bottom: 10px;
   border-radius: 12px;
   padding: 20px 24px;
   display: flex;
   column-gap: 20px;
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+  @media screen and (min-width: 834px) {
     width: calc((100% - 20px) / 2);
     margin-bottom: 0px;
   }
@@ -48,7 +48,7 @@ export const ButtonText = styled.p`
   font-size: 14px;
   line-height: 20px;
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+  @media screen and (min-width: 834px) {
     font-size: 16px;
     line-height: 22px;
   }
@@ -60,7 +60,7 @@ export const Button = styled(Link)`
   column-gap: 6px;
   align-items: center;
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+  @media screen and (min-width: 834px) {
     padding: 3px;
   }
 `;

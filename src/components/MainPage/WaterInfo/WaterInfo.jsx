@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { theme } from '../../../styles/index';
 import {
   WaterInfoCard,
@@ -22,9 +23,11 @@ import { WaterChart } from '../WaterChart/WaterChart';
 import { ModalTakeWater } from '../../ModalTakeWater/ModalTakeWater';
 import { useEffect, useState } from 'react';
 
-let waterConsumtion = 1000; //дані зі стейту
+import { Modal } from '../../ModalTakeWater/ModalTakeWater';
 
-const leftWaterIntake = 1500 - waterConsumtion;
+let waterConsumtion = 1000; // редакс води waterIntake
+let waterGoal = 1500; /// редакс води waterIntake
+const leftWaterIntake = waterGoal - waterConsumtion;
 
 const waterPercent =
   waterConsumtion <= 1500 ? Math.round((waterConsumtion * 100) / 1500) : 100;
@@ -36,14 +39,18 @@ const changedColor = waterPercent <= 84 ? 'rgba(182, 195, 255, 1)' : 'green';
 export const WaterInfo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+
   const handleOpenModal = () => {
     setIsModalOpen((prevState) => !prevState);
   };
 
+
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === 'Escape' && isModalOpen) {
+
         handleOpenModal();
+
       }
     };
 
@@ -82,9 +89,11 @@ export const WaterInfo = () => {
             </LeftInfo>
           </ValueWrap>
           <Button onClick={handleOpenModal}>
+
             <Icon name={'icon-add-converted'} width={'16px'} height={'16px'} />
             Add water intake
           </Button>
+          {isModalOpen && <Modal onClose={closeModal} />}
           <ButtonTrash>
             <Icon
               name={'icon-trash-03'}
