@@ -87,7 +87,7 @@ export const StyleTitle = styled.h1`
   }
 `;
 
-export const StyleSubtitle = styled.h1`
+export const StyleSubtitle = styled.h2`
   color: ${theme.color.primaryGrey};
   font-family: inherit;
   font-size: 18px;

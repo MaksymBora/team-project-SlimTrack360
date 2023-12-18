@@ -1,3 +1,6 @@
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
 import genderAgeDesc1xPng from '../../assets/imgGenderAge/genderAge-desctop-1x-min.png';
 import genderAgeDesc2xPng from '../../assets/imgGenderAge/genderAge-desctop-2x-min.png';
 import genderAgeDesc3xPng from '../../assets/imgGenderAge/genderAge-desctop-3x-min.png';
@@ -41,6 +44,29 @@ import {
 } from './Age.styled';
 
 const SignUpAge = () => {
+  const validationSchema = Yup.object().shape({
+    gender: Yup.string().required('Please select your gender'),
+    age: Yup.number()
+      .typeError('Age must be a number')
+      .required('Please enter your age')
+      .positive('Age must be a positive number')
+      .integer('Age must be an integer')
+      .min(16, 'Age must be at least 16 years old')
+      .max(100, 'Age must be at most 100 years old'),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      gender: 'male',
+      age: '',
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      const jsonData = JSON.stringify(values);
+      console.log('Form values:', jsonData);
+    },
+  });
+
   return (
     <StylesSection>
       <Container>
@@ -85,7 +111,7 @@ const SignUpAge = () => {
             </StyleSubtitle>
             <StyleBtnColumn>
               <SubtitleGenderForm>Gender</SubtitleGenderForm>
-              <StylesForm>
+              <StylesForm onSubmit={formik.handleSubmit}>
                 <StylesRadioBtn>
                   <CustomRadio>
                     <CustomRadioInput
@@ -93,6 +119,7 @@ const SignUpAge = () => {
                       id="male"
                       name="gender"
                       value="male"
+                      onChange={formik.handleChange}
                       defaultChecked
                     />
                     <StylesLabelForm htmlFor="male">Male</StylesLabelForm>
@@ -103,6 +130,7 @@ const SignUpAge = () => {
                       id="female"
                       name="gender"
                       value="female"
+                      onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="female">Female</StylesLabelForm>
                   </CustomRadio>
@@ -112,10 +140,16 @@ const SignUpAge = () => {
                   <AgeInputStiles
                     type="number"
                     id="ageInput"
+                    name="age"
                     placeholder="Enter your age"
+                    onChange={formik.handleChange}
+                    value={formik.values.age}
                   />
+                  {formik.errors.age && formik.touched.age ? (
+                    <div>{formik.errors.age}</div>
+                  ) : null}
                 </AgeInputWrapper>
-                <StylesBtnForm type="button">Next</StylesBtnForm>
+                <StylesBtnForm type="submit">Next</StylesBtnForm>
               </StylesForm>
               <StyleBackLink>Back</StyleBackLink>
             </StyleBtnColumn>
