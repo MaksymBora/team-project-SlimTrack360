@@ -1,3 +1,6 @@
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
 import bodyParamDesc1xPng from '../../assets/imgBodyParam/bodyParam-desctop-1x-min.png';
 import bodyParamDesc2xPng from '../../assets/imgBodyParam/bodyParam-desctop-2x-min.png';
 import bodyParamDesc3xPng from '../../assets/imgBodyParam/bodyParam-desctop-3x-min.png';
@@ -37,6 +40,36 @@ import {
 } from './Param.styled';
 
 const SignUpParams = () => {
+  const validationSchema = Yup.object().shape({
+    height: Yup.number()
+      .typeError('Height must be a number')
+      .required('Please enter your height')
+      .positive('Height must be a positive number')
+      .integer('Height must be an integer')
+      .min(100, 'Height must be at least 100 cm')
+      .max(250, 'Height must be at most 250 cm'),
+
+    weight: Yup.number()
+      .typeError('Weight must be a number')
+      .required('Please enter your weight')
+      .positive('Weight must be a positive number')
+      .integer('Weight must be an integer')
+      .min(5, 'Weight must be at least 5 kg')
+      .max(150, 'Weight must be at most 150 kg'),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      height: '',
+      weight: '',
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      const jsonData = JSON.stringify(values);
+      console.log('Form values:', jsonData);
+    },
+  });
+
   return (
     <StylesSection>
       <Container>
@@ -80,24 +113,36 @@ const SignUpParams = () => {
               Enter your parameters for correct performance tracking
             </StyleSubtitle>
             <StyleBtnColumn>
-              <StylesForm>
+              <StylesForm onSubmit={formik.handleSubmit}>
                 <HeightInputWrapper>
-                  <InputLabel htmlFor="heighInput">Height</InputLabel>
+                  <InputLabel htmlFor="heightInput">Height</InputLabel>
                   <InputStiles
                     type="number"
-                    id="heighInput"
+                    id="heightInput"
+                    name="height"
                     placeholder="Enter your height"
+                    onChange={formik.handleChange}
+                    value={formik.values.height}
                   />
+                  {formik.errors.height && formik.touched.height ? (
+                    <div>{formik.errors.height}</div>
+                  ) : null}
                 </HeightInputWrapper>
                 <WeightInputWrapper>
                   <InputLabel htmlFor="weightInput">Weight</InputLabel>
                   <InputStiles
                     type="number"
                     id="weightInput"
+                    name="weight"
                     placeholder="Enter your weight"
+                    onChange={formik.handleChange}
+                    value={formik.values.weight}
                   />
+                  {formik.errors.weight && formik.touched.weight ? (
+                    <div>{formik.errors.weight}</div>
+                  ) : null}
                 </WeightInputWrapper>
-                <StylesBtnForm type="button">Next</StylesBtnForm>
+                <StylesBtnForm type="submit">Next</StylesBtnForm>
               </StylesForm>
               <StyleBackLink>Back</StyleBackLink>
             </StyleBtnColumn>
