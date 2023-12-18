@@ -151,23 +151,30 @@ export const Subsection = styled.p`
   font-weight: 400;
   line-height: 20px;
 `;
-export const SignInLink = styled.h3`
+export const SignInLink = styled.button`
   color: ${theme.color.primaryWhite};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
+  outline: none;
+  background-color: transparent;
+  .&focus {
+    box-shadow: none;
+  }
 `;
 export const Options = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-top: 48px;
   @media screen and (min-width: 768px) {
     flex-direction: row;
-    // padding-top: 206px;
+    padding-top: 206px;
   }
   @media screen and (min-width: 1440px) {
     // padding-top: 168px;
+    padding-top: 168px;
   }
 `;

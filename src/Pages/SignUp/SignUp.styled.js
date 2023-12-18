@@ -41,6 +41,7 @@ export const Image = styled.img`
 export const Img = styled.img`
   //   width: 300px;
   //   height: 296px;
+  display: block;
   max-width: none;
   @media screen and (min-width: 768px) {
     // width: 380px;

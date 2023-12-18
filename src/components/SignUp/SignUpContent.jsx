@@ -1,5 +1,10 @@
 import { useFormik } from 'formik';
-import { basicSchema } from '../schemas';
+
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { register } from '../../Redux/userAuth/operations';
+import { basicSchema } from './schemas';
+
 import {
   Div,
   Form,
@@ -9,37 +14,43 @@ import {
   Wrapper,
   Button,
   Subsection,
-  SignInLink,
   Options,
   Main,
   Label,
   Attention,
 } from './SignUpContent.styled';
 
-const onSubmit = async (values, actions) => {
-  console.log('submitted');
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
-};
+// const onSubmit = async (values, actions) => {
+//   console.log('submitted');
+//   await new Promise((resolve) => setTimeout(resolve, 1000));
+//   actions.resetForm();
+// };
 
 export const SignUpContent = () => {
-  const {
-    values,
-    errors,
-    touched,
-    handleBlur,
-    isSubmitting,
-    handleChange,
-    handleSubmit,
-  } = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-    },
-    validationSchema: basicSchema,
-    onSubmit,
-  });
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      register({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
+  };
+
+  const { values, errors, touched, handleBlur, isSubmitting, handleChange } =
+    useFormik({
+      initialValues: {
+        name: '',
+        email: '',
+        password: '',
+      },
+      validationSchema: basicSchema,
+    });
   console.log(errors);
 
   return (
@@ -115,7 +126,7 @@ export const SignUpContent = () => {
         </Form>
         <Options>
           <Subsection>Do you already have an account?</Subsection>
-          <SignInLink>Sign in</SignInLink>
+          <Link to="/signin">Sign in</Link>
         </Options>
       </Div>
     </>
