@@ -15,8 +15,13 @@ import _1TabletWebP from './images/Illustration_tab@1x.webp';
 import _2TabletWebP from './images/Illustration_tab@2x.webp';
 import _1MobWebP from './images/Illustration_mob@1x.webp';
 import _2MobWebP from './images/Illustration_mob@2x.webp';
+import { useState } from 'react';
 
 const SignUp = () => {
+  const [step, setStep] = useState(1);
+
+  console.log(step, 'step');
+
   return (
     <>
       <Wrapper>
@@ -55,10 +60,11 @@ const SignUp = () => {
               />
               <Img src={_1DesktopImg} alt="Responsive" />
             </picture>
-            <SignUpContent />
+            <SignUpContent setStep={setStep} />
           </Div>
         </Container>
       </Wrapper>
+      {step === 2 && <goal />}
     </>
   );
 };

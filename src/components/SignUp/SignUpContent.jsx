@@ -1,8 +1,8 @@
 import { useFormik } from 'formik';
 
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { register } from '../../Redux/userAuth/operations';
+// import { register } from '../../Redux/userAuth/operations';
 import { basicSchema } from './schemas';
 
 import {
@@ -26,32 +26,40 @@ import {
 //   actions.resetForm();
 // };
 
-export const SignUpContent = () => {
-  const dispatch = useDispatch();
+export const SignUpContent = ({ setStep }) => {
+  // const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
-    dispatch(
-      register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
+    // dispatch(
+    //   register({
+    //     name: form.elements.name.value,
+    //     email: form.elements.email.value,
+    //     password: form.elements.password.value,
+    //   })
+    // );
+
+    const data = {
+      name: form.elements.name.value,
+      email: form.elements.email.value,
+      password: form.elements.password.value,
+    };
+
+    localStorage.setItem('reg', JSON.stringify(data));
+
+    setStep((prevState) => (prevState += 1));
+    // form.reset();
   };
 
-  const { values, errors, touched, handleBlur, isSubmitting, handleChange } =
-    useFormik({
-      initialValues: {
-        name: '',
-        email: '',
-        password: '',
-      },
-      validationSchema: basicSchema,
-    });
-  console.log(errors);
+  const { values, errors, touched, handleBlur, handleChange } = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+    validationSchema: basicSchema,
+  });
 
   return (
     <>
@@ -67,6 +75,7 @@ export const SignUpContent = () => {
                 value={values.name}
                 name="name"
                 placeholder="Name"
+                required
               />
             </Label>
             {errors.name && touched.name && (
@@ -81,6 +90,7 @@ export const SignUpContent = () => {
                 value={values.email}
                 name="email"
                 placeholder="E-mail"
+                required
               />
             </Label>
             {errors.email && touched.email && (
@@ -98,6 +108,7 @@ export const SignUpContent = () => {
                 value={values.password}
                 name="password"
                 placeholder="Password"
+                required
               />
               {errors.password && touched.password && (
                 <svg
@@ -119,9 +130,7 @@ export const SignUpContent = () => {
             )}
           </Wrapper>
           <Main>
-            <Button type="submit" disabled={isSubmitting}>
-              Next
-            </Button>
+            <Button type="submit">Next</Button>
           </Main>
         </Form>
         <Options>
