@@ -15,20 +15,22 @@ const WeightGraph = () => {
     <GraphContainer className="weight-container">
       <div className="weightTitle">
         <h2 className="graphTitle">Weight</h2>
-        <h3 className="graphValue">Average value: 68 kg</h3>
+        <h3 className="graphValue">
+          Average value:<span className="weightValue"> 68 kg</span>
+        </h3>
       </div>
       <ChartContainer className="weight-graph-line">
         <div className="table-container">
           <div className="upper-row">
             {upperRowValues.map((value, index) => (
-              <div key={index} className="table-cell">
+              <div key={index} className="table-cell upper">
                 {value}
               </div>
             ))}
           </div>
           <div className="lower-row">
             {lowerRowValues.map((value, index) => (
-              <div key={index} className="table-cell">
+              <div key={index} className="table-cell lower">
                 {value}
               </div>
             ))}

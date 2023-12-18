@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const GraphContainer = styled.div`
   // height: 338px;
-  width: 676px;
+  // width: 676px;
 `;
 
 export const ChartContainer = styled.div``;

@@ -25,9 +25,11 @@ const CaloriesGraph = () => {
     <GraphContainer>
       <div className="caloriesTitle">
         <h2 className="graphTitle">Calories</h2>
-        <h3 className="graphValue">Average value: 1700 cal</h3>
+        <h3 className="graphValue">
+          Average value: <span className="caloriesValue">1700 cal</span>
+        </h3>
       </div>
-      <ChartContainer className="calories-graph-line">
+      <ChartContainer className="graph-line">
         <Line options={commonOptions} data={data} />
       </ChartContainer>
     </GraphContainer>

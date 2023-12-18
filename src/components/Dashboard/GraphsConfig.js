@@ -34,12 +34,13 @@ export const commonXAxisOptions = {
   grid: {
     color: gridColor, // Цвет сетки
     borderColor: gridColor, // Цвет линий сетки
-    borderWidth: 1.5, // Толщина линий сетки
+    borderWidth: 0.5, // Толщина линий сетки
   },
 };
 
 export const commonLegendOptions = {
   position: 'top',
+  display: false,
 };
 
 export const caloriesYAxisOptions = {
@@ -54,7 +55,7 @@ export const caloriesYAxisOptions = {
   grid: {
     color: gridColor,
     borderColor: gridColor,
-    borderWidth: 1.5,
+    borderWidth: 0.5,
   },
 };
 
@@ -70,11 +71,9 @@ export const waterYAxisOptions = {
   grid: {
     color: gridColor,
     borderColor: gridColor,
-    borderWidth: 1.5,
+    borderWidth: 0.5,
   },
 };
-
-export const weightYAxisOptions = null; // Для Weight графика оси Y нет
 
 export const commonOptions = {
   responsive: true,
@@ -84,5 +83,25 @@ export const commonOptions = {
   },
   plugins: {
     legend: commonLegendOptions,
+    tooltip: {
+      callbacks: {
+        label: (context) => {
+          const label = context.dataset.label || '';
+          const value = context.parsed.y;
+          return `${label}: ${value} ${getTooltipUnit(label)}`;
+        },
+      },
+    },
   },
 };
+
+// Добавим функцию, которая возвращает правильную единицу измерения для всплывающей подсказки
+function getTooltipUnit(label) {
+  if (label === 'Calories') {
+    return 'calories';
+  } else if (label === 'Water') {
+    return 'milliliters';
+  }
+  // Добавьте дополнительные проверки для других графиков, если необходимо
+  return '';
+}

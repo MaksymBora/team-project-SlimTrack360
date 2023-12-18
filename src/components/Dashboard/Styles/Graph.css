@@ -1,10 +1,14 @@
 /* --PC----стили для Dashboard\все 3 графика------ */
-
+.graph-line {
+  width: 672px;
+  background-color: #0f0f0f;
+  border-radius: 12px;
+}
 .caloriesTitle,
 .weightTitle {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: flex-start;
+  align-items: baseline;
 }
 .graphTitle {
   font-weight: 400;
@@ -16,32 +20,38 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.43;
+  margin-left: 40px;
 }
-/* -----Weight table------ */
-/* .weight-container{
-  max-width: 1372px;
-} */
+.caloriesValue,
+.waterValue,
+.weightValue {
+  color: #b6b6b6;
+}
+
 .weightTitle {
   margin-bottom: 6px;
 }
 .table-container {
   display: block;
-  flex-direction: row; /* Изменили на flex-direction: row */
-  /* overflow-x: auto; Добавили стиль для прокрутки горизонтальной оси, если контент не вмещается */
+  padding: 16px 33px 28px 13px;
 }
-
+.weight-graph-line {
+  background-color: #0f0f0f;
+  border-radius: 12px;
+}
 .upper-row,
 .lower-row {
   display: flex;
-  flex-direction: row; /* Изменяем на flex-direction: column */
+  flex-direction: row;
   text-align: center;
 }
-.upper-row {
+
+.table-cell.upper {
   font-size: 14px;
   line-height: 1.43;
+  color: #ffffff;
 }
-
-.lower-row {
+.table-cell.lower {
   font-size: 10px;
   line-height: 1.4;
   color: #b6b6b6;
@@ -49,22 +59,6 @@
 
 .table-cell {
   text-align: center;
-  border: 1px solid #292928;
   padding: 8px;
-  flex: 1; /* Добавили flex: 1 */
-  /* max-width: calc(50% - 8px); Устанавливаем максимальную ширину для каждой ячейки (50% ширины контейнера минус отступ) */
-  box-sizing: border-box;
-  font-weight: 400;
-  /* font-size: 14px;
-line-height: 1.43; */
-  color: #8a8a86;
-}
-
-/* Добавляем стили для ячеек в верхнем ряду */
-.upper-row .table-cell {
-  border-bottom: none; /* Убираем нижнюю границу для ячеек в верхнем ряду */
-}
-
-.upper-row .table-cell:not(:last-child) {
-  border-right: 1px solid #292928; /* Добавляем правую границу для всех ячеек в верхнем ряду, кроме последней */
+  flex: 1;
 }

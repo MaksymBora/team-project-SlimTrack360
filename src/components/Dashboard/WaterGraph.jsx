@@ -25,9 +25,11 @@ const WaterGraph = () => {
     <GraphContainer>
       <div className="caloriesTitle">
         <h2 className="graphTitle">Water</h2>
-        <h3 className="graphValue">Average value: 1700 ml</h3>
+        <h3 className="graphValue">
+          Average value: <span className="waterValue">1700 ml</span>
+        </h3>
       </div>
-      <ChartContainer>
+      <ChartContainer className="graph-line">
         <Line
           options={{
             ...commonOptions,
