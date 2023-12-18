@@ -6,7 +6,6 @@ import { Loader } from '../../../utils/Loader';
 
 import {
   selectFourItems,
-  // selectTwoItems,
   selectIsLoading,
   selectError,
 } from '../../../Redux/recommended/selectors';
@@ -24,7 +23,6 @@ import { fetchFood } from '../../../Redux/recommended/operations';
 
 const RecommendedFood = () => {
   const foodList = useSelector(selectFourItems);
-  // const foodMobileList = useSelector(selectTwoItems);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectError);
   const dispatch = useDispatch();
