@@ -1,35 +1,43 @@
-// src\components\Dashboard\CaloriesGraph.jsx
+// src\components\Dashboard\WaterGraph.jsx
 
 import { Line } from 'react-chartjs-2';
-import { options } from './GraphsConfig';
+import { commonOptions, waterYAxisOptions } from './GraphsConfig';
 import { GraphContainer, ChartContainer } from './Styles/Graphs.styled';
-import './Styles/CaloriesGraph.css';
+import './Styles/WaterGraph.css';
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const data = {
-  labels,
+  labels: Array.from({ length: 31 }, (_, i) => i + 1),
   datasets: [
     {
-      label: 'Calories Dataset',
-      data: labels.map(() => Math.floor(Math.random() * 1000)),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      label: '',
+      data: Array.from({ length: 31 }, () => Math.floor(Math.random() * 1000)),
+      borderColor: '#4ed8da',
+      borderWidth: 1,
+      pointBackgroundColor: '#4ed8da',
+      pointRadius: 0,
+      fill: false,
     },
   ],
 };
 
-const CaloriesGraph = () => {
+const WaterGraph = () => {
   return (
     <GraphContainer>
-      <div className="caloriesTitle">
-        <h2 className="graphTitle">Calories</h2>
-        <h3 className="graphValue">Average value: 1700 cal</h3>
+      <div className="waterTitle">
+        <h2 className="graphTitle">Water</h2>
+        <h3 className="graphValue">Average value: 1700 ml</h3>
       </div>
-      <ChartContainer>
-        <Line options={options} data={data} />
+      <ChartContainer className="water-graph-line">
+        <Line
+          options={{
+            ...commonOptions,
+            scales: { x: commonOptions.scales.x, y: waterYAxisOptions },
+          }}
+          data={data}
+        />
       </ChartContainer>
     </GraphContainer>
   );
 };
 
-export default CaloriesGraph;
+export default WaterGraph;

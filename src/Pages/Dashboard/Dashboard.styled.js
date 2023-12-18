@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 export const DashboardContainer = styled.div`
-  max-width: 800px;
+  max-width: 1372px;
   margin-left: auto;
   margin-right: auto;
 `;

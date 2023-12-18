@@ -47,20 +47,20 @@ export const Title = styled.h2`
   }
 `;
 export const Form = styled.form`
-display: flex;
-flex-direction: column;
-width: 276px;
-height: 226px;
+  display: flex;
+  flex-direction: column;
+  width: 276px;
+  height: 226px;
 
-@media screen and (min-width: 768px){
-  width: 258px;
-  height: 232px;
-  
- margin: auto;
- }
-@media screen and (min-width: 1440px){
-  top: 239px
-  left: 591px
+  @media screen and (min-width: 768px) {
+    width: 258px;
+    height: 232px;
+
+    margin: auto;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 239px;
+    left: 591px;
   }
 `;
 export const Label = styled.label`
@@ -70,7 +70,7 @@ export const Label = styled.label`
   line-height: 20px;
   letter-spacing: 0em;
   text-align: left;
-  margin_bottom: 12px;
+  margin-bottom: 12px;
 `;
 
 export const Input = styled.input`
