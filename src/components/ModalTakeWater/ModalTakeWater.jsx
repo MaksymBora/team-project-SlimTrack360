@@ -14,7 +14,7 @@ import {
 } from './Modal.styled';
 import { addWater } from '../../Redux/waterIntake/operations';
 
-export const Modal = ({ onClose }) => {
+export const ModalTakeWater = ({ onClose }) => {
   const [waterAmount, setWaterAmount] = useState('');
   // const value = useSelector(selectValue);
   const isLoading = useSelector(selectIsLoading);
@@ -68,29 +68,3 @@ export const Modal = ({ onClose }) => {
     document.getElementById('modal-root')
   );
 };
-
-// Для сторінки, на якій відкривається модалка!!
-
-// const [isModalOpen, setIsModalOpen] = useState(false);
-
-// const openModal = () => setIsModalOpen(true);
-// const closeModal = () => setIsModalOpen(false);
-
-// useEffect(() => {
-//   const handleKeyPress = (event) => {
-//     if (event.key === 'Escape' && isModalOpen) {
-//       closeModal();
-//     }
-//   };
-
-//   document.addEventListener('keydown', handleKeyPress);
-
-//   return () => {
-//     document.removeEventListener('keydown', handleKeyPress);
-//   };
-// }, [isModalOpen]);
-
-{
-  /* <button type='button' onClick={openModal}></button>
-{isModalOpen && <Modal onClose={closeModal} />} */
-}
