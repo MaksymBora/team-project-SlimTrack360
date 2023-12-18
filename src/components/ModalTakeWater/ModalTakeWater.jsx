@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading, selectError } from '../../Redux/waterIntake/selector';
 import ReactDOM from 'react-dom';
 import {
@@ -12,6 +12,7 @@ import {
   Overlay,
   Title,
 } from './Modal.styled';
+import { date } from '../../utils/dateToday';
 import { addWater } from '../../Redux/waterIntake/operations';
 
 export const ModalTakeWater = ({ onClose }) => {
@@ -19,33 +20,27 @@ export const ModalTakeWater = ({ onClose }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
+  const dispatch = useDispatch();
+
   const handleInputChange = (e) => {
     setWaterAmount(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-    const value = parseFloat(waterAmount);
+    const data = {
+      date,
+      value: waterAmount,
+    };
 
-    if (!isNaN(value)) {
-      // const data = {
-      //   date: new Date().toISOString(),
-      //   water: value,
-      // };
-
-      addWater(value);
-
-      onClose();
-    } else {
-      console.error('Input is not a number');
-    }
+    dispatch(addWater(data));
   };
 
   return ReactDOM.createPortal(
     <Overlay onClick={onClose}>
       <Content onClick={(e) => e.stopPropagation()}>
         <Title>Add water intake</Title>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleOnSubmit}>
           <Label>How much water</Label>
           <Input
             type="text"

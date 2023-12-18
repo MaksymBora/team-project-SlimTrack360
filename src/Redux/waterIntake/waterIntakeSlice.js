@@ -15,7 +15,7 @@ const handleAddFulfiled = (state, action) => {
 
   state.id = action.payload._id;
   state.date = action.payload.date;
-  state.value = action.payload.value;
+  state.value += action.payload.value;
   state.error = null;
 };
 

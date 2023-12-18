@@ -23,13 +23,9 @@ const options = {
 
 export const addWater = createAsyncThunk(
   'waterIntake/post',
-  async (value, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      const response = await axios.post('/user/water-intake', {
-        date: new Date().toISOString(),
-        water: value,
-      });
-      console.log(response.data);
+      const response = await waterDb.post('/user/water-intake', data, options);
       return response.data;
     } catch (error) {
       console.error('Error adding water:', error);
@@ -62,8 +58,7 @@ export const getWaterToday = createAsyncThunk(
         dateToday,
         options
       );
-
-      return response;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
