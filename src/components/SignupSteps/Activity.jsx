@@ -1,3 +1,6 @@
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
 import activityDesc1xPng from '../../assets/imgActivity/activity-desctop-1x-min.png';
 import activityDesc2xPng from '../../assets/imgActivity/activity-desctop-2x-min.png';
 import activityDesc3xPng from '../../assets/imgActivity/activity-desctop-3x-min.png';
@@ -37,6 +40,23 @@ import {
 } from './Activity.styled';
 
 const SignUpActivity = () => {
+  const validationSchema = Yup.object().shape({
+    activity: Yup.number().required(),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      activity: '1.2',
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      const activityValue = parseFloat(values.activity);
+      const formattedValues = { activity: activityValue };
+      const jsonData = JSON.stringify(formattedValues);
+      console.log(jsonData);
+    },
+  });
+
   return (
     <StylesSection>
       <Container>
@@ -80,14 +100,15 @@ const SignUpActivity = () => {
               To correctly calculate calorie and water intake
             </StyleSubtitle>
             <StyleBtnColumn>
-              <StylesForm>
+              <StylesForm onSubmit={formik.handleSubmit}>
                 <StylesRadioBtn>
                   <CustomRadio>
                     <CustomRadioInput
                       type="radio"
                       id="1.2"
                       name="activity"
-                      value="1.2"
+                      value={1.2}
+                      onChange={formik.handleChange}
                       defaultChecked
                     />
                     <StylesLabelForm htmlFor="1.2">
@@ -101,7 +122,8 @@ const SignUpActivity = () => {
                       type="radio"
                       id="1.375"
                       name="activity"
-                      value="1.375"
+                      value={1.375}
+                      onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="1.375">
                       1.375 - if you do short runs or light gymnastics 1-3 times
@@ -114,7 +136,8 @@ const SignUpActivity = () => {
                       type="radio"
                       id="1.55"
                       name="activity"
-                      value="1.55"
+                      value={1.55}
+                      onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="1.55">
                       1.55 - if you play sports with average loads 3-5 times a
@@ -127,7 +150,8 @@ const SignUpActivity = () => {
                       type="radio"
                       id="1.725"
                       name="activity"
-                      value="1.725"
+                      value={1.725}
+                      onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="1.725">
                       1.725 - if you train fully 6-7 times a week
@@ -139,7 +163,8 @@ const SignUpActivity = () => {
                       type="radio"
                       id="1.9"
                       name="activity"
-                      value="1.9"
+                      value={1.9}
+                      onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="1.9">
                       1.9 - if your work is related to physical labor, you train
@@ -149,7 +174,7 @@ const SignUpActivity = () => {
                   </CustomRadio>
                 </StylesRadioBtn>
 
-                <StylesBtnForm type="button">Sign Up</StylesBtnForm>
+                <StylesBtnForm type="submit">Sign Up</StylesBtnForm>
               </StylesForm>
 
               <StyleBackLink>Back</StyleBackLink>

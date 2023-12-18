@@ -45,7 +45,7 @@ import {
 
 const SignUpAge = () => {
   const validationSchema = Yup.object().shape({
-    gender: Yup.string().required('Please select your gender'),
+    sex: Yup.string().required('Please select your gender'),
     age: Yup.number()
       .typeError('Age must be a number')
       .required('Please enter your age')
@@ -57,13 +57,13 @@ const SignUpAge = () => {
 
   const formik = useFormik({
     initialValues: {
-      gender: 'male',
+      sex: 'male',
       age: '',
     },
     validationSchema,
     onSubmit: (values) => {
       const jsonData = JSON.stringify(values);
-      console.log('Form values:', jsonData);
+      console.log(jsonData);
     },
   });
 
@@ -117,7 +117,7 @@ const SignUpAge = () => {
                     <CustomRadioInput
                       type="radio"
                       id="male"
-                      name="gender"
+                      name="sex"
                       value="male"
                       onChange={formik.handleChange}
                       defaultChecked
@@ -128,7 +128,7 @@ const SignUpAge = () => {
                     <CustomRadioInput
                       type="radio"
                       id="female"
-                      name="gender"
+                      name="sex"
                       value="female"
                       onChange={formik.handleChange}
                     />

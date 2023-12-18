@@ -66,7 +66,7 @@ const SignUpParams = () => {
     validationSchema,
     onSubmit: (values) => {
       const jsonData = JSON.stringify(values);
-      console.log('Form values:', jsonData);
+      console.log(jsonData);
     },
   });
 

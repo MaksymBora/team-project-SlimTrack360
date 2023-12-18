@@ -1,3 +1,6 @@
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
 import goalsDesc1xPng from '../../assets/imgGoal/goals-desctop-1x-min.png';
 import goalsDesc2xPng from '../../assets/imgGoal/goals-desctop-2x-min.png';
 import goalsDesc3xPng from '../../assets/imgGoal/goals-desctop-3x-min.png';
@@ -37,6 +40,21 @@ import {
 } from './Goal.styled';
 
 const SignUpGoal = () => {
+  const validationSchema = Yup.object().shape({
+    goal: Yup.string().required(),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      goal: 'lose fat',
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      const jsonData = JSON.stringify(values);
+      console.log(jsonData);
+    },
+  });
+
   return (
     <StylesSection>
       <Container>
@@ -80,14 +98,15 @@ const SignUpGoal = () => {
               Choose a goal so that we can help you effectively
             </StyleSubtitle>
             <StyleBtnColumn>
-              <StylesForm>
+              <StylesForm onSubmit={formik.handleSubmit}>
                 <StylesRadioBtn>
                   <CustomRadio>
                     <CustomRadioInput
                       type="radio"
                       id="lose_fat"
                       name="goal"
-                      value="lose_fat"
+                      value="Lose Fat"
+                      onChange={formik.handleChange}
                       defaultChecked
                     />
                     <StylesLabelForm htmlFor="lose_fat">
@@ -99,7 +118,8 @@ const SignUpGoal = () => {
                       type="radio"
                       id="maintain"
                       name="goal"
-                      value="maintain"
+                      value="Maintain"
+                      onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="maintain">
                       Maintain
@@ -110,14 +130,15 @@ const SignUpGoal = () => {
                       type="radio"
                       id="gain_muscle"
                       name="goal"
-                      value="gain_muscle"
+                      value="Gain Muscle"
+                      onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="gain_muscle">
                       Gain Muscle
                     </StylesLabelForm>
                   </CustomRadio>
                 </StylesRadioBtn>
-                <StylesBtnForm type="button">Next</StylesBtnForm>
+                <StylesBtnForm type="submit">Next</StylesBtnForm>
               </StylesForm>
               <StyleBackLink>Back</StyleBackLink>
             </StyleBtnColumn>
