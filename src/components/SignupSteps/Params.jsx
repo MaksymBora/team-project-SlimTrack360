@@ -37,6 +37,8 @@ import {
   StylesBtnForm,
   StylesForm,
   WeightInputWrapper,
+  StylesErrorWeight,
+  StylesErrorHeight,
 } from './Param.styled';
 
 const SignUpParams = () => {
@@ -125,7 +127,9 @@ const SignUpParams = () => {
                     value={formik.values.height}
                   />
                   {formik.errors.height && formik.touched.height ? (
-                    <div>{formik.errors.height}</div>
+                    <StylesErrorHeight>
+                      {formik.errors.height}
+                    </StylesErrorHeight>
                   ) : null}
                 </HeightInputWrapper>
                 <WeightInputWrapper>
@@ -139,7 +143,9 @@ const SignUpParams = () => {
                     value={formik.values.weight}
                   />
                   {formik.errors.weight && formik.touched.weight ? (
-                    <div>{formik.errors.weight}</div>
+                    <StylesErrorWeight>
+                      {formik.errors.weight}
+                    </StylesErrorWeight>
                   ) : null}
                 </WeightInputWrapper>
                 <StylesBtnForm type="submit">Next</StylesBtnForm>

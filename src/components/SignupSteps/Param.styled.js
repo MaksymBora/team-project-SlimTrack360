@@ -161,11 +161,15 @@ export const StylesBtnForm = styled.button`
 `;
 
 export const HeightInputWrapper = styled.span`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
 `;
 export const WeightInputWrapper = styled.span`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
@@ -190,4 +194,22 @@ export const InputStiles = styled.input`
   &::placeholder {
     color: ${theme.color.primaryGrey};
   }
+`;
+
+export const StylesErrorHeight = styled.div`
+  position: absolute;
+  color: #e74a3b;
+  font-size: 12px;
+  line-height: 1.16;
+  padding-left: 10px;
+  top: calc(100% + 5px);
+`;
+
+export const StylesErrorWeight = styled.div`
+  position: absolute;
+  color: #e74a3b;
+  font-size: 12px;
+  line-height: 1.16;
+  padding-left: 10px;
+  top: calc(100% + 5px);
 `;

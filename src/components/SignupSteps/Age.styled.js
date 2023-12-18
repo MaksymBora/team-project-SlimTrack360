@@ -241,6 +241,8 @@ export const CustomRadio = styled.span`
 `;
 
 export const AgeInputWrapper = styled.span`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
@@ -265,4 +267,14 @@ export const AgeInputStiles = styled.input`
   &::placeholder {
     color: ${theme.color.primaryGrey};
   }
+`;
+
+export const StylesErrorAge = styled.div`
+  width: 250px;
+  position: absolute;
+  color: #e74a3b;
+  font-size: 12px;
+  line-height: 1.16;
+  padding-left: 10px;
+  top: calc(100% + 5px);
 `;

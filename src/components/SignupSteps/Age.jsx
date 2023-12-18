@@ -41,6 +41,7 @@ import {
   StylesForm,
   StylesLabelForm,
   StylesRadioBtn,
+  StylesErrorAge,
 } from './Age.styled';
 
 const SignUpAge = () => {
@@ -146,7 +147,7 @@ const SignUpAge = () => {
                     value={formik.values.age}
                   />
                   {formik.errors.age && formik.touched.age ? (
-                    <div>{formik.errors.age}</div>
+                    <StylesErrorAge>{formik.errors.age}</StylesErrorAge>
                   ) : null}
                 </AgeInputWrapper>
                 <StylesBtnForm type="submit">Next</StylesBtnForm>
