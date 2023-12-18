@@ -104,3 +104,5 @@ const foodIntakeSlice = createSlice({
 
 export const { clearDiary } = foodIntakeSlice.actions;
 export default foodIntakeSlice.reducer;
+
+// Test
