@@ -30,7 +30,7 @@ import {
   StyleTitle,
   StylesSection,
   Wrapper,
-} from '../../styles/SignupGoal/SignupGoal.styled';
+} from '../../components/SignupGoal/SignupGoal.styled';
 import GoalForm from '../../components/SignupGoal/GoalForm';
 
 const SignUpGoal = () => {

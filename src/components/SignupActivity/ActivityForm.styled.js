@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../index';
+import { theme } from '../../styles/index';
 
 export const StylesForm = styled.form`
   display: flex;

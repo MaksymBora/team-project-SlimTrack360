@@ -8,7 +8,7 @@ import {
   StylesForm,
   StylesLabelForm,
   StylesRadioBtn,
-} from '../../styles/SignupAge/GenderForm.styled';
+} from './GenderForm.styled';
 
 export const GenderForm = () => {
   return (

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../index';
+import { theme } from '../../styles/index';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
@@ -60,7 +60,7 @@ export const DescWrapper = styled.div`
   @media screen and (min-width: 1440px) {
     align-items: stretch;
     padding-top: 80px;
-    width: 308px;
+    width: 444px;
   }
 `;
 
@@ -89,19 +89,17 @@ export const StyleTitle = styled.h1`
   }
 `;
 
-export const StyleSubtitle = styled.h2`
+export const StyleSubtitle = styled.h1`
   color: ${theme.color.primaryGrey};
   font-family: inherit;
   font-size: 18px;
   line-height: 1.33;
   margin-bottom: 24px;
-  width: 298px;
 
   @media screen and (min-width: 768px) {
     font-size: 22px;
     line-height: 1.45;
     text-align: center;
-    width: 328px;
   }
   @media screen and (min-width: 1440px) {
     text-align: left;
@@ -122,7 +120,7 @@ export const StyleBackLink = styled(Link)`
   }
 
   @media screen and (min-width: 1440px) {
-    align-items: center;
+    text-align: start;
   }
 `;
 
@@ -131,6 +129,6 @@ export const StyleBtnColumn = styled.div`
     display: flex;
     flex-direction: column;
     width: 212px;
-    align-items: stretch;
+    align-items: center;
   }
 `;

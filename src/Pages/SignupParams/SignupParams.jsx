@@ -30,7 +30,7 @@ import {
   StyleTitle,
   StylesSection,
   Wrapper,
-} from '../../styles/SignupParam/SignupParam.styled';
+} from '../../components/SignupParam/SignupParam.styled';
 import BodyParamForm from '../../components/SignupParam/BodyParamForm';
 
 const SignUpParams = () => {

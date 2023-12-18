@@ -5,7 +5,7 @@ import {
   StylesBtnForm,
   StylesForm,
   WeightInputWrapper,
-} from '../../styles/SignupParam/BodyParamForm.styled';
+} from './BodyParamForm.styled';
 
 export const BodyParamForm = () => {
   return (

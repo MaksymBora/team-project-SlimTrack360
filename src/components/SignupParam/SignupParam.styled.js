@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../index';
+import { theme } from '../../styles/index';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
@@ -89,34 +89,19 @@ export const StyleTitle = styled.h1`
   }
 `;
 
-export const StyleSubtitle = styled.h1`
+export const StyleSubtitle = styled.h2`
   color: ${theme.color.primaryGrey};
   font-family: inherit;
   font-size: 18px;
   line-height: 1.33;
   margin-bottom: 24px;
+  width: 280px;
 
   @media screen and (min-width: 768px) {
     font-size: 22px;
     line-height: 1.45;
     text-align: center;
-  }
-  @media screen and (min-width: 1440px) {
-    text-align: left;
-  }
-`;
-
-export const SubtitleGenderForm = styled.h3`
-  color: ${theme.color.primaryWhite};
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.42;
-  margin-bottom: 12px;
-
-  @media screen and (min-width: 768px) {
-    display: flex;
-    justify-content: flex-start;
+    width: 380px;
   }
   @media screen and (min-width: 1440px) {
     text-align: left;

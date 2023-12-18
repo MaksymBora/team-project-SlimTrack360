@@ -5,7 +5,7 @@ import {
   StylesForm,
   StylesLabelForm,
   StylesRadioBtn,
-} from '../../styles/SignupActivity/ActivityForm.styled';
+} from './ActivityForm.styled';
 
 export const ActivityForm = () => {
   return (

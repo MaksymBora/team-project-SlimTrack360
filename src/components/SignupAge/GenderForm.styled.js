@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { theme } from '../index';
+import { theme } from '../../styles/index';
 
 export const StylesForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 24px;
   margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
@@ -18,12 +17,11 @@ export const StylesForm = styled.form`
 
 export const StylesRadioBtn = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  gap: 96px;
+  margin-bottom: 24px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
-    justify-content: space-between;
   }
 
   @media screen and (min-width: 1440px) {
@@ -99,5 +97,32 @@ export const CustomRadio = styled.span`
     border: 1px solid ${theme.color.primaryGrey};
     display: inline-block;
     border-radius: 100%;
+  }
+`;
+
+export const AgeInputWrapper = styled.span`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+`;
+
+export const AgeInputLabel = styled.label`
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+`;
+
+export const AgeInputStiles = styled.input`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+  border-radius: 12px;
+  color: ${theme.color.primaryWhite};
+  border: 1px solid ${theme.color.primaryGreenLite};
+  background: ${theme.color.primaryBlack2};
+  padding: 8px 10px;
+  &::placeholder {
+    color: ${theme.color.primaryGrey};
   }
 `;

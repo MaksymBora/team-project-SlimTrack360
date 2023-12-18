@@ -5,7 +5,7 @@ import {
   StylesForm,
   StylesLabelForm,
   StylesRadioBtn,
-} from '../../styles/SignupGoal/GoalForm.styled';
+} from './GoalForm.styled';
 
 export const GoalForm = () => {
   return (

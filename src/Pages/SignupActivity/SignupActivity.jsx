@@ -30,7 +30,7 @@ import {
   StyleTitle,
   StylesSection,
   Wrapper,
-} from '../../styles/SignupActivity/SignupActivity.styled';
+} from '../../components/SignupActivity/SignupActivity.styled';
 import ActivityForm from '../../components/SignupActivity/ActivityForm';
 
 const SignUpGoal = () => {

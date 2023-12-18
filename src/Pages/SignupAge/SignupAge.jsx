@@ -31,7 +31,7 @@ import {
   StylesSection,
   SubtitleGenderForm,
   Wrapper,
-} from '../../styles/SignupAge/SignupAge.styled';
+} from '../../components/SignupAge/SignupAge.styled';
 import GenderForm from '../../components/SignupAge/GenderForm';
 
 const SignUpAge = () => {
