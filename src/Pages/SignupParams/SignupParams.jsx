@@ -30,8 +30,8 @@ import {
   StyleTitle,
   StylesSection,
   Wrapper,
-} from '../../components/SignupParam/SignupParam.styled';
-import BodyParamForm from '../../components/SignupParam/BodyParamForm';
+} from '../../components/SignupSteps/SignupParam/SignupParam.styled';
+import BodyParamForm from '../../components/SignupSteps/SignupParam/BodyParamForm';
 
 const SignUpParams = () => {
   const backLinkLocationRef = useRef('/signup-data/2');

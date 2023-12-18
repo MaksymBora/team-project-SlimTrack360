@@ -31,8 +31,8 @@ import {
   StylesSection,
   SubtitleGenderForm,
   Wrapper,
-} from '../../components/SignupAge/SignupAge.styled';
-import GenderForm from '../../components/SignupAge/GenderForm';
+} from '../../components/SignupSteps/SignupAge/SignupAge.styled';
+import GenderForm from '../../components/SignupSteps/SignupAge/GenderForm';
 
 const SignUpAge = () => {
   const backLinkLocationRef = useRef('/signup-data/1');

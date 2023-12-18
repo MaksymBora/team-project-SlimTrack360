@@ -30,8 +30,8 @@ import {
   StyleTitle,
   StylesSection,
   Wrapper,
-} from '../../components/SignupGoal/SignupGoal.styled';
-import GoalForm from '../../components/SignupGoal/GoalForm';
+} from '../../components/SignupSteps/SignupGoal/SignupGoal.styled';
+import GoalForm from '../../components/SignupSteps/SignupGoal/GoalForm';
 
 const SignUpGoal = () => {
   const backLinkLocationRef = useRef('/signup');
