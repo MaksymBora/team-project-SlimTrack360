@@ -28,16 +28,13 @@ import {
   StyleTitle,
   StylesSection,
   Wrapper,
-} from '../../components/SignupSteps/SignupActivity/SignupActivity.styled';
-
-import {
   CustomRadio,
   CustomRadioInput,
   StylesBtnForm,
   StylesForm,
   StylesLabelForm,
   StylesRadioBtn,
-} from './SignupActivity/ActivityForm.styled';
+} from './Activity.styled';
 
 const SignUpActivity = () => {
   return (

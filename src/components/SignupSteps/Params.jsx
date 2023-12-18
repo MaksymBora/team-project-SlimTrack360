@@ -28,16 +28,13 @@ import {
   StyleTitle,
   StylesSection,
   Wrapper,
-} from '../../components/SignupSteps/SignupParam/SignupParam.styled';
-
-import {
   HeightInputWrapper,
   InputLabel,
   InputStiles,
   StylesBtnForm,
   StylesForm,
   WeightInputWrapper,
-} from './SignupParam/BodyParamForm.styled';
+} from './Param.styled';
 
 const SignUpParams = () => {
   return (

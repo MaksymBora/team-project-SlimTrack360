@@ -29,9 +29,6 @@ import {
   StylesSection,
   SubtitleGenderForm,
   Wrapper,
-} from '../../components/SignupSteps/SignupAge/SignupAge.styled';
-
-import {
   AgeInputLabel,
   AgeInputStiles,
   AgeInputWrapper,
@@ -41,7 +38,7 @@ import {
   StylesForm,
   StylesLabelForm,
   StylesRadioBtn,
-} from './SignupAge/GenderForm.styled';
+} from './Age.styled';
 
 const SignUpAge = () => {
   return (

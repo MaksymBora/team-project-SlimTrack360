@@ -28,16 +28,13 @@ import {
   StyleTitle,
   StylesSection,
   Wrapper,
-} from '../../components/SignupSteps/SignupGoal/SignupGoal.styled';
-
-import {
   CustomRadio,
   CustomRadioInput,
   StylesBtnForm,
   StylesForm,
   StylesLabelForm,
   StylesRadioBtn,
-} from './SignupGoal/GoalForm.styled';
+} from './Goal.styled';
 
 const SignUpGoal = () => {
   return (
