@@ -39,7 +39,7 @@ import {
   StylesRadioBtn,
 } from './SignupActivity/ActivityForm.styled';
 
-const SignUpGoal = () => {
+const SignUpActivity = () => {
   return (
     <StylesSection>
       <Container>
@@ -163,4 +163,4 @@ const SignUpGoal = () => {
   );
 };
 
-export default SignUpGoal;
+export default SignUpActivity;

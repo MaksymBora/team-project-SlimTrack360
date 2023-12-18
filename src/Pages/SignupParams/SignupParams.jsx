@@ -1,3 +1,6 @@
+import SignUpParams from '../../components/SignupSteps/Params'; // <<----Потім видалити цей імпорт----
+export default SignUpParams; // <<----Потім видалити цей експорт----
+
 // import { useRef, useEffect } from 'react';
 
 // import bodyParamDesc1xPng from '../../assets/imgBodyParam/bodyParam-desctop-1x-min.png';

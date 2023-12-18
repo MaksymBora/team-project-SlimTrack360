@@ -1,3 +1,6 @@
+import SignupGoal from '../../components/SignupSteps/Goal'; // <<----Потім видалити цей імпорт----
+export default SignupGoal; // <<----Потім видалити цей експорт----
+
 // import { useRef, useEffect } from 'react';
 
 // import goalsDesc1xPng from '../../assets/imgGoal/goals-desctop-1x-min.png';

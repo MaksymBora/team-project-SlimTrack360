@@ -1,3 +1,6 @@
+import SignUpActivity from '../../components/SignupSteps/Activity'; // <<----Потім видалити цей імпорт----
+export default SignUpActivity; // <<----Потім видалити цей експорт----
+
 // import { useRef, useEffect } from 'react';
 
 // import activityDesc1xPng from '../../assets/imgActivity/activity-desctop-1x-min.png';
@@ -33,7 +36,7 @@
 // } from '../../components/SignupSteps/SignupActivity/SignupActivity.styled';
 // import ActivityForm from '../../components/SignupSteps/SignupActivity/ActivityForm';
 
-// const SignUpGoal = () => {
+// const SignUpActivity = () => {
 //   const backLinkLocationRef = useRef('/signup-data/3');
 //   const handleBackClick = () => {
 //     window.location.href = backLinkLocationRef.current;
@@ -95,4 +98,4 @@
 //   );
 // };
 
-// export default SignUpGoal;
+// export default SignUpActivity;

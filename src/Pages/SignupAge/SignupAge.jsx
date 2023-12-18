@@ -1,3 +1,6 @@
+import SignUpAge from '../../components/SignupSteps/Age'; // <<----Потім видалити цей імпорт----
+export default SignUpAge; // <<----Потім видалити цей експорт----
+
 // import { useRef, useEffect } from 'react';
 
 // import genderAgeDesc1xPng from '../../assets/imgGenderAge/genderAge-desctop-1x-min.png';
