@@ -197,7 +197,7 @@ export const StylesLabelForm = styled.label`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
-  margin-left: 8px;
+  margin-left: 18px;
   cursor: pointer;
 
   &::after {
@@ -215,7 +215,6 @@ export const StylesLabelForm = styled.label`
 `;
 
 export const CustomRadioInput = styled.input`
-  position: absolute;
   width: 1px;
   height: 1px;
   opacity: 0;
@@ -237,6 +236,7 @@ export const CustomRadio = styled.span`
     border: 1px solid ${theme.color.primaryGrey};
     display: inline-block;
     border-radius: 100%;
+    position: absolute;
   }
 `;
 
