@@ -45,7 +45,7 @@ import {
   StylesErrorSvg,
 } from './Age.styled';
 
-const SignUpAge = () => {
+const SignUpAge = ({ setStep }) => {
   const validationSchema = Yup.object().shape({
     sex: Yup.string().required('Please select your gender'),
     age: Yup.number()
@@ -64,8 +64,8 @@ const SignUpAge = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      const jsonData = JSON.stringify(values);
-      console.log(jsonData);
+      console.log(values);
+      setStep((prevState) => (prevState += 1));
     },
   });
 

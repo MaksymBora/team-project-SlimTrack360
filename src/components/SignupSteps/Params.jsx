@@ -42,7 +42,7 @@ import {
   StylesErrorSvg,
 } from './Param.styled';
 
-const SignUpParams = () => {
+const SignUpParams = ({ setStep }) => {
   const validationSchema = Yup.object().shape({
     height: Yup.number()
       .typeError('Height must be a number')
@@ -68,8 +68,8 @@ const SignUpParams = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      const jsonData = JSON.stringify(values);
-      console.log(jsonData);
+      console.log(values);
+      setStep((prevState) => (prevState += 1));
     },
   });
 

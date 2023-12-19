@@ -100,6 +100,7 @@ export const SignUpContent = ({ setStep }) => {
                 name="password"
                 placeholder="Password"
                 required
+                autoComplete="false"
               />
               <Span onClick={togglePasswordVisibility}>
                 {showPassword ? (
