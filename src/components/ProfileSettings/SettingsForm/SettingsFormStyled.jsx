@@ -7,7 +7,7 @@ const Form = styled.form`
   row-gap: 40px;
   width: 100%;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     grid-template-columns: 212px 1fr;
     column-gap: 60px;
     max-width: 491px;
@@ -33,7 +33,7 @@ const GenderList = styled.ul`
 `;
 
 const ActivityBoxField = styled(FormField)`
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     grid-column-start: 1;
     grid-column-end: 3;
   }
@@ -49,8 +49,9 @@ const ButtonsBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     flex-direction: row;
     grid-column-start: 1;
     grid-column-end: 3;

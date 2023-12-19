@@ -26,22 +26,22 @@ const SettingsImg = () => {
       />
       <source
         srcSet={`${imgTabW} 1x, ${imgTabW2x} 2x`}
-        media="(min-width: 768px)"
+        media="(min-width: 834px)"
         type="image/webp"
       />
       <source
         srcSet={`${imgTab} 1x, ${imgTab2x} 2x`}
-        media="(min-width: 768px)"
+        media="(min-width: 834px)"
         type="image/png"
       />
       <source
         srcSet={`${imgMobW} 1x, ${imgMobW2x} 2x`}
-        media="(max-width: 767px)"
+        media="(max-width: 833px)"
         type="image/webp"
       />
       <source
         srcSet={`${imgMob} 1x, ${imgMob2x} 2x`}
-        media="(max-width: 767px)"
+        media="(max-width: 833px)"
         type="image/png"
       />
       <img src={imgDesk2x} alt="settings" />
