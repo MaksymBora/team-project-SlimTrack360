@@ -9,10 +9,6 @@ import {
   ForgotPass,
   ProfileSettings,
   Recommented,
-  SignUpGoal,
-  SignUpAge,
-  SignUpParams,
-  SignUpActivity,
   Main,
 } from './components/Routing/routesImport';
 
@@ -30,11 +26,6 @@ const App = () => {
           <Route path="diary" element={<Diary />} />
           <Route path="settings" element={<ProfileSettings />} />
           <Route path="recommended-food" element={<Recommented />} />
-          {/* Temporary */}
-          <Route path="signup-data/1" element={<SignUpGoal />} />
-          <Route path="signup-data/2" element={<SignUpAge />} />
-          <Route path="signup-data/3" element={<SignUpParams />} />
-          <Route path="signup-data/4" element={<SignUpActivity />} />
         </Route>
       </Routes>
     </>

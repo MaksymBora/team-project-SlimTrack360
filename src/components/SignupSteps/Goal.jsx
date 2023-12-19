@@ -39,7 +39,7 @@ import {
   StylesRadioBtn,
 } from './Goal.styled';
 
-const SignUpGoal = () => {
+const SignUpGoal = ({ setStep }) => {
   const validationSchema = Yup.object().shape({
     goal: Yup.string().required(),
   });
@@ -50,8 +50,8 @@ const SignUpGoal = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      const jsonData = JSON.stringify(values);
-      console.log(jsonData);
+      console.log(values);
+      setStep((prevState) => (prevState += 1));
     },
   });
 

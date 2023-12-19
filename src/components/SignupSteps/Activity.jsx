@@ -52,8 +52,8 @@ const SignUpActivity = () => {
     onSubmit: (values) => {
       const activityValue = parseFloat(values.activity);
       const formattedValues = { activity: activityValue };
-      const jsonData = JSON.stringify(formattedValues);
-      console.log(jsonData);
+
+      console.log(formattedValues);
     },
   });
 
