@@ -203,6 +203,8 @@ export const StylesErrorHeight = styled.div`
   line-height: 1.16;
   padding-left: 10px;
   top: calc(100% + 5px);
+  display: flex;
+  align-items: center;
 `;
 
 export const StylesErrorWeight = styled.div`
@@ -212,4 +214,17 @@ export const StylesErrorWeight = styled.div`
   line-height: 1.16;
   padding-left: 10px;
   top: calc(100% + 5px);
+`;
+
+export const StylesErrorSvg = styled.svg`
+  position: absolute;
+  top: -32px;
+  left: 273px;
+  @media screen and (min-width: 834px) {
+    left: 352px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    left: 185px;
+  }
 `;

@@ -278,3 +278,17 @@ export const StylesErrorAge = styled.div`
   padding-left: 10px;
   top: calc(100% + 5px);
 `;
+
+export const StylesErrorSvg = styled.svg`
+  position: absolute;
+  top: -32px;
+  left: 272px;
+
+  @media screen and (min-width: 834px) {
+    left: 352px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    left: 185px;
+  }
+`;
