@@ -44,7 +44,7 @@
 .dropdown {
   position: absolute;
   top: 100%; /* Разместить список под иконкой */
-  left: -500px;
+  left: -1110px;
 }
 
 .monthOption {

@@ -1,15 +1,15 @@
-import recomDesc from '../../../assets/img-Recommended/recomDesc.png';
-import recomDescW from '../../../assets/img-Recommended/recomDesc.webp';
-import recomDesk2x from '../../../assets/img-Recommended/recomDesk@2x.png';
-import recomDeskW2x from '../../../assets/img-Recommended/recomDesk@2x.webp';
-import recomMob from '../../../assets/img-Recommended/recomMob.png';
-import recomMobW from '../../../assets/img-Recommended/recomMob.webp';
-import recomMob2x from '../../../assets/img-Recommended/recomMob@2x.png';
-import recomMobW2x from '../../../assets/img-Recommended/recomMob@2x.webp';
-import recomTab from '../../../assets/img-Recommended/recomTab.png';
-import recomTabW from '../../../assets/img-Recommended/recomTab.webp';
-import recomTab2x from '../../../assets/img-Recommended/recomTab@2x.png';
-import recomTabW2x from '../../../assets/img-Recommended/recomTab@2x.webp';
+import recomDesc from '../../../assets/images/img-Recommended/recomDesc.png';
+import recomDescW from '../../../assets/images/img-Recommended/recomDesc.webp';
+import recomDesk2x from '../../../assets/images/img-Recommended/recomDesk@2x.png';
+import recomDeskW2x from '../../../assets/images/img-Recommended/recomDesk@2x.webp';
+import recomMob from '../../../assets/images/img-Recommended/recomMob.png';
+import recomMobW from '../../../assets/images/img-Recommended/recomMob.webp';
+import recomMob2x from '../../../assets/images/img-Recommended/recomMob@2x.png';
+import recomMobW2x from '../../../assets/images/img-Recommended/recomMob@2x.webp';
+import recomTab from '../../../assets/images/img-Recommended/recomTab.png';
+import recomTabW from '../../../assets/images/img-Recommended/recomTab.webp';
+import recomTab2x from '../../../assets/images/img-Recommended/recomTab@2x.png';
+import recomTabW2x from '../../../assets/images/img-Recommended/recomTab@2x.webp';
 
 import { Picture } from './Image.styled';
 

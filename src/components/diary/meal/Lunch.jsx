@@ -12,6 +12,8 @@ import {
 } from './DiaryCard.styled';
 
 const Lunch = () => {
+  const category = 'Lunch';
+  const categoryImage = lunchImg;
   return (
     <CardContainer>
       <TabletFood>
@@ -29,7 +31,7 @@ const Lunch = () => {
         <TitlePeriod />
       </TabletFood>
 
-      <FoodList type="lunch" />
+      <FoodList category={category} categoryImage={categoryImage} />
     </CardContainer>
   );
 };
