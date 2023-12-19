@@ -126,6 +126,12 @@ const SignUpParams = () => {
                     placeholder="Enter your height"
                     onChange={formik.handleChange}
                     value={formik.values.height}
+                    style={{
+                      border:
+                        formik.errors.height && formik.touched.height
+                          ? '1px solid #e74a3b'
+                          : '1px solid #E3FFA8',
+                    }}
                   />
                   {formik.errors.height && formik.touched.height ? (
                     <StylesErrorHeight>
@@ -154,6 +160,12 @@ const SignUpParams = () => {
                     placeholder="Enter your weight"
                     onChange={formik.handleChange}
                     value={formik.values.weight}
+                    style={{
+                      border:
+                        formik.errors.weight && formik.touched.weight
+                          ? '1px solid #e74a3b'
+                          : '1px solid #E3FFA8',
+                    }}
                   />
                   {formik.errors.weight && formik.touched.weight ? (
                     <StylesErrorWeight>

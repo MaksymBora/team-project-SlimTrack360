@@ -146,6 +146,12 @@ const SignUpAge = () => {
                     placeholder="Enter your age"
                     onChange={formik.handleChange}
                     value={formik.values.age}
+                    style={{
+                      border:
+                        formik.errors.age && formik.touched.age
+                          ? '1px solid #e74a3b'
+                          : '1px solid #E3FFA8',
+                    }}
                   />
                   {formik.errors.age && formik.touched.age ? (
                     <StylesErrorAge>
