@@ -10,7 +10,7 @@ const setAuthHeader = (token) => {
 };
 
 export const fetchFoodIntake = createAsyncThunk(
-  'foodIntake/get',
+  'foodIntake/fetch',
   async (_, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
@@ -19,7 +19,7 @@ export const fetchFoodIntake = createAsyncThunk(
         return thunkAPI.rejectWithValue('No token');
       }
       setAuthHeader(persistToken);
-      const response = await instance('api/user/food-intake');
+      const response = await instance.post('api/user/food-intake');
 
       return response.data;
     } catch (error) {

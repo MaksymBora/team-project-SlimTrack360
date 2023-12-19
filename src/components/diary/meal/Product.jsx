@@ -9,8 +9,17 @@ import {
   Paragraph,
 } from '../meal/Product.styled';
 import Icon from '../../common/Icon';
+// import { useDispatch } from 'react-redux';
+// import { useEffect, useSelector } from 'react';
+// import { fetchFoodIntake } from '../../../Redux/foodIntake/operations';
 
 const Product = () => {
+  // const dispatch = useDispatch();
+  // const foodIntake = useSelector(fetchFoodIntake);
+  // useEffect(() => {
+  //   dispatch(foodIntake)
+  // },[dispatch, foodIntake]);
+
   return (
     <>
       <ProductContainer>
