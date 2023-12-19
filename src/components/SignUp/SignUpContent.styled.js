@@ -5,7 +5,7 @@ export const Div = styled.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     align-items: center;
   }
   @media screen and (min-width: 1440px) {
@@ -22,7 +22,7 @@ export const MainText = styled.h1`
   line-height: 30px;
   padding-top: 24px;
   padding-bottom: 16px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     padding-top: 60px;
     text-align: center;
     font-size: 30px;
@@ -40,7 +40,7 @@ export const Subtitle = styled.h3`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     text-align: center;
     font-size: 22px;
     line-height: 32px;
@@ -51,7 +51,7 @@ export const Subtitle = styled.h3`
   }
 `;
 export const Label = styled.label`
-  margin: auto;
+  // margin: auto;
   padding: 8px 10px;
   margin-bottom: 20px;
   display: flex;
@@ -69,7 +69,7 @@ export const Label = styled.label`
   //   border-color: #2d9f6c;
   // }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 380px;
     display: flex;
     flex-direction: row;
@@ -94,7 +94,7 @@ export const Input = styled.input`
   width: 280px;
   border: none;
   color: ${theme.color.primaryWhite};
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 360px;
   }
   @media screen and (min-width: 1440px) {
@@ -121,7 +121,6 @@ export const Wrapper = styled.div`
   padding-bottom: 40px;
   display: flex;
   flex-direction: column;
-  // gap: 20px;
 `;
 export const Button = styled.button`
   padding: 8px 10px;
@@ -137,7 +136,6 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  //   margin-bottom: 48px;
   &:disabled {
     opacity: 0.35;
     cursor: not-allowed;
@@ -169,12 +167,17 @@ export const Options = styled.div`
   flex-direction: column;
   gap: 16px;
   padding-top: 48px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     flex-direction: row;
     padding-top: 206px;
   }
   @media screen and (min-width: 1440px) {
-    // padding-top: 168px;
     padding-top: 168px;
   }
+`;
+export const Span = styled.span`
+  position: relative;
+  display: block;
+  height: 16px;
+  width: 16px;
 `;

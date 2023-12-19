@@ -5,7 +5,7 @@ import { Div, Img, Wrapper } from './SignUp.styled';
 import _1DesktopImg from './images/Illustration_desk@1x.png';
 import _2DesktopImg from './images/Illustration_desk@2x.png';
 import _1TabletImg from './images/Illustration_tab@1x.png';
-import _2TabletImg from './images/Illustration_tab@1x.png';
+import _2TabletImg from './images/Illustration_tab@2x.png';
 import _1MobImg from './images/Illustration_mob@1x.png';
 import _2MobImg from './images/Illustration_mob@2x.png';
 // webp
