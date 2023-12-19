@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+
 import { Loader } from '../../../utils/Loader';
 
 import {
@@ -24,6 +26,9 @@ const RecommendedFood = () => {
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectError);
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery({ maxWidth: 833 });
+
+  const visibleItems = isMobile ? 2 : 4;
 
   useEffect(() => {
     dispatch(fetchFood());
@@ -35,7 +40,7 @@ const RecommendedFood = () => {
       {isLoading && <Loader />}
       {!isError ? (
         <FoodList>
-          {foodList.map((item) => (
+          {foodList.slice(0, visibleItems).map((item) => (
             <Item key={item._id}>
               <ItemFood item={item} />
             </Item>
