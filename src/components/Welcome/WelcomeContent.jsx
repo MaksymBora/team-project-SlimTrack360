@@ -1,8 +1,8 @@
+import { Link } from 'react-router-dom';
 import { Subtitle } from '../SignUp/SignUpContent.styled';
 import {
   MainText,
   BenefitsList,
-  BtnWrapper,
   Content,
   DescriptionItem,
   Dot,
@@ -26,12 +26,12 @@ export const WelcomeContent = () => {
           The service will help you set goals and follow them.
         </Subtitle>
         <SubmitButtonsContainer>
-          <BtnWrapper>
+          <Link to="/signin">
             <SignInButton>Sign in</SignInButton>
-          </BtnWrapper>
-          <BtnWrapper>
+          </Link>
+          <Link to="/signup">
             <SignUpButton>Sign up</SignUpButton>
-          </BtnWrapper>
+          </Link>
         </SubmitButtonsContainer>
         <BenefitsList>
           {listItems.map((item, index) => (

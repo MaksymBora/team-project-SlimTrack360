@@ -5,7 +5,7 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     align-items: center;
   }
   @media screen and (min-width: 1440px) {
@@ -24,7 +24,7 @@ export const MainText = styled.h1`
   font-style: normal;
   font-weight: 500;
   line-height: 30px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     padding-top: 80px;
     text-align: center;
     font-size: 30px;
@@ -42,7 +42,7 @@ export const Subtitle = styled.h3`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     text-align: center;
   }
   @media screen and (min-width: 1440px) {
@@ -55,7 +55,7 @@ export const SubmitButtonsContainer = styled.div`
   gap: 16px;
   padding-top: 24px;
   padding-bottom: 40px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     align-items: center;
     justify-content: center;
     display: flex;
@@ -90,7 +90,7 @@ export const SignInButton = styled.button`
     border: 1px solid ${theme.color.primaryGreenLite};
     color: ${theme.color.primaryWhite};
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 192px;
   }
 `;
@@ -123,7 +123,7 @@ export const SignUpButton = styled.button`
     border: 1px solid ${theme.color.primaryBlack2};
     color: ${theme.color.primaryBlack2};
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 192px;
   }
 `;
@@ -133,7 +133,7 @@ export const BenefitsList = styled.ul`
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     justify-content: space-between;
     width: 444px;
     flex-direction: row;

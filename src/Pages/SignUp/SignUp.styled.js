@@ -1,25 +1,13 @@
 import styled from 'styled-components';
-import { theme } from '../../styles/index';
 // import DesktopImg from '../../assets/images/SignUp/Desktop_Illustration.png';
 // import TabletImg from '../../assets/images/SignUp/Tablet_Illustration.png';
 // import MobileImg from '../../assets/images/SignUp/Mobile_Illustration.png';
-export const Wrapper = styled.section`
-  min-height: 100vh;
-  padding-bottom: 40px;
-  background-color: ${theme.color.primaryBlack};
-  background-size: cover;
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1440px) {
-  }
-`;
+export const Wrapper = styled.section``;
 export const Div = styled.div`
-  max-width: 767px;
+  max-width: 833px;
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 104px;
@@ -34,7 +22,7 @@ export const Image = styled.img`
   align-items: center;
   flex-shrink: 0;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     max-width: none;
 
     display: flex;
@@ -51,16 +39,9 @@ export const Image = styled.img`
   }
 `;
 export const Img = styled.img`
-  //   width: 300px;
-  //   height: 296px;
-  max-width: none;
-  @media screen and (min-width: 768px) {
-    // width: 380px;
-    // height: 376px;
-  }
+  display: block;
+  // max-width: none;
   @media screen and (min-width: 1440px) {
-    // width: 592px;
-    // height: 588px;
     max-width: none;
   }
 `;
