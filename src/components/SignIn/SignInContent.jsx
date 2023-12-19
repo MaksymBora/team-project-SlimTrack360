@@ -18,8 +18,14 @@ import { Options } from './SignInContent.styled';
 import { LinkSignup, Paragraph } from './SignInContent.styled';
 import { basicSchema } from '../SignUp/schemas';
 import { useState } from 'react';
-export const SignInContent = ({ setStep }) => {
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../Redux/userAuth/operations';
+
+export const SignInContent = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -28,9 +34,9 @@ export const SignInContent = ({ setStep }) => {
       email: form.elements.email.value,
       password: form.elements.password.value,
     };
-    localStorage.setItem('reg', JSON.stringify(data));
+    console.log(data);
 
-    setStep((prevState) => (prevState += 1));
+    dispatch(logIn(data));
   };
 
   const { values, errors, touched, handleBlur, handleChange } = useFormik({
@@ -78,6 +84,7 @@ export const SignInContent = ({ setStep }) => {
                 onBlur={handleBlur}
                 value={values.password}
                 required
+                autoComplete="false"
               />
               <Span onClick={togglePasswordVisibility}>
                 {showPassword ? (
