@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Global/Layout';
 import {
-  Home,
   Welcome,
   SignIn,
   SignUp,
@@ -22,8 +21,7 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="welcome" element={<Welcome />} />
+          <Route index element={<Welcome />} />
           <Route path="main" element={<Main />} />
           <Route path="signin" element={<SignIn />} />
           <Route path="signup" element={<SignUp />} />

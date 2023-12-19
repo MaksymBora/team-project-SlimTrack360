@@ -117,6 +117,8 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     line-height: 1;
+    color: ${theme.color.primaryWhite};
+    background-color: ${theme.color.primaryBlack};
   }
 
   ol,
@@ -166,6 +168,18 @@ export const GlobalStyles = createGlobalStyle`
 
   select::-ms-expand {
     display: none;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 5, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   /* ========================= /Reset styles ========================= */
 
@@ -219,7 +233,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #ef8964;
+    background-color: #E3FFA8;
     border-radius: 12px;
   }
 
