@@ -30,8 +30,7 @@ const App = () => {
           <Route path="diary" element={<Diary />} />
           <Route path="settings" element={<ProfileSettings />} />
           <Route path="recommended-food" element={<Recommented />} />
-        </Route>
-        <Route>
+          {/* Temporary */}
           <Route path="signup-data/1" element={<SignUpGoal />} />
           <Route path="signup-data/2" element={<SignUpAge />} />
           <Route path="signup-data/3" element={<SignUpParams />} />
