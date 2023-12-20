@@ -19,7 +19,7 @@ import { LinkSignup, Paragraph } from './SignInContent.styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../Redux/userAuth/operations';
-import { basicSchema } from '../SignUp/schemas';
+import { basicSchema } from '../SignUp/schemas/index';
 
 export const SignInContent = () => {
   const [showPassword, setShowPassword] = useState(false);
