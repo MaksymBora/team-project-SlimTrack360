@@ -53,6 +53,7 @@ const SettingsForm = () => {
       formData.append('height', values?.height);
       formData.append('currentWeight', values?.currentWeight);
       formData.append('levelActivity', Number(values?.levelActivity));
+
       if (newAvatar) {
         formData.append('avatar', newAvatar);
       }
@@ -60,6 +61,7 @@ const SettingsForm = () => {
       dispatch(updateUserSettings(formData));
       setNewAvatar(null);
     },
+
     validationSchema: settingsFormSchema,
   });
 

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Div = styled.div`
-  max-width: 767px;
+  max-width: 833px;
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     align-items: center;
   }
   @media screen and (min-width: 1440px) {
