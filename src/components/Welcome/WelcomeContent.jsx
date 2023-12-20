@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Subtitle } from '../SignUp/SignUpContent.styled';
+import { Subtitle } from '../Auth/Signup/SignUpContent.styled';
 import {
   MainText,
   BenefitsList,

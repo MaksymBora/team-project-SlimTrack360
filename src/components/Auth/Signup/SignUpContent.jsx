@@ -1,10 +1,9 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { basicSchema } from './schemas';
 import {
   Div,
-  Form,
+  // Form,
   Input,
   MainText,
   Subtitle,
@@ -16,7 +15,9 @@ import {
   Label,
   Attention,
   Span,
+  Form,
 } from './SignUpContent.styled';
+import { basicSchema } from './schemas';
 
 export const SignUpContent = ({ setStep }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -48,9 +49,6 @@ export const SignUpContent = ({ setStep }) => {
     setShowPassword(!showPassword);
   };
 
-  // const toggleRepeatPasswordVisibility = () => {
-  //   setShowRepeatPassword(!showRepeatPassword);
-  // };
   return (
     <>
       <Div>

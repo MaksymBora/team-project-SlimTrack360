@@ -13,14 +13,13 @@ import {
   Subsection,
   Attention,
   Span,
-} from '../SignUp/SignUpContent.styled';
+} from '../Signup/SignUpContent.styled';
 import { Options } from './SignInContent.styled';
 import { LinkSignup, Paragraph } from './SignInContent.styled';
 import { basicSchema } from '../SignUp/schemas';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../Redux/userAuth/operations';
-
+import { logIn } from '../../../Redux/userAuth/operations';
 export const SignInContent = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -34,7 +33,6 @@ export const SignInContent = () => {
       email: form.elements.email.value,
       password: form.elements.password.value,
     };
-    console.log(data);
 
     dispatch(logIn(data));
   };
