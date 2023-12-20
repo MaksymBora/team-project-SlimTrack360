@@ -1,76 +1,97 @@
-import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { Options } from './SignInContent.styled';
-import { LinkSignup, Paragraph } from './SignInContent.styled';
-import { basicSchema } from '../Auth/SignUp/schemas';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { logIn } from '../../Redux/userAuth/operations';
+import { Link } from 'react-router-dom';
+import { basicSchema } from './schemas';
+
 import {
   Div,
-  Form,
   Input,
   MainText,
   Subtitle,
   Wrapper,
-  Label,
-  Main,
   Button,
   Subsection,
+  Options,
+  Main,
+  Label,
   Attention,
   Span,
-} from '../SignUp/SignUpContent.styled';
+  Form,
+} from './SignUpContent.styled';
 
-export const SignInContent = () => {
+export const SignUpContent = ({ setStep }) => {
   const [showPassword, setShowPassword] = useState(false);
+  // const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
-  const dispatch = useDispatch();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  //   const data = {
+  //     name: form.elements.name.value,
+  //     email: form.elements.email.value,
+  //     password: form.elements.password.value,
+  //   };
 
-    const data = {
-      email: form.elements.email.value,
-      password: form.elements.password.value,
-    };
-    console.log(data);
+  //   setStep((prevState) => (prevState += 1));
+  // };
 
-    dispatch(logIn(data));
-  };
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: {
+        name: '',
+        email: '',
+        password: '',
+      },
+      onSubmit: (values) => {
+        const jsonData = JSON.stringify(values);
+        sessionStorage.setItem('authReg', jsonData);
 
-  const { values, errors, touched, handleBlur, handleChange } = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: basicSchema,
-  });
+        setStep((prevState) => (prevState += 1));
+      },
+      validationSchema: basicSchema,
+    });
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
   return (
     <>
       <Div>
-        <MainText>Sign in</MainText>
-        <Subtitle>You need to login to use the service</Subtitle>
+        <MainText>Sign up</MainText>
+        <Subtitle>You need to register to use the service</Subtitle>
         <Form onSubmit={handleSubmit}>
           <Wrapper>
+            <Label className={errors.name && touched.name ? 'input-error' : ''}>
+              <Input
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+                name="name"
+                placeholder="Name"
+                required
+              />
+            </Label>
+            {errors.name && touched.name && (
+              <Attention>{errors.name}</Attention>
+            )}
             <Label
               className={errors.email && touched.email ? 'input-error' : ''}
             >
               <Input
-                name="email"
-                placeholder="E-mail"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
+                name="email"
+                placeholder="E-mail"
                 required
               />
             </Label>
             {errors.email && touched.email && (
               <Attention>{errors.email}</Attention>
             )}
+
             <Label
               className={
                 errors.password && touched.password ? 'input-error' : ''
@@ -78,11 +99,11 @@ export const SignInContent = () => {
             >
               <Input
                 type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Password"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
+                name="password"
+                placeholder="Password"
                 required
                 autoComplete="false"
               />
@@ -142,23 +163,32 @@ export const SignInContent = () => {
                   </svg>
                 )}
               </Span>
+              {errors.password && touched.password && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M0 8C0 3.58125 3.58125 0 8 0C12.4187 0 16 3.58125 16 8C16 12.4187 12.4187 16 8 16C3.58125 16 0 12.4187 0 8ZM5.46875 6.50313L6.94063 7.97188L5.46875 9.46875C5.17812 9.7625 5.17812 10.2375 5.46875 10.5031C5.7625 10.8219 6.2375 10.8219 6.50313 10.5031L7.97188 9.05937L9.46875 10.5031C9.7625 10.8219 10.2375 10.8219 10.5031 10.5031C10.8219 10.2375 10.8219 9.7625 10.5031 9.46875L9.05937 7.97188L10.5031 6.50313C10.8219 6.2375 10.8219 5.7625 10.5031 5.46875C10.2375 5.17812 9.7625 5.17812 9.46875 5.46875L7.97188 6.94063L6.50313 5.46875C6.2375 5.17812 5.7625 5.17812 5.46875 5.46875C5.17812 5.7625 5.17812 6.2375 5.46875 6.50313Z"
+                    fill="#E74A3B"
+                  />
+                </svg>
+              )}
             </Label>
             {errors.password && touched.password && (
               <Attention>{errors.password}</Attention>
             )}
           </Wrapper>
           <Main>
-            <Button type="submit">Sign in</Button>
+            <Button type="submit">Next</Button>
           </Main>
-          <Link to="/forgot-password">
-            <Paragraph>Forgot your password?</Paragraph>
-          </Link>
         </Form>
         <Options>
-          <Subsection>If you do not have an account yet</Subsection>
-          <LinkSignup>
-            <Link to="/signup">Sign up</Link>
-          </LinkSignup>
+          <Subsection>Do you already have an account?</Subsection>
+          <Link to="/signin">Sign in</Link>
         </Options>
       </Div>
     </>

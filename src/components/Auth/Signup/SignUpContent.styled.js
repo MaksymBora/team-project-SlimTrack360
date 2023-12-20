@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../styles/index';
+import { theme } from '../../../styles/index';
 export const Main = styled.div``;
 export const Div = styled.div`
   align-items: flex-start;

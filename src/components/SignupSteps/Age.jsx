@@ -64,7 +64,12 @@ const SignUpAge = ({ setStep }) => {
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      const retrievedData = sessionStorage.getItem('authReg');
+      const parsedData = JSON.parse(retrievedData);
+      parsedData.sex = values.sex;
+      parsedData.age = values.age;
+      const updatedJsonData = JSON.stringify(parsedData);
+      sessionStorage.setItem('authReg', updatedJsonData);
       setStep((prevState) => (prevState += 1));
     },
   });
@@ -173,7 +178,11 @@ const SignUpAge = ({ setStep }) => {
                 </AgeInputWrapper>
                 <StylesBtnForm type="submit">Next</StylesBtnForm>
               </StylesForm>
-              <StyleBackLink>Back</StyleBackLink>
+              <StyleBackLink
+                onClick={() => setStep((prevState) => (prevState -= 1))}
+              >
+                Back
+              </StyleBackLink>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>

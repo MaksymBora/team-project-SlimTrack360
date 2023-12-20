@@ -1,14 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: 'https://healthyhub-emsa.onrender.com/',
-});
-
-const setAuthHeader = (token) => {
-  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
 export const fetchFoodIntake = createAsyncThunk(
   'foodIntake/get',
   async (_, thunkAPI) => {
@@ -18,8 +10,8 @@ export const fetchFoodIntake = createAsyncThunk(
       if (!persistToken) {
         return thunkAPI.rejectWithValue('No token');
       }
-      setAuthHeader(persistToken);
-      const response = await instance('api/user/food-intake');
+
+      const response = await axios.post('api/user/food-intake');
 
       return response.data;
     } catch (error) {
@@ -37,8 +29,8 @@ export const postFoodIntake = createAsyncThunk(
       if (!persistToken) {
         return thunkAPI.rejectWithValue('No token');
       }
-      setAuthHeader(persistToken);
-      const response = await instance.post('api/user/food-intake', credentials);
+
+      const response = await axios.post('api/user/food-intake', credentials);
 
       return response.data;
     } catch (error) {
@@ -57,8 +49,8 @@ export const updateFoodIntake = createAsyncThunk(
       if (!persistToken) {
         return thunkAPI.rejectWithValue('No token');
       }
-      setAuthHeader(persistToken);
-      const response = await instance.put(`api/user/food-intake/${ident}`, {
+
+      const response = await axios.put(`api/user/food-intake/${ident}`, {
         type,
         product,
       });

@@ -38,22 +38,34 @@ import {
   StylesLabelForm,
   StylesRadioBtn,
 } from './Activity.styled';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { register } from '../../Redux/userAuth/operations';
 
-const SignUpActivity = () => {
+const SignUpActivity = ({ setStep }) => {
+  const navigate = useNavigate();
+
   const validationSchema = Yup.object().shape({
     activity: Yup.number().required(),
   });
 
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
-      activity: '1.2',
+      activity: 1,
     },
     validationSchema,
     onSubmit: (values) => {
       const activityValue = parseFloat(values.activity);
       const formattedValues = { activity: activityValue };
+      const retrievedData = sessionStorage.getItem('authReg');
+      const parsedData = JSON.parse(retrievedData);
+      parsedData.levelActivity = formattedValues.activity;
 
-      console.log(formattedValues);
+      dispatch(register(parsedData));
+      sessionStorage.clear();
+      navigate('/signin');
     },
   });
 
@@ -107,7 +119,7 @@ const SignUpActivity = () => {
                       type="radio"
                       id="1.2"
                       name="activity"
-                      value={1.2}
+                      value={1}
                       onChange={formik.handleChange}
                       defaultChecked
                     />
@@ -122,7 +134,7 @@ const SignUpActivity = () => {
                       type="radio"
                       id="1.375"
                       name="activity"
-                      value={1.375}
+                      value={2}
                       onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="1.375">
@@ -136,7 +148,7 @@ const SignUpActivity = () => {
                       type="radio"
                       id="1.55"
                       name="activity"
-                      value={1.55}
+                      value={3}
                       onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="1.55">
@@ -150,7 +162,7 @@ const SignUpActivity = () => {
                       type="radio"
                       id="1.725"
                       name="activity"
-                      value={1.725}
+                      value={4}
                       onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="1.725">
@@ -163,7 +175,7 @@ const SignUpActivity = () => {
                       type="radio"
                       id="1.9"
                       name="activity"
-                      value={1.9}
+                      value={5}
                       onChange={formik.handleChange}
                     />
                     <StylesLabelForm htmlFor="1.9">
@@ -177,7 +189,11 @@ const SignUpActivity = () => {
                 <StylesBtnForm type="submit">Sign Up</StylesBtnForm>
               </StylesForm>
 
-              <StyleBackLink>Back</StyleBackLink>
+              <StyleBackLink
+                onClick={() => setStep((prevState) => (prevState -= 1))}
+              >
+                Back
+              </StyleBackLink>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>

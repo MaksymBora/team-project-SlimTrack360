@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { Layout } from './components/Global/Layout';
 import {
   Welcome,
@@ -11,21 +11,73 @@ import {
   Recommented,
   Main,
 } from './components/Routing/routesImport';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshUser } from './Redux/userAuth/operations';
+import { PrivateRoute } from './Pages/Routes/PrivateRoute';
+import { RestrictedRoute } from './Pages/Routes/RestrictedRoute';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Welcome />} />
-          <Route path="main" element={<Main />} />
-          <Route path="signin" element={<SignIn />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="forgot-password" element={<ForgotPass />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="diary" element={<Diary />} />
-          <Route path="settings" element={<ProfileSettings />} />
-          <Route path="recommended-food" element={<Recommented />} />
+          <Route
+            index
+            element={
+              <RestrictedRoute component={<Welcome />} redirectTo="/main" />
+            }
+          />
+          <Route
+            path="signin"
+            element={
+              <RestrictedRoute component={<SignIn />} redirectTo="/main" />
+            }
+          />
+          <Route
+            path="signup"
+            element={
+              <RestrictedRoute component={<SignUp />} redirectTo="/main" />
+            }
+          />
+          <Route
+            path="forgot-password"
+            element={
+              <RestrictedRoute component={<ForgotPass />} redirectTo="/main" />
+            }
+          />
+
+          <Route
+            path="main"
+            element={<PrivateRoute component={<Main />} redirectTo="/" />}
+          />
+          <Route
+            path="dashboard"
+            element={<PrivateRoute component={<Dashboard />} redirectTo="/" />}
+          />
+          <Route
+            path="diary"
+            element={<PrivateRoute component={<Diary />} redirectTo="/" />}
+          />
+          <Route
+            path="settings"
+            element={
+              <PrivateRoute component={<ProfileSettings />} redirectTo="/" />
+            }
+          />
+          <Route
+            path="recommended-food"
+            element={
+              <PrivateRoute component={<Recommented />} redirectTo="/" />
+            }
+          />
+          <Route path="/*" element={<Navigate raplce to="/" />} />
         </Route>
       </Routes>
     </>

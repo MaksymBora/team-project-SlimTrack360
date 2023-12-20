@@ -1,4 +1,3 @@
-import { SignUpContent } from '../../components/SignUp/SignUpContent';
 import Container from './Container/Container';
 import SignupGoal from '../../components/SignupSteps/Goal';
 import SignUpAge from '../../components/SignupSteps/Age';
@@ -20,10 +19,10 @@ import _2TabletWebP from './images/Illustration_tab@2x.webp';
 import _1MobWebP from './images/Illustration_mob@1x.webp';
 import _2MobWebP from './images/Illustration_mob@2x.webp';
 import { useState } from 'react';
+import { SignUpContent } from '../../components/Auth/Signup/SignUpContent';
 
 const SignUp = () => {
   const [step, setStep] = useState(1);
-  console.log(step);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../styles/index';
+import { theme } from '../../../styles/index';
 export const Paragraph = styled.p`
   color: ${theme.color.primaryGrey};
   text-align: center;

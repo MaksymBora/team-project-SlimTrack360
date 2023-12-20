@@ -1,7 +1,6 @@
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import { LinkSignup } from '../SignIn/SignInContent.styled';
-import { basicSchema } from '../SignUp/schemas';
 import {
   Attention,
   Button,
@@ -13,8 +12,9 @@ import {
   Subsection,
   Subtitle,
   Wrapper,
-} from '../SignUp/SignUpContent.styled';
+} from '../Auth/Signup/SignUpContent.styled';
 import { Options, Label } from './ForgotPassContent.styled';
+import { basicSchema } from '../Auth/SignUp/schemas';
 
 export const ForgotPassContent = () => {
   const handleSubmit = (e) => {

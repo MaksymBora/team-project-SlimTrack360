@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
 import goalsDesc1xPng from '../../assets/imgGoal/goals-desctop-1x-min.png';
 import goalsDesc2xPng from '../../assets/imgGoal/goals-desctop-2x-min.png';
 import goalsDesc3xPng from '../../assets/imgGoal/goals-desctop-3x-min.png';
@@ -24,7 +23,6 @@ import goalsMob3xWebp from '../../assets/imgGoal/goals-mobile-3x-min.webp';
 import {
   Container,
   DescWrapper,
-  StyleBackLink,
   StyleBtnColumn,
   StylePicture,
   StyleSubtitle,
@@ -46,11 +44,16 @@ const SignUpGoal = ({ setStep }) => {
 
   const formik = useFormik({
     initialValues: {
-      goal: 'lose fat',
+      goal: 'Lose Fat',
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      const retrievedData = sessionStorage.getItem('authReg');
+      const parsedData = JSON.parse(retrievedData);
+      parsedData.goal = values.goal;
+      const updatedJsonData = JSON.stringify(parsedData);
+      sessionStorage.setItem('authReg', updatedJsonData);
+
       setStep((prevState) => (prevState += 1));
     },
   });
@@ -107,7 +110,7 @@ const SignUpGoal = ({ setStep }) => {
                       name="goal"
                       value="Lose Fat"
                       onChange={formik.handleChange}
-                      defaultChecked
+                      checked={formik.values.goal === 'Lose Fat'}
                     />
                     <StylesLabelForm htmlFor="lose_fat">
                       Lose Fat
@@ -120,6 +123,7 @@ const SignUpGoal = ({ setStep }) => {
                       name="goal"
                       value="Maintain"
                       onChange={formik.handleChange}
+                      checked={formik.values.goal === 'Maintain'}
                     />
                     <StylesLabelForm htmlFor="maintain">
                       Maintain
@@ -132,6 +136,7 @@ const SignUpGoal = ({ setStep }) => {
                       name="goal"
                       value="Gain Muscle"
                       onChange={formik.handleChange}
+                      checked={formik.values.goal === 'Gain Muscle'}
                     />
                     <StylesLabelForm htmlFor="gain_muscle">
                       Gain Muscle
@@ -140,7 +145,6 @@ const SignUpGoal = ({ setStep }) => {
                 </StylesRadioBtn>
                 <StylesBtnForm type="submit">Next</StylesBtnForm>
               </StylesForm>
-              <StyleBackLink>Back</StyleBackLink>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>
