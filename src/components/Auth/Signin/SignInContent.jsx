@@ -19,7 +19,20 @@ import { LinkSignup, Paragraph } from './SignInContent.styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../Redux/userAuth/operations';
-import { basicSchema } from '../SignUp/schemas/index.js';
+import * as yup from 'yup';
+
+const basicSchema = yup.object().shape({
+  name: yup.string().required('Name is required*'),
+  email: yup
+    .string()
+    .email('Enter a valid Email*')
+    .required('Email is required*'),
+  password: yup
+    .string()
+    .required('Password is required*')
+    .min(8, 'Password must be at least 8 characters long')
+    .max(64, 'Password must not exceed 64 characters'),
+});
 
 export const SignInContent = () => {
   const [showPassword, setShowPassword] = useState(false);
