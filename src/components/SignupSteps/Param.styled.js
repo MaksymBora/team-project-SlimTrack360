@@ -112,12 +112,17 @@ export const StyleBackLink = styled.button`
   font-size: 14px;
   line-height: 1.42;
   display: block;
-  text-align: center;
   transition: ${theme.transition.main};
   &:hover,
   &:focus {
     color: ${theme.color.primaryGreenLite};
   }
+`;
+
+export const BackLinkwrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const StyleBtnColumn = styled.div`
@@ -160,14 +165,14 @@ export const StylesBtnForm = styled.button`
   }
 `;
 
-export const HeightInputWrapper = styled.span`
+export const HeightInputWrapper = styled.div`
   position: relative;
 
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
 `;
-export const WeightInputWrapper = styled.span`
+export const WeightInputWrapper = styled.div`
   position: relative;
 
   display: flex;
@@ -191,6 +196,13 @@ export const InputStiles = styled.input`
   border: 1px solid ${theme.color.primaryGreenLite};
   background: ${theme.color.primaryBlack2};
   padding: 8px 10px;
+
+  &::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
   &::placeholder {
     color: ${theme.color.primaryGrey};
   }

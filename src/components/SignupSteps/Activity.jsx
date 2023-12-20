@@ -37,6 +37,7 @@ import {
   StylesForm,
   StylesLabelForm,
   StylesRadioBtn,
+  BackLinkwrapper,
 } from './Activity.styled';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -189,11 +190,13 @@ const SignUpActivity = ({ setStep }) => {
                 <StylesBtnForm type="submit">Sign Up</StylesBtnForm>
               </StylesForm>
 
-              <StyleBackLink
-                onClick={() => setStep((prevState) => (prevState -= 1))}
-              >
-                Back
-              </StyleBackLink>
+              <BackLinkwrapper>
+                <StyleBackLink
+                  onClick={() => setStep((prevState) => (prevState -= 1))}
+                >
+                  Back
+                </StyleBackLink>
+              </BackLinkwrapper>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>
