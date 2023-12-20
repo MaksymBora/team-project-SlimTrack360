@@ -11,14 +11,6 @@ const ProfileSettings = lazy(
 );
 const Recommented = lazy(() => import('../../Pages/Recommented/Recommented'));
 const Main = lazy(() => import('../../Pages/Main/Main'));
-const SignUpGoal = lazy(() => import('../../Pages/SignupGoal/SignupGoal'));
-const SignUpAge = lazy(() => import('../../Pages/SignupAge/SignupAge'));
-const SignUpParams = lazy(
-  () => import('../../Pages/SignupParams/SignupParams')
-);
-const SignUpActivity = lazy(
-  () => import('../../Pages/SignupActivity/SignupActivity')
-);
 
 export {
   Welcome,
@@ -29,9 +21,5 @@ export {
   ForgotPass,
   ProfileSettings,
   Recommented,
-  SignUpGoal,
-  SignUpAge,
-  SignUpParams,
-  SignUpActivity,
   Main,
 };

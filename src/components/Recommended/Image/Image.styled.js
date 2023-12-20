@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Picture = styled.img`
   margin-bottom: 24px;
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+  @media screen and (min-width: 834px) {
     margin-left: auto;
     margin-right: auto;
     max-width: 380px;

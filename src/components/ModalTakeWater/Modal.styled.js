@@ -10,8 +10,10 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  // opacity: 80%;
-  @media screen and (min-width: 768px) {
+  top: 67px
+  overflow-y: auto;
+
+  @media screen and (min-width: 834px) {
     top: 100px;
   }
   @media screen and (min-width: 1440px) {
@@ -19,16 +21,20 @@ export const Overlay = styled.div`
   }
 `;
 export const Content = styled.div`
-  position: relative;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
   z-index: 1000;
   width: 300px;
   height: 266px;
   border-radius: 12px;
-  background: rgba(15, 15, 15, 1);
-  padding: 16px 12px 30px 12px;
-  @media screen and (min-width: 768px) {
+  background: #0f0f0f;
+  padding: 24px 10px 24px 10px;
+  @media screen and (min-width: 834px) {
     width: 338px;
     height: 280px;
+    margin: 24px 40px;
   }
   @media screen and (min-width: 1440px) {
   }
@@ -36,41 +42,40 @@ export const Content = styled.div`
 
 export const Title = styled.h2`
   color: white;
+
   margin-bottom: 24px;
   font-size: 24px;
   font-weight: 500;
   line-height: 30px;
   letter-spacing: 0em;
   text-align: left;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     text-align: center;
+    font-size: 30px;
+    line-height: 36px;
   }
 `;
 export const Form = styled.form`
-display: flex;
-flex-direction: column;
-width: 276px;
-height: 226px;
+  display: flex;
+  flex-direction: column;
+  width: 276px;
+  height: 226px;
 
-@media screen and (min-width: 768px){
-  width: 258px;
-  height: 232px;
-  
- margin: auto;
- }
-@media screen and (min-width: 1440px){
-  top: 239px
-  left: 591px
-  }
+  @media screen and (min-width: 834px) {
+    width: 212px;
+    height: 232px;
+    margin: auto;
 `;
-export const Label = styled.label`
+export const Label = styled.p`
   color: #ffffff;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0em;
   text-align: left;
-  margin_bottom: 12px;
+  margin-bottom: 12px;
+ 
+  }
 `;
 
 export const Input = styled.input`
@@ -79,18 +84,59 @@ export const Input = styled.input`
   padding: 8px 10px 8px 10px;
   border-radius: 12px;
   border: 1px solid #e3ffa8;
+  background: inherit;
+  color: white;
+  @media screen and (min-width: 834px){
+    width: 212px;
+  }
+
+  &::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #b6b6b6;
+
+    
 `;
 export const Confirm = styled.button`
+  width: 276px;
   height: 36px;
   padding: 8px 10px 8px 10px;
   border-radius: 12px;
   gap: 10px;
-  background: rgba(227, 255, 168, 1);
+  background: #e3ffa8;
+  @media screen and (min-width: 834px) {
+    width: 212px;
+  }
 `;
 export const Cancel = styled.button`
+  width: 276px;
   height: 36px;
   padding: 8px 10px 8px 10px;
   border-radius: 12px;
   background: transparent;
   color: #b6b6b6;
+  margin-top: 8px;
+
+  @media screen and (min-width: 834px) {
+    width: 212px;
+    height: 36px;
+  }
+`;
+export const Question = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 276px;
+  height: 226px;
+
+  @media screen and (min-width: 834px) {
+    width: 212px;
+    height: 232px;
+    margin: auto;
+  }
+  @media screen and (min-width: 1440px) {
+  }
 `;

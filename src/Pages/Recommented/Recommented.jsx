@@ -29,7 +29,11 @@ const Recommented = () => {
       <InnerWrap>
         <Image />
         {isLoading && <Loader />}
-        {!isError ? <List /> : <p>Error ... </p>}
+        {!isError ? (
+          <List />
+        ) : (
+          <p>Oops...something went wrong! Try again later</p>
+        )}
       </InnerWrap>
     </Wrap>
   );

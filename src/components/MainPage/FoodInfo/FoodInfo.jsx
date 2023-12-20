@@ -15,18 +15,19 @@ const proteinBcg = 'rgba(255, 243, 183, 1)';
 const fatBcg = 'rgba(182, 182, 182, 1)';
 
 export const FoodInfo = () => {
-  let dailyCalories = 1700;
-  let diaryCalories = 1360;
+  let dailyCalories = 1700; //p редакс Auth
+
+  let diaryCalories = 1360; // redux diary
 
   let caloriesChartBcg = '#45FFBC';
 
-  let proteinSum = 119.5;
-  let carbonohidratesSum = 136;
-  let fatsSum = 44.8;
+  let proteinSum = 119.5; // redux diary
+  let carbonohidratesSum = 136; // redux diary
+  let fatsSum = 44.8; // redux diary
 
-  let carbsGoal = 170;
-  let protGoal = 135.5;
-  let fatsGoal = 56;
+  let carbsGoal = 170; //p редакс Auth
+  let protGoal = 135.5; //p редакс Auth
+  let fatsGoal = 56; //p редакс Auth
 
   return (
     <div>

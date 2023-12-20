@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading, selectError } from '../../Redux/waterIntake/selector';
 import ReactDOM from 'react-dom';
 import {
   Cancel,
@@ -10,47 +11,42 @@ import {
   Overlay,
   Title,
 } from './Modal.styled';
-import { addWater } from '../../API/apiWater';
+import { date } from '../../utils/dateToday';
+import { addWater } from '../../Redux/waterIntake/operations';
 
-export const Modal = ({ onClose }) => {
-  const [waterAmount, setWaterAmount] = useState('');
+export const ModalTakeWater = ({ onClose }) => {
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
-  const handleInputChange = (e) => {
-    setWaterAmount(e.target.value);
-  };
+  const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-    const value = parseFloat(waterAmount);
-
-    if (!isNaN(value)) {
-      const data = {
-        date: new Date().toISOString(),
-        water: value,
-      };
-
-      addWater(value);
-
-      console.log(data);
-      onClose();
-    } else {
-      console.error('Input is not a number');
-    }
+    const data = {
+      date,
+      value: Number(e.target.water.value),
+    };
+    dispatch(addWater(data));
   };
 
   return ReactDOM.createPortal(
     <Overlay onClick={onClose}>
       <Content onClick={(e) => e.stopPropagation()}>
         <Title>Add water intake</Title>
-        <Form onSubmit={handleSubmit}>
+
+        <Form onSubmit={handleOnSubmit}>
+
           <Label>How much water</Label>
           <Input
+            name="water"
             type="text"
-            placeholder="Enter mililiters"
-            value={waterAmount}
-            onChange={handleInputChange}
+            placeholder="Enter milliliters"
+            onChange={(e) => e.target.value}
           />
-          <Confirm type="submit">Confirm</Confirm>
+          <Confirm type="submit" disabled={isLoading}>
+            {isLoading ? 'Loading...' : 'Confirm'}
+          </Confirm>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
           <Cancel type="button" onClick={onClose}>
             Cancel
           </Cancel>
@@ -60,29 +56,3 @@ export const Modal = ({ onClose }) => {
     document.getElementById('modal-root')
   );
 };
-
-// Для сторінки, на якій відкривається модалка!!
-
-// const [isModalOpen, setIsModalOpen] = useState(false);
-
-// const openModal = () => setIsModalOpen(true);
-// const closeModal = () => setIsModalOpen(false);
-
-// useEffect(() => {
-//   const handleKeyPress = (event) => {
-//     if (event.key === 'Escape' && isModalOpen) {
-//       closeModal();
-//     }
-//   };
-
-//   document.addEventListener('keydown', handleKeyPress);
-
-//   return () => {
-//     document.removeEventListener('keydown', handleKeyPress);
-//   };
-// }, [isModalOpen]);
-
-{
-  /* <button type='button' onClick={openModal}></button>
-{isModalOpen && <Modal onClose={closeModal} />} */
-}
