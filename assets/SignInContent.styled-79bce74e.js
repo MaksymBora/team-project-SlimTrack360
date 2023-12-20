@@ -1,4 +1,4 @@
-import{s as n,t as i}from"./index-75429820.js";const p=n.p`
+import{s as n,t as i}from"./index-4dd84762.js";const p=n.p`
   color: ${i.color.primaryGrey};
   text-align: center;
   font-size: 14px;
