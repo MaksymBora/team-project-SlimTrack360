@@ -5,9 +5,9 @@ const instance = axios.create({
   baseURL: 'https://healthyhub-emsa.onrender.com/',
 });
 
-const setAuthHeader = (token) => {
-  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// const setAuthHeader = (token) => {
+//   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
 export const fetchFoodIntake = createAsyncThunk(
   'foodIntake/get',
@@ -18,7 +18,7 @@ export const fetchFoodIntake = createAsyncThunk(
       if (!persistToken) {
         return thunkAPI.rejectWithValue('No token');
       }
-      setAuthHeader(persistToken);
+      // setAuthHeader(persistToken);
       const response = await instance('api/user/food-intake');
 
       return response.data;
@@ -37,7 +37,7 @@ export const postFoodIntake = createAsyncThunk(
       if (!persistToken) {
         return thunkAPI.rejectWithValue('No token');
       }
-      setAuthHeader(persistToken);
+      // setAuthHeader(persistToken);
       const response = await instance.post('api/user/food-intake', credentials);
 
       return response.data;
@@ -57,7 +57,7 @@ export const updateFoodIntake = createAsyncThunk(
       if (!persistToken) {
         return thunkAPI.rejectWithValue('No token');
       }
-      setAuthHeader(persistToken);
+      // setAuthHeader(persistToken);
       const response = await instance.put(`api/user/food-intake/${ident}`, {
         type,
         product,

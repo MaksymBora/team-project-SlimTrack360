@@ -11,8 +11,20 @@ import {
   Recommented,
   Main,
 } from './components/Routing/routesImport';
+import { useDispatch } from 'react-redux';
+// import { selectIsLoggedIn } from './Redux/userAuth/selector';
+import { useEffect } from 'react';
+import { refreshUser } from './Redux/userAuth/operations';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>
