@@ -1,8 +1,14 @@
 // src\components\Dashboard\WaterGraph.jsx
 // import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { commonOptions, waterYAxisOptions } from './GraphsConfig';
+import {
+  commonOptions,
+  commonXAxisOptions,
+  waterYAxisOptions,
+} from './GraphsConfig';
 import { GraphContainer, ChartContainer } from './Styles/Graphs.styled';
+import './Styles/MobStyles/mob.Graph.css';
+import './Styles/TabletStyles/tab.Graph.css';
 import './Styles/Graph.css';
 
 const data = {
@@ -14,7 +20,7 @@ const data = {
       borderColor: '#e3ffa8',
       borderWidth: 1,
       pointBackgroundColor: '#e3ffa8',
-      pointRadius: 0,
+      pointRadius: 2,
       fill: false,
     },
   ],
@@ -22,8 +28,8 @@ const data = {
 
 const WaterGraph = () => {
   return (
-    <GraphContainer>
-      <div className="caloriesTitle">
+    <GraphContainer className="scroll-container">
+      <div className="waterTitle">
         <h2 className="graphTitle">Water</h2>
         <h3 className="graphValue">
           Average value: <span className="waterValue">1700 ml</span>
@@ -33,7 +39,7 @@ const WaterGraph = () => {
         <Line
           options={{
             ...commonOptions,
-            scales: { x: commonOptions.scales.x, y: waterYAxisOptions },
+            scales: { x: commonXAxisOptions, y: waterYAxisOptions },
           }}
           data={data}
         />

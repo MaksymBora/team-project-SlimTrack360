@@ -1,64 +1,96 @@
 /* --PC----стили для Dashboard\все 3 графика------ */
-.graph-line {
-  width: 672px;
-  background-color: #0f0f0f;
-  border-radius: 12px;
-}
-.caloriesTitle,
+@media screen and (min-width: 1440px) {
+  .scroll-container {
+    overflow-x: hidden;
+  }
+  .graph-line {
+    width: 676px;
+  }
+
+  .weight-graph-line {
+    background-color: #0f0f0f;
+    border-radius: 12px;
+    width: 1372px;
+  }
+  /* .caloriesTitle,
 .weightTitle {
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
-}
-.graphTitle {
-  font-weight: 400;
+} */
+  /* .graphTitle {
   font-size: 22px;
   line-height: 1.45;
-}
+} */
 
-.graphValue {
+  /* .graphValue {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.43;
   margin-left: 40px;
-}
-.caloriesValue,
+} */
+  /* .caloriesValue,
 .waterValue,
 .weightValue {
   color: #b6b6b6;
-}
+  margin-left: 8px;
+} */
+  .weightTitle,
+  .waterTitle {
+    margin-top: 0;
+  }
 
-.weightTitle {
-  margin-bottom: 6px;
-}
-.table-container {
-  display: block;
-  padding: 16px 33px 28px 13px;
-}
-.weight-graph-line {
-  background-color: #0f0f0f;
-  border-radius: 12px;
-}
-.upper-row,
-.lower-row {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-}
+  .table-container {
+    display: block;
+    padding: 16px 33px 28px 13px;
+    width: 1372px;
+  }
+  .weight-graph-line {
+    background-color: #0f0f0f;
+    border-radius: 12px;
+  }
+  .upper-row,
+  .lower-row {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+  }
 
-.table-cell.upper {
+  /* .table-cell.upper {
   font-size: 14px;
   line-height: 1.43;
   color: #ffffff;
-}
-.table-cell.lower {
+} */
+  /* .table-cell.lower {
   font-size: 10px;
   line-height: 1.4;
   color: #b6b6b6;
-}
+} */
 
-.table-cell {
+  /* .table-cell {
   text-align: center;
   padding: 8px;
   flex: 1;
+} */
+
+  /* Стили для всплывающей подсказки */
+  .chartjs-tooltip {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ddd;
+    color: #333;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+  }
+
+  /* Стили для заголовка всплывающей подсказки */
+  .chartjs-tooltip-header {
+    font-weight: bold;
+  }
+
+  /* Стили для значения всплывающей подсказки */
+  .chartjs-tooltip-body {
+    color: #8d1818;
+  }
 }

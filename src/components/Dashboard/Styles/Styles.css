@@ -1,62 +1,55 @@
 /* -------------------------Стили для \Dashboard\SelectorContainer.jsx -----------------------*/
-.monthsArrows {
-  /* background-color: brown; */
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  gap: 12px;
-  align-items: center;
-}
-.IconArrowLeft {
+@media screen and (min-width: 1440px) {
+  .monthsArrows {
+    gap: 12px;
+  }
+  /* .IconArrowLeft {
   fill: #666;
   stroke: #000;
   stroke-width: 3;
-}
-.monthTitle {
-  /* font-family: 'Poppins';
-    font-style: normal; */
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 36px;
-  color: #ffffff;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.IconArrowUp {
+} */
+  .monthTitle {
+    font-size: 30px;
+    line-height: 1.2;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  /* .IconArrowUp {
   fill: #666;
   padding-top: 6px;
-}
+} */
 
-.IconArrowUp:hover,
-.IconArrowLeft:hover {
+  /* .IconArrowUp svg:hover,
+.IconArrowLeft svg:hover {
   cursor: pointer;
   fill: #e3ffa8;
-}
+} */
 
-.selectedMonth {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  padding-top: 15px;
-}
-.monthSelector {
+  .selectedMonth {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    padding-top: 15px;
+  }
+  /* .monthSelector {
   position: relative;
-}
-.dropdown {
-  position: absolute;
-  top: 100%; /* Разместить список под иконкой */
-  left: -1110px;
-}
+} */
+  .dropdown {
+    left: -1100px;
+  }
 
-.monthOption {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
+  /* .monthOption {
+  padding: 8px 0px 0px 16px;
   font-size: 14px;
   line-height: 1.43;
   color: #b6b6b6;
-}
-.monthOption:hover {
-  color: #e3ffa8; /* Цвет текста при hover */
+} */
+  /* .monthOption:hover {
+  color: #e3ffa8; 
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.12);
+} */
+  /* .monthOption:last-child{
+  margin-bottom: 8px;
+} */
 }
 /* --------------------------------------------------------------------------------- */

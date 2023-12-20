@@ -1,0 +1,13 @@
+@media screen and (min-width: 834px) {
+  .graph-line {
+    width: 713px;
+  }
+  .weight-graph-line {
+    width: 780px;
+  }
+
+  .scroll-container {
+    overflow-x: hidden;
+    background-color: brown;
+  }
+}

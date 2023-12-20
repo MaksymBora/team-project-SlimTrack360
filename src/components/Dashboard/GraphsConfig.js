@@ -77,6 +77,7 @@ export const waterYAxisOptions = {
 
 export const commonOptions = {
   responsive: true,
+  maintainAspectRatio: false,
   scales: {
     x: commonXAxisOptions,
     y: caloriesYAxisOptions, // По умолчанию используем для Calories графика
@@ -88,7 +89,9 @@ export const commonOptions = {
         label: (context) => {
           const label = context.dataset.label || '';
           const value = context.parsed.y;
-          return `${label}: ${value} ${getTooltipUnit(label)}`;
+          console.log('Label:', label);
+          console.log('Value:', value);
+          return `${getTooltipLabel(label)} ${value} ${getTooltipUnit(label)}`;
         },
       },
     },
@@ -101,6 +104,16 @@ function getTooltipUnit(label) {
     return 'calories';
   } else if (label === 'Water') {
     return 'milliliters';
+  }
+  // Добавьте дополнительные проверки для других графиков, если необходимо
+  return '';
+}
+// Добавим функцию, которая возвращает правильную метку для всплывающей подсказки
+function getTooltipLabel(label) {
+  if (label === 'Calories') {
+    return 'Calories';
+  } else if (label === 'Water') {
+    return 'Water';
   }
   // Добавьте дополнительные проверки для других графиков, если необходимо
   return '';

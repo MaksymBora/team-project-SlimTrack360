@@ -1,7 +1,19 @@
-.caloriesWaterGraphs {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  justify-content: center;
-  margin-bottom: 20px;
+@media screen and (min-width: 320px) {
+  .caloriesWaterGraphs {
+    display: block;
+  }
+}
+@media screen and (min-width: 834px) {
+  .caloriesWaterGraphs {
+    display: block;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .caloriesWaterGraphs {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 }

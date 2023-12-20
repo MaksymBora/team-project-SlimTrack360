@@ -1,0 +1,67 @@
+.monthsArrows {
+  /* background-color: brown; */
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+}
+
+.IconArrowLeft svg {
+  width: 16px;
+  margin-left: 10px;
+  fill: #666;
+  stroke: #000;
+  stroke-width: 3;
+}
+.IconArrowUp svg {
+  fill: #666;
+  padding-top: 6px;
+}
+
+.IconArrowUp svg:hover,
+.IconArrowLeft svg:hover {
+  cursor: pointer;
+  fill: #e3ffa8;
+}
+.selectedMonth {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.38;
+  margin-right: 10px;
+}
+
+.monthTitle {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.25;
+  color: #ffffff;
+}
+.monthSelector {
+  position: relative;
+}
+.dropdown {
+  position: absolute;
+  top: 100%; /* Разместить список под иконкой */
+  left: -220px;
+  width: 212px;
+  margin-top: 4px;
+  background: #0f0f0f;
+  border-radius: 12px;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+}
+
+.monthOption {
+  padding: 8px 0px 0px 16px;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #b6b6b6;
+}
+.monthOption:hover {
+  color: #e3ffa8; /* Цвет текста при hover */
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.monthOption:last-child {
+  margin-bottom: 8px;
+}
