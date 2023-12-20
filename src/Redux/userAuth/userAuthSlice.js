@@ -41,6 +41,24 @@ const handleRefreshPending = (state) => {
   state.isRefreshing = true;
 };
 
+// -------- Registration ----------- //
+
+// const handleRegistrationPending = (state) => {
+//   state.isRefreshing = true;
+// };
+
+// const handleRegistrationRejected = (state, { payload }) => {
+//   state.isLoggedIn = false;
+//   state.isRefreshing = false;
+//   state.token = null;
+//   state.error = payload;
+// };
+
+// const handleRegistrationFullfilled = (state, { payload }) => {
+//   state.isLoading = false;
+//   state.isLoggedIn = false;
+// };
+
 const initialState = {
   user: {
     name: null,

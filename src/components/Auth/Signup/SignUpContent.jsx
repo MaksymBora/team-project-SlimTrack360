@@ -1,9 +1,10 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { basicSchema } from './schemas';
+
 import {
   Div,
-  // Form,
   Input,
   MainText,
   Subtitle,
@@ -17,34 +18,40 @@ import {
   Span,
   Form,
 } from './SignUpContent.styled';
-import { basicSchema } from './schemas';
 
 export const SignUpContent = ({ setStep }) => {
   const [showPassword, setShowPassword] = useState(false);
   // const [showRepeatPassword, setShowRepeatPassword] = useState(false);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
 
-    const data = {
-      name: form.elements.name.value,
-      email: form.elements.email.value,
-      password: form.elements.password.value,
-    };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
 
-    localStorage.setItem('reg', JSON.stringify(data));
+  //   const data = {
+  //     name: form.elements.name.value,
+  //     email: form.elements.email.value,
+  //     password: form.elements.password.value,
+  //   };
 
-    setStep((prevState) => (prevState += 1));
-  };
+  //   setStep((prevState) => (prevState += 1));
+  // };
 
-  const { values, errors, touched, handleBlur, handleChange } = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-    },
-    validationSchema: basicSchema,
-  });
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: {
+        name: '',
+        email: '',
+        password: '',
+      },
+      onSubmit: (values) => {
+        const jsonData = JSON.stringify(values);
+        sessionStorage.setItem('authReg', jsonData);
+
+        setStep((prevState) => (prevState += 1));
+      },
+      validationSchema: basicSchema,
+    });
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };

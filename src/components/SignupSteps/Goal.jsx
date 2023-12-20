@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
 import goalsDesc1xPng from '../../assets/imgGoal/goals-desctop-1x-min.png';
 import goalsDesc2xPng from '../../assets/imgGoal/goals-desctop-2x-min.png';
 import goalsDesc3xPng from '../../assets/imgGoal/goals-desctop-3x-min.png';
@@ -46,11 +45,16 @@ const SignUpGoal = ({ setStep }) => {
 
   const formik = useFormik({
     initialValues: {
-      goal: 'lose fat',
+      goal: 'Lose Fat',
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      const retrievedData = sessionStorage.getItem('authReg');
+      const parsedData = JSON.parse(retrievedData);
+      parsedData.goal = values.goal;
+      const updatedJsonData = JSON.stringify(parsedData);
+      sessionStorage.setItem('authReg', updatedJsonData);
+
       setStep((prevState) => (prevState += 1));
     },
   });

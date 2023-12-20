@@ -68,7 +68,12 @@ const SignUpParams = ({ setStep }) => {
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      const retrievedData = sessionStorage.getItem('authReg');
+      const parsedData = JSON.parse(retrievedData);
+      parsedData.height = values.height;
+      parsedData.currentWeight = values.weight;
+      const updatedJsonData = JSON.stringify(parsedData);
+      sessionStorage.setItem('authReg', updatedJsonData);
       setStep((prevState) => (prevState += 1));
     },
   });
