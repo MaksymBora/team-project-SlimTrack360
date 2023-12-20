@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme } from '../../styles/index';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 300px;
@@ -106,8 +105,9 @@ export const StyleSubtitle = styled.h2`
   }
 `;
 
-export const StyleBackLink = styled(Link)`
+export const StyleBackLink = styled.button`
   color: ${theme.color.primaryGrey};
+  background-color: transparent;
   font-family: inherit;
   font-size: 14px;
   line-height: 1.42;

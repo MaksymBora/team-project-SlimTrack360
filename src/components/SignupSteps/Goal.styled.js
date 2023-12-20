@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme } from '../../styles/index';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 300px;
@@ -101,24 +100,6 @@ export const StyleSubtitle = styled.h1`
   }
   @media screen and (min-width: 1440px) {
     text-align: left;
-  }
-`;
-
-export const StyleBackLink = styled(Link)`
-  color: ${theme.color.primaryGrey};
-  font-family: inherit;
-  font-size: 14px;
-  line-height: 1.42;
-  display: block;
-  text-align: center;
-  transition: ${theme.transition.main};
-  &:hover,
-  &:focus {
-    color: ${theme.color.primaryGreenLite};
-  }
-
-  @media screen and (min-width: 1440px) {
-    text-align: start;
   }
 `;
 

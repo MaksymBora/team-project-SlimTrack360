@@ -23,7 +23,6 @@ import goalsMob3xWebp from '../../assets/imgGoal/goals-mobile-3x-min.webp';
 import {
   Container,
   DescWrapper,
-  StyleBackLink,
   StyleBtnColumn,
   StylePicture,
   StyleSubtitle,
@@ -37,6 +36,7 @@ import {
   StylesLabelForm,
   StylesRadioBtn,
 } from './Goal.styled';
+import { useEffect } from 'react';
 
 const SignUpGoal = ({ setStep }) => {
   const validationSchema = Yup.object().shape({
@@ -57,6 +57,18 @@ const SignUpGoal = ({ setStep }) => {
 
       setStep((prevState) => (prevState += 1));
     },
+  });
+
+  const onLoad = () => {
+    const savedGoal = sessionStorage.getItem('authReg');
+    if (savedGoal) {
+      const parsedGoal = JSON.parse(savedGoal);
+      formik.setFieldValue('goal', parsedGoal.goal);
+    }
+  };
+
+  useEffect(() => {
+    onLoad();
   });
 
   return (
@@ -144,7 +156,6 @@ const SignUpGoal = ({ setStep }) => {
                 </StylesRadioBtn>
                 <StylesBtnForm type="submit">Next</StylesBtnForm>
               </StylesForm>
-              <StyleBackLink>Back</StyleBackLink>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>

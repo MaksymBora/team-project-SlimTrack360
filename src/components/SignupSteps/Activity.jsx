@@ -42,7 +42,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../Redux/userAuth/operations';
 
-const SignUpActivity = () => {
+const SignUpActivity = ({ setStep }) => {
   const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
@@ -189,7 +189,11 @@ const SignUpActivity = () => {
                 <StylesBtnForm type="submit">Sign Up</StylesBtnForm>
               </StylesForm>
 
-              <StyleBackLink>Back</StyleBackLink>
+              <StyleBackLink
+                onClick={() => setStep((prevState) => (prevState -= 1))}
+              >
+                Back
+              </StyleBackLink>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>

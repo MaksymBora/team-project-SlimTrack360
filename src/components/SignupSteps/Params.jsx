@@ -192,7 +192,11 @@ const SignUpParams = ({ setStep }) => {
                 </WeightInputWrapper>
                 <StylesBtnForm type="submit">Next</StylesBtnForm>
               </StylesForm>
-              <StyleBackLink>Back</StyleBackLink>
+              <StyleBackLink
+                onClick={() => setStep((prevState) => (prevState -= 1))}
+              >
+                Back
+              </StyleBackLink>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>
