@@ -38,10 +38,12 @@ export const resetWater = createAsyncThunk(
   'waterIntake/reset',
   async (date, thunkAPI) => {
     try {
-      const response = await axios.post('user/water-intake', {
-        date,
-        value: 0,
-      });
+      const response = await waterDb.delete(
+        `user/water-intake?date=${date}&value=0`,
+        {
+          headers: options.headers,
+        }
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
