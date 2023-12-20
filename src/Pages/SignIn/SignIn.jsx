@@ -14,7 +14,7 @@ import _1MobWebP from '../SignUp/images/Illustration_mob@1x.webp';
 import _2MobWebP from '../SignUp/images/Illustration_mob@2x.webp';
 import { Div, Img, Wrapper } from '../SignUp/SignUp.styled';
 import Container from '../SignUp/Container/Container';
-import { SignInContent } from '../../components/Auth/SignIn/SignInContent';
+import { SignInContent } from '../../components/Auth/Signin/SignInContent.jsx';
 
 const SignIn = () => {
   return (
