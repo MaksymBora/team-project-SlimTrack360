@@ -21,23 +21,22 @@ import {
 } from './SettingsFormStyled';
 import { selectUser } from '../../../Redux/userAuth/selector';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUserSettings } from '../../../Redux/userAuth/operations';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { updateUserParams } from '../../../Redux/userAuth/operations';
 
 const SettingsForm = () => {
   const dispatch = useDispatch();
-  const { name, levelActivity, age, sex, height, currentWeight, avatarUrl } =
-    useSelector(selectUser);
+  const user = useSelector(selectUser);
 
   const initialData = {
-    levelActivity: levelActivity || 1,
-    age: age || 18,
-    sex: sex || 'male',
-    height: height || 185,
-    name: name || 'Name',
-    currentWeight: currentWeight || 65,
-    avatarUrl,
+    levelActivity: user?.levelActivity || 1,
+    age: user?.age || 18,
+    sex: user?.sex || 'male',
+    height: user?.height || 185,
+    name: user?.name || 'Name',
+    currentWeight: user?.currentWeight || 65,
+    avatarUrl: user?.avatarUrl,
   };
 
   const [newAvatar, setNewAvatar] = useState(null);
@@ -45,20 +44,7 @@ const SettingsForm = () => {
   const formik = useFormik({
     initialValues: initialData,
     onSubmit: async (values) => {
-      const formData = new FormData();
-
-      formData.append('name', values?.name);
-      formData.append('age', values?.age);
-      formData.append('sex', values?.sex);
-      formData.append('height', values?.height);
-      formData.append('currentWeight', values?.currentWeight);
-      formData.append('levelActivity', Number(values?.levelActivity));
-
-      if (newAvatar) {
-        formData.append('avatar', newAvatar);
-      }
-
-      dispatch(updateUserSettings(formData));
+      dispatch(updateUserParams({ values, newAvatar }));
       setNewAvatar(null);
     },
 
@@ -97,9 +83,9 @@ const SettingsForm = () => {
         <SettingsFormField value="height" formik={formik} />
 
         <SettingsFormField
-          value="currentWeight"
           label="weight"
           formik={formik}
+          value={'currentWeight'}
         />
 
         <ActivityBoxField>

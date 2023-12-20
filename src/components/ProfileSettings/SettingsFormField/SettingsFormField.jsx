@@ -1,7 +1,7 @@
 import { FormField, FormFieldTitle } from '../SettingsForm/SettingsFormStyled';
 import { ErrorText, FormInput, FormInputWrap } from './SettingsFormFieldStyled';
 
-const SettingsFormField = ({ value, formik, label }) => {
+const SettingsFormField = ({ label, value, formik }) => {
   return (
     <FormField>
       <FormFieldTitle htmlFor={value}>{`Your ${
@@ -11,7 +11,7 @@ const SettingsFormField = ({ value, formik, label }) => {
         <FormInput
           id={value}
           name={value}
-          type={'text'}
+          type={value === 'name' ? 'text' : 'number'}
           value={formik.values[value]}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
