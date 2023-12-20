@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { Options } from './SignInContent.styled';
 import { LinkSignup, Paragraph } from './SignInContent.styled';
-import { basicSchema } from '../Auth/SignUp/schemas';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../Redux/userAuth/operations';
@@ -20,6 +19,7 @@ import {
   Attention,
   Span,
 } from '../SignUp/SignUpContent.styled';
+import { basicSchema } from '../Auth/SignUp/schemas';
 
 export const SignInContent = () => {
   const [showPassword, setShowPassword] = useState(false);
