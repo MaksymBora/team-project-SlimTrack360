@@ -90,32 +90,42 @@ export const forgotPassword = createAsyncThunk(
 );
 
 export const updateUserParams = createAsyncThunk(
-  'user/update',
+  'auth/updateUserParams',
   async (values, thunkAPI) => {
+    const file = ''; // file type
     try {
-      if (values.avatarURL.startsWith('blob:')) {
-        const file = await fetch(values.avatarURL).then((res) => res.blob());
+      const formData = new FormData();
+      formData.append('avatarUrl', file);
+      formData.append('name', values.name);
+      formData.append('age', values.age);
+      formData.append('gender', values.gender);
+      formData.append('currentWeight', values.weight);
+      formData.append('height', values.height);
+      formData.append('levelActivity', values.activity);
 
-        const formData = new FormData();
-        formData.append('avatarUrl', file);
-        formData.append('name', values.name);
-        formData.append('age', values.age);
-        formData.append('gender', values.gender);
-        formData.append('currentWeight', values.weight);
-        formData.append('height', values.height);
-        formData.append('levelActivity', values.activity);
+      const { data } = await axios.put('/user/update', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
-        const { data } = await axios.put('/user/update', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
 
-        return data;
-      } else {
-        const response = await axios.put('/user/update', values);
-        return response.data;
-      }
+// передаємо {
+//     "date": "2023-12-19",
+//     "currentWeight": 120
+// }
+export const udpdateWeight = createAsyncThunk(
+  'auth/updateWeight',
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await axios.post('user/weight', credentials);
+      return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
