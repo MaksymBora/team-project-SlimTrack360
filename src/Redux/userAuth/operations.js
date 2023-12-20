@@ -88,3 +88,36 @@ export const forgotPassword = createAsyncThunk(
     }
   }
 );
+
+export const updateUserParams = createAsyncThunk(
+  'user/update',
+  async (values, thunkAPI) => {
+    try {
+      if (values.avatarURL.startsWith('blob:')) {
+        const file = await fetch(values.avatarURL).then((res) => res.blob());
+
+        const formData = new FormData();
+        formData.append('avatarUrl', file);
+        formData.append('name', values.name);
+        formData.append('age', values.age);
+        formData.append('gender', values.gender);
+        formData.append('currentWeight', values.weight);
+        formData.append('height', values.height);
+        formData.append('levelActivity', values.activity);
+
+        const { data } = await axios.put('/user/update', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+
+        return data;
+      } else {
+        const response = await axios.put('/user/update', values);
+        return response.data;
+      }
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

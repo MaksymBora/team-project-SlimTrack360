@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { forgotPassword, logIn, logOut, refreshUser } from './operations';
+import {
+  forgotPassword,
+  logIn,
+  logOut,
+  refreshUser,
+  updateUserParams,
+} from './operations';
 
 const handlePending = (state) => {
   state.error = null;
@@ -91,6 +97,22 @@ const handleForgotPasswordPending = (state) => {
   state.isRefreshing = true;
 };
 
+// -------- Update User Params ----------- //
+
+const handleUpdateParamsRejected = (state, { payload }) => {
+  state.isRefreshing = false;
+  state.error = payload;
+};
+
+const handleUpdateParamsFullfilled = (state, { payload }) => {
+  state.isRefreshing = false;
+  state.user = payload;
+};
+
+const handleUpdateParamsPending = (state) => {
+  state.isRefreshing = true;
+};
+
 const initialState = {
   user: {
     name: null,
@@ -131,7 +153,10 @@ const userAuthSlice = createSlice({
       .addCase(logOut.rejected, handleLogoutRejected)
       .addCase(forgotPassword.pending, handleForgotPasswordPending)
       .addCase(forgotPassword.fulfilled, handleForgotPasswordFullfilled)
-      .addCase(forgotPassword.rejected, handleForgotPasswordRejected);
+      .addCase(forgotPassword.rejected, handleForgotPasswordRejected)
+      .addCase(updateUserParams.pending, handleUpdateParamsPending)
+      .addCase(updateUserParams.fulfilled, handleUpdateParamsFullfilled)
+      .addCase(updateUserParams.rejected, handleUpdateParamsRejected);
   },
 });
 
