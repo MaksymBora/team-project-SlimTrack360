@@ -19,47 +19,40 @@ import {
   ActivityBoxField,
   ActivitiesList,
 } from './SettingsFormStyled';
-import { ToastContainer, toast } from 'react-toastify';
+import { selectUser } from '../../../Redux/userAuth/selector';
+import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-const initialData = {
-  levelActivity: '1.55',
-  age: 22,
-  sex: 'female',
-  height: 165,
-  name: 'Olena',
-  currentWeight: 85,
-  avatarUrl: null,
-};
+import { updateUserParams } from '../../../Redux/userAuth/operations';
 
 const SettingsForm = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
+  const initialData = {
+    levelActivity: user?.levelActivity || 1,
+    age: user?.age || 18,
+    sex: user?.sex || 'male',
+    height: user?.height || 185,
+    name: user?.name || 'Name',
+    currentWeight: user?.currentWeight || 65,
+    avatarUrl: user?.avatarUrl,
+  };
+
   const [newAvatar, setNewAvatar] = useState(null);
 
   const formik = useFormik({
     initialValues: initialData,
-    onSubmit: (values) => {
-      console.log('values', values);
-      handleUpload();
-      toast.success('Settings changed successfully');
+    onSubmit: async (values) => {
+      dispatch(updateUserParams({ values, newAvatar }));
+      setNewAvatar(null);
     },
+
     validationSchema: settingsFormSchema,
   });
 
   const handleSelect = (file) => {
     setNewAvatar(file);
-  };
-
-  const handleUpload = async () => {
-    try {
-      if (!newAvatar) {
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append('avatarUrl', newAvatar);
-    } catch (error) {
-      console.log('error', error);
-    }
   };
 
   return (
@@ -69,7 +62,11 @@ const SettingsForm = () => {
 
         <FormField>
           <FormFieldTitle>Your photo</FormFieldTitle>
-          <UploadAvatar handleSelect={handleSelect} formik={formik} />
+          <UploadAvatar
+            handleSelect={handleSelect}
+            avatar={formik.values.avatarUrl}
+            text={formik.values.name?.charAt(0)?.toUpperCase()}
+          />
         </FormField>
 
         <SettingsFormField value="age" formik={formik} />
@@ -85,7 +82,11 @@ const SettingsForm = () => {
 
         <SettingsFormField value="height" formik={formik} />
 
-        <SettingsFormField value="currentWeight" formik={formik} />
+        <SettingsFormField
+          label="weight"
+          formik={formik}
+          value={'currentWeight'}
+        />
 
         <ActivityBoxField>
           <FormFieldTitle>Your activity</FormFieldTitle>

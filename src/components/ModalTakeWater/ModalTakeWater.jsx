@@ -33,7 +33,9 @@ export const ModalTakeWater = ({ onClose }) => {
     <Overlay onClick={onClose}>
       <Content onClick={(e) => e.stopPropagation()}>
         <Title>Add water intake</Title>
+
         <Form onSubmit={handleOnSubmit}>
+
           <Label>How much water</Label>
           <Input
             name="water"
