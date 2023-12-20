@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const fetchFoodIntake = createAsyncThunk(
-  'foodIntake/get',
+  'foodIntake/fetch',
   async (_, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
@@ -11,7 +11,9 @@ export const fetchFoodIntake = createAsyncThunk(
         return thunkAPI.rejectWithValue('No token');
       }
 
+
       const response = await axios.post('api/user/food-intake');
+
 
       return response.data;
     } catch (error) {
