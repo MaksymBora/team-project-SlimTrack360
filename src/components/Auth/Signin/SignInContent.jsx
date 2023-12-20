@@ -16,10 +16,11 @@ import {
 } from '../Signup/SignUpContent.styled';
 import { Options } from './SignInContent.styled';
 import { LinkSignup, Paragraph } from './SignInContent.styled';
-import { basicSchema } from '../SignUp/schemas';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../Redux/userAuth/operations';
+import { basicSchema } from '../SignUp/schemas';
+
 export const SignInContent = () => {
   const [showPassword, setShowPassword] = useState(false);
 
