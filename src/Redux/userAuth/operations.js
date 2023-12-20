@@ -76,3 +76,15 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const forgotPassword = createAsyncThunk(
+  'auth/forgot-password',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('auth/forgot-password', credentials);
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

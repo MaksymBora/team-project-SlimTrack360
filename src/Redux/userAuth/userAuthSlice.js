@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, refreshUser } from './operations';
+import { forgotPassword, logIn, logOut, refreshUser } from './operations';
 
 const handlePending = (state) => {
   state.error = null;
@@ -59,6 +59,38 @@ const handleRefreshPending = (state) => {
 //   state.isLoggedIn = false;
 // };
 
+// -------- Log Out ----------- //
+
+const handleLogoutRejected = (state, { payload }) => {
+  state.isLoggedIn = true;
+  state.isRefreshing = false;
+  state.error = payload;
+};
+
+const handleLogoutFullfilled = (state) => {
+  state.token = null;
+  state.isRefreshing = false;
+  state.isLoggedIn = false;
+};
+
+const handleLogoutPending = (state) => {
+  state.isRefreshing = true;
+};
+
+// -------- Log Out ----------- //
+const handleForgotPasswordRejected = (state, { payload }) => {
+  state.isRefreshing = false;
+  state.error = payload;
+};
+
+const handleForgotPasswordFullfilled = (state) => {
+  state.isRefreshing = false;
+};
+
+const handleForgotPasswordPending = (state) => {
+  state.isRefreshing = true;
+};
+
 const initialState = {
   user: {
     name: null,
@@ -93,7 +125,13 @@ const userAuthSlice = createSlice({
       .addCase(logIn.rejected, handleRejected)
       .addCase(refreshUser.pending, handleRefreshPending)
       .addCase(refreshUser.fulfilled, handleRefreshFullfilled)
-      .addCase(refreshUser.rejected, handleRefreshRejected);
+      .addCase(refreshUser.rejected, handleRefreshRejected)
+      .addCase(logOut.pending, handleLogoutPending)
+      .addCase(logOut.fulfilled, handleLogoutFullfilled)
+      .addCase(logOut.rejected, handleLogoutRejected)
+      .addCase(forgotPassword.pending, handleForgotPasswordPending)
+      .addCase(forgotPassword.fulfilled, handleForgotPasswordFullfilled)
+      .addCase(forgotPassword.rejected, handleForgotPasswordRejected);
   },
 });
 

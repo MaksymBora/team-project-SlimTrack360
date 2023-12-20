@@ -23,7 +23,6 @@ import { SignUpContent } from '../../components/Auth/Signup/SignUpContent';
 
 const SignUp = () => {
   const [step, setStep] = useState(1);
-  console.log(step);
 
   return (
     <>

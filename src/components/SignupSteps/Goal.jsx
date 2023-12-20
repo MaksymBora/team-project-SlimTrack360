@@ -36,7 +36,6 @@ import {
   StylesLabelForm,
   StylesRadioBtn,
 } from './Goal.styled';
-import { useEffect } from 'react';
 
 const SignUpGoal = ({ setStep }) => {
   const validationSchema = Yup.object().shape({
@@ -57,18 +56,6 @@ const SignUpGoal = ({ setStep }) => {
 
       setStep((prevState) => (prevState += 1));
     },
-  });
-
-  const onLoad = () => {
-    const savedGoal = sessionStorage.getItem('authReg');
-    if (savedGoal) {
-      const parsedGoal = JSON.parse(savedGoal);
-      formik.setFieldValue('goal', parsedGoal.goal);
-    }
-  };
-
-  useEffect(() => {
-    onLoad();
   });
 
   return (
@@ -123,7 +110,7 @@ const SignUpGoal = ({ setStep }) => {
                       name="goal"
                       value="Lose Fat"
                       onChange={formik.handleChange}
-                      defaultChecked
+                      checked={formik.values.goal === 'Lose Fat'}
                     />
                     <StylesLabelForm htmlFor="lose_fat">
                       Lose Fat
@@ -136,6 +123,7 @@ const SignUpGoal = ({ setStep }) => {
                       name="goal"
                       value="Maintain"
                       onChange={formik.handleChange}
+                      checked={formik.values.goal === 'Maintain'}
                     />
                     <StylesLabelForm htmlFor="maintain">
                       Maintain
@@ -148,6 +136,7 @@ const SignUpGoal = ({ setStep }) => {
                       name="goal"
                       value="Gain Muscle"
                       onChange={formik.handleChange}
+                      checked={formik.values.goal === 'Gain Muscle'}
                     />
                     <StylesLabelForm htmlFor="gain_muscle">
                       Gain Muscle
