@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import {
   forgotPassword,
   logIn,
@@ -103,11 +104,13 @@ const handleForgotPasswordPending = (state) => {
 const handleUpdateParamsRejected = (state, { payload }) => {
   state.isRefreshing = false;
   state.error = payload;
+  toast.error(payload);
 };
 
 const handleUpdateParamsFullfilled = (state, { payload }) => {
   state.isRefreshing = false;
   state.user = payload;
+  toast.success('Settings changed successfully');
 };
 
 const handleUpdateParamsPending = (state) => {

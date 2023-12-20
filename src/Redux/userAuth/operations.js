@@ -91,17 +91,21 @@ export const forgotPassword = createAsyncThunk(
 
 export const updateUserParams = createAsyncThunk(
   'auth/updateUserParams',
-  async (values, thunkAPI) => {
-    const file = ''; // file type
+  async ({ values, newAvatar }, thunkAPI) => {
+    // const file = ''; // file type
     try {
       const formData = new FormData();
-      formData.append('avatarUrl', file);
-      formData.append('name', values.name);
-      formData.append('age', values.age);
-      formData.append('gender', values.gender);
-      formData.append('currentWeight', values.weight);
-      formData.append('height', values.height);
-      formData.append('levelActivity', values.activity);
+
+      formData.append('name', values?.name);
+      formData.append('age', values?.age);
+      formData.append('sex', values?.sex);
+      formData.append('height', values?.height);
+      formData.append('currentWeight', values?.currentWeight);
+      formData.append('levelActivity', Number(values?.levelActivity));
+
+      if (newAvatar) {
+        formData.append('avatar', newAvatar);
+      }
 
       const { data } = await axios.put('/user/update', formData, {
         headers: {

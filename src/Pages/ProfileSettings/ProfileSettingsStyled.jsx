@@ -7,7 +7,7 @@ const Section = styled.section`
   padding-top: 16px;
   padding-bottom: 40px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     padding-top: 24px;
     padding-bottom: 174px;
   }
@@ -23,14 +23,13 @@ const Container = styled.div`
   max-width: 300px;
   margin: 0 auto;
 
-  @media screen and (min-width: 768px) {
-    max-width: 780px;
-    padding: 0 6px;
+  @media screen and (min-width: 834px) {
+    max-width: 800px;
+    padding: 0 10px;
   }
 
   @media screen and (min-width: 1440px) {
     max-width: 1372px;
-    padding: 0 10px;
   }
 `;
 
@@ -40,7 +39,7 @@ const Title = styled.h2`
   line-height: 1.25;
   margin-bottom: 16px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     font-size: 30px;
     line-height: 1.2;
     margin-bottom: 20px;

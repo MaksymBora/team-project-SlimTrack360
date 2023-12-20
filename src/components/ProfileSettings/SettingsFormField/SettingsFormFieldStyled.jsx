@@ -1,16 +1,7 @@
 import styled from 'styled-components';
 
-const ErrorText = styled.p`
-  font-size: 12px;
-  line-height: 1.17;
-  color: #e74a3b;
-  padding-left: 10px;
-`;
-
 const FormInputWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  position: relative;
 `;
 
 const FormInput = styled.input.attrs((props) => ({
@@ -35,9 +26,20 @@ const FormInput = styled.input.attrs((props) => ({
     outline: none;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 212px;
   }
+`;
+
+const ErrorText = styled.p`
+  font-size: 12px;
+  line-height: 1.17;
+  color: #e74a3b;
+  padding-left: 10px;
+
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
 `;
 
 export { ErrorText, FormInputWrap, FormInput };

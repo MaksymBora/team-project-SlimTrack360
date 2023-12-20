@@ -1,17 +1,18 @@
 import { useRef, useState } from 'react';
 import {
   AvatarBox,
+  DefaultImage,
   OriginalFilePicker,
   PickButton,
   UploadPhotoBox,
 } from './UploadAvatarStyled';
 import Icon from 'src/components/common/Icon';
-import imgMob2x from 'src/assets/images/settings/setMob@2x.png';
+import { useTheme } from 'styled-components';
 
-const UploadAvatar = ({ handleSelect }) => {
+const UploadAvatar = ({ handleSelect, avatar, text }) => {
   const [uploadedAvatar, setUploadedAvatar] = useState(null);
-
   const filePicker = useRef();
+  const theme = useTheme();
 
   const handleChange = (e) => {
     setUploadedAvatar(e.target.files[0]);
@@ -25,18 +26,31 @@ const UploadAvatar = ({ handleSelect }) => {
   return (
     <div>
       <UploadPhotoBox>
-        <AvatarBox>
-          <img src={imgMob2x} width="36px" height="36px" alt="Profile Photo" />
-        </AvatarBox>
+        {avatar ? (
+          <AvatarBox $isDefault={false}>
+            <img
+              src={
+                uploadedAvatar ? URL.createObjectURL(uploadedAvatar) : avatar
+              }
+              alt="Profile Photo"
+            />
+          </AvatarBox>
+        ) : (
+          <AvatarBox $isDefault={true}>
+            <DefaultImage>{text}</DefaultImage>
+          </AvatarBox>
+        )}
 
         <PickButton type="button" onClick={handlePick}>
           <Icon
             name={'icon-direct-inbox'}
             width={'16px'}
             height={'16px'}
-            fill={'#E3FFA8'}
+            fill={theme.color.primaryGreenLite}
           />
-          {uploadedAvatar ? uploadedAvatar.name : 'Download new photo'}
+          <span>
+            {uploadedAvatar ? uploadedAvatar.name : 'Download new photo'}
+          </span>
         </PickButton>
       </UploadPhotoBox>
 
