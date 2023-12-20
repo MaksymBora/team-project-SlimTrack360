@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme } from '../../../../styles/index';
-// import { ReactComponent as Icon } from '../../../../assets/images/icons/add.svg';
 
 export const CardWrap = styled.div`
   @media screen and (min-width: 834px) {
@@ -32,7 +31,7 @@ export const ImageWrap = styled.div`
 export const Title = styled.h3`
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.33;
+  line-height: 24;
 `;
 
 export const InfoWrap = styled.div`
@@ -59,11 +58,18 @@ export const CarbWrap = styled.p`
 export const ProteinWrap = styled.p`
   width: 92px;
 `;
-
-export const Value = styled.span`
+export const FatWrap = styled.p`
+  width: 62px;
+`;
+export const ValueSpan = styled.span`
   color: ${theme.color.primaryGrey};
 
   font-weight: 500;
+`;
+export const ButtonDelete = styled.button`
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
 `;
 
 export const AddButton = styled.button`
@@ -78,11 +84,6 @@ export const AddButton = styled.button`
   line-height: 1.43;
 
   background-color: transparent;
-  border: none;
   outline: none;
   padding: 0;
 `;
-
-// export const AddIcon = styled(Icon)`
-//   stroke: var(--icon-color-green);
-// `;

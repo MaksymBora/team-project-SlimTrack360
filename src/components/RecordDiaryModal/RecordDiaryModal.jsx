@@ -27,7 +27,7 @@ import {
   ButtonDelete,
   ButtonConfirm,
   ButtonCancel,
-} from './RecordDiaryModal.styles';
+} from './RecordDiaryModal.styled';
 
 Modal.setAppElement('#root');
 

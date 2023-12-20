@@ -1,4 +1,3 @@
-// import { useSelector } from 'react-redux';
 import { DiaryCard } from './DiaryCard/DiaryCard';
 import {
   CardsWrap,
@@ -16,17 +15,11 @@ import lunch from '../../../assets/images/diary/lunch.png';
 import lunch2x from '../../../assets/images/diary/lunch-2x.png';
 import snack from '../../../assets/images/diary/snack.png';
 import snack2x from '../../../assets/images/diary/snack-2x.png';
-// import { getFoodIntake } from 'redux/diary/selectors';
 
 export const DiaryInfo = () => {
-  // const diaryInfo = useSelector(getFoodIntake);
-
-  // const {
-  //   breakfast: breakfastInfo,
-  //   lunch: lunchInfo,
-  //   dinner: dinnerInfo,
-  //   snack: snackInfo,
-  // } = diaryInfo;
+  const carbonohidrates = 60;
+  const protein = 40;
+  const fat = 20;
 
   return (
     <DiaryWrap>
@@ -36,28 +29,36 @@ export const DiaryInfo = () => {
       </TitleWrapper>
       <CardsWrap>
         <DiaryCard
-          title={'Breakfast'}
-          image={breakfast}
-          image2x={breakfast2x}
-          // info={breakfastInfo}
+          category={'Breakfast'}
+          categoryImage={breakfast}
+          categoryImage2x={breakfast2x}
+          carbonohidrates={carbonohidrates}
+          protein={protein}
+          fat={fat}
         />
         <DiaryCard
-          title={'Lunch'}
-          image={lunch}
-          image2x={lunch2x}
-          // info={lunchInfo}
+          category={'Lunch'}
+          categoryImage={lunch}
+          categoryImage2x={lunch2x}
+          carbonohidrates={carbonohidrates}
+          protein={protein}
+          fat={fat}
         />
         <DiaryCard
-          title={'Dinner'}
-          image={dinner}
-          image2x={dinner2x}
-          // info={dinnerInfo}
+          category={'Dinner'}
+          categoryImage={dinner}
+          categoryImage2x={dinner2x}
+          carbonohidrates={carbonohidrates}
+          protein={protein}
+          fat={fat}
         />
         <DiaryCard
-          title={'Snack'}
-          image={snack}
-          image2x={snack2x}
-          // info={snackInfo}
+          category={'Snack'}
+          categoryImage={snack}
+          categoryImage2x={snack2x}
+          carbonohidrates={carbonohidrates}
+          protein={protein}
+          fat={fat}
         />
       </CardsWrap>
     </DiaryWrap>
