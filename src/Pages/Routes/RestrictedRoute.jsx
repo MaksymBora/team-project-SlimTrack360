@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom';
-import { useAuth } from './Redux/userAuth/hooks/useAuth';
+import { useAuth } from '../../Redux/userAuth/hooks/useAuth';
 
 export const RestrictedRoute = ({
   component: Component,
