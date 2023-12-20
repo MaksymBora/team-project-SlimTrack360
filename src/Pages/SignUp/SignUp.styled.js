@@ -4,7 +4,6 @@ import styled from 'styled-components';
 // import MobileImg from '../../assets/images/SignUp/Mobile_Illustration.png';
 export const Wrapper = styled.section``;
 export const Div = styled.div`
-  max-width: 833px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +11,7 @@ export const Div = styled.div`
     flex-direction: row;
     gap: 104px;
     align-items: center;
+    height: 600px;
   }
 `;
 export const Image = styled.img`

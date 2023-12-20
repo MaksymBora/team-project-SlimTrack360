@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Div = styled.div`
-  max-width: 833px;
+  // max-width: 833px;
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 834px) {

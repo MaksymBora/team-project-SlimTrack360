@@ -13,6 +13,7 @@ import {
   Subsection,
   Attention,
   Span,
+  EyeIcon,
 } from '../Signup/SignUpContent.styled';
 import { Options } from './SignInContent.styled';
 import { LinkSignup, Paragraph } from './SignInContent.styled';
@@ -100,7 +101,7 @@ export const SignInContent = () => {
               />
               <Span onClick={togglePasswordVisibility}>
                 {showPassword ? (
-                  <svg
+                  <EyeIcon
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -121,9 +122,9 @@ export const SignInContent = () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
-                  </svg>
+                  </EyeIcon>
                 ) : (
-                  <svg
+                  <EyeIcon
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -151,7 +152,7 @@ export const SignInContent = () => {
                         <rect width="16" height="16" fill="white" />
                       </clipPath>
                     </defs>
-                  </svg>
+                  </EyeIcon>
                 )}
               </Span>
             </Label>
