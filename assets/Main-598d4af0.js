@@ -1,4 +1,4 @@
-import{s as o,t as w,L as xe,j as e,r as te,c as ee,R as Pe,h as Se,i as Re,u as Me,f as Ie,g as $e}from"./index-85135873.js";import{I as q}from"./Icon-0e68d849.js";import{C as _e,a as ke,L as We,B as Ae,p as Le,c as Ee,d as Te,f as De,A as ze,D as Be}from"./index-8942980b.js";import{R as Ge,b as Fe,a as Ye,l as Qe,e as Ue,d as He,c as Ke,s as Xe,f as Je}from"./snack-2x-c4092cdc.js";import{c as Ve,a as Ze,b as Ne,I as qe}from"./Item-5cebb818.js";import"./index-387d7a00.js";import"./index.esm-9f2c8de7.js";const et=o.div`
+import{s as o,t as w,L as xe,j as e,r as te,c as ee,R as Pe,h as Se,i as Re,u as Me,f as Ie,g as $e}from"./index-848cd4f3.js";import{I as q}from"./Icon-a0801579.js";import{C as _e,a as ke,L as We,B as Ae,p as Le,c as Ee,d as Te,f as De,A as ze,D as Be}from"./index-96e9cd31.js";import{R as Ge,b as Fe,a as Ye,l as Qe,e as Ue,d as He,c as Ke,s as Xe,f as Je}from"./snack-2x-a37450ea.js";import{c as Ve,a as Ze,b as Ne,I as qe}from"./Item-e9bf810d.js";import"./index-387d7a00.js";import"./index.esm-227dc316.js";const et=o.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -348,37 +348,46 @@ import{s as o,t as w,L as xe,j as e,r as te,c as ee,R as Pe,h as Se,i as Re,u as
   display: flex;
   justify-content: center;
   align-items: center;
-  // opacity: 80%;
-  @media screen and (min-width: 768px) {
+  top: 67px
+  overflow-y: auto;
+
+  @media screen and (min-width: 834px) {
     top: 100px;
   }
   @media screen and (min-width: 1440px) {
     top: 103px;
   }
 `,Mt=o.div`
-  position: relative;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
   z-index: 1000;
   width: 300px;
   height: 266px;
   border-radius: 12px;
-  background: rgba(15, 15, 15, 1);
-  padding: 16px 12px 30px 12px;
-  @media screen and (min-width: 768px) {
+  background: #0f0f0f;
+  padding: 24px 10px 24px 10px;
+  @media screen and (min-width: 834px) {
     width: 338px;
     height: 280px;
+    margin: 24px 40px;
   }
   @media screen and (min-width: 1440px) {
   }
 `,It=o.h2`
   color: white;
+
   margin-bottom: 24px;
   font-size: 24px;
   font-weight: 500;
   line-height: 30px;
   letter-spacing: 0em;
   text-align: left;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     text-align: center;
+    font-size: 30px;
+    line-height: 36px;
   }
 `,$t=o.form`
   display: flex;
@@ -386,17 +395,11 @@ import{s as o,t as w,L as xe,j as e,r as te,c as ee,R as Pe,h as Se,i as Re,u as
   width: 276px;
   height: 226px;
 
-  @media screen and (min-width: 768px) {
-    width: 258px;
+  @media screen and (min-width: 834px) {
+    width: 212px;
     height: 232px;
-
     margin: auto;
-  }
-  @media screen and (min-width: 1440px) {
-    top: 239px;
-    left: 591px;
-  }
-`,kt=o.label`
+`,kt=o.p`
   color: #ffffff;
   font-size: 14px;
   font-weight: 500;
@@ -404,25 +407,67 @@ import{s as o,t as w,L as xe,j as e,r as te,c as ee,R as Pe,h as Se,i as Re,u as
   letter-spacing: 0em;
   text-align: left;
   margin-bottom: 12px;
+ 
+  }
 `,Wt=o.input`
   margin-bottom: 32px;
   height: 36px;
   padding: 8px 10px 8px 10px;
   border-radius: 12px;
   border: 1px solid #e3ffa8;
+  background: inherit;
+  color: white;
+  @media screen and (min-width: 834px){
+    width: 212px;
+  }
+
+  &::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #b6b6b6;
+
+    
 `,At=o.button`
+  width: 276px;
   height: 36px;
   padding: 8px 10px 8px 10px;
   border-radius: 12px;
   gap: 10px;
-  background: rgba(227, 255, 168, 1);
+  background: #e3ffa8;
+  @media screen and (min-width: 834px) {
+    width: 212px;
+  }
 `,Lt=o.button`
+  width: 276px;
   height: 36px;
   padding: 8px 10px 8px 10px;
   border-radius: 12px;
   background: transparent;
   color: #b6b6b6;
-`,Dt=({onClose:T})=>{const[L,F]=te.useState(""),z=ee(Pt),G=ee(St),Y=x=>{F(x.target.value)},Q=async x=>{x.preventDefault();const t=parseFloat(L);if(isNaN(t))console.error("Input is not a number");else{const r={date:new Date().toISOString(),water:t};Se(t),console.log(r),T()}};return Pe.createPortal(e.jsx(Rt,{onClick:T,children:e.jsxs(Mt,{onClick:x=>x.stopPropagation(),children:[e.jsx(It,{children:"Add water intake"}),e.jsxs($t,{onSubmit:Q,children:[e.jsx(kt,{children:"How much water"}),e.jsx(Wt,{type:"text",placeholder:"Enter milliliters",value:L,onChange:Y}),e.jsx(At,{type:"submit",disabled:z,children:z?"Loading...":"Confirm"}),G&&e.jsx("p",{style:{color:"red"},children:G}),e.jsx(Lt,{type:"button",onClick:T,children:"Cancel"})]})]})}),document.getElementById("modal-root"))};let me=1e3,zt=1500;const Bt=zt-me,ne=Math.round(me*100/1500),Gt=ne<=84?Math.ceil(ne/100*176+10):88,Ft=ne<=84?"rgba(182, 195, 255, 1)":"green",Yt=()=>{const[T,L]=te.useState(!1),F=()=>{L(z=>!z)};return te.useEffect(()=>{const z=G=>{G.key==="Escape"&&T&&F()};return document.addEventListener("keydown",z),()=>{document.removeEventListener("keydown",z)}},[T]),e.jsxs("div",{children:[e.jsx(pt,{children:"Water"}),e.jsxs(ft,{children:[e.jsx(ht,{children:e.jsxs(mt,{children:[e.jsx(xt,{$changedColor:Ft,$offset:Gt,children:`${ne}%`}),e.jsx(Ot,{waterIntake:ne})]})}),e.jsxs(gt,{children:[e.jsx(yt,{children:"Water consumption"}),e.jsxs(vt,{children:[e.jsxs(bt,{children:[me,e.jsx(we,{children:"ml"})]}),e.jsxs(wt,{children:["left:",e.jsx(jt,{children:Bt}),e.jsx(we,{children:"ml"})]})]}),e.jsxs(_t,{onClick:F,children:[e.jsx(q,{name:"icon-add-converted",width:"16px",height:"16px"}),"Add water intake"]}),e.jsx(Et,{children:e.jsx(q,{name:"icon-trash-03",width:"20px",height:"20px",fill:`${w.color.primaryLiteGreen}`})})]})]}),T&&e.jsx(Dt,{onClose:F})]})};_e.register(ze,Ee,Te);const Qt={rotation:0,cutout:"80%",plugins:{title:{display:!1},legend:{display:!1},tooltip:{enabled:!1}},animation:{animateRotate:!0,animateScale:!0}},Ut={id:"bcgCircle",beforeDatasetsDraw(T){const{ctx:L}=T;L.save();const F=T.getDatasetMeta(0).data[0].x,z=T.getDatasetMeta(0).data[0].y,G=T.getDatasetMeta(0).data[0].innerRadius,Y=T.getDatasetMeta(0).data[0].outerRadius,Q=Y-G,x=Math.PI/180;L.beginPath(),L.lineWidth=Q,L.strokeStyle="rgba(41, 41, 40, 1)",L.arc(F,z,Y-Q/2,0,x*360,!1),L.stroke()}},Ce=({dailyCalories:T,inputValue:L,chartBcg:F})=>{L>T&&(L=T,F="red");const z=T-L,G={datasets:[{label:[],data:[L,z],backgroundColor:[F,"transparent"],borderColor:["rgba(255, 99, 132, 1)"],borderWidth:0,borderRadius:20}]};return e.jsx(e.Fragment,{children:e.jsx(Be,{options:Qt,data:G,plugins:[Ut]})})},Ht=o.div`
+  margin-top: 8px;
+
+  @media screen and (min-width: 834px) {
+    width: 212px;
+    height: 36px;
+  }
+`;o.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 276px;
+  height: 226px;
+
+  @media screen and (min-width: 834px) {
+    width: 212px;
+    height: 232px;
+    margin: auto;
+  }
+  @media screen and (min-width: 1440px) {
+  }
+`;const Dt=({onClose:T})=>{const[L,F]=te.useState(""),z=ee(Pt),G=ee(St),Y=x=>{F(x.target.value)},Q=async x=>{x.preventDefault();const t=parseFloat(L);if(isNaN(t))console.error("Input is not a number");else{const r={date:new Date().toISOString(),water:t};Se(t),console.log(r),T()}};return Pe.createPortal(e.jsx(Rt,{onClick:T,children:e.jsxs(Mt,{onClick:x=>x.stopPropagation(),children:[e.jsx(It,{children:"Add water intake"}),e.jsxs($t,{onSubmit:Q,children:[e.jsx(kt,{children:"How much water"}),e.jsx(Wt,{type:"text",placeholder:"Enter milliliters",value:L,onChange:Y}),e.jsx(At,{type:"submit",disabled:z,children:z?"Loading...":"Confirm"}),G&&e.jsx("p",{style:{color:"red"},children:G}),e.jsx(Lt,{type:"button",onClick:T,children:"Cancel"})]})]})}),document.getElementById("modal-root"))};let me=1e3,zt=1500;const Bt=zt-me,ne=Math.round(me*100/1500),Gt=ne<=84?Math.ceil(ne/100*176+10):88,Ft=ne<=84?"rgba(182, 195, 255, 1)":"green",Yt=()=>{const[T,L]=te.useState(!1),F=()=>{L(z=>!z)};return te.useEffect(()=>{const z=G=>{G.key==="Escape"&&T&&F()};return document.addEventListener("keydown",z),()=>{document.removeEventListener("keydown",z)}},[T]),e.jsxs("div",{children:[e.jsx(pt,{children:"Water"}),e.jsxs(ft,{children:[e.jsx(ht,{children:e.jsxs(mt,{children:[e.jsx(xt,{$changedColor:Ft,$offset:Gt,children:`${ne}%`}),e.jsx(Ot,{waterIntake:ne})]})}),e.jsxs(gt,{children:[e.jsx(yt,{children:"Water consumption"}),e.jsxs(vt,{children:[e.jsxs(bt,{children:[me,e.jsx(we,{children:"ml"})]}),e.jsxs(wt,{children:["left:",e.jsx(jt,{children:Bt}),e.jsx(we,{children:"ml"})]})]}),e.jsxs(_t,{onClick:F,children:[e.jsx(q,{name:"icon-add-converted",width:"16px",height:"16px"}),"Add water intake"]}),e.jsx(Et,{children:e.jsx(q,{name:"icon-trash-03",width:"20px",height:"20px",fill:`${w.color.primaryLiteGreen}`})})]})]}),T&&e.jsx(Dt,{onClose:F})]})};_e.register(ze,Ee,Te);const Qt={rotation:0,cutout:"80%",plugins:{title:{display:!1},legend:{display:!1},tooltip:{enabled:!1}},animation:{animateRotate:!0,animateScale:!0}},Ut={id:"bcgCircle",beforeDatasetsDraw(T){const{ctx:L}=T;L.save();const F=T.getDatasetMeta(0).data[0].x,z=T.getDatasetMeta(0).data[0].y,G=T.getDatasetMeta(0).data[0].innerRadius,Y=T.getDatasetMeta(0).data[0].outerRadius,Q=Y-G,x=Math.PI/180;L.beginPath(),L.lineWidth=Q,L.strokeStyle="rgba(41, 41, 40, 1)",L.arc(F,z,Y-Q/2,0,x*360,!1),L.stroke()}},Ce=({dailyCalories:T,inputValue:L,chartBcg:F})=>{L>T&&(L=T,F="red");const z=T-L,G={datasets:[{label:[],data:[L,z],backgroundColor:[F,"transparent"],borderColor:["rgba(255, 99, 132, 1)"],borderWidth:0,borderRadius:20}]};return e.jsx(e.Fragment,{children:e.jsx(Be,{options:Qt,data:G,plugins:[Ut]})})},Ht=o.div`
   display: flex;
   column-gap: 12px;
   width: 216px;
