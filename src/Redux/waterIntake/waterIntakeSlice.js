@@ -1,42 +1,46 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addWater, resetWater, getWaterToday } from './operations';
 
-const initialState = {
-  id: null,
-  date: null,
-  value: null,
+const handlePending = (state) => {
+  state.isLoading = true;
 };
+
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
 };
 
-const handlePending = (state) => {
-  state.isLoading = true;
-};
-
 const handleAddFulfiled = (state, action) => {
   state.isLoading = false;
-  state.error = null;
-  state.id = action.payload.id;
+
+  state.id = action.payload._id;
   state.date = action.payload.date;
   state.value = action.payload.value;
+  state.error = null;
 };
 
 const handleResetFulfilled = (state, action) => {
   state.isLoading = false;
-  state.error = null;
   state.id = action.payload._id;
   state.date = action.payload.date;
   state.value = action.payload.value;
+  state.error = null;
 };
 
 const handleGetWaterTodayFulfilled = (state, action) => {
   state.isLoading = false;
-  state.error = null;
   state.id = action.payload._id;
   state.date = action.payload.date;
   state.value = action.payload.value;
+  state.error = null;
+};
+
+const initialState = {
+  id: null,
+  date: null,
+  value: null,
+  isLoading: false,
+  error: null,
 };
 
 const waterIntakeSlice = createSlice({
@@ -44,14 +48,14 @@ const waterIntakeSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(addWater.fulfilled, handleAddFulfiled)
       .addCase(addWater.pending, handlePending)
+      .addCase(addWater.fulfilled, handleAddFulfiled)
       .addCase(addWater.rejected, handleRejected)
-      .addCase(resetWater.fulfilled, handleResetFulfilled)
       .addCase(resetWater.pending, handlePending)
+      .addCase(resetWater.fulfilled, handleResetFulfilled)
       .addCase(resetWater.rejected, handleRejected)
-      .addCase(getWaterToday.fulfilled, handleGetWaterTodayFulfilled)
       .addCase(getWaterToday.pending, handlePending)
+      .addCase(getWaterToday.fulfilled, handleGetWaterTodayFulfilled)
       .addCase(getWaterToday.rejected, handleRejected);
   },
 });

@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
@@ -19,20 +20,22 @@ import {
 } from './RecommendedFood.styled';
 import ItemFood from '../../Recommended/Item/Item';
 import Icon from '../../common/Icon';
-import { fetchFood } from '../../../Redux/recommended/operations';
+// import { fetchFood } from '../../../Redux/recommended/operations';
 
 const RecommendedFood = () => {
   const foodList = useSelector(selectFourItems);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectError);
+
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: 833 });
 
   const visibleItems = isMobile ? 2 : 4;
 
-  useEffect(() => {
-    dispatch(fetchFood());
-  }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(fetchFood());
+  // }, [dispatch]);
 
   return (
     <div>

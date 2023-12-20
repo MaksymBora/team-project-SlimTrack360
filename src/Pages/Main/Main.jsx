@@ -14,8 +14,18 @@ import { WaterInfo } from '../../components/MainPage/WaterInfo/WaterInfo';
 import { FoodInfo } from '../../components/MainPage/FoodInfo/FoodInfo';
 import { DiaryInfo } from '../../components/MainPage/DiaryInfo/DiaryInfo';
 import RecommendedFood from '../../components/MainPage/RecommendedFood/RecommendedFood';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { fetchFood } from '../../Redux/recommended/operations';
 
 const Main = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchFood());
+  }, [dispatch]);
+
   return (
     <Container>
       <TitleWrap>
