@@ -1,6 +1,8 @@
 // src\components\Dashboard\WeightGraph.jsx
 
 import { GraphContainer, ChartContainer } from './Styles/Graphs.styled';
+import './Styles/MobStyles/mob.Graph.css';
+import './Styles/TabletStyles/tab.Graph.css';
 import './Styles/Graph.css';
 
 const WeightGraph = () => {
@@ -12,7 +14,7 @@ const WeightGraph = () => {
   );
 
   return (
-    <GraphContainer className="weight-container">
+    <GraphContainer className="scroll-container">
       <div className="weightTitle">
         <h2 className="graphTitle">Weight</h2>
         <h3 className="graphValue">
