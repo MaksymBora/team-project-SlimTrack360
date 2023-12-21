@@ -17,7 +17,8 @@ const clearAuthHeader = () => {
 //   // },
 // });
 
-axios.defaults.baseURL = 'https://healthyhub-emsa.onrender.com/api/';
+// axios.defaults.baseURL = 'https://healthyhub-emsa.onrender.com/api/';
+axios.defaults.baseURL = 'http://localhost:3000/api/';
 
 export const register = createAsyncThunk(
   'auth/register',
