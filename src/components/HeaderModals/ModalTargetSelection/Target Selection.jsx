@@ -1,6 +1,6 @@
-import pic from './../../../assets/images/goals/Lose fat image men.png';
-import pic_two from './../../../assets/images/goals/Maintake image men.png';
-import pic_three from './../../../assets/images/goals/Gain muscle.png';
+import LoseFatMen from './../../../assets/images/goals/Lose fat image men.png';
+import maintakeGirl from './../../../assets/images/goals/Maintake image men.png';
+import muscles from './../../../assets/images/goals/Gain muscle.png';
 import icon from './../../../assets/sprite.svg';
 import {
   Modal,
@@ -18,11 +18,29 @@ import {
   CancelBtn,
   Overlay,
 } from './targetSelection.styled';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLoading } from '../../../Redux/waterIntake/selector';
+import { selectUser } from './../../../Redux/userAuth/selector';
+import { useState } from 'react';
+import { updateUserGoal } from './../../../Redux/userAuth/operations';
 
 export const TargetSelection = ({ onClose }) => {
+  const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const user = useSelector(selectUser);
+  // const userSex = user.sex
+  const currentGoal = user.goal;
+  const [userGoal, setUserGoal] = useState(currentGoal);
+
+  const newLosefatGoal = () => setUserGoal('Lose fat');
+  const newMaintainGoal = () => setUserGoal('Maintain');
+  const newGailMuscleGoal = () => setUserGoal('Gain muscle');
+
+  const handleNewGoal = (event) => {
+    event.preventDefault();
+    dispatch(updateUserGoal(userGoal));
+    // onClose();
+  };
 
   return (
     <Overlay onClick={onClose}>
@@ -38,31 +56,69 @@ export const TargetSelection = ({ onClose }) => {
             The service will adjust your calorie intake to your goal
           </ModalDescription>
 
-          <Form>
+          <Form onSubmit={handleNewGoal}>
             <TargetListBlock>
-              <TargetList>
+              <TargetList onClick={newLosefatGoal}>
                 <TargetImgBorder
-                // style={{
-                // border:
-                // }}
+                  style={{
+                    border:
+                      userGoal === 'Lose fat'
+                        ? '2px solid #B6C3FF'
+                        : '1px solid #B6B6B6',
+                  }}
                 >
-                  <TargetImg src={pic} alt="Lose fat image men"></TargetImg>
+                  <TargetImg
+                    src={LoseFatMen}
+                    alt="Lose fat image men"
+                  ></TargetImg>
                 </TargetImgBorder>
-                <TargetImgText>Lose fat</TargetImgText>
+                <TargetImgText
+                  style={{
+                    color: userGoal === 'Lose fat' ? '#B6C3FF' : '#B6B6B6',
+                  }}
+                >
+                  Lose fat
+                </TargetImgText>
               </TargetList>
 
-              <TargetList>
-                <TargetImgBorder>
-                  <TargetImg src={pic_two} alt="yoga"></TargetImg>
+              <TargetList onClick={newMaintainGoal}>
+                <TargetImgBorder
+                  style={{
+                    border:
+                      userGoal === 'Maintain'
+                        ? '2px solid #B6C3FF'
+                        : '1px solid #B6B6B6',
+                  }}
+                >
+                  <TargetImg src={maintakeGirl} alt="yoga"></TargetImg>
                 </TargetImgBorder>
-                <TargetImgText>Maintain</TargetImgText>
+                <TargetImgText
+                  style={{
+                    color: userGoal === 'Maintain' ? '#B6C3FF' : '#B6B6B6',
+                  }}
+                >
+                  Maintain
+                </TargetImgText>
               </TargetList>
 
-              <TargetList>
-                <TargetImgBorder>
-                  <TargetImg src={pic_three} alt="muscles"></TargetImg>
+              <TargetList onClick={newGailMuscleGoal}>
+                <TargetImgBorder
+                  style={{
+                    border:
+                      userGoal === 'Gain muscle'
+                        ? '2px solid #B6C3FF'
+                        : '1px solid #B6B6B6',
+                  }}
+                >
+                  <TargetImg src={muscles} alt="muscles"></TargetImg>
                 </TargetImgBorder>
-                <TargetImgText>Gain Muscle</TargetImgText>
+                <TargetImgText
+                  style={{
+                    color: userGoal === 'Gain muscle' ? '#B6C3FF' : '#B6B6B6',
+                  }}
+                >
+                  Gain Muscle
+                </TargetImgText>
               </TargetList>
             </TargetListBlock>
             <ConfirmBtn
@@ -81,3 +137,40 @@ export const TargetSelection = ({ onClose }) => {
     </Overlay>
   );
 };
+
+// let takeGoal;
+
+// switch (user.sex) {
+//   case 'Female':
+//     switch (user.goal) {
+//       case 'Lose fat':
+//         takeGoal = LoseFatMen;
+//         break;
+
+//       case 'Maintain':
+//         takeGoal = maintakeGirl;
+//         break;
+
+//       default:
+//         takeGoal = muscles;
+//     }
+//     break;
+
+//   case 'Male':
+//     switch (user.goal) {
+//       case 'Lose fat':
+//         takeGoal = LoseFatMen;
+//         break;
+
+//       case 'Maintain':
+//         takeGoal = maintakeGirl;
+//         break;
+
+//       default:
+//        takeGoal =muscles;
+//     }
+//     break;
+
+//   default:
+//     takeGoal = muscles;
+// }

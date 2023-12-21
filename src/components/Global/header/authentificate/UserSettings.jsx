@@ -28,6 +28,8 @@ import { useState } from 'react';
 import { TargetSelection } from '../../../HeaderModals/ModalTargetSelection/Target Selection.jsx';
 import { WeightSelectionModal } from '../../../HeaderModals/WeightSelection.jsx';
 import { ModalMenu } from './../../../HeaderModals/menuModal/menuModal.jsx';
+import { useSelector } from 'react-redux';
+import { selectUser } from './../../../../Redux/userAuth/selector.js';
 
 export const UserSettings = () => {
   const isMobile = useMediaQuery({ query: '(max-width:767px)' });
@@ -46,6 +48,8 @@ export const UserSettings = () => {
   const handleOpenModalMenu = () => {
     setIsModalOpenMenu((prevState) => !prevState);
   };
+
+  const user = useSelector(selectUser);
 
   return (
     <UserMode>
@@ -78,7 +82,7 @@ export const UserSettings = () => {
               <Goal>Goal</Goal>
 
               <SettingBtn>
-                <LoseFat>Lose fat</LoseFat>
+                <LoseFat>{user.goal || 'No goal'}</LoseFat>
 
                 <GoalBtn type="button" onClick={handleOpenModal}>
                   <svg>
@@ -99,7 +103,7 @@ export const UserSettings = () => {
               <Weight>Weight</Weight>
               <SetBtn>
                 <NumKg>
-                  65
+                  {user.currentWeight || 0}
                   <Kg>kg</Kg>
                 </NumKg>
                 <WeightBtn type="button" onClick={handleOpenModalWeight}>
