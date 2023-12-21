@@ -69,7 +69,7 @@ export const WeightSelectionModal = ({ onClose }) => {
               onChange={handleInputChange}
               required
               autoFocus
-            ></Input>
+            />
             <ConfirmBtn type="submit">Confirm</ConfirmBtn>
           </Form>
         </ModalWrapper>
