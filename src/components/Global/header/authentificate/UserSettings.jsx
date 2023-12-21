@@ -18,23 +18,55 @@ import {
   NumKg,
   Kg,
   WeightBtn,
-} from './../header.styled.jsx';
+  PictogramBlock,
+  PictogramOpen,
+} from './../header.styled.js';
 import icon from './../../../../assets/sprite.svg';
-import pict from './img/Lose fat image men.png';
-import png from './img/Waight image.png';
+import pict from './../../../../assets/images/goals/Lose fat image men.png';
+import png from './../../../../assets/images/goals/Waight image.png';
+import { useState } from 'react';
+import { TargetSelection } from '../../../HeaderModals/ModalTargetSelection/Target Selection.jsx';
+import { WeightSelectionModal } from '../../../HeaderModals/WeightSelection.jsx';
+import { ModalMenu } from './../../../HeaderModals/menuModal/menuModal.jsx';
 
 export const UserSettings = () => {
   const isMobile = useMediaQuery({ query: '(max-width:767px)' });
+  const [isModalOpenGoal, setIsModalOpenGoal] = useState(false);
+  const [isModalOpenWeight, setIsModalOpenWeight] = useState(false);
+  const [isModalOpenMenu, setIsModalOpenMenu] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpenGoal((prevState) => !prevState);
+  };
+
+  const handleOpenModalWeight = () => {
+    setIsModalOpenWeight((prevState) => !prevState);
+  };
+
+  const handleOpenModalMenu = () => {
+    setIsModalOpenMenu((prevState) => !prevState);
+  };
 
   return (
     <UserMode>
       {isMobile ? (
         // first
-        <Pictogram>
-          <svg>
-            <use href={icon + '#icon-menu'}></use>
-          </svg>
-        </Pictogram>
+        <PictogramBlock onClick={handleOpenModalMenu}>
+          {isModalOpenMenu ? (
+            <Pictogram>
+              <svg>
+                <use href={icon + '#icon-menu'}></use>
+              </svg>
+            </Pictogram>
+          ) : (
+            <PictogramOpen>
+              <svg>
+                <use href={icon + '#icon-menu'}></use>
+              </svg>
+            </PictogramOpen>
+          )}
+          {isModalOpenMenu && <ModalMenu onClose={handleOpenModalMenu} />}
+        </PictogramBlock>
       ) : (
         <UserSet>
           <SelectGoals>
@@ -48,7 +80,7 @@ export const UserSettings = () => {
               <SettingBtn>
                 <LoseFat>Lose fat</LoseFat>
 
-                <GoalBtn type="button">
+                <GoalBtn type="button" onClick={handleOpenModal}>
                   <svg>
                     <use href={icon + '#icon-arrow-down'}></use>
                   </svg>
@@ -56,6 +88,7 @@ export const UserSettings = () => {
               </SettingBtn>
             </GoalSelection>
           </SelectGoals>
+          {isModalOpenGoal && <TargetSelection onClose={handleOpenModal} />}
 
           <SelectWeight>
             <WeightPic>
@@ -69,7 +102,7 @@ export const UserSettings = () => {
                   65
                   <Kg>kg</Kg>
                 </NumKg>
-                <WeightBtn type="button">
+                <WeightBtn type="button" onClick={handleOpenModalWeight}>
                   <svg>
                     <use href={icon + '#icon-edit-weight'}></use>
                   </svg>
@@ -77,6 +110,9 @@ export const UserSettings = () => {
               </SetBtn>
             </WeightSelection>
           </SelectWeight>
+          {isModalOpenWeight && (
+            <WeightSelectionModal onClose={handleOpenModalWeight} />
+          )}
         </UserSet>
       )}
     </UserMode>

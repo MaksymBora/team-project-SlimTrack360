@@ -1,39 +1,46 @@
-// import React from "react";
-
+import { Link } from 'react-router-dom';
 import {
   HeaderContainer,
   Wrapper,
   Navigation,
   SignInWrapper,
-} from './header.styled.jsx';
+} from './header.styled.js';
 import { Logo } from './Logo.jsx';
 import { SignIn } from './signIn.jsx';
 import { SignUp } from './signUp.jsx';
-// import {UserAuth} from './signIn.jsx'
-// import { UserAvatar} from './../header/authentificate/userAvatar.jsx'
-// import {UserSettings} from './authentificate/UserSettings.jsx'
+import { UserSettings } from './authentificate/UserSettings.jsx';
+import { UserAvatar } from './../header/authentificate/userAvatar.jsx';
 
-const Header = () => (
-  <HeaderContainer>
-    <Wrapper>
-      <Navigation>
-        <Logo></Logo>
+const Header = () => {
+  const testIsLoggedIn = true;
+
+  return testIsLoggedIn ? (
+    <HeaderContainer>
+      <Wrapper>
+        <Navigation>
+          <Link to={'/main'}>
+            <Logo></Logo>
+          </Link>
+
+          <UserSettings></UserSettings>
+        </Navigation>
+
+        <UserAvatar></UserAvatar>
+      </Wrapper>
+    </HeaderContainer>
+  ) : (
+    <HeaderContainer>
+      <Wrapper>
+        <Link to={'/'}>
+          <Logo></Logo>
+        </Link>
         <SignInWrapper>
           <SignIn></SignIn>
           <SignUp></SignUp>
         </SignInWrapper>
-        {/* <UserSettings></UserSettings> */}
-      </Navigation>
-    </Wrapper>
-  </HeaderContainer>
-);
+      </Wrapper>
+    </HeaderContainer>
+  );
+};
 
 export default Header;
-
-{
-  /* <UserAuth></UserAuth> */
-}
-{
-  /* <HeaderLogo isAuthenticated={isAuthenticated} />
-        {isAuthenticated ? <UserLogo /> : <UserAuth />} */
-}
