@@ -16,11 +16,16 @@
     font-size: 22px;
     line-height: 1.45;
   }
-  .caloriesTitle,
+
   .waterTitle,
   .weightTitle {
     margin-left: 0;
     margin-top: 40px;
+    margin-bottom: 6px;
+  }
+  .caloriesTitle {
+    margin-left: 0;
+    margin-top: 3px;
     margin-bottom: 6px;
   }
 

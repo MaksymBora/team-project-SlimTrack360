@@ -1,5 +1,6 @@
 // src/components/Dashboard/SelectorContainer.jsx
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SelectorContainerWrapper } from './Styles/Graphs.styled';
 import { IconArrowLeft, IconArrowUp } from '../../assets/spriteSVG';
 import '../Dashboard/Styles/MobStyles/mob.SelCont.css';
@@ -24,6 +25,7 @@ const months = [
 const SelectorContainer = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState('December');
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -33,13 +35,16 @@ const SelectorContainer = () => {
     setSelectedMonth(month);
     setIsDropdownOpen(false);
   };
+  const handleIconClick = () => {
+    navigate('/main');
+  };
 
   return (
     <SelectorContainerWrapper>
       <div className="monthsArrows">
-        <div className="IconArrowLeft">
+        <button className="IconArrowLeft" onClick={handleIconClick}>
           <IconArrowLeft width={24} height={24} />
-        </div>
+        </button>
         <label className="monthTitle" htmlFor="monthSelector">
           Months
         </label>

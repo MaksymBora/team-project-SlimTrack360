@@ -1,8 +1,7 @@
 .scroll-container {
   width: 100%;
   overflow-x: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #d9dcd2;
+  /* scrollbar-width: thin; */
 }
 
 .caloriesTitle,
@@ -25,6 +24,7 @@
   border-radius: 12px;
   width: 676px;
   height: 382px;
+  margin-bottom: 8px;
 }
 
 .graphTitle {
@@ -51,13 +51,13 @@
   display: block;
   padding: 24px 20px 20px 24px;
   width: 1372 px;
+  margin-bottom: 8px;
 }
 
 .weight-graph-line {
   background-color: #0f0f0f;
   border-radius: 12px;
   width: 1372px;
-  /* margin-bottom: 76px; */
 }
 .upper-row,
 .lower-row {
@@ -82,4 +82,8 @@
 .table-cell {
   text-align: center;
   flex: 1;
+}
+.lkjklj {
+  background-color: #1f1e1e;
+  color: #333131;
 }
