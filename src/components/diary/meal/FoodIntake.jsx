@@ -15,7 +15,7 @@ import {
   TabletFood,
 } from './DiaryCard.styled';
 
-export const FoodIntake = ({ title }) => {
+export const FoodIntakeTable = ({ title }) => {
   const category = title;
 
   const categoryImage =

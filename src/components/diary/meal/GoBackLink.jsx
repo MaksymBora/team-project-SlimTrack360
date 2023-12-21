@@ -3,7 +3,7 @@ import {
   SvgArrowRight,
 } from '../../../Pages/Diary/DiaryPage.styled';
 
-export const GoBackPage = () => {
+export const GoBackLink = () => {
   return (
     <ButtonStyle>
       <SvgArrowRight>
