@@ -35,6 +35,8 @@ import {
   StylesForm,
   StylesLabelForm,
   StylesRadioBtn,
+  StyleBackLink,
+  BackLinkwrapper,
 } from './Goal.styled';
 
 const SignUpGoal = ({ setStep }) => {
@@ -145,6 +147,14 @@ const SignUpGoal = ({ setStep }) => {
                 </StylesRadioBtn>
                 <StylesBtnForm type="submit">Next</StylesBtnForm>
               </StylesForm>
+              <BackLinkwrapper>
+                <StyleBackLink
+                  onClick={() => setStep((prevState) => (prevState -= 1))}
+                  type="button"
+                >
+                  Back
+                </StyleBackLink>
+              </BackLinkwrapper>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>

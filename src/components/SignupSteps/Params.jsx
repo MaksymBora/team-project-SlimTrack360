@@ -40,6 +40,7 @@ import {
   StylesErrorWeight,
   StylesErrorHeight,
   StylesErrorSvg,
+  BackLinkwrapper,
 } from './Param.styled';
 
 const SignUpParams = ({ setStep }) => {
@@ -49,16 +50,16 @@ const SignUpParams = ({ setStep }) => {
       .required('Please enter your height')
       .positive('Height must be a positive number')
       .integer('Height must be an integer')
-      .min(100, 'Height must be at least 100 cm')
-      .max(250, 'Height must be at most 250 cm'),
+      .min(70, 'Height must be at least 70 cm')
+      .max(251, 'Height must be at most 251 cm'),
 
     weight: Yup.number()
       .typeError('Weight must be a number')
       .required('Please enter your weight')
       .positive('Weight must be a positive number')
       .integer('Weight must be an integer')
-      .min(5, 'Weight must be at least 5 kg')
-      .max(150, 'Weight must be at most 150 kg'),
+      .min(10, 'Weight must be at least 10 kg')
+      .max(560, 'Weight must be at most 560 kg'),
   });
 
   const formik = useFormik({
@@ -192,11 +193,13 @@ const SignUpParams = ({ setStep }) => {
                 </WeightInputWrapper>
                 <StylesBtnForm type="submit">Next</StylesBtnForm>
               </StylesForm>
-              <StyleBackLink
-                onClick={() => setStep((prevState) => (prevState -= 1))}
-              >
-                Back
-              </StyleBackLink>
+              <BackLinkwrapper>
+                <StyleBackLink
+                  onClick={() => setStep((prevState) => (prevState -= 1))}
+                >
+                  Back
+                </StyleBackLink>
+              </BackLinkwrapper>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>

@@ -170,7 +170,7 @@ export const StylesLabelForm = styled.label`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
-  margin-left: 18px;
+  padding-left: 18px;
   cursor: pointer;
 
   &::after {
@@ -194,10 +194,11 @@ export const CustomRadioInput = styled.input`
 
   &:checked + label::after {
     opacity: 1;
+    transition: ${theme.transition.main};
   }
 `;
 
-export const CustomRadio = styled.span`
+export const CustomRadio = styled.div`
   display: flex;
   align-items: center;
   position: relative;
@@ -210,5 +211,25 @@ export const CustomRadio = styled.span`
     display: inline-block;
     border-radius: 100%;
     position: absolute;
+    cursor: pointer;
   }
+`;
+
+export const StyleBackLink = styled.button`
+  color: ${theme.color.primaryGrey};
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.42;
+  transition: ${theme.transition.main};
+  &:hover,
+  &:focus {
+    color: ${theme.color.primaryGreenLite};
+  }
+`;
+
+export const BackLinkwrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
