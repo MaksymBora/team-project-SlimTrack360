@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import {
   MainTitle,
   DiaryCardHeader,
@@ -10,8 +8,10 @@ import {
 } from './DiaryPage.styled';
 import { FoodIntakeTable } from '../../components/Diary/Meal/FoodIntakeTable';
 import { GoBackLink } from '../../components/Diary/Meal/GoBackLink';
-import { fetchFoodIntake } from '../../Redux/foodIntake/operations';
 import { date } from '../../utils/dateToday';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchFoodIntake } from '../../Redux/foodIntake/operations';
 
 const Diary = () => {
   const dispatch = useDispatch();

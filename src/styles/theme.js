@@ -20,7 +20,7 @@ export const theme = {
   // Breakpoints
   breakpoint: {
     mobile: '320px', // no paddings  Container 300px
-    tablet: '768px', // padding left 6px right 6px Container 780px
+    tablet: '834px', // padding left 10px right 10px Container 800px
     desktop: '1440px', // padding left 10px right 10px Container 1372px
   },
 

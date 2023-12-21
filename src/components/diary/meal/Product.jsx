@@ -10,6 +10,7 @@ import {
   ProductTitleContainer,
   EditButton,
   Paragraph,
+  Div,
 } from './Product.styled';
 
 const Product = ({ title, setEditModal, setIsModal }) => {
@@ -42,7 +43,7 @@ const Product = ({ title, setEditModal, setIsModal }) => {
         <ProductTitleContainer>
           {dailyProducts.map((item, index) => {
             return (
-              <div key={item.productId}>
+              <Div key={item.productId}>
                 <Paragraph>{index + 1}</Paragraph>
                 <ProductName>{item.name}</ProductName>
                 <ProductPower>
@@ -59,7 +60,7 @@ const Product = ({ title, setEditModal, setIsModal }) => {
                     {item.fat}
                   </Text>
                 </ProductPower>
-              </div>
+              </Div>
             );
           })}
         </ProductTitleContainer>

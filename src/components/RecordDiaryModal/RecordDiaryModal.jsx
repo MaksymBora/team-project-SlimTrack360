@@ -167,8 +167,6 @@ const RecordDiaryModal = ({
       },
     };
 
-    console.log(updateDataForBackend, 'updateDataForBackend');
-
     const dataToBeSend = {
       objectId: foodIntakeResponse._id,
       updateDataForBackend,
