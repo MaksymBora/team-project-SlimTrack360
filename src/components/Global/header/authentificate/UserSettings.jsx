@@ -58,6 +58,7 @@ export const UserSettings = () => {
         <PictogramBlock onClick={handleOpenModalMenu}>
           {isModalOpenMenu ? (
             <Pictogram>
+              n{' '}
               <svg>
                 <use href={icon + '#icon-menu'}></use>
               </svg>
@@ -65,7 +66,7 @@ export const UserSettings = () => {
           ) : (
             <PictogramOpen>
               <svg>
-                <use href={icon + '#icon-menu'}></use>
+                <use href={icon + '#ico-menu'}></use>
               </svg>
             </PictogramOpen>
           )}

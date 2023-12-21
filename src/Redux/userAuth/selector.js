@@ -2,9 +2,9 @@ export const selectIsLoggedIn = (state) => state.userAuth.isLoggedIn;
 
 export const selectUser = (state) => state.userAuth.user;
 
-export const selectIsRefreshing = (state) => state.userAuth.isRefreshing;
+export const selectIsRefreshing = (state) => state.userAuth.user.isRefreshing;
 
-export const selectCurrentWeight = (state) => state.userAuth.currentWeight;
+export const selectCurrentWeight = (state) => state.userAuth.user.currentWeight;
 
 export const selectAvatarurl = (state) => state.userAuth.avatarUrl;
 
