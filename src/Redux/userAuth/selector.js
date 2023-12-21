@@ -21,3 +21,5 @@ export const selectDailyGoalProtein = (state) =>
 
 export const selectDailyGoalFat = (state) =>
   state.userAuth.dailyGoalElements.fat;
+
+export const selectToken = (state) => state.userAuth.token;

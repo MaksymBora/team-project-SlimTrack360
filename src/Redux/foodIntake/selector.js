@@ -1,4 +1,4 @@
-export const getFoodIntakeLoading = (state) => state.foodIntake.isLoading;
+export const selectIsLoading = (state) => state.foodIntake.isLoading;
 
 export const getFoodIntake = (state) => state.foodIntake.data;
 
