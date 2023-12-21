@@ -10,8 +10,8 @@ import {
 } from './DiaryPage.styled';
 import { fetchFoodIntake } from '../../Redux/foodIntake/operations';
 import { date } from '../../utils/dateToday';
-import { FoodIntakeTable } from '../../components/Diary/meal/FoodIntake';
-import { GoBackLink } from '../../components/Diary/meal/GoBackLink';
+import { FoodIntakeTable } from '../../components/Diary/Meal/FoodIntakeTable';
+import { GoBackLink } from '../../components/Diary/Meal/GoBackLink';
 
 const Diary = () => {
   const dispatch = useDispatch();

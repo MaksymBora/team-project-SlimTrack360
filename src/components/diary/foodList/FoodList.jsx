@@ -3,7 +3,7 @@ import {
   TextIndexSpan,
 } from '../../../Pages/Diary/DiaryPage.styled';
 import { Container } from './FoodList.styled';
-import Product from '../meal/Product';
+import Product from '../Meal/Product';
 import RecordDiaryModal from '../../RecordDiaryModal/RecordDiaryModal';
 import { useState } from 'react';
 
