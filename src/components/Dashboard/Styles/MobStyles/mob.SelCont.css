@@ -43,7 +43,7 @@
 .dropdown {
   position: absolute;
   top: 100%; /* Разместить список под иконкой */
-  left: -220px;
+  left: -215px;
   width: 212px;
   margin-top: 4px;
   background: #0f0f0f;

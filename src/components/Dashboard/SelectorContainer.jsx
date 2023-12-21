@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { SelectorContainerWrapper } from './Styles/Graphs.styled';
 import { IconArrowLeft, IconArrowUp } from '../../assets/spriteSVG';
 import '../Dashboard/Styles/MobStyles/mob.SelCont.css';
+import '../Dashboard/Styles/TabletStyles/tab.SelCont.css';
 import '../Dashboard/Styles/Styles.css';
 
 const months = [
