@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addFoodIntake, fetchFoodIntake, updateFoodIntake } from './operations';
+import {
+  addFoodIntake,
+  deleteFoodIntake,
+  fetchFoodIntake,
+  updateFoodIntake,
+} from './operations';
 
 const initialState = {
   data: {
@@ -52,35 +57,27 @@ const handlePending = (state) => {
 
 const handleDailyDiaryFullfilled = (state, { payload }) => {
   state.isLoading = false;
-
   state.data = payload.data;
 };
 
 const handleAddFoodFullfilled = (state, { payload }) => {
   state.isLoading = false;
-
   state.data = payload.data;
 };
 
-const handleFulfildUpdate = (state, action) => {
+const handleUpdateFullfilled = (state, { payload }) => {
   state.isLoading = false;
-  state.error = null;
-  const type = action.payload.data.type;
-  const indexOfFood = state.food[type].findIndex(
-    (item) => item.ident === action.payload.data.product.ident
-  );
-  state.food[type][indexOfFood] = action.payload.data.product;
-  state.totalCalories = action.payload.data.totalCalories;
+  state.data = payload.data;
+};
+
+const handleDeleteFullfilled = (state, { payload }) => {
+  state.isLoading = false;
+  state.data = payload.data;
 };
 
 const foodIntakeSlice = createSlice({
   name: 'foodIntake',
   initialState,
-  reducers: {
-    clearDiary() {
-      return initialState;
-    },
-  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchFoodIntake.fulfilled, handleDailyDiaryFullfilled)
@@ -89,11 +86,13 @@ const foodIntakeSlice = createSlice({
       .addCase(addFoodIntake.fulfilled, handleAddFoodFullfilled)
       .addCase(addFoodIntake.pending, handlePending)
       .addCase(addFoodIntake.rejected, handleRejected)
-      .addCase(updateFoodIntake.fulfilled, handleFulfildUpdate)
+      .addCase(updateFoodIntake.fulfilled, handleUpdateFullfilled)
       .addCase(updateFoodIntake.pending, handlePending)
-      .addCase(updateFoodIntake.rejected, handleRejected);
+      .addCase(updateFoodIntake.rejected, handleRejected)
+      .addCase(deleteFoodIntake.fulfilled, handleDeleteFullfilled)
+      .addCase(deleteFoodIntake.pending, handlePending)
+      .addCase(deleteFoodIntake.rejected, handleRejected);
   },
 });
 
-export const { clearDiary } = foodIntakeSlice.actions;
 export default foodIntakeSlice.reducer;

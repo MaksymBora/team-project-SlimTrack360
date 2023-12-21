@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import { Formik, FieldArray } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addFoodIntake,
   updateFoodIntake,
@@ -29,6 +29,7 @@ import {
   ButtonConfirm,
   ButtonCancel,
 } from './RecordDiaryModal.styles';
+import { getFoodIntake } from '../../Redux/foodIntake/selector';
 
 Modal.setAppElement('#root');
 
@@ -123,13 +124,36 @@ const RecordDiaryModal = ({
   category,
   categoryImage,
   item,
+  product,
 }) => {
   const dispatch = useDispatch();
+
+  const {
+    breakfast: { products: breakfastProducts },
+    lunch: { products: lunchProducts },
+    dinner: { products: dinnerProducts },
+    snack: { products: snackProducts },
+  } = useSelector(getFoodIntake);
+
+  const dailyProducts =
+    category === 'Lunch'
+      ? lunchProducts
+      : category === 'Breakfast'
+        ? breakfastProducts
+        : category === 'Dinner'
+          ? dinnerProducts
+          : category === 'Snack'
+            ? snackProducts
+            : [];
 
   // Відправка даних на бекенд
   const handleSubmit = async (values, { resetForm }) => {
     const products = values.mealsIntake.map((product) => ({
       productId: nanoid(),
+      ...product,
+    }));
+
+    const productsForUpdate = values.mealsIntake.map((product) => ({
       ...product,
     }));
 
@@ -139,9 +163,9 @@ const RecordDiaryModal = ({
         products,
       },
     };
-    console.log(dataForBackend);
+
     if (item) {
-      dispatch(updateFoodIntake({ productId: item._id, dataForBackend }));
+      dispatch(updateFoodIntake({ productId: product._id, productsForUpdate }));
     } else {
       dispatch(addFoodIntake(dataForBackend));
     }
@@ -161,15 +185,14 @@ const RecordDiaryModal = ({
 
         <Formik
           initialValues={{
-            mealsIntake: item
+            mealsIntake: dailyProducts
               ? [
                   {
-                    category,
-                    name: item.name ?? '',
-                    carbonohidretes: item.carbohydrate ?? '',
-                    protein: item.protein ?? '',
-                    fat: item.fat ?? '',
-                    calories: item.calories ?? '',
+                    name: dailyProducts.name ?? '',
+                    carbonohidretes: dailyProducts.carbonohidretes ?? '',
+                    protein: dailyProducts.protein ?? '',
+                    fat: dailyProducts.fat ?? '',
+                    calories: dailyProducts.calories ?? '',
                   },
                 ]
               : [mealsIntakeTemplate], // початковий елемент, якщо item відсутній

@@ -11,7 +11,7 @@ import {
   DiaryCardHeader,
   PartsOfMeal,
 } from '../../components/Diary/meal/DiaryCard.styled';
-import FoodIntake from '../../components/Diary/meal/Breakfast';
+import FoodIntake from '../../components/Diary/meal/FoodIntake';
 
 const Diary = () => {
   const dispatch = useDispatch();

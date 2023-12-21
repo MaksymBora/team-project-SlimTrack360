@@ -12,7 +12,7 @@ import {
   Paragraph,
 } from './Product.styled';
 
-const Product = ({ title }) => {
+const Product = ({ title, setEditModal, setIsModal }) => {
   const {
     breakfast: { products: breakfastProducts },
     lunch: { products: lunchProducts },
@@ -30,6 +30,11 @@ const Product = ({ title }) => {
           : title === 'Snack'
             ? snackProducts
             : [];
+
+  const isModalOpen = () => {
+    setIsModal((prevState) => !prevState);
+    setEditModal(true);
+  };
 
   return (
     <>
@@ -58,7 +63,7 @@ const Product = ({ title }) => {
             );
           })}
         </ProductTitleContainer>
-        <EditButton>
+        <EditButton onClick={isModalOpen}>
           <Icon
             name={'icon-edit-2'}
             width={'16px'}
