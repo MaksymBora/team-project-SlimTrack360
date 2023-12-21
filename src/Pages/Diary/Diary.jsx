@@ -10,8 +10,8 @@ import {
 } from './DiaryPage.styled';
 import { fetchFoodIntake } from '../../Redux/foodIntake/operations';
 import { date } from '../../utils/dateToday';
-import { FoodIntake } from '../../components/Diary/meal/FoodIntake';
-import { GoBackPage } from '../../components/Diary/meal/GoBackPage';
+// import { FoodIntake } from '../../components/Diary/meal/FoodIntake';
+// import { GoBackPage } from '../../components/Diary/meal/GoBackPage';
 
 const Diary = () => {
   const dispatch = useDispatch();
@@ -27,17 +27,15 @@ const Diary = () => {
   return (
     <ContainerDiary>
       <DiaryCardHeader>
-        <Link to="/">
-          <GoBackPage />
-        </Link>
+        <Link to="/">{/* <GoBackPage /> */}</Link>
 
         <MainTitle>Diary</MainTitle>
       </DiaryCardHeader>
       <PartsOfMeal>
-        <FoodIntake title="Breakfast" />
+        {/* <FoodIntake title="Breakfast" />
         <FoodIntake title="Dinner" />
         <FoodIntake title="Lunch" />
-        <FoodIntake title="Snack" />
+        <FoodIntake title="Snack" /> */}
       </PartsOfMeal>
     </ContainerDiary>
   );
