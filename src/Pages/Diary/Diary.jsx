@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from 'react-router-dom';
-import { MainTitle } from '../../Pages/Diary/DiaryPage.styled';
-import { ContainerDiary } from './DiaryPage.styled';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchFoodIntake } from '../../Redux/foodIntake/operations';
-import { date } from '../../utils/dateToday';
 import {
+  MainTitle,
   DiaryCardHeader,
   PartsOfMeal,
-} from '../../components/Diary/meal/DiaryCard.styled';
+  ContainerDiary,
+} from './DiaryPage.styled';
+import { fetchFoodIntake } from '../../Redux/foodIntake/operations';
+import { date } from '../../utils/dateToday';
 import FoodIntake from '../../components/Diary/meal/FoodIntake';
 import { GoBackPage } from '../../components/Diary/meal/GoBackPage';
 

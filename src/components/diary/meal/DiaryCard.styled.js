@@ -48,6 +48,7 @@ export const DiaryCardHeader = styled.div`
   align-items: center;
   margin-bottom: 16px;
 `;
+
 export const PartsOfMeal = styled.div`
   display: flex;
   gap: 16px;
