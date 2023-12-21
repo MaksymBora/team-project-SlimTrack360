@@ -154,10 +154,6 @@ const RecordDiaryModal = ({
       ...product,
     }));
 
-    // const productsForUpdate = values.mealsIntake.map((product) => ({
-    //   ...product,
-    // }));
-
     const dataForBackend = {
       date,
       [category.toLowerCase()]: {
@@ -167,7 +163,6 @@ const RecordDiaryModal = ({
 
     const updateDataForBackend = {
       [category.toLowerCase()]: {
-        // products: productsForUpdate,
         products: values.mealsIntake,
       },
     };
