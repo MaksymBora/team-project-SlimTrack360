@@ -30,6 +30,7 @@ export const MainText = styled.h1`
   }
   @media screen and (min-width: 1440px) {
     text-align: left;
+    padding-top: 80px;
   }
 `;
 export const Subtitle = styled.h3`

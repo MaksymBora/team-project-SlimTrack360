@@ -10,6 +10,7 @@ export const Div = styled.div`
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 104px;
-    align-items: flex-start;
+    align-items: center;
+    height: 588px;
   }
 `;

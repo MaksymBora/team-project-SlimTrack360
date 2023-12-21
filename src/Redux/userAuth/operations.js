@@ -131,3 +131,15 @@ export const udpdateWeight = createAsyncThunk(
     }
   }
 );
+
+export const updateUserGoal = createAsyncThunk(
+  'auth/updateUserGoal',
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await axios.put('user/goal', credentials);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

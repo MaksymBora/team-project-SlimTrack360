@@ -5,6 +5,7 @@ import {
   logOut,
   refreshUser,
   udpdateWeight,
+  updateUserGoal,
   updateUserParams,
 } from './operations';
 
@@ -130,6 +131,12 @@ const handleUpdateWeightPending = (state) => {
   state.isRefreshing = true;
 };
 
+// -------- User Goal ----------- //
+
+const handleUserGoalFulfilled = (state, action) => {
+  state.goal = action.payload.goal;
+};
+
 const initialState = {
   user: {
     name: null,
@@ -176,7 +183,8 @@ const userAuthSlice = createSlice({
       .addCase(updateUserParams.rejected, handleUpdateParamsRejected)
       .addCase(udpdateWeight.pending, handleUpdateWeightPending)
       .addCase(udpdateWeight.fulfilled, handleUpdateWeightFullfilled)
-      .addCase(udpdateWeight.rejected, handleUpdateWeightRejected);
+      .addCase(udpdateWeight.rejected, handleUpdateWeightRejected)
+      .addCase(updateUserGoal.fulfilled, handleUserGoalFulfilled);
   },
 });
 
