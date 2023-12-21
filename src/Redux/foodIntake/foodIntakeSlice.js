@@ -1,106 +1,98 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  addFoodIntake,
+  deleteFoodIntake,
   fetchFoodIntake,
-  postFoodIntake,
   updateFoodIntake,
 } from './operations';
 
 const initialState = {
-  id: null,
-  date: null,
-  breakfast: {
+  data: {
+    id: null,
+    date: null,
     totalCalories: null,
     totalFat: null,
     totalCarbonohidretes: null,
     totalProtein: null,
-    products: [],
+    breakfast: {
+      totalCalories: null,
+      totalFat: null,
+      totalCarbonohidretes: null,
+      totalProtein: null,
+      products: [],
+    },
+    lunch: {
+      totalCalories: null,
+      totalFat: null,
+      totalCarbonohidretes: null,
+      totalProtein: null,
+      products: [],
+    },
+    dinner: {
+      totalCalories: null,
+      totalFat: null,
+      totalCarbonohidretes: null,
+      totalProtein: null,
+      products: [],
+    },
+    snack: {
+      totalCalories: null,
+      totalFat: null,
+      totalCarbonohidretes: null,
+      totalProtein: null,
+      products: [],
+    },
   },
-  lunch: {
-    totalCalories: null,
-    totalFat: null,
-    totalCarbonohidretes: null,
-    totalProtein: null,
-    products: [],
-  },
-  dinner: {
-    totalCalories: null,
-    totalFat: null,
-    totalCarbonohidretes: null,
-    totalProtein: null,
-    products: [],
-  },
-  snack: {
-    totalCalories: null,
-    totalFat: null,
-    totalCarbonohidretes: null,
-    totalProtein: null,
-    products: [],
-  },
+  isLoading: false,
+  error: null,
 };
-const handleRejected = (state, action) => {
+const handleRejected = (state, { payload }) => {
   state.isLoading = false;
-  state.error = action.payload;
+  state.error = payload;
 };
 
 const handlePending = (state) => {
   state.isLoading = true;
 };
 
-const handleFulfildGet = (state, action) => {
+const handleDailyDiaryFullfilled = (state, { payload }) => {
   state.isLoading = false;
-  state.error = null;
-  state.firstLoad = true;
-
-  const breakfast = action.payload.data.userProducts.breakfast;
-  const dinner = action.payload.data.userProducts.dinner;
-  const snack = action.payload.data.userProducts.snack;
-  const lunch = action.payload.data.userProducts.lunch;
-
-  state.food = { breakfast, dinner, snack, lunch };
-  state.totalCalories = action.payload.data.userProducts.totalCalories;
+  state.data = payload.data;
 };
 
-const handleFulfildPost = (state, action) => {
+const handleAddFoodFullfilled = (state, { payload }) => {
   state.isLoading = false;
-  state.error = null;
-  const type = action.payload.data.type;
-  state.food[type] = [...action.payload.data.product];
-  state.totalCalories = action.payload.data.totalCalories;
+  state.data = payload.data;
 };
 
-const handleFulfildUpdate = (state, action) => {
+const handleUpdateFullfilled = (state, { payload }) => {
   state.isLoading = false;
-  state.error = null;
-  // {dinner:{name:', id} }
-  const type = action.payload.data.type;
-  const indexOfFood = state.food[type].findIndex(
-    (item) => item.ident === action.payload.data.product.ident
-  );
-  state.food[type][indexOfFood] = action.payload.data.product;
-  state.totalCalories = action.payload.data.totalCalories;
+  state.data = payload.data;
+};
+
+const handleDeleteFullfilled = (state, { payload }) => {
+  state.isLoading = false;
+  state.data = payload.data;
 };
 
 const foodIntakeSlice = createSlice({
   name: 'foodIntake',
   initialState,
-  reducers: {
-    clearDiary() {
-      return initialState;
-    },
-  },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFoodIntake.fulfilled, handleFulfildGet)
+      .addCase(fetchFoodIntake.fulfilled, handleDailyDiaryFullfilled)
       .addCase(fetchFoodIntake.pending, handlePending)
       .addCase(fetchFoodIntake.rejected, handleRejected)
-      .addCase(postFoodIntake.fulfilled, handleFulfildPost)
-      .addCase(postFoodIntake.pending, handlePending)
-      .addCase(postFoodIntake.rejected, handleRejected)
-      .addCase(updateFoodIntake.fulfilled, handleFulfildUpdate)
+      .addCase(addFoodIntake.fulfilled, handleAddFoodFullfilled)
+      .addCase(addFoodIntake.pending, handlePending)
+      .addCase(addFoodIntake.rejected, handleRejected)
+      .addCase(updateFoodIntake.fulfilled, handleUpdateFullfilled)
       .addCase(updateFoodIntake.pending, handlePending)
-      .addCase(updateFoodIntake.rejected, handleRejected);
+      .addCase(updateFoodIntake.rejected, handleRejected)
+      .addCase(deleteFoodIntake.fulfilled, handleDeleteFullfilled)
+      .addCase(deleteFoodIntake.pending, handlePending)
+      .addCase(deleteFoodIntake.rejected, handleRejected);
   },
 });
 
-export const { clearDiary } = foodIntakeSlice.actions;
 export default foodIntakeSlice.reducer;

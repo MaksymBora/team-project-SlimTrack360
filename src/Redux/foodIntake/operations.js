@@ -3,17 +3,9 @@ import axios from 'axios';
 
 export const fetchFoodIntake = createAsyncThunk(
   'foodIntake/fetch',
-  async (_, thunkAPI) => {
+  async (credential, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      const persistToken = state.auth.token;
-      if (!persistToken) {
-        return thunkAPI.rejectWithValue('No token');
-      }
-
-
-      const response = await axios.post('api/user/food-intake');
-
+      const response = await axios.post('/user/food-intake', credential);
 
       return response.data;
     } catch (error) {
@@ -22,17 +14,11 @@ export const fetchFoodIntake = createAsyncThunk(
   }
 );
 
-export const postFoodIntake = createAsyncThunk(
+export const addFoodIntake = createAsyncThunk(
   'foodIntake/post',
   async (credentials, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      const persistToken = state.auth.token;
-      if (!persistToken) {
-        return thunkAPI.rejectWithValue('No token');
-      }
-
-      const response = await axios.post('api/user/food-intake', credentials);
+      const response = await axios.post('/user/food-intake', credentials);
 
       return response.data;
     } catch (error) {
@@ -43,19 +29,26 @@ export const postFoodIntake = createAsyncThunk(
 
 export const updateFoodIntake = createAsyncThunk(
   'foodIntake/update',
-
-  async ({ ident, type, product }, thunkAPI) => {
+  async ({ objectId, updateDataForBackend }, thunkAPI) => {
+    console.log('Operation >>> ', updateDataForBackend);
     try {
-      const state = thunkAPI.getState();
-      const persistToken = state.auth.token;
-      if (!persistToken) {
-        return thunkAPI.rejectWithValue('No token');
-      }
+      const response = await axios.put(
+        `/user/food-intake/${objectId}`,
+        updateDataForBackend
+      );
 
-      const response = await axios.put(`api/user/food-intake/${ident}`, {
-        type,
-        product,
-      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteFoodIntake = createAsyncThunk(
+  'foodIntake/delete',
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await axios.delete(`/user/food-intake/`, credentials);
 
       return response.data;
     } catch (error) {
