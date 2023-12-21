@@ -1,4 +1,5 @@
-// import { useState } from 'react'
+import { useState } from 'react';
+
 import icon from './../../assets/sprite.svg';
 import {
   Modal,
@@ -15,35 +16,34 @@ import {
   CancelBtn,
   Overlay,
 } from './weightSelection.styled';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { date } from './../../utils/dateToday';
+import { udpdateWeight } from './../../Redux/userAuth/operations';
 
 export const WeightSelectionModal = ({ onClose }) => {
-  // const [newWeight, setNewWeight] = useState;
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [newWeight, setNewWeight] = useState('');
 
-  // const inputChange = e => {
-  //     const { value } = e.target;
-  //     setNewWeight(value)
-  // }
+  const handleInputChange = (event) => {
+    const { value } = event.target;
+    setNewWeight(value);
+  };
 
-  // function getCurrentDate() {
-  //     const newDate = new Date()
+  const handleNewUserWeight = (event) => {
+    event.preventDefault();
+    dispatch(udpdateWeight(newWeight));
+    onClose();
+  };
 
-  //     const year = newDate.getFullYear();
-
-  //     const month =newDate.getMonth() + 1;
-
-  //     const day = newDate.getDate();
-
-  //     return `${day} ${month} ${year}`
-  // }
-  // const date = getCurrentDate()
-  // console.log(date)
+  const closeBtnHandler = () => {
+    console.log(onClose());
+    onClose();
+  };
 
   return (
     <Overlay onClick={onClose}>
       <Modal>
-        <CloseBtn type="button">
+        <CloseBtn type="button" onClose={closeBtnHandler}>
           <svg>
             <use href={icon + '#icon-close-circle'}></use>
           </svg>
@@ -55,10 +55,10 @@ export const WeightSelectionModal = ({ onClose }) => {
           </WeightDescription>
           <DateWrapper>
             <DateText>Today</DateText>
-            <Date>555555</Date>
+            <Date>{date}</Date>
           </DateWrapper>
 
-          <Form>
+          <Form onSubmit={handleNewUserWeight}>
             <Input
               type="number"
               step="0.1"
@@ -66,14 +66,16 @@ export const WeightSelectionModal = ({ onClose }) => {
               name="weight"
               placeholder="Enter your weight"
               autoComplete="off"
-              //  onChange={inputChange}
+              onChange={handleInputChange}
               required
               autoFocus
             ></Input>
             <ConfirmBtn type="submit">Confirm</ConfirmBtn>
           </Form>
         </ModalWrapper>
-        <CancelBtn type="button">Cancel</CancelBtn>
+        <CancelBtn type="button" onClick={closeBtnHandler}>
+          Cancel
+        </CancelBtn>
       </Modal>
     </Overlay>
   );

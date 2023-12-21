@@ -101,7 +101,8 @@ export const TargetImg = styled.img`
   width: 20px;
   height: 20px;
 `;
-export const TargetImgBorder = styled.div`
+export const TargetImgBorder = styled.button`
+  background-color: transparent;
   width: 40px;
   height: 40px;
   border: 1px solid ${theme.color.primaryViolet};
