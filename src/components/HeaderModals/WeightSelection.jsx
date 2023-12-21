@@ -80,3 +80,4 @@ export const WeightSelectionModal = ({ onClose }) => {
     </Overlay>
   );
 };
+
