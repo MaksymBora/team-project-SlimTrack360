@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from 'react-router-dom';
-import GoBackPage from '../../components/Diary/meal/GoBackPage';
 import { MainTitle } from '../../Pages/Diary/DiaryPage.styled';
 import { ContainerDiary } from './DiaryPage.styled';
 import { useDispatch } from 'react-redux';
@@ -12,6 +11,7 @@ import {
   PartsOfMeal,
 } from '../../components/Diary/meal/DiaryCard.styled';
 import FoodIntake from '../../components/Diary/meal/FoodIntake';
+import GoBackPage from '../../components/Diary/meal/GoBackPage';
 
 const Diary = () => {
   const dispatch = useDispatch();
