@@ -17,6 +17,7 @@ import {
   Attention,
   Span,
   Form,
+  EyeIcon,
 } from './SignUpContent.styled';
 
 export const SignUpContent = ({ setStep }) => {
@@ -109,7 +110,7 @@ export const SignUpContent = ({ setStep }) => {
               />
               <Span onClick={togglePasswordVisibility}>
                 {showPassword ? (
-                  <svg
+                  <EyeIcon
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -130,9 +131,9 @@ export const SignUpContent = ({ setStep }) => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
-                  </svg>
+                  </EyeIcon>
                 ) : (
-                  <svg
+                  <EyeIcon
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -160,7 +161,7 @@ export const SignUpContent = ({ setStep }) => {
                         <rect width="16" height="16" fill="white" />
                       </clipPath>
                     </defs>
-                  </svg>
+                  </EyeIcon>
                 )}
               </Span>
               {errors.password && touched.password && (
