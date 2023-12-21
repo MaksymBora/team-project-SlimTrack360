@@ -22,6 +22,7 @@ export const DiaryCard = ({
   carbonohidrates,
   protein,
   fat,
+  dataLength = 1,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -45,7 +46,7 @@ export const DiaryCard = ({
         </ImageWrap>
         <Title>{category}</Title>
       </TitleWrap>
-      {carbonohidrates !== 0 || protein !== 0 || fat !== 0 ? (
+      {dataLength > 0 ? (
         <InfoWrap>
           <CarbWrap>
             Carbonohidrates: <ValueSpan>{carbonohidrates}</ValueSpan>
