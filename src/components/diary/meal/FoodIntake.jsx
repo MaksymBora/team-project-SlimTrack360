@@ -15,7 +15,7 @@ import {
   TabletFood,
 } from './DiaryCard.styled';
 
-const FoodIntake = ({ title }) => {
+export const FoodIntake = ({ title }) => {
   const category = title;
 
   const categoryImage =
@@ -64,5 +64,3 @@ const FoodIntake = ({ title }) => {
     </CardContainer>
   );
 };
-
-export default FoodIntake;
