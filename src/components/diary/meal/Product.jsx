@@ -1,3 +1,6 @@
+import Icon from '../../common/Icon';
+import { getFoodIntake } from '../../../Redux/foodIntake/selector';
+import { useSelector } from 'react-redux';
 import {
   ProductContainer,
   Text,
@@ -7,38 +10,54 @@ import {
   ProductTitleContainer,
   EditButton,
   Paragraph,
-} from '../meal/Product.styled';
-import Icon from '../../common/Icon';
-// import { useDispatch } from 'react-redux';
-// import { useEffect, useSelector } from 'react';
-// import { fetchFoodIntake } from '../../../Redux/foodIntake/operations';
+} from './Product.styled';
 
-const Product = () => {
-  // const dispatch = useDispatch();
-  // const foodIntake = useSelector(fetchFoodIntake);
-  // useEffect(() => {
-  //   dispatch(foodIntake)
-  // },[dispatch, foodIntake]);
+const Product = ({ title }) => {
+  const {
+    breakfast: { products: breakfastProducts },
+    lunch: { products: lunchProducts },
+    dinner: { products: dinnerProducts },
+    snack: { products: snackProducts },
+  } = useSelector(getFoodIntake);
+
+  const dailyProducts =
+    title === 'Lunch'
+      ? lunchProducts
+      : title === 'Breakfast'
+        ? breakfastProducts
+        : title === 'Dinner'
+          ? dinnerProducts
+          : title === 'Snack'
+            ? snackProducts
+            : [];
 
   return (
     <>
       <ProductContainer>
         <ProductTitleContainer>
-          <Paragraph>1</Paragraph>
-          <ProductName>name</ProductName>
+          {dailyProducts.map((item, index) => {
+            return (
+              <div key={item.productId}>
+                <Paragraph>{index + 1}</Paragraph>
+                <ProductName>{item.name}</ProductName>
+                <ProductPower>
+                  <Text>
+                    <SpanElement>Carb. </SpanElement>
+                    {item.carbonohidretes}
+                  </Text>
+                  <Text>
+                    <SpanElement>Prot. </SpanElement>
+                    {item.protein}
+                  </Text>
+                  <Text>
+                    <SpanElement>Fat. </SpanElement>
+                    {item.fat}
+                  </Text>
+                </ProductPower>
+              </div>
+            );
+          })}
         </ProductTitleContainer>
-
-        <ProductPower>
-          <Text>
-            <SpanElement>Carb. </SpanElement>0
-          </Text>
-          <Text>
-            <SpanElement>Prot. </SpanElement>0
-          </Text>
-          <Text>
-            <SpanElement>Fat. </SpanElement>0
-          </Text>
-        </ProductPower>
         <EditButton>
           <Icon
             name={'icon-edit-2'}

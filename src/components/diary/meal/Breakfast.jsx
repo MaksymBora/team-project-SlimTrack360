@@ -1,6 +1,12 @@
 import TitlePeriod from '../foodList/TitlePeriod';
 import breakfastImg from '../../../assets/images/diary/breakfast.png';
 import breakfastImg2x from '../../../assets/images/diary/breakfast-2x.png';
+import dinnerImg from '../../../assets/images/diary/dinner.png';
+import dinnerImg2x from '../../../assets/images/diary/dinner-2x.png';
+import lunchImg from '../../../assets/images/diary/lunch.png';
+import lunchImg2x from '../../../assets/images/diary/lunch-2x.png';
+import snackImg from '../../../assets/images/diary/snack.png';
+import snackImg2x from '../../../assets/images/diary/snack-2x.png';
 import FoodList from '../foodList/FoodList';
 import {
   CardContainer,
@@ -9,28 +15,54 @@ import {
   TabletFood,
 } from './DiaryCard.styled';
 
-const Breakfast = () => {
-  const category = 'Breakfast';
-  const categoryImage = breakfastImg;
+const FoodIntake = ({ title }) => {
+  const category = title;
+
+  const categoryImage =
+    title === 'Lunch'
+      ? lunchImg
+      : title === 'Breakfast'
+        ? breakfastImg
+        : title === 'Dinner'
+          ? dinnerImg
+          : title === 'Snack'
+            ? snackImg
+            : '';
+
+  const categoryImage2x =
+    title === 'Lunch'
+      ? lunchImg2x
+      : title === 'Breakfast'
+        ? breakfastImg2x
+        : title === 'Dinner'
+          ? dinnerImg2x
+          : title === 'Snack'
+            ? snackImg2x
+            : '';
+
   return (
     <CardContainer>
       <TabletFood>
         <CardTitleContainer>
           <img
-            srcSet={`${breakfastImg} 1x, ${breakfastImg2x} 2x`}
-            src={breakfastImg}
+            srcSet={`${categoryImage} 1x, ${categoryImage2x} 2x`}
+            src={categoryImage}
             alt="breakfast"
             width="32"
             height="32"
           />
-          <Title>Breakfast</Title>
+          <Title>{title}</Title>
         </CardTitleContainer>
 
-        <TitlePeriod />
+        <TitlePeriod title={title} />
       </TabletFood>
-      <FoodList category={category} categoryImage={categoryImage} />
+      <FoodList
+        category={category}
+        categoryImage={categoryImage}
+        title={title}
+      />
     </CardContainer>
   );
 };
 
-export default Breakfast;
+export default FoodIntake;

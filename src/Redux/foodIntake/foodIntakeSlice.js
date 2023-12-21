@@ -6,58 +6,58 @@ import {
 } from './operations';
 
 const initialState = {
-  id: null,
-  date: null,
-  breakfast: {
+  data: {
+    id: null,
+    date: null,
     totalCalories: null,
     totalFat: null,
     totalCarbonohidretes: null,
     totalProtein: null,
-    products: [],
+    breakfast: {
+      totalCalories: null,
+      totalFat: null,
+      totalCarbonohidretes: null,
+      totalProtein: null,
+      products: [],
+    },
+    lunch: {
+      totalCalories: null,
+      totalFat: null,
+      totalCarbonohidretes: null,
+      totalProtein: null,
+      products: [],
+    },
+    dinner: {
+      totalCalories: null,
+      totalFat: null,
+      totalCarbonohidretes: null,
+      totalProtein: null,
+      products: [],
+    },
+    snack: {
+      totalCalories: null,
+      totalFat: null,
+      totalCarbonohidretes: null,
+      totalProtein: null,
+      products: [],
+    },
   },
-  lunch: {
-    totalCalories: null,
-    totalFat: null,
-    totalCarbonohidretes: null,
-    totalProtein: null,
-    products: [],
-  },
-  dinner: {
-    totalCalories: null,
-    totalFat: null,
-    totalCarbonohidretes: null,
-    totalProtein: null,
-    products: [],
-  },
-  snack: {
-    totalCalories: null,
-    totalFat: null,
-    totalCarbonohidretes: null,
-    totalProtein: null,
-    products: [],
-  },
+  isLoading: false,
+  error: null,
 };
-const handleRejected = (state, action) => {
+const handleRejected = (state, { payload }) => {
   state.isLoading = false;
-  state.error = action.payload;
+  state.error = payload;
 };
 
 const handlePending = (state) => {
   state.isLoading = true;
 };
 
-const handleFulfildGet = (state, action) => {
+const handleDailyDiaryFullfilled = (state, { payload }) => {
   state.isLoading = false;
-  state.error = null;
-  state.firstLoad = true;
 
-  const breakfast = action.payload.data.userProducts.breakfast;
-  const dinner = action.payload.data.userProducts.dinner;
-  const snack = action.payload.data.userProducts.snack;
-  const lunch = action.payload.data.userProducts.lunch;
-
-  state.food = { breakfast, dinner, snack, lunch };
-  state.totalCalories = action.payload.data.userProducts.totalCalories;
+  state.data = payload.data;
 };
 
 const handleFulfildPost = (state, action) => {
@@ -90,7 +90,7 @@ const foodIntakeSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFoodIntake.fulfilled, handleFulfildGet)
+      .addCase(fetchFoodIntake.fulfilled, handleDailyDiaryFullfilled)
       .addCase(fetchFoodIntake.pending, handlePending)
       .addCase(fetchFoodIntake.rejected, handleRejected)
       .addCase(postFoodIntake.fulfilled, handleFulfildPost)

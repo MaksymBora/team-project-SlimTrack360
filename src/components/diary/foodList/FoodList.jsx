@@ -4,30 +4,26 @@ import {
 } from '../../../Pages/Diary/DiaryPage.styled';
 import { Container } from './FoodList.styled';
 import Product from '../meal/Product';
-import RecordDiaryModal from '../../../components/RecordDiaryModal/RecordDiaryModal';
+import RecordDiaryModal from '../../RecordDiaryModal/RecordDiaryModal';
 import { useState } from 'react';
 
-const FoodList = ({ categoryImage, category }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const FoodList = ({ categoryImage, category, title }) => {
+  const [isModal, setIsModal] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const isModalOpen = () => {
+    setIsModal((prevState) => !prevState);
   };
 
   return (
     <Container>
-      <Product />
-      <ButtonStyle onClick={openModal}>
+      <Product title={title} />
+      <ButtonStyle onClick={isModalOpen}>
         <TextIndexSpan>+ Record your meal</TextIndexSpan>
       </ButtonStyle>
 
       <RecordDiaryModal
-        isModalOpen={isModalOpen}
-        onClose={closeModal}
+        isModalOpen={isModal}
+        onClose={isModalOpen}
         category={category}
         categoryImage={categoryImage}
       />
