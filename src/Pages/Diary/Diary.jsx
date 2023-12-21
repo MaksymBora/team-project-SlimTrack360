@@ -6,12 +6,12 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchFoodIntake } from '../../Redux/foodIntake/operations';
 import { date } from '../../utils/dateToday';
-import GoBackPage from '../../components/Diary/meal/GoBackPage.jsx';
 import {
   DiaryCardHeader,
   PartsOfMeal,
 } from '../../components/Diary/meal/DiaryCard.styled';
 import FoodIntake from '../../components/Diary/meal/FoodIntake';
+import { GoBackPage } from '../../components/Diary/meal/GoBackPage';
 
 const Diary = () => {
   const dispatch = useDispatch();
