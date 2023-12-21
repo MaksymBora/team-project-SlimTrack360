@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { theme } from '../../styles/index';
 import {
   Container,
@@ -16,14 +17,20 @@ import { DiaryInfo } from '../../components/MainPage/DiaryInfo/DiaryInfo';
 import RecommendedFood from '../../components/MainPage/RecommendedFood/RecommendedFood';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { fetchFood } from '../../Redux/recommended/operations';
+import { fetchFoodIntake } from '../../Redux/foodIntake/operations';
+import { date } from '../../utils/dateToday.js';
 
 const Main = () => {
   const dispatch = useDispatch();
 
+  const dateToday = {
+    date,
+  };
+
   useEffect(() => {
     dispatch(fetchFood());
+    dispatch(fetchFoodIntake(dateToday));
   }, [dispatch]);
 
   return (
