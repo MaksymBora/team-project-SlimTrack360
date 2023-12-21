@@ -116,6 +116,7 @@ const mealsIntakeTemplate = {
   protein: '',
   fat: '',
   calories: '',
+  productId: '',
 };
 
 const RecordDiaryModal = ({
@@ -124,7 +125,6 @@ const RecordDiaryModal = ({
   category,
   categoryImage,
   item,
-  product,
 }) => {
   const dispatch = useDispatch();
 
@@ -134,6 +134,7 @@ const RecordDiaryModal = ({
     dinner: { products: dinnerProducts },
     snack: { products: snackProducts },
   } = useSelector(getFoodIntake);
+  const foodIntakeResponse = useSelector(getFoodIntake);
 
   const dailyProducts =
     category === 'Lunch'
@@ -146,16 +147,16 @@ const RecordDiaryModal = ({
             ? snackProducts
             : [];
 
-  // Відправка даних на бекенд
+  // -------------- Відправка даних на бекенд --------------------- //
   const handleSubmit = async (values, { resetForm }) => {
     const products = values.mealsIntake.map((product) => ({
       productId: nanoid(),
       ...product,
     }));
 
-    const productsForUpdate = values.mealsIntake.map((product) => ({
-      ...product,
-    }));
+    // const productsForUpdate = values.mealsIntake.map((product) => ({
+    //   ...product,
+    // }));
 
     const dataForBackend = {
       date,
@@ -164,13 +165,28 @@ const RecordDiaryModal = ({
       },
     };
 
+    const updateDataForBackend = {
+      [category.toLowerCase()]: {
+        // products: productsForUpdate,
+        products: values.mealsIntake,
+      },
+    };
+
+    console.log(updateDataForBackend, 'updateDataForBackend');
+
+    const dataToBeSend = {
+      objectId: foodIntakeResponse._id,
+      updateDataForBackend,
+    };
+
     if (item) {
-      dispatch(updateFoodIntake({ productId: product._id, productsForUpdate }));
+      dispatch(updateFoodIntake(dataToBeSend));
     } else {
       dispatch(addFoodIntake(dataForBackend));
+
+      resetForm();
     }
-    // dispatch(fetchStatistics('today'));
-    resetForm();
+
     onClose();
   };
 
@@ -185,23 +201,23 @@ const RecordDiaryModal = ({
 
         <Formik
           initialValues={{
-            mealsIntake: dailyProducts
-              ? [
-                  {
-                    name: dailyProducts.name ?? '',
-                    carbonohidretes: dailyProducts.carbonohidretes ?? '',
-                    protein: dailyProducts.protein ?? '',
-                    fat: dailyProducts.fat ?? '',
-                    calories: dailyProducts.calories ?? '',
-                  },
-                ]
-              : [mealsIntakeTemplate], // початковий елемент, якщо item відсутній
+            mealsIntake:
+              item && dailyProducts
+                ? dailyProducts.map((product) => ({
+                    name: product.name || '',
+                    carbonohidretes: product.carbonohidretes || '',
+                    protein: product.protein || '',
+                    fat: product.fat || '',
+                    calories: product.calories || '',
+                    productId: product.productId || '',
+                  }))
+                : [mealsIntakeTemplate],
           }}
           onSubmit={handleSubmit}
           validationSchema={schema}
           validateOnBlur
         >
-          {({ errors, touched, values }) => (
+          {({ errors, touched, values, setFieldValue }) => (
             <StyledForm autoComplete="off">
               <FieldArray name="mealsIntake">
                 {({ insert, remove }) => {
@@ -222,6 +238,11 @@ const RecordDiaryModal = ({
                                       e.preventDefault();
                                     }
                                   }}
+                                  onChange={(e) => {
+                                    const { name, value } = e.target;
+                                    setFieldValue(name, value);
+                                  }}
+                                  value={values.mealsIntake[index].name}
                                   required
                                 />
                                 {errors[`mealsIntake.${index}.name`] &&
