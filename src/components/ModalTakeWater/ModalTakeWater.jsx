@@ -35,7 +35,6 @@ export const ModalTakeWater = ({ onClose }) => {
         <Title>Add water intake</Title>
 
         <Form onSubmit={handleOnSubmit}>
-
           <Label>How much water</Label>
           <Input
             name="water"
@@ -43,7 +42,7 @@ export const ModalTakeWater = ({ onClose }) => {
             placeholder="Enter milliliters"
             onChange={(e) => e.target.value}
           />
-          <Confirm type="submit" disabled={isLoading}>
+          <Confirm type="submit" disabled={isLoading} onClick={onClose}>
             {isLoading ? 'Loading...' : 'Confirm'}
           </Confirm>
           {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -56,3 +55,5 @@ export const ModalTakeWater = ({ onClose }) => {
     document.getElementById('modal-root')
   );
 };
+
+//test
