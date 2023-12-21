@@ -1,44 +1,60 @@
-// import { UserName, UserAva, UserLogoContainer, UserLogoText, UserLogoIcon } from './../header.styled.jsx'
-// import icon from './../../../../assets/sprite.svg'
+import {
+  UserName,
+  UserAva,
+  UserLogoContainer,
+  UserLogoText,
+  UserLogoIcon,
+  ProfileBtn,
+} from './../header.styled.js';
+import icon from './../../../../assets/sprite.svg';
+import { ProfileModal } from './../../../HeaderModals/ProfileModal/ProfileModal.jsx';
+import { useState } from 'react';
 
-// export const UserAvatar = () => {
+export const UserAvatar = () => {
+  const [isProfileModalOpen, setProfileModalOpen] = useState(false);
 
-//      const userProfile = useSelector(currentUserEmailSelector);
-//   const name = 'alex' ?? userProfile.userName;
-//   const avatar = {} ?? userProfile.avatarURL;
-//   const defaultName = name ? name.slice(0, 1).toUpperCase() : 'A';
-//   const avatarUser = useSelector(currentUserAvatar);
-//   const ava = avatarUser.avatarURL;
-//   const [isModalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = () => {
+    setProfileModalOpen((prevState) => !prevState);
+  };
 
-//     return (
-//         name && (
-//             <UserLogoContainer>
+  //      const userProfile = useSelector(currentUserEmailSelector);
+  //   const name = 'alex' ?? userProfile.userName;
+  //   const avatar = {} ?? userProfile.avatarURL;
+  //   const defaultName = name ? name.slice(0, 1).toUpperCase() : 'A';
+  //   const avatarUser = useSelector(currentUserAvatar);
+  //   const ava = avatarUser.avatarURL;
+  //
 
-//                 <UserName>faro</UserName>
+  return (
+    // name && (
+    <UserLogoContainer onClick={handleOpenModal}>
+      <UserName>Konstantin</UserName>
 
-//                 {ava ? (
-//                     <UserAva
-//                         src={ava} alt="Avatar"
-//                     />
-//                 ) : (
-//             <UserLogoText>
-//               <p>
-//               {defaultName}
-//               </p>
-//                         </UserLogoText>
+      {/* {ava ? ( */}
+      <UserAva
+      // src={ava} alt="Avatar"
+      />
+      {/* ) : ( */}
+      <UserLogoText>
+        <p>{/* {defaultName} */}</p>
+      </UserLogoText>
+      {/* 
+                )
+            } */}
 
-//                 )
-//             }
+      <UserLogoIcon>
+        <svg>
+          <use href={icon + '#icon-arrow-down'}></use>
+        </svg>
+      </UserLogoIcon>
 
-//                 <UserLogoIcon>
-//                     <svg>
-//         <use href={icon + '#icon-arrow-down'}></use>
-//       </svg>
-//            </UserLogoIcon>
-
-//             </UserLogoContainer>
-
-//         )
-//     )
-// }
+      <ProfileBtn>
+        <svg>
+          <use href={icon + '#icon-arrow-down'}></use>
+        </svg>
+      </ProfileBtn>
+      {isProfileModalOpen && <ProfileModal onClose={handleOpenModal} />}
+    </UserLogoContainer>
+  );
+  // )
+};

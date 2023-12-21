@@ -1,68 +1,68 @@
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { theme } from '../../../styles/theme';
 
 // контейнер
-export const HeaderContainer = styled.header`
-  padding-top: 19px;
-  padding-bottom: 19px;
-  background-color: #0f0f0f;
-  margin: 0px auto;
+export const HeaderContainer = styled.div`
+  background-color: ${theme.color.primaryBlack2};
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
 
-  @media screen and (min-width: 768px) {
-    padding-top: 34px;
-    padding-bottom: 34px;
+  @media screen and (min-width: 320px) {
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
 
-  @media screen and (min-width: 1440px) {
-    padding-top: 34px;
-    padding-bottom: 34px;
+  @media screen and (min-width: 834px) {
+    padding-top: 26px;
+    padding-bottom: 26px;
   }
 `;
 
 export const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  min-width: 300px;
-  max-width: 345px;
-  padding-right: 10px;
-  padding-left: 10px;
-  margin: 0px auto;
+  margin: auto;
 
-  @media screen and (min-width: 768px) {
-    max-width: 714px;
+  @media screen and (min-width: 320px) {
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 320px;
+  }
+  @media screen and (min-width: 834px) {
+    width: 834px;
     padding-right: 27px;
     padding-left: 27px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1372px;
+    width: 1440px;
     padding-right: 34px;
     padding-left: 34px;
   }
 `;
 
-export const Navigation = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 // лого
-export const LogoBtn = styled.div`
-  width: 102px;
+export const LogoBtn = styled.button`
+  background-color: transparent;
 `;
 
 export const LogoText = styled.span`
-  color: #b6b6b6;
-  font-family: Poppins;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.38;
+  color: ${theme.color.primaryGrey};
+  @media screen and (min-width: 320px) {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.38;
+  }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     font-size: 22px;
     line-height: 1.46;
   }
 `;
+
 export const SignInWrapper = styled.div`
   display: flex;
   gap: 0;
@@ -74,37 +74,34 @@ export const SignInContainer = styled.div`
   align-items: center;
 `;
 export const RouterLink = styled(Link)`
-  color: #ffffff;
-  font-family: Poppins;
+  color: ${theme.color.primaryWhite};
   font-size: 12px;
   font-weight: 400;
   line-height: 1.33;
   &:focus {
-    color: #e3ffa8;
+    color: ${theme.color.primaryGreenLite};
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     font-size: 14px;
   }
 `;
 
 export const RouterLinkSignUp = styled(Link)`
-  color: #ffffff;
+  color: ${theme.color.primaryWhite};
   margin-right: 6px;
-  font-family: Poppins;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.33;
   &:focus {
-    color: #e3ffa8;
+    color: ${theme.color.primaryGreenLite};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     font-size: 14px;
   }
 `;
 export const Slash = styled.span`
-  color: #ffffff;
-  font-family: Poppins;
+  color: ${theme.color.primaryWhite};
   font-size: 12px;
   font-weight: 400;
   line-height: 1.43;
@@ -113,8 +110,8 @@ export const UserIcon = styled.div`
   svg {
     width: 26px;
     height: 26px;
-    fill: #ffffff;
-    @media screen and (min-width: 768px) {
+    fill: ${theme.color.primaryWhite};
+    @media screen and (min-width: 834px) {
       width: 28px;
       height: 28px;
     }
@@ -124,12 +121,30 @@ export const UserIcon = styled.div`
 // Автентифікований користувач
 
 // аватар та ім'я
+export const Navigation = styled.nav`
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+
+  @media screen and (min-width: 320px) {
+    gap: 4px;
+  }
+  @media screen and (min-width: 834px) {
+    gap: 127px;
+  }
+  @media screen and (min-width: 1440px) {
+    gap: 626px;
+  }
+`;
 export const UserLogoContainer = styled.div`
   display: flex;
   width: 126px;
   height: 24px;
+  align-items: center;
+  /* justify-content:flex-end; */
+  position: relative;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 130px;
     height: 28px;
   }
@@ -137,7 +152,7 @@ export const UserLogoContainer = styled.div`
 
 export const UserName = styled.p`
   margin-right: 6px;
-  color: #ffffff;
+  color: ${theme.color.primaryWhite};
   font-size: 12px;
   font-weight: 400;
   line-height: 1.33;
@@ -149,7 +164,7 @@ export const UserAva = styled.img`
   border-radius: 50%;
   margin-right: 4px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 28px;
     height: 28px;
   }
@@ -160,12 +175,12 @@ export const UserLogoText = styled.div`
   height: 24px;
   margin-right: 4px;
   border-radius: 50%;
-  border: #0f0f0f solid 1px;
+  border: ${theme.color.primaryBlack2} solid 1px;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 834px) {
     width: 28px;
     height: 28px;
   }
@@ -178,23 +193,50 @@ export const UserLogoIcon = styled.div`
 
 //Настройки юзера
 
-export const UserMode = styled.div``;
+export const UserMode = styled.div`
+  /* margin-right:200px; */
+`;
+
+export const ProfileBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  svg {
+    width: 14px;
+    height: 14px;
+    fill: ${theme.color.primaryGreenLite};
+    stroke: ${theme.color.primaryGreenLite};
+  }
+`;
+
 //піктограма
-export const Pictogram = styled.div`
+export const PictogramBlock = styled.div``;
+export const Pictogram = styled.button`
+  background-color: transparent;
   svg {
     width: 16px;
     height: 16px;
-    fill: #e3ffa8;
+    fill: ${theme.color.primaryGrey};
+  }
+`;
+
+export const PictogramOpen = styled.button`
+  background-color: transparent;
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: ${theme.color.primaryGreenLite};
   }
 `;
 
 //block goal
 export const UserSet = styled.div`
-  width: 310px;
   display: flex;
   align-items: center;
-  gap: 40px;
 
+  @media screen and (min-width: 1440px) {
+    width: 310px;
+    gap: 40px;
+  }
   @media screen and (min-width: 1440px) {
     width: 350px;
     gap: 80px;
@@ -220,8 +262,7 @@ export const GoalSelection = styled.div`
   gap: 2px;
 `;
 export const Goal = styled.p`
-  color: #ffffff;
-  font-family: Poppins;
+  color: ${theme.color.primaryWhite};
   font-size: 14px;
   font-weight: 600;
   line-height: 1.43;
@@ -232,8 +273,7 @@ export const SettingBtn = styled.div`
   gap: 12px;
 `;
 export const LoseFat = styled.p`
-  color: #ffffff;
-  font-family: Poppins;
+  color: ${theme.color.primaryWhite};
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -242,11 +282,12 @@ export const LoseFat = styled.p`
 export const GoalBtn = styled.button`
   border: none;
   background-color: transparent;
+  position: relative;
   svg {
     width: 14px;
     height: 14px;
-    fill: #e3ffa8;
-    stroke: #e3ffa8;
+    fill: ${theme.color.primaryGreenLite};
+    stroke: ${theme.color.primaryGreenLite};
   }
 `;
 
@@ -274,8 +315,7 @@ export const WeightSelection = styled.div`
 `;
 
 export const Weight = styled.p`
-  color: #ffffff;
-  font-family: Poppins;
+  color: ${theme.color.primaryWhite};
   font-size: 14px;
   font-weight: 600;
   line-height: 1.43;
@@ -287,8 +327,7 @@ export const SetBtn = styled.div`
 `;
 
 export const NumKg = styled.p`
-  color: #ffffff;
-  font-family: Poppins;
+  color: ${theme.color.primaryWhite};
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -296,7 +335,7 @@ export const NumKg = styled.p`
 
 export const Kg = styled.span`
   margin-left: 4px;
-  color: #b6b6b6;
+  color: ${theme.color.primaryGrey};
   font-size: 14px;
   font-weight: 400;
   line-height: 1.43;
@@ -308,7 +347,7 @@ export const WeightBtn = styled.button`
   svg {
     width: 16px;
     height: 16px;
-    fill: #e3ffa8;
-    stroke: #e3ffa8;
+    fill: ${theme.color.primaryGreenLite};
+    stroke: ${theme.color.primaryGreenLite};
   }
 `;
