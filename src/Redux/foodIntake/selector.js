@@ -5,12 +5,10 @@ export const getFoodIntake = (state) => state.foodIntake.data;
 // breakfast
 export const getBreakfastCarbons = (state) =>
   state.foodIntake.data.breakfast.totalCarbonohidretes;
-
 export const getBreakfastFat = (state) =>
-  state.foodIntake.data.breakfast.totalCarbonohidretes;
-
+  state.foodIntake.data.breakfast.totalFat;
 export const getBreakfastProtein = (state) =>
-  state.foodIntake.data.breakfast.totalCarbonohidretes;
+  state.foodIntake.data.breakfast.totalProtein;
 
 // Lunch
 export const getLunchCarbons = (state) =>

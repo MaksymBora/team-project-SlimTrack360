@@ -2,12 +2,13 @@ import Modal from 'react-modal';
 import { Formik, FieldArray } from 'formik';
 import { useDispatch } from 'react-redux';
 import {
-  postFoodIntake,
+  addFoodIntake,
   updateFoodIntake,
 } from '../../Redux/foodIntake/operations';
 import * as yup from 'yup';
 import { nanoid } from 'nanoid';
 import Icon from '../../components/common/Icon';
+import { date } from '../../utils/dateToday';
 
 import {
   ModalWrapper,
@@ -64,9 +65,9 @@ const schema = yup.object({
         .matches(/^\p{L}+$/)
         .trim('Name cannot include leading and trailing spaces')
         .strict(true),
-      carbonohidrates: yup
+      carbonohidretes: yup
         .number()
-        .required('Carbonohidrates is required')
+        .required('Carbonohidretes is required')
         .typeError('Must be a number')
         .min(0, 'Must be a positive number')
         .max(1000, 'The maximum allowable value is 1000')
@@ -110,7 +111,7 @@ const schema = yup.object({
 
 const mealsIntakeTemplate = {
   name: '',
-  carbonohidrates: '',
+  carbonohidretes: '',
   protein: '',
   fat: '',
   calories: '',
@@ -127,25 +128,22 @@ const RecordDiaryModal = ({
 
   // Відправка даних на бекенд
   const handleSubmit = async (values, { resetForm }) => {
-    const currentDate = new Date().toISOString(); // Отримуємо поточну дату у форматі ISO
-    const formattedDate = currentDate.substring(0, 10); // Беремо перші 10 символів
     const products = values.mealsIntake.map((product) => ({
       productId: nanoid(),
       ...product,
     }));
 
     const dataForBackend = {
-      date: formattedDate,
+      date,
       [category.toLowerCase()]: {
         products,
       },
     };
-    // console.log('dataForBackend', dataForBackend);
-
+    console.log(dataForBackend);
     if (item) {
       dispatch(updateFoodIntake({ productId: item._id, dataForBackend }));
     } else {
-      dispatch(postFoodIntake(dataForBackend));
+      dispatch(addFoodIntake(dataForBackend));
     }
     // dispatch(fetchStatistics('today'));
     resetForm();
@@ -168,7 +166,7 @@ const RecordDiaryModal = ({
                   {
                     category,
                     name: item.name ?? '',
-                    carbonohidrates: item.carbohydrate ?? '',
+                    carbonohidretes: item.carbohydrate ?? '',
                     protein: item.protein ?? '',
                     fat: item.fat ?? '',
                     calories: item.calories ?? '',
@@ -214,8 +212,8 @@ const RecordDiaryModal = ({
 
                               <FieldWrapper>
                                 <StyledField
-                                  name={`mealsIntake.${index}.carbonohidrates`}
-                                  id={`mealsIntake.${index}.carbonohidrates`}
+                                  name={`mealsIntake.${index}.carbonohidretes`}
+                                  id={`mealsIntake.${index}.carbonohidretes`}
                                   placeholder="Carbonoh."
                                   type="number"
                                   min={0}
@@ -223,7 +221,7 @@ const RecordDiaryModal = ({
                                   required
                                 />
                                 <StyledError
-                                  name={`mealsIntake.${index}.carbonohidrates`}
+                                  name={`mealsIntake.${index}.carbonohidretes`}
                                   component="div"
                                 />
                               </FieldWrapper>

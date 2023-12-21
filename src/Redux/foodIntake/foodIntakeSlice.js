@@ -1,9 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  fetchFoodIntake,
-  postFoodIntake,
-  updateFoodIntake,
-} from './operations';
+import { addFoodIntake, fetchFoodIntake, updateFoodIntake } from './operations';
 
 const initialState = {
   data: {
@@ -60,18 +56,15 @@ const handleDailyDiaryFullfilled = (state, { payload }) => {
   state.data = payload.data;
 };
 
-const handleFulfildPost = (state, action) => {
+const handleAddFoodFullfilled = (state, { payload }) => {
   state.isLoading = false;
-  state.error = null;
-  const type = action.payload.data.type;
-  state.food[type] = [...action.payload.data.product];
-  state.totalCalories = action.payload.data.totalCalories;
+
+  state.data = payload.data;
 };
 
 const handleFulfildUpdate = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  // {dinner:{name:', id} }
   const type = action.payload.data.type;
   const indexOfFood = state.food[type].findIndex(
     (item) => item.ident === action.payload.data.product.ident
@@ -93,9 +86,9 @@ const foodIntakeSlice = createSlice({
       .addCase(fetchFoodIntake.fulfilled, handleDailyDiaryFullfilled)
       .addCase(fetchFoodIntake.pending, handlePending)
       .addCase(fetchFoodIntake.rejected, handleRejected)
-      .addCase(postFoodIntake.fulfilled, handleFulfildPost)
-      .addCase(postFoodIntake.pending, handlePending)
-      .addCase(postFoodIntake.rejected, handleRejected)
+      .addCase(addFoodIntake.fulfilled, handleAddFoodFullfilled)
+      .addCase(addFoodIntake.pending, handlePending)
+      .addCase(addFoodIntake.rejected, handleRejected)
       .addCase(updateFoodIntake.fulfilled, handleFulfildUpdate)
       .addCase(updateFoodIntake.pending, handlePending)
       .addCase(updateFoodIntake.rejected, handleRejected);
