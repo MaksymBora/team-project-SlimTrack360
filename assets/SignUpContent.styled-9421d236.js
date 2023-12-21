@@ -1,4 +1,4 @@
-import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index-387d7a00.js";const a=t.div`
+import{s as t,j as n,t as i}from"./index-bf411e46.js";import{p as o}from"./index-387d7a00.js";const a=t.div`
   width: 320px;
   margin: 0 auto;
   padding: 24px 10px 40px 10px;
@@ -13,18 +13,18 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
 
   @media screen and (min-width: 1440px) {
     width: 1440px;
-    justify-content: normal;
-    padding: 40px 150px 72px 150px;
+    justify-content: center;
+    padding: 40px 10px 72px 10px;
   }
-`,p=({children:n})=>i.jsx(a,{children:n});p.propTypes={children:o.PropTypes.object};const l=t.section``,d=t.div`
-  max-width: 833px;
+`,p=({children:e})=>n.jsx(a,{children:e});p.propTypes={children:o.PropTypes.object};const d=t.section``,x=t.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 104px;
-    align-items: center;
+    align-items: flex-start;
+    height: 588px;
   }
 `;t.img`
   display: flex;
@@ -49,13 +49,13 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
     width: 592px;
     height: 588px;
   }
-`;const x=t.img`
+`;const c=t.img`
   display: block;
   // max-width: none;
   @media screen and (min-width: 1440px) {
     max-width: none;
   }
-`;t.div``;const m=""+new URL("Illustration_desk@1x-a71bc8c1.png",import.meta.url).href,c=""+new URL("Illustration_desk@2x-90690b86.png",import.meta.url).href,f=""+new URL("Illustration_tab@1x-e660733f.png",import.meta.url).href,h=""+new URL("Illustration_tab@2x-66eecfd8.png",import.meta.url).href,g=""+new URL("Illustration_mob@1x-52c9f1ea.png",import.meta.url).href,w=""+new URL("Illustration_mob@2x-0a0612c8.png",import.meta.url).href,b=""+new URL("Illustration_desk@1x-9f7fdb6e.webp",import.meta.url).href,u=""+new URL("Illustration_desk@2x-1ef66322.webp",import.meta.url).href,y=""+new URL("Illustration_tab@1x-26a1e252.webp",import.meta.url).href,_=""+new URL("Illustration_tab@2x-2d4c25ce.webp",import.meta.url).href,I=""+new URL("Illustration_mob@1x-7ef8864f.webp",import.meta.url).href,k=""+new URL("Illustration_mob@2x-c14ef61a.webp",import.meta.url).href,L=t.div``,P=t.div`
+`;t.div``;const m=""+new URL("Illustration_desk@1x-a71bc8c1.png",import.meta.url).href,h=""+new URL("Illustration_desk@2x-90690b86.png",import.meta.url).href,f=""+new URL("Illustration_tab@1x-e660733f.png",import.meta.url).href,g=""+new URL("Illustration_tab@2x-66eecfd8.png",import.meta.url).href,w=""+new URL("Illustration_mob@1x-52c9f1ea.png",import.meta.url).href,b=""+new URL("Illustration_mob@2x-0a0612c8.png",import.meta.url).href,u=""+new URL("Illustration_desk@1x-9f7fdb6e.webp",import.meta.url).href,y=""+new URL("Illustration_desk@2x-1ef66322.webp",import.meta.url).href,_=""+new URL("Illustration_tab@1x-26a1e252.webp",import.meta.url).href,v=""+new URL("Illustration_tab@2x-2d4c25ce.webp",import.meta.url).href,k=""+new URL("Illustration_mob@1x-7ef8864f.webp",import.meta.url).href,I=""+new URL("Illustration_mob@2x-c14ef61a.webp",import.meta.url).href,L=t.div``,P=t.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -65,8 +65,8 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
   @media screen and (min-width: 1440px) {
     align-items: flex-start;
   }
-`,R=t.form``,U=t.h1`
-  color: ${e.color.primaryWhite};
+`,$=t.form``,R=t.h1`
+  color: ${i.color.primaryWhite};
   font-family: Poppins;
   font-size: 24px;
   font-style: normal;
@@ -82,9 +82,10 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
   }
   @media screen and (min-width: 1440px) {
     text-align: left;
+    padding-top: 80px;
   }
-`,W=t.h3`
-  color: ${e.color.primaryGrey};
+`,U=t.h3`
+  color: ${i.color.primaryGrey};
   width: 300px;
   font-family: Poppins;
   font-size: 18px;
@@ -100,7 +101,7 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
   @media screen and (min-width: 1440px) {
     text-align: left;
   }
-`,$=t.label`
+`,r=t.label`
   // margin: auto;
   padding: 8px 10px;
   margin-bottom: 20px;
@@ -110,9 +111,10 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
   gap: 10px;
   width: 300px;
   border-radius: 12px;
-  border: 1px solid ${e.color.primaryGreenLite};
-  background: ${e.color.primaryBlack2};
+  border: 1px solid ${i.color.primaryGreenLite};
+  background: ${i.color.primaryBlack2};
   &.input-error {
+    margin-bottom: 0px;
     border-color: #e74a3b;
   }
   // &.input-success {
@@ -132,7 +134,7 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
     align-items: center;
     // margin: auto;
   }
-`,v=t.input`
+`,W=t.input`
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -141,7 +143,7 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
   background-color: transparent;
   width: 280px;
   border: none;
-  color: ${e.color.primaryWhite};
+  color: ${i.color.primaryWhite};
   @media screen and (min-width: 834px) {
     width: 360px;
   }
@@ -151,7 +153,7 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
   &:focus {
     outline: none;
   }
-`,j=t.p`
+`,z=t.p`
   color: #e74a3b;
   text-align: left;
   font-family: Poppins;
@@ -161,19 +163,31 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
   line-height: 14px;
   padding-top: 4px;
   padding-bottom: 14px;
-`,z=t.div`
+`,j=t.div`
   padding-top: 24px;
   padding-bottom: 40px;
   display: flex;
   flex-direction: column;
-`,T=t.button`
+`,T=t.svg`
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  ${r}:hover & {
+    opacity: 1;
+  }
+`,B=t.button`
   padding: 8px 10px;
   align-items: flex-start;
   gap: 10px;
   border-radius: 12px;
-  background: ${e.color.primaryGreenLite};
+  background: ${i.color.primaryGreenLite};
   width: 100%;
-  color: ${e.color.primaryBlack2};
+  color: ${i.color.primaryBlack2};
   text-align: center;
   font-family: Poppins;
   font-size: 14px;
@@ -185,14 +199,14 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
     cursor: not-allowed;
   }
 `,D=t.p`
-  color: ${e.color.primaryGrey};
+  color: ${i.color.primaryGrey};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
 `;t.button`
-  color: ${e.color.primaryWhite};
+  color: ${i.color.primaryWhite};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -215,9 +229,38 @@ import{s as t,j as i,t as e}from"./index-5238f7ca.js";import{p as o}from"./index
   @media screen and (min-width: 1440px) {
     padding-top: 168px;
   }
-`,B=t.span`
+`,C=t.span`
   position: relative;
   display: block;
   height: 16px;
   width: 16px;
-`;export{j as A,T as B,p as C,P as D,R as F,x as I,$ as L,U as M,M as O,W as S,l as W,b as _,u as a,m as b,c,y as d,_ as e,f,h as g,I as h,k as i,g as j,w as k,z as l,v as m,B as n,L as o,D as p,d as q};
+`;t.svg.attrs(e=>({viewBox:"0 0 100 100",width:"24px",height:"24px",fill:e.valid?"green":"red"}))`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  transition: fill 0.3s;
+`;t.div`
+  position: relative;
+  display: inline-block;
+`;t.input.attrs(e=>({type:"password",onChange:e.onChange}))`
+  padding: 5px;
+  font-size: 16px;
+  border: 2px solid ${e=>e.valid?"green":"red"};
+  transition: border-color 0.3s;
+  &:focus {
+    outline: none;
+  }
+`;t.svg.attrs(e=>({viewBox:"0 0 100 100",width:"24px",height:"24px",fill:e.visible?"black":"grey"}))`
+  position: absolute;
+  top: 8px;
+  right: 36px;
+  cursor: pointer;
+  transition: fill 0.3s;
+`;t.p`
+  position: absolute;
+  top: 40px;
+  left: 0;
+  font-size: 14px;
+  color: red;
+  visibility: ${e=>e.visible?"visible":"hidden"};
+`;export{z as A,B,p as C,P as D,T as E,$ as F,c as I,r as L,R as M,M as O,U as S,d as W,u as _,y as a,m as b,h as c,_ as d,v as e,f,g,k as h,I as i,w as j,b as k,j as l,W as m,C as n,L as o,D as p,x as q};

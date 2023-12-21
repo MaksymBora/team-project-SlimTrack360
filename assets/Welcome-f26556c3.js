@@ -1,5 +1,5 @@
-import{s as t,t as i,j as e,L as n}from"./index-5238f7ca.js";import{S as l,W as p,C as x,_ as c,a as d,b as r,c as m,d as g,e as h,f,g as u,h as w,i as y,j as b,k as j,I as $}from"./SignUpContent.styled-3b1d9290.js";import"./index-387d7a00.js";const k=t.div`
-  max-width: 833px;
+import{s as t,t as i,j as e,L as n}from"./index-bf411e46.js";import{S as l,W as p,C as x,_ as c,a as d,b as r,c as m,d as g,e as h,f,g as u,h as w,i as y,j as b,k as j,I as $}from"./SignUpContent.styled-9421d236.js";import"./index-387d7a00.js";const k=t.div`
+  // max-width: 833px;
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 834px) {
@@ -8,7 +8,8 @@ import{s as t,t as i,j as e,L as n}from"./index-5238f7ca.js";import{S as l,W as 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 104px;
-    align-items: flex-start;
+    align-items: center;
+    height: 588px;
   }
 `,S=t.div`
   display: flex;
