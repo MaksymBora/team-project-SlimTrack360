@@ -4,6 +4,12 @@ import { theme } from '../../styles/theme';
 export const ContainerDiary = styled.div`
   padding: 20px 34px 52px 34px;
   background-color: ${theme.color.primaryBlack};
+  @media (min-width: 320px) {
+    padding: 16px 10px;
+  }
+  @media (min-width: 834px) {
+    padding: 24px 27px;
+  }
 `;
 
 export const MainTitle = styled.h2`
@@ -246,6 +252,6 @@ export const PartsOfMeal = styled.div`
   @media (min-width: 1440px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 20px;
   }
 `;
