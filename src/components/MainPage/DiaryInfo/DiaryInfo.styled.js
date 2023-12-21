@@ -11,12 +11,7 @@ export const DiaryWrap = styled.div`
   @media screen and (min-width: 834px) {
     width: 558px;
     margin: 0;
-    padding-left: 27px;
   }
-
-  /* @media screen and (min-width: 1440px) {
-    padding-left: 40px;
-  } */
 `;
 
 export const TitleWrapper = styled.div`
