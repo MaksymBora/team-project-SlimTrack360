@@ -28,16 +28,15 @@ import { resetWater } from '../../../Redux/waterIntake/operations.js';
 export const WaterInfo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const totalWaterToday = useSelector(selectValue);
-
+  console.log(totalWaterToday);
   const dispatch = useDispatch();
 
-  let waterConsumtion = totalWaterToday;
-  let waterGoal = 1000; /// редакс води waterIntake або Auth??
-  const leftWaterIntake = waterGoal - waterConsumtion;
+  let waterGoal = 1000;
+  const leftWaterIntake = waterGoal - totalWaterToday;
 
   const waterPercent =
-    waterConsumtion <= waterGoal
-      ? Math.round((waterConsumtion * 100) / waterGoal)
+    totalWaterToday <= waterGoal
+      ? Math.round((totalWaterToday * 100) / waterGoal)
       : 100;
 
   const offset =
@@ -92,7 +91,7 @@ export const WaterInfo = () => {
           <InfoTitle>Water consumption</InfoTitle>
           <ValueWrap>
             <InfoNumber>
-              {waterConsumtion}
+              {totalWaterToday}
               <Span>ml</Span>
             </InfoNumber>
             <LeftInfo>
