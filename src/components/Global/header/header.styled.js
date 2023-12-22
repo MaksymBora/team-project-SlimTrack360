@@ -186,15 +186,10 @@ export const UserLogoText = styled.div`
   }
 `;
 
-export const UserLogoIcon = styled.div`
-  width: 14px;
-  height: 14px;
-`;
-
 //Настройки юзера
 
 export const UserMode = styled.div`
-  /* margin-right:200px; */
+  position: relative;
 `;
 
 export const ProfileBtn = styled.button`
@@ -296,6 +291,7 @@ export const GoalBtn = styled.button`
 export const SelectWeight = styled.div`
   display: flex;
   gap: 12px;
+  position: relative;
 `;
 
 export const WeightPic = styled.div`

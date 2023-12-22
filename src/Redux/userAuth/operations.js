@@ -113,10 +113,10 @@ export const updateUserParams = createAsyncThunk(
 );
 
 // передаємо {
-//     "date": "2023-12-19",
-//     "currentWeight": 120
+//     date: "2023-12-19",
+//     currentWeight: 120
 // }
-export const udpdateWeight = createAsyncThunk(
+export const updateWeight = createAsyncThunk(
   'auth/updateWeight',
   async (credentials, thunkAPI) => {
     try {

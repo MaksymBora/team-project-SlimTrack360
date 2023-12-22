@@ -3,7 +3,6 @@ import {
   UserAva,
   UserLogoContainer,
   UserLogoText,
-  UserLogoIcon,
   ProfileBtn,
 } from './../header.styled.js';
 import icon from './../../../../assets/sprite.svg';
@@ -35,12 +34,6 @@ export const UserAvatar = () => {
       <UserLogoText>
         <p> {}</p>
       </UserLogoText>
-
-      <UserLogoIcon>
-        <svg>
-          <use href={icon + '#icon-arrow-down'}></use>
-        </svg>
-      </UserLogoIcon>
 
       <ProfileBtn>
         <svg>

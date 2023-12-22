@@ -5,9 +5,9 @@ import {
   logIn,
   logOut,
   refreshUser,
-  udpdateWeight,
   updateUserGoal,
   updateUserParams,
+  updateWeight,
 } from './operations';
 
 const handlePending = (state) => {
@@ -184,9 +184,9 @@ const userAuthSlice = createSlice({
       .addCase(updateUserParams.pending, handleUpdateParamsPending)
       .addCase(updateUserParams.fulfilled, handleUpdateParamsFullfilled)
       .addCase(updateUserParams.rejected, handleUpdateParamsRejected)
-      .addCase(udpdateWeight.pending, handleUpdateWeightPending)
-      .addCase(udpdateWeight.fulfilled, handleUpdateWeightFullfilled)
-      .addCase(udpdateWeight.rejected, handleUpdateWeightRejected)
+      .addCase(updateWeight.pending, handleUpdateWeightPending)
+      .addCase(updateWeight.fulfilled, handleUpdateWeightFullfilled)
+      .addCase(updateWeight.rejected, handleUpdateWeightRejected)
       .addCase(updateUserGoal.fulfilled, handleUserGoalFulfilled);
   },
 });

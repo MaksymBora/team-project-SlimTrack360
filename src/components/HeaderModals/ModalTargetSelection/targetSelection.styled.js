@@ -81,7 +81,11 @@ export const ModalDescription = styled.p`
   line-height: 1.43;
   margin-bottom: 16px;
 `;
-export const Form = styled.form`
+export const Form = styled.label`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
   @media screen and (min-width: 320px) {
     width: 100%;
   }
@@ -89,9 +93,15 @@ export const Form = styled.form`
     width: 166px;
   }
 `;
-export const TargetListBlock = styled.ul``;
-export const TargetList = styled.li`
+export const TargetListBlock = styled.label`
   display: flex;
+  gap: 12px;
+  align-items: center;
+`;
+export const TargetList = styled.input`
+  display: flex;
+  position: absolute;
+  opacity: 0;
 
   margin-bottom: 16px;
   align-items: center;
@@ -101,14 +111,13 @@ export const TargetImg = styled.img`
   width: 20px;
   height: 20px;
 `;
-export const TargetImgBorder = styled.button`
+export const TargetImgBorder = styled.div`
   background-color: transparent;
   width: 40px;
   height: 40px;
   border: 1px solid ${theme.color.primaryViolet};
   border-radius: 12px;
   padding: 10px;
-  margin-right: 12px;
 `;
 export const TargetImgText = styled.p`
   color: ${theme.color.primaryWhite};
@@ -131,6 +140,9 @@ export const ConfirmBtn = styled.button`
   border-radius: 12px;
   margin-bottom: 24px;
   &:hover {
+    font-weight: 700;
+  }
+  &:focus {
     font-weight: 700;
   }
 `;

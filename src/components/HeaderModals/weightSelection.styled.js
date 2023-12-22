@@ -1,5 +1,7 @@
 import { styled } from 'styled-components';
 import { theme } from '../../styles/theme.js';
+import { Field } from 'formik';
+import { Form } from 'formik';
 
 export const Modal = styled.div`
   background-color: transparent;
@@ -93,7 +95,7 @@ export const DateText = styled.p`
 `;
 export const Date = styled.p``;
 
-export const Form = styled.form`
+export const FormWeight = styled(Form)`
   @media screen and (min-width: 320px) {
     display: flex;
     flex-direction: column;
@@ -104,7 +106,7 @@ export const Form = styled.form`
     justify-content: space-between;
   }
 `;
-export const Input = styled.input`
+export const Input = styled(Field)`
   height: 36px;
   background-color: ${theme.color.primaryBlack2};
   border: 1px solid ${theme.color.primaryGreenLite};
@@ -150,6 +152,9 @@ export const ConfirmBtn = styled.button`
   border: none;
   border-radius: 12px;
   margin-bottom: 24px;
+  &:focus {
+    font-weight: 700;
+  }
 
   @media screen and (min-width: 320px) {
     width: 100%;
