@@ -40,7 +40,7 @@ export const logIn = createAsyncThunk(
       const res = await axios.post('/auth/signin', credentials);
 
       setAuthHeader(res.data.token);
-      toast.success('Successful verification');
+      toast.success('Successful login');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(toast.error(error.message));
