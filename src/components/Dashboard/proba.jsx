@@ -1,43 +1,77 @@
-// src\components\Dashboard\WaterGraph.jsx
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { SelectorContainerWrapper } from './Styles/Graphs.styled';
+import { IconArrowLeft, IconArrowUp } from '../../assets/spriteSVG';
+import '../Dashboard/Styles/MobStyles/mob.SelCont.css';
+import '../Dashboard/Styles/TabletStyles/tab.SelCont.css';
+import '../Dashboard/Styles/Styles.css';
 
-import { Line } from 'react-chartjs-2';
-import { commonOptions, waterYAxisOptions } from './GraphsConfig';
-import { GraphContainer, ChartContainer } from './Styles/Graphs.styled';
-import './Styles/WaterGraph.css';
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
-const data = {
-  labels: Array.from({ length: 31 }, (_, i) => i + 1),
-  datasets: [
-    {
-      label: '',
-      data: Array.from({ length: 31 }, () => Math.floor(Math.random() * 1000)),
-      borderColor: '#4ed8da',
-      borderWidth: 1,
-      pointBackgroundColor: '#4ed8da',
-      pointRadius: 0,
-      fill: false,
-    },
-  ],
-};
+const SelectorContainer = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState('December');
+  const navigate = useNavigate(); // Перенесли вызов хука сюда
 
-const WaterGraph = () => {
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleMonthSelect = (month) => {
+    setSelectedMonth(month);
+    setIsDropdownOpen(false);
+  };
+
+  const handleIconClick = () => {
+    navigate('/main');
+  };
+
   return (
-    <GraphContainer>
-      <div className="waterTitle">
-        <h2 className="graphTitle">Water</h2>
-        <h3 className="graphValue">Average value: 1700 ml</h3>
+    <SelectorContainerWrapper>
+      <div className="monthsArrows">
+        <button className="IconArrowLeft" onClick={handleIconClick}>
+          <IconArrowLeft width={24} height={24} />
+        </button>
+        <label className="monthTitle" htmlFor="monthSelector">
+          Months
+        </label>
+        <div className="IconArrowUp" onClick={toggleDropdown}>
+          <IconArrowUp width={16} height={16} />
+        </div>
       </div>
-      <ChartContainer className="water-graph-line">
-        <Line
-          options={{
-            ...commonOptions,
-            scales: { x: commonOptions.scales.x, y: waterYAxisOptions },
-          }}
-          data={data}
-        />
-      </ChartContainer>
-    </GraphContainer>
+      <div className={`monthSelector ${isDropdownOpen ? 'open' : ''}`}>
+        <div className="selectedMonth">{selectedMonth}</div>
+        {isDropdownOpen && (
+          <div className="dropdown">
+            {months.map((month) => (
+              <div
+                key={month}
+                className={`monthOption ${
+                  selectedMonth === month ? 'selected' : ''
+                }`}
+                onClick={() => handleMonthSelect(month)}
+              >
+                {month}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </SelectorContainerWrapper>
   );
 };
 
-export default WaterGraph;
+export default SelectorContainer;

@@ -21,11 +21,21 @@ const RadioButton = styled.input`
   cursor: pointer;
 
   &::before {
-    content: url('/src/assets/images/settings/unchecked.svg');
+    display: block;
+    content: '';
+    background-image: url('/icons/unchecked.svg');
+    background-size: 12px 12px;
+    height: 12px;
+    width: 12px;
   }
 
   &:checked::before {
-    content: url('/src/assets/images/settings/checked.svg');
+    display: block;
+    content: ' ';
+    background-image: url('/icons/checked.svg');
+    background-size: 12px 12px;
+    height: 12px;
+    width: 12px;
   }
 `;
 

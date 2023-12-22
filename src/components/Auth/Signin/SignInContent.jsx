@@ -13,27 +13,16 @@ import {
   Subsection,
   Attention,
   Span,
+  EyeIcon,
 } from '../Signup/SignUpContent.styled';
 import { Options } from './SignInContent.styled';
 import { LinkSignup, Paragraph } from './SignInContent.styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../Redux/userAuth/operations';
-import * as yup from 'yup';
-
-const basicSchema = yup.object().shape({
-  name: yup.string().required('Name is required*'),
-  email: yup
-    .string()
-    .email('Enter a valid Email*')
-    .required('Email is required*'),
-  password: yup
-    .string()
-    .required('Password is required*')
-    .min(8, 'Password must be at least 8 characters long')
-    .max(64, 'Password must not exceed 64 characters'),
-});
-
+import { basicSchema } from '../Signup/schemas';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const SignInContent = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -100,7 +89,7 @@ export const SignInContent = () => {
               />
               <Span onClick={togglePasswordVisibility}>
                 {showPassword ? (
-                  <svg
+                  <EyeIcon
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -121,9 +110,9 @@ export const SignInContent = () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
-                  </svg>
+                  </EyeIcon>
                 ) : (
-                  <svg
+                  <EyeIcon
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -151,7 +140,7 @@ export const SignInContent = () => {
                         <rect width="16" height="16" fill="white" />
                       </clipPath>
                     </defs>
-                  </svg>
+                  </EyeIcon>
                 )}
               </Span>
             </Label>
@@ -161,6 +150,7 @@ export const SignInContent = () => {
           </Wrapper>
           <Main>
             <Button type="submit">Sign in</Button>
+            <ToastContainer />
           </Main>
           <Link to="/forgot-password">
             <Paragraph>Forgot your password?</Paragraph>

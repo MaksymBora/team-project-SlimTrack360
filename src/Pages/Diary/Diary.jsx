@@ -1,30 +1,43 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from 'react-router-dom';
-import GoBackPage from '../../components/diary/meal/GoBackPage';
-import Breakfast from '../../components/diary/meal/Breakfast';
-import { MainTitle } from '../../Pages/Diary/DiaryPage.styled';
-import Dinner from '../../components/diary/meal/Dinner';
-import Lunch from '../../components/diary/meal/Lunch';
-import Snack from '../../components/diary/meal/Snack';
 import {
+  MainTitle,
   DiaryCardHeader,
   PartsOfMeal,
-} from '../../components/diary/meal/DiaryCard.styled';
-import { ContainerDiary } from './DiaryPage.styled';
+  ContainerDiary,
+} from './DiaryPage.styled';
+import { FoodIntakeTable } from '../../components/Diary/Meal/FoodIntakeTable';
+import { GoBackLink } from '../../components/Diary/Meal/GoBackLink';
+import { date } from '../../utils/dateToday';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchFoodIntake } from '../../Redux/foodIntake/operations';
 
 const Diary = () => {
+  const dispatch = useDispatch();
+
+  const dateToday = {
+    date,
+  };
+
+  useEffect(() => {
+    dispatch(fetchFoodIntake(dateToday));
+  }, [dispatch]);
+
   return (
     <ContainerDiary>
       <DiaryCardHeader>
         <Link to="/">
-          <GoBackPage />
+          <GoBackLink />
         </Link>
+
         <MainTitle>Diary</MainTitle>
       </DiaryCardHeader>
       <PartsOfMeal>
-        <Breakfast />
-        <Dinner />
-        <Lunch />
-        <Snack />
+        <FoodIntakeTable title="Breakfast" />
+        <FoodIntakeTable title="Dinner" />
+        <FoodIntakeTable title="Lunch" />
+        <FoodIntakeTable title="Snack" />
       </PartsOfMeal>
     </ContainerDiary>
   );

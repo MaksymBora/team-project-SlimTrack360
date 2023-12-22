@@ -30,6 +30,7 @@ export const MainText = styled.h1`
   }
   @media screen and (min-width: 1440px) {
     text-align: left;
+    padding-top: 80px;
   }
 `;
 export const Subtitle = styled.h3`
@@ -63,11 +64,13 @@ export const Label = styled.label`
   border: 1px solid ${theme.color.primaryGreenLite};
   background: ${theme.color.primaryBlack2};
   &.input-error {
+    margin-bottom: 0px;
     border-color: #e74a3b;
   }
-  // &.input-success {
-  //   border-color: #2d9f6c;
-  // }
+  &.input-success {
+    margin-bottom: 0px;
+    border-color: #2d9f6c;
+  }
 
   @media screen and (min-width: 834px) {
     width: 380px;
@@ -83,6 +86,8 @@ export const Label = styled.label`
     // margin: auto;
   }
 `;
+
+export const Icon = styled.svg``;
 // export const Title = styled.div;
 export const Input = styled.input`
   font-family: Poppins;
@@ -115,12 +120,36 @@ export const Attention = styled.p`
   padding-top: 4px;
   padding-bottom: 14px;
 `;
-
+export const Valid = styled.p`
+  color: #3cbc81;
+  text-align: left;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  padding-top: 4px;
+  padding-bottom: 14px;
+`;
 export const Wrapper = styled.div`
   padding-top: 24px;
   padding-bottom: 40px;
   display: flex;
   flex-direction: column;
+`;
+
+export const EyeIcon = styled.svg`
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  ${Label}:hover & {
+    opacity: 1;
+  }
 `;
 export const Button = styled.button`
   padding: 8px 10px;
@@ -180,4 +209,51 @@ export const Span = styled.span`
   display: block;
   height: 16px;
   width: 16px;
+`;
+export const ValidIcon = styled.svg.attrs((props) => ({
+  viewBox: '0 0 100 100',
+  width: '24px',
+  height: '24px',
+  fill: props.valid ? 'green' : 'red',
+}))`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  transition: fill 0.3s;
+`;
+export const PasswordInput = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+export const PasswordField = styled.input.attrs((props) => ({
+  type: 'password',
+  onChange: props.onChange,
+}))`
+  padding: 5px;
+  font-size: 16px;
+  border: 2px solid ${(props) => (props.valid ? 'green' : 'red')};
+  transition: border-color 0.3s;
+  &:focus {
+    outline: none;
+  }
+`;
+export const EyeIconSecond = styled.svg.attrs((props) => ({
+  viewBox: '0 0 100 100',
+  width: '24px',
+  height: '24px',
+  fill: props.visible ? 'black' : 'grey',
+}))`
+  position: absolute;
+  top: 8px;
+  right: 36px;
+  cursor: pointer;
+  transition: fill 0.3s;
+`;
+export const ErrorMessage = styled.p`
+  position: absolute;
+  top: 40px;
+  left: 0;
+  font-size: 14px;
+  color: red;
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
 `;

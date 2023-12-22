@@ -1,0 +1,47 @@
+@media screen and (min-width: 834px) {
+  .graph-line {
+    width: 780px;
+    padding: 25px 20px 24px 14px;
+  }
+
+  .weight-graph-line {
+    width: 780px;
+  }
+
+  .scroll-container {
+    overflow-x: hidden;
+    /* background-color: brown; */
+  }
+  .graphTitle {
+    font-size: 22px;
+    line-height: 1.45;
+  }
+
+  .waterTitle,
+  .weightTitle {
+    margin-left: 0;
+    margin-top: 40px;
+    margin-bottom: 6px;
+  }
+  .caloriesTitle {
+    margin-left: 0;
+    margin-top: 3px;
+    margin-bottom: 6px;
+  }
+
+  .upper-row,
+  .lower-row {
+    gap: 11px;
+    margin-bottom: 12px;
+  }
+  .table-cell.upper {
+    font-size: 10px;
+    line-height: 1.6;
+    width: 25px;
+  }
+  .table-cell.lower {
+    font-size: 10px;
+    line-height: 1.4;
+    width: 25px;
+  }
+}

@@ -1,13 +1,14 @@
 import Modal from 'react-modal';
 import { Formik, FieldArray } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  postFoodIntake,
+  addFoodIntake,
   updateFoodIntake,
 } from '../../Redux/foodIntake/operations';
 import * as yup from 'yup';
 import { nanoid } from 'nanoid';
 import Icon from '../../components/common/Icon';
+import { date } from '../../utils/dateToday';
 
 import {
   ModalWrapper,
@@ -28,6 +29,7 @@ import {
   ButtonConfirm,
   ButtonCancel,
 } from './RecordDiaryModal.styled';
+
 
 Modal.setAppElement('#root');
 
@@ -64,9 +66,9 @@ const schema = yup.object({
         .matches(/^\p{L}+$/)
         .trim('Name cannot include leading and trailing spaces')
         .strict(true),
-      carbonohidrates: yup
+      carbonohidretes: yup
         .number()
-        .required('Carbonohidrates is required')
+        .required('Carbonohidretes is required')
         .typeError('Must be a number')
         .min(0, 'Must be a positive number')
         .max(1000, 'The maximum allowable value is 1000')
@@ -110,10 +112,11 @@ const schema = yup.object({
 
 const mealsIntakeTemplate = {
   name: '',
-  carbonohidrates: '',
+  carbonohidretes: '',
   protein: '',
   fat: '',
   calories: '',
+  productId: '',
 };
 
 const RecordDiaryModal = ({
@@ -125,30 +128,58 @@ const RecordDiaryModal = ({
 }) => {
   const dispatch = useDispatch();
 
-  // Відправка даних на бекенд
+  const {
+    breakfast: { products: breakfastProducts },
+    lunch: { products: lunchProducts },
+    dinner: { products: dinnerProducts },
+    snack: { products: snackProducts },
+  } = useSelector(getFoodIntake);
+  const foodIntakeResponse = useSelector(getFoodIntake);
+
+  const dailyProducts =
+    category === 'Lunch'
+      ? lunchProducts
+      : category === 'Breakfast'
+        ? breakfastProducts
+        : category === 'Dinner'
+          ? dinnerProducts
+          : category === 'Snack'
+            ? snackProducts
+            : [];
+
+  // -------------- Відправка даних на бекенд --------------------- //
   const handleSubmit = async (values, { resetForm }) => {
-    const currentDate = new Date().toISOString(); // Отримуємо поточну дату у форматі ISO
-    const formattedDate = currentDate.substring(0, 10); // Беремо перші 10 символів
     const products = values.mealsIntake.map((product) => ({
-      productId: nanoid(),
       ...product,
+      productId: nanoid(),
     }));
 
     const dataForBackend = {
-      date: formattedDate,
+      date,
       [category.toLowerCase()]: {
         products,
       },
     };
-    // console.log('dataForBackend', dataForBackend);
+
+    const updateDataForBackend = {
+      [category.toLowerCase()]: {
+        products: values.mealsIntake,
+      },
+    };
+
+    const dataToBeSend = {
+      objectId: foodIntakeResponse._id,
+      updateDataForBackend,
+    };
 
     if (item) {
-      dispatch(updateFoodIntake({ productId: item._id, dataForBackend }));
+      dispatch(updateFoodIntake(dataToBeSend));
     } else {
-      dispatch(postFoodIntake(dataForBackend));
+      dispatch(addFoodIntake(dataForBackend));
+
+      resetForm();
     }
-    // dispatch(fetchStatistics('today'));
-    resetForm();
+
     onClose();
   };
 
@@ -163,27 +194,26 @@ const RecordDiaryModal = ({
 
         <Formik
           initialValues={{
-            mealsIntake: item
-              ? [
-                  {
-                    category,
-                    name: item.name ?? '',
-                    carbonohidrates: item.carbohydrate ?? '',
-                    protein: item.protein ?? '',
-                    fat: item.fat ?? '',
-                    calories: item.calories ?? '',
-                  },
-                ]
-              : [mealsIntakeTemplate], // початковий елемент, якщо item відсутній
+            mealsIntake:
+              item && dailyProducts
+                ? dailyProducts.map((product) => ({
+                    name: product.name || '',
+                    carbonohidretes: product.carbonohidretes || '',
+                    protein: product.protein || '',
+                    fat: product.fat || '',
+                    calories: product.calories || '',
+                    productId: product.productId || '',
+                  }))
+                : [mealsIntakeTemplate],
           }}
           onSubmit={handleSubmit}
           validationSchema={schema}
           validateOnBlur
         >
-          {({ errors, touched, values }) => (
+          {({ errors, touched, values, setFieldValue }) => (
             <StyledForm autoComplete="off">
               <FieldArray name="mealsIntake">
-                {({ insert, remove }) => {
+                {({ remove }) => {
                   return (
                     <FieldArrayWrapper>
                       <MealsList>
@@ -201,6 +231,11 @@ const RecordDiaryModal = ({
                                       e.preventDefault();
                                     }
                                   }}
+                                  onChange={(e) => {
+                                    const { name, value } = e.target;
+                                    setFieldValue(name, value);
+                                  }}
+                                  value={values.mealsIntake[index].name}
                                   required
                                 />
                                 {errors[`mealsIntake.${index}.name`] &&
@@ -214,8 +249,8 @@ const RecordDiaryModal = ({
 
                               <FieldWrapper>
                                 <StyledField
-                                  name={`mealsIntake.${index}.carbonohidrates`}
-                                  id={`mealsIntake.${index}.carbonohidrates`}
+                                  name={`mealsIntake.${index}.carbonohidretes`}
+                                  id={`mealsIntake.${index}.carbonohidretes`}
                                   placeholder="Carbonoh."
                                   type="number"
                                   min={0}
@@ -223,7 +258,7 @@ const RecordDiaryModal = ({
                                   required
                                 />
                                 <StyledError
-                                  name={`mealsIntake.${index}.carbonohidrates`}
+                                  name={`mealsIntake.${index}.carbonohidretes`}
                                   component="div"
                                 />
                               </FieldWrapper>
@@ -299,35 +334,22 @@ const RecordDiaryModal = ({
                           );
                         })}
                       </MealsList>
+
                       <ButtonAddMore
                         type="button"
                         onClick={() => {
-                          if (
-                            values &&
-                            values.mealsIntake &&
-                            values.mealsIntake.length > 0
-                          ) {
-                            const mealsIntake =
-                              values.mealsIntake[values.mealsIntake.length - 1];
-                            console.log(
-                              'Масив спожита їжа:',
-                              values.mealsIntake
-                            );
-                            const fieldEmpty = Object.values(
-                              mealsIntake || {}
-                            ).some(
-                              (value) =>
-                                typeof value === 'string' && !value.trim()
-                            );
-                            if (!fieldEmpty) {
-                              insert(
-                                values.mealsIntake.length,
-                                mealsIntakeTemplate
-                              );
+                          const lastIndex = values.mealsIntake.length - 1;
+                          const lastMealIntake = values.mealsIntake[lastIndex];
+
+                          // Check if the last form is valid before adding a new one
+                          schema.isValid(lastMealIntake).then((valid) => {
+                            if (valid) {
+                              setFieldValue('mealsIntake', [
+                                ...values.mealsIntake,
+                                mealsIntakeTemplate,
+                              ]);
                             }
-                          } else {
-                            insert(0, mealsIntakeTemplate);
-                          }
+                          });
                         }}
                       >
                         <Icon

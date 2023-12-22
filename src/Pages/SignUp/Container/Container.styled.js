@@ -15,7 +15,7 @@ export const Box = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 1440px;
-    justify-content: normal;
-    padding: 40px 150px 72px 150px;
+    justify-content: center;
+    padding: 40px 10px 72px 10px;
   }
 `;

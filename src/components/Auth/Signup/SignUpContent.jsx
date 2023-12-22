@@ -17,6 +17,8 @@ import {
   Attention,
   Span,
   Form,
+  EyeIcon,
+  Valid,
 } from './SignUpContent.styled';
 
 export const SignUpContent = ({ setStep }) => {
@@ -94,7 +96,11 @@ export const SignUpContent = ({ setStep }) => {
 
             <Label
               className={
-                errors.password && touched.password ? 'input-error' : ''
+                errors.password && touched.password
+                  ? 'input-error'
+                  : touched.password
+                    ? 'input-success'
+                    : ''
               }
             >
               <Input
@@ -107,9 +113,10 @@ export const SignUpContent = ({ setStep }) => {
                 required
                 autoComplete="false"
               />
+
               <Span onClick={togglePasswordVisibility}>
                 {showPassword ? (
-                  <svg
+                  <EyeIcon
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -130,9 +137,9 @@ export const SignUpContent = ({ setStep }) => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
-                  </svg>
+                  </EyeIcon>
                 ) : (
-                  <svg
+                  <EyeIcon
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -160,10 +167,10 @@ export const SignUpContent = ({ setStep }) => {
                         <rect width="16" height="16" fill="white" />
                       </clipPath>
                     </defs>
-                  </svg>
+                  </EyeIcon>
                 )}
               </Span>
-              {errors.password && touched.password && (
+              {errors.password && touched.password ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -176,10 +183,29 @@ export const SignUpContent = ({ setStep }) => {
                     fill="#E74A3B"
                   />
                 </svg>
+              ) : touched.password ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M0 8C0 3.58125 3.58125 0 8 0C12.4187 0 16 3.58125 16 8C16 12.4187 12.4187 16 8 16C3.58125 16 0 12.4187 0 8ZM11.6187 6.61875C11.9594 6.27813 11.9594 5.72187 11.6187 5.38125C11.2781 5.04063 10.7219 5.04063 10.3813 5.38125L7 8.7625L5.61875 7.38125C5.27813 7.04063 4.72187 7.04063 4.38125 7.38125C4.04063 7.72187 4.04063 8.27812 4.38125 8.61875L6.38125 10.6187C6.72187 10.9594 7.27813 10.9594 7.61875 10.6187L11.6187 6.61875Z"
+                    fill="#3CBC81"
+                  />
+                </svg>
+              ) : (
+                ''
               )}
             </Label>
-            {errors.password && touched.password && (
+            {errors.password && touched.password ? (
               <Attention>{errors.password}</Attention>
+            ) : touched.password ? (
+              <Valid>Password is secure</Valid>
+            ) : (
+              ''
             )}
           </Wrapper>
           <Main>

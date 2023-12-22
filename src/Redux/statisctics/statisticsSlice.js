@@ -1,18 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getStatistics } from './operations';
 
 const initialState = {
-  id: null,
-  period: null,
   totalCalories: null,
   totalWater: null,
-  totalFood: null,
+  month: null,
+  data: [],
+  error: null,
+  status: 'idle',
 };
+
 const statisticsSlice = createSlice({
-  name: 'statistic',
+  name: 'statistics',
   initialState,
-  //   extraReducers: (builder) => {
-  //     builder.addCase();
-  //   },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(getStatistics.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getStatistics.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.totalCalories = action.payload.totalCalories;
+        state.totalWater = action.payload.totalWater;
+        state.month = action.payload.month;
+        state.data = action.payload[action.payload.month];
+      })
+      .addCase(getStatistics.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      });
+  },
 });
 
-export const statisticsReducer = statisticsSlice.reducer;
+export default statisticsSlice.reducer;

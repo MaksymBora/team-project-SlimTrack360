@@ -1,3 +1,5 @@
+// src\Redux\waterIntake\waterIntakeSlice.js
+
 import { createSlice } from '@reduxjs/toolkit';
 import { addWater, resetWater, getWaterToday } from './operations';
 
@@ -13,30 +15,24 @@ const handleRejected = (state, action) => {
 const handleAddFulfiled = (state, action) => {
   state.isLoading = false;
 
-  state.id = action.payload._id;
   state.date = action.payload.date;
   state.value = action.payload.value;
-  state.error = null;
 };
 
 const handleResetFulfilled = (state, action) => {
   state.isLoading = false;
-  state.id = action.payload._id;
+
   state.date = action.payload.date;
   state.value = action.payload.value;
-  state.error = null;
 };
 
 const handleGetWaterTodayFulfilled = (state, action) => {
   state.isLoading = false;
-  state.id = action.payload._id;
   state.date = action.payload.date;
   state.value = action.payload.value;
-  state.error = null;
 };
 
 const initialState = {
-  id: null,
   date: null,
   value: null,
   isLoading: false,

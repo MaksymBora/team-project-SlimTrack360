@@ -1,0 +1,89 @@
+.scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  /* scrollbar-width: thin; */
+}
+
+.caloriesTitle,
+.waterTitle,
+.weightTitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  margin-left: 10px;
+  margin-bottom: 6px;
+}
+
+.weightTitle,
+.waterTitle {
+  margin-top: 27px;
+}
+
+.graph-line {
+  background-color: #0f0f0f;
+  border-radius: 12px;
+  width: 676px;
+  height: 382px;
+  margin-bottom: 8px;
+}
+
+.graphTitle {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.44;
+}
+.graphValue {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  margin-left: 40px;
+}
+
+.caloriesValue,
+.waterValue,
+.weightValue {
+  color: #b6b6b6;
+  margin-left: 8px;
+  font-size: 14px;
+  line-height: 1.43;
+}
+.table-container {
+  display: block;
+  padding: 24px 20px 20px 24px;
+  width: 1372 px;
+  margin-bottom: 8px;
+}
+
+.weight-graph-line {
+  background-color: #0f0f0f;
+  border-radius: 12px;
+  width: 1372px;
+}
+.upper-row,
+.lower-row {
+  display: flex;
+  margin-bottom: 16px;
+  gap: 6px;
+}
+
+.table-cell.upper {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #ffffff;
+}
+.table-cell.lower {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #b6b6b6;
+}
+
+.table-cell {
+  text-align: center;
+  flex: 1;
+}
+.lkjklj {
+  background-color: #1f1e1e;
+  color: #333131;
+}

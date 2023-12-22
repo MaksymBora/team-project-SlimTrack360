@@ -1,0 +1,19 @@
+@media screen and (min-width: 834px) {
+  .monthTitle {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .selectedMonth {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.33;
+    margin-right: 0;
+  }
+  .monthsArrows {
+    gap: 12px;
+  }
+  .dropdown {
+    left: -685px;
+  }
+}

@@ -24,6 +24,7 @@ import { selectValue } from '../../../Redux/waterIntake/selector';
 import { date } from '../../../utils/dateToday.js';
 import { getWaterToday } from '../../../Redux/waterIntake/operations.js';
 import { resetWater } from '../../../Redux/waterIntake/operations.js';
+import { selectdailyGoalWater } from '../../../Redux/userAuth/selector.js';
 
 export const WaterInfo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,13 +32,13 @@ export const WaterInfo = () => {
 
   const dispatch = useDispatch();
 
-  let waterConsumtion = totalWaterToday;
-  let waterGoal = 1000; /// редакс води waterIntake або Auth??
-  const leftWaterIntake = waterGoal - waterConsumtion;
+  const water = useSelector(selectdailyGoalWater);
+
+  const leftWaterIntake = water - totalWaterToday;
 
   const waterPercent =
-    waterConsumtion <= waterGoal
-      ? Math.round((waterConsumtion * 100) / waterGoal)
+    totalWaterToday <= water
+      ? Math.round((totalWaterToday * 100) / water)
       : 100;
 
   const offset =
@@ -51,10 +52,6 @@ export const WaterInfo = () => {
     dispatch(getWaterToday(dateToday));
   }, [dispatch, totalWaterToday]);
 
-  const handleOpenModal = () => {
-    setIsModalOpen((prevState) => !prevState);
-  };
-
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === 'Escape' && isModalOpen) {
@@ -67,10 +64,17 @@ export const WaterInfo = () => {
     };
   }, [isModalOpen]);
 
-  const handleOnDelete = (e) => {
+  const handleOpenModal = (e) => {
     e.preventDefault();
-    const currentDate = date;
-    dispatch(resetWater(currentDate));
+    setIsModalOpen((prevState) => !prevState);
+  };
+
+  const handleOnDelete = () => {
+    const dateToday = {
+      date,
+    };
+    console.log(dateToday);
+    dispatch(resetWater(dateToday));
   };
 
   return (
@@ -89,7 +93,7 @@ export const WaterInfo = () => {
           <InfoTitle>Water consumption</InfoTitle>
           <ValueWrap>
             <InfoNumber>
-              {waterConsumtion}
+              {totalWaterToday}
               <Span>ml</Span>
             </InfoNumber>
             <LeftInfo>
@@ -114,7 +118,12 @@ export const WaterInfo = () => {
           </ButtonTrash>
         </InfoWrap>
       </WaterInfoCard>
-      {isModalOpen && <ModalTakeWater onClose={handleOpenModal} />}
+      {isModalOpen && (
+        <ModalTakeWater
+          onClose={handleOpenModal}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </div>
   );
 };

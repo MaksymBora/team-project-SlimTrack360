@@ -43,6 +43,7 @@ import {
   StylesRadioBtn,
   StylesErrorAge,
   StylesErrorSvg,
+  BackLinkwrapper,
 } from './Age.styled';
 
 const SignUpAge = ({ setStep }) => {
@@ -53,8 +54,8 @@ const SignUpAge = ({ setStep }) => {
       .required('Please enter your age')
       .positive('Age must be a positive number')
       .integer('Age must be an integer')
-      .min(16, 'Age must be at least 16 years old')
-      .max(100, 'Age must be at most 100 years old'),
+      .min(18, 'Age must be at least 18 years old')
+      .max(122, 'Age must be at most 122 years old'),
   });
 
   const formik = useFormik({
@@ -178,11 +179,14 @@ const SignUpAge = ({ setStep }) => {
                 </AgeInputWrapper>
                 <StylesBtnForm type="submit">Next</StylesBtnForm>
               </StylesForm>
-              <StyleBackLink
-                onClick={() => setStep((prevState) => (prevState -= 1))}
-              >
-                Back
-              </StyleBackLink>
+              <BackLinkwrapper>
+                <StyleBackLink
+                  onClick={() => setStep((prevState) => (prevState -= 1))}
+                  type="button"
+                >
+                  Back
+                </StyleBackLink>
+              </BackLinkwrapper>
             </StyleBtnColumn>
           </DescWrapper>
         </Wrapper>

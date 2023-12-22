@@ -17,9 +17,11 @@ import snack from '../../../assets/images/diary/snack.png';
 import snack2x from '../../../assets/images/diary/snack-2x.png';
 
 export const DiaryInfo = () => {
+
   const carbonohidrates = 60;
   const protein = 40;
   const fat = 20;
+
 
   return (
     <DiaryWrap>
@@ -59,7 +61,13 @@ export const DiaryInfo = () => {
           carbonohidrates={carbonohidrates}
           protein={protein}
           fat={fat}
+          title={'Breakfast'}
+          image={breakfast}
+          image2x={breakfast2x}
         />
+        <DiaryCard title={'Lunch'} image={lunch} image2x={lunch2x} />
+        <DiaryCard title={'Dinner'} image={dinner} image2x={dinner2x} />
+        <DiaryCard title={'Snack'} image={snack} image2x={snack2x} />
       </CardsWrap>
     </DiaryWrap>
   );

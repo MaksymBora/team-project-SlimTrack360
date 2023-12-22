@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -9,14 +10,6 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-// const authDB = axios.create({
-//   baseURL: 'https://healthyhub-emsa.onrender.com/api/',
-//   headers: { accept: 'application/json' },
-//   // Authorization:
-//   //     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODBlMzZiMmU5YzlhMjNhMjhjODQ0ZiIsImlhdCI6MTcwMzAzMjEzNCwiZXhwIjoyMDE4NjA4MTM0fQ.Qe0UVaTrIQnVIITruXa7w3cYJ2o6QdIGBGpip_lBalU',
-//   // },
-// });
-
 axios.defaults.baseURL = 'https://healthyhub-emsa.onrender.com/api/';
 
 export const register = createAsyncThunk(
@@ -24,8 +17,7 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/auth/signup', credentials);
-      // After successful registration, add the token to the HTTP header
-      setAuthHeader(res.data.token);
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -38,11 +30,12 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/auth/signin', credentials);
-      // After successful login, add the token to the HTTP header
+
       setAuthHeader(res.data.token);
+      toast.success('Successful login');
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(toast.error(error.message));
     }
   }
 );
@@ -67,8 +60,9 @@ export const refreshUser = createAsyncThunk(
     if (localStoreToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-    setAuthHeader(localStoreToken);
+
     try {
+      setAuthHeader(localStoreToken);
       const response = await axios.get('/user/current');
       return response.data;
     } catch (e) {
@@ -121,10 +115,10 @@ export const updateUserParams = createAsyncThunk(
 );
 
 // передаємо {
-//     "date": "2023-12-19",
-//     "currentWeight": 120
+//     date: "2023-12-19",
+//     currentWeight: 120
 // }
-export const udpdateWeight = createAsyncThunk(
+export const updateWeight = createAsyncThunk(
   'auth/updateWeight',
   async (credentials, thunkAPI) => {
     try {
@@ -132,6 +126,18 @@ export const udpdateWeight = createAsyncThunk(
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const updateUserGoal = createAsyncThunk(
+  'auth/updateUserGoal',
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await axios.put('user/goal', credentials);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
