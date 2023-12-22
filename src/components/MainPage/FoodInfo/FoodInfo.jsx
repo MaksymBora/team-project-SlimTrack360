@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { DoughnutChart } from '../DoughnutChart/DoughnutChart';
 import { ChartCard } from './ChartCard/ChartCard.jsx';
 import {
@@ -7,6 +8,18 @@ import {
   InfoWrap,
   Title,
 } from './FoodInfo.styled';
+import {
+  selectDailyGoalCarbonohidrates,
+  selectDailyGoalFat,
+  selectDailyGoalProtein,
+  selectdailyGoalCalories,
+} from '../../../Redux/userAuth/selector.js';
+import {
+  getDiaryCalories,
+  selectTotalCarbon,
+  selectTotalFat,
+  selectTotalProteins,
+} from '../../../Redux/foodIntake/selector.js';
 
 const carbBcg = 'rgba(255, 196, 247, 1)';
 
@@ -15,19 +28,17 @@ const proteinBcg = 'rgba(255, 243, 183, 1)';
 const fatBcg = 'rgba(182, 182, 182, 1)';
 
 export const FoodInfo = () => {
-  let dailyCalories = 1700; //p редакс Auth
+  const carbonsGoal = useSelector(selectDailyGoalCarbonohidrates);
+  const proteinGoal = useSelector(selectDailyGoalProtein);
+  const fatGoal = useSelector(selectDailyGoalFat);
+  const dailyCalories = useSelector(selectdailyGoalCalories);
 
-  let diaryCalories = 1360; // redux diary
+  const totalProteins = useSelector(selectTotalProteins);
+  const totalCarbon = useSelector(selectTotalCarbon);
+  const totalFat = useSelector(selectTotalFat);
+  const totalCalories = useSelector(getDiaryCalories);
 
   let caloriesChartBcg = '#45FFBC';
-
-  let proteinSum = 119.5; // redux diary
-  let carbonohidratesSum = 136; // redux diary
-  let fatsSum = 44.8; // redux diary
-
-  let carbsGoal = 170; //p редакс Auth
-  let protGoal = 135.5; //p редакс Auth
-  let fatsGoal = 56; //p редакс Auth
 
   return (
     <div>
@@ -36,11 +47,11 @@ export const FoodInfo = () => {
         <CaloriesChart>
           <DoughnutChart
             dailyCalories={dailyCalories}
-            inputValue={diaryCalories}
+            inputValue={totalCalories}
             chartBcg={caloriesChartBcg}
           />
           <ChartInfoWrap>
-            <p>{diaryCalories}</p>
+            <p>{totalCalories}</p>
             <p>calories</p>
           </ChartInfoWrap>
         </CaloriesChart>
@@ -48,20 +59,20 @@ export const FoodInfo = () => {
           <ChartCard
             title={'Carbonohidrates'}
             chartBcg={carbBcg}
-            elementGoal={carbsGoal}
-            elementValue={carbonohidratesSum}
+            elementGoal={carbonsGoal}
+            elementValue={totalCarbon}
           />
           <ChartCard
             title={'Protein'}
             chartBcg={proteinBcg}
-            elementGoal={protGoal}
-            elementValue={proteinSum}
+            elementGoal={proteinGoal}
+            elementValue={totalProteins}
           />
           <ChartCard
             title={'Fat'}
             chartBcg={fatBcg}
-            elementGoal={fatsGoal}
-            elementValue={fatsSum}
+            elementGoal={fatGoal}
+            elementValue={totalFat}
           />
         </InfoWrap>
       </FoodInfoCard>

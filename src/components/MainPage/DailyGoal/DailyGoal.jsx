@@ -10,8 +10,16 @@ import {
   Span,
   InfoWrapper,
 } from './DailyGoal.styled';
+import { useSelector } from 'react-redux';
+import {
+  selectdailyGoalCalories,
+  selectdailyGoalWater,
+} from '../../../Redux/userAuth/selector';
 
 export const DailyGoal = () => {
+  const calories = useSelector(selectdailyGoalCalories);
+  const water = useSelector(selectdailyGoalWater);
+
   return (
     <div>
       <Title>Daily goal</Title>
@@ -25,7 +33,7 @@ export const DailyGoal = () => {
           />
           <InfoWrapper>
             <InfoTitle>Calories</InfoTitle>
-            <InfoAmount>1700</InfoAmount>
+            <InfoAmount>{calories}</InfoAmount>
           </InfoWrapper>
           <Icon
             name={'icon-milk'}
@@ -36,7 +44,8 @@ export const DailyGoal = () => {
           <InfoWrapper>
             <InfoTitle>Water</InfoTitle>
             <InfoAmount>
-              1500<Span>ml</Span>
+              {water}
+              <Span>ml</Span>
             </InfoAmount>
           </InfoWrapper>
         </InfoCardWrapper>

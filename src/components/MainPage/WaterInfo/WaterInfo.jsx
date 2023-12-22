@@ -69,8 +69,11 @@ export const WaterInfo = () => {
 
   const handleOnDelete = (e) => {
     e.preventDefault();
-    const currentDate = date;
-    dispatch(resetWater(currentDate));
+    const dateToday = {
+      date,
+    };
+    console.log(dateToday);
+    dispatch(resetWater(dateToday));
   };
 
   return (
