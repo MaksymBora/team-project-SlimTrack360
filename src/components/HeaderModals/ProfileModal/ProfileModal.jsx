@@ -10,7 +10,7 @@ import {
 export const ProfileModal = ({ onClose }) => {
   return (
     <Overlay onClick={onClose}>
-      <Modal>
+      <Modal onClick={(e) => e.stopPropagation()}>
         <ModalContainer>
           <Link onClick={onClose} to={'/settings'}>
             <SettingButton type="button">

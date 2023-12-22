@@ -9,46 +9,34 @@ import {
   DateWrapper,
   DateText,
   Date,
-  // Form,
-  // Input,
-  // ConfirmBtn,
+  FormWeight,
+  Input,
+  ConfirmBtn,
   CancelBtn,
   Overlay,
 } from './weightSelection.styled';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { date } from './../../utils/dateToday';
 // import { udpdateWeight } from './../../Redux/userAuth/operations';
-import { Field, Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import { useSelector } from 'react-redux';
-// import { updateWeight } from '../../Redux/userAuth/operations';
+import { updateWeight } from '../../Redux/userAuth/operations';
 import { selectCurrentWeight } from '../../Redux/userAuth/selector';
 
 export const WeightSelectionModal = ({ onClose }) => {
   const userCurrentWeight = useSelector(selectCurrentWeight);
-  // const dispatch = useDispatch();
-  // const dispatch = useDispatch();
-  // const [newWeight, setNewWeight] = useState('');
+  const dispatch = useDispatch();
 
-  // const handleInputChange = (event) => {
-  //   const { value } = event.target;
-  //   setNewWeight(value);
-  // };
-
-  // const handleNewUserWeight = (event) => {
-  //   event.preventDefault();
-  //   dispatch(udpdateWeight(newWeight));
-  //   onClose();
-  // };
-
-  const closeBtnHandler = () => {
+  const closeBtnHandler = ({ onClose }) => {
     console.log(onClose());
     onClose();
   };
   console.log(userCurrentWeight);
+
   return (
     <Overlay onClick={onClose}>
       <Modal onClick={(e) => e.stopPropagation()}>
-        <CloseBtn type="button" onClose={closeBtnHandler}>
+        <CloseBtn type="button" onClick={onClose}>
           <svg>
             <use href={icon + '#icon-close-circle'}></use>
           </svg>
@@ -71,30 +59,15 @@ export const WeightSelectionModal = ({ onClose }) => {
                 currentWeight: Number(values.currentWeight),
               };
               console.log(data);
-              // dispatch(updateWeight(data));
+              dispatch(updateWeight(data));
               resetForm();
             }}
           >
-            <Form>
-              <Field name="currentWeight" placeholder="Enter your weight" />
-              <button type="submit">Submit</button>
-            </Form>
+            <FormWeight>
+              <Input name="currentWeight" placeholder="Enter your weight" />
+              <ConfirmBtn type="submit">Confirm</ConfirmBtn>
+            </FormWeight>
           </Formik>
-
-          {/* <Form onSubmit={handleNewUserWeight}>
-            <Input
-              type="number"
-              step="0.1"
-              min="0"
-              name="weight"
-              placeholder="Enter your weight"
-              autoComplete="off"
-              onChange={handleInputChange}
-              required
-              autoFocus
-            />
-            <ConfirmBtn type="submit">Confirm</ConfirmBtn>
-          </Form> */}
         </ModalWrapper>
         <CancelBtn type="button" onClick={closeBtnHandler}>
           Cancel

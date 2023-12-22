@@ -44,8 +44,8 @@ export const TargetSelection = ({ onClose }) => {
 
   return (
     <Overlay onClick={onClose}>
-      <Modal>
-        <CloseBtn type="button">
+      <Modal onClick={(e) => e.stopPropagation()}>
+        <CloseBtn type="button" onClick={onClose}>
           <svg>
             <use href={icon + '#icon-close-circle'}></use>
           </svg>
@@ -55,72 +55,84 @@ export const TargetSelection = ({ onClose }) => {
           <ModalDescription>
             The service will adjust your calorie intake to your goal
           </ModalDescription>
-
           <Form onSubmit={handleNewGoal}>
             <TargetListBlock>
-              <TargetList onClick={newLosefatGoal}>
-                <TargetImgBorder
-                  style={{
-                    border:
-                      userGoal === 'Lose fat'
-                        ? '2px solid #B6C3FF'
-                        : '1px solid #B6B6B6',
-                  }}
-                >
-                  <TargetImg
-                    src={LoseFatMen}
-                    alt="Lose fat image men"
-                  ></TargetImg>
-                </TargetImgBorder>
-                <TargetImgText
-                  style={{
-                    color: userGoal === 'Lose fat' ? '#B6C3FF' : '#B6B6B6',
-                  }}
-                >
-                  Lose fat
-                </TargetImgText>
-              </TargetList>
-
-              <TargetList onClick={newMaintainGoal}>
-                <TargetImgBorder
-                  style={{
-                    border:
-                      userGoal === 'Maintain'
-                        ? '2px solid #B6C3FF'
-                        : '1px solid #B6B6B6',
-                  }}
-                >
-                  <TargetImg src={maintakeGirl} alt="yoga"></TargetImg>
-                </TargetImgBorder>
-                <TargetImgText
-                  style={{
-                    color: userGoal === 'Maintain' ? '#B6C3FF' : '#B6B6B6',
-                  }}
-                >
-                  Maintain
-                </TargetImgText>
-              </TargetList>
-
-              <TargetList onClick={newGailMuscleGoal}>
-                <TargetImgBorder
-                  style={{
-                    border:
-                      userGoal === 'Gain muscle'
-                        ? '2px solid #B6C3FF'
-                        : '1px solid #B6B6B6',
-                  }}
-                >
-                  <TargetImg src={muscles} alt="muscles"></TargetImg>
-                </TargetImgBorder>
-                <TargetImgText
-                  style={{
-                    color: userGoal === 'Gain muscle' ? '#B6C3FF' : '#B6B6B6',
-                  }}
-                >
-                  Gain Muscle
-                </TargetImgText>
-              </TargetList>
+              <TargetImgBorder
+                style={{
+                  border:
+                    userGoal === 'Lose fat'
+                      ? '2px solid #B6C3FF'
+                      : '1px solid #B6B6B6',
+                }}
+              >
+                <TargetList
+                  type="radio"
+                  value="Lose fat"
+                  onChange={newLosefatGoal}
+                />
+                <TargetImg src={LoseFatMen} alt="Lose fat image men" />
+              </TargetImgBorder>
+              <TargetImgText
+                style={{
+                  color: userGoal === 'Lose fat' ? '#B6C3FF' : '#B6B6B6',
+                }}
+              >
+                Lose fat
+              </TargetImgText>
             </TargetListBlock>
+
+            <TargetListBlock>
+              <TargetImgBorder
+                style={{
+                  border:
+                    userGoal === 'Maintain'
+                      ? '2px solid #B6C3FF'
+                      : '1px solid #B6B6B6',
+                }}
+              >
+                <TargetList
+                  type="radio"
+                  value="Maintain"
+                  onChange={newMaintainGoal}
+                />
+                <TargetImg src={maintakeGirl} alt="yoga" />
+              </TargetImgBorder>
+
+              <TargetImgText
+                style={{
+                  color: userGoal === 'Maintain' ? '#B6C3FF' : '#B6B6B6',
+                }}
+              >
+                Maintain
+              </TargetImgText>
+            </TargetListBlock>
+
+            <TargetListBlock>
+              <TargetImgBorder
+                style={{
+                  border:
+                    userGoal === 'Gain muscle'
+                      ? '2px solid #B6C3FF'
+                      : '1px solid #B6B6B6',
+                }}
+              >
+                <TargetList
+                  type="radio"
+                  value="muscles"
+                  onChange={newGailMuscleGoal}
+                />
+                <TargetImg src={muscles} alt="muscles" />
+              </TargetImgBorder>
+
+              <TargetImgText
+                style={{
+                  color: userGoal === 'Gain muscle' ? '#B6C3FF' : '#B6B6B6',
+                }}
+              >
+                Gain Muscle
+              </TargetImgText>
+            </TargetListBlock>
+
             <ConfirmBtn
               type="submit"
               disabled={isLoading ? 'Loading' : 'Confirm'}
