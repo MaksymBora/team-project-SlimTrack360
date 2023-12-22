@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -39,9 +40,10 @@ export const logIn = createAsyncThunk(
       const res = await axios.post('/auth/signin', credentials);
 
       setAuthHeader(res.data.token);
+      toast.success('Successful verification');
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(toast.error(error.message));
     }
   }
 );
