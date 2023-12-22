@@ -29,6 +29,8 @@ module.exports = {
     'no-console': 'off',
     'prefer-destructuring': 'off',
     'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off', // Добавлено это правило
+    'react/react-in-jsx-scope': 'off',
+    'no-useless-escape': 'off',
+    // Добавлено это правило
   },
 };
