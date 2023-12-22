@@ -1,0 +1,1 @@
+import{c as a,a as e}from"./index.esm-7fc87ce1.js";const s=a().shape({name:e().required("Name is required*"),email:e().email("Enter a valid Email*").required("Email is required*"),password:e().required("Password is required*").min(8,"Must be at least 8 characters long*").max(64,"Must not exceed 64 characters*")});export{s as b};
