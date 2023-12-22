@@ -1,3 +1,5 @@
+// src\Redux\waterIntake\waterIntakeSlice.js
+
 import { createSlice } from '@reduxjs/toolkit';
 import { addWater, resetWater, getWaterToday } from './operations';
 
