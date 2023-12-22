@@ -1,6 +1,4 @@
-// src\Pages\Dashboard\Dashboard.jsx
-
-// import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   CaloriesGraph,
   WaterGraph,
@@ -9,8 +7,25 @@ import {
 import SelectorContainer from '../../components/Dashboard/SelectorContainer';
 import { DashboardContainer } from './Dashboard.styled';
 import './Dashboard.styles.css';
+import { useEffect } from 'react';
+import { getStatistics } from '../../Redux/statisctics/operations';
+import { selectRequiredMonth } from '../../Redux/statisctics/selector';
+import { getMonthValue } from '../../utils/getMonthValue';
 
 export function Dashboard() {
+  const requestedMonth = useSelector(selectRequiredMonth);
+  const dispatch = useDispatch();
+
+  console.log('select', requestedMonth);
+
+  useEffect(() => {
+    const dateToday = {
+      month: getMonthValue(requestedMonth),
+    };
+    console.log(dateToday);
+    dispatch(getStatistics(dateToday));
+  }, [dispatch, requestedMonth]);
+
   return (
     <DashboardContainer>
       <SelectorContainer />

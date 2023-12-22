@@ -1,36 +1,48 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getStatistics } from './operations';
+import { currentMonth } from '../../utils/currentMonth';
 
 const initialState = {
   totalCalories: null,
   totalWater: null,
+  totalWeight: null,
   month: null,
-  data: [],
+  requestMonth: currentMonth(), // it comes from SelectorContainer when select month
+  isLoading: false,
   error: null,
-  status: 'idle',
+};
+
+const handleRejected = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = payload;
+};
+
+const handlePending = (state) => {
+  state.isLoading = true;
+};
+const handleStatisticsFullfilled = (state, { payload }) => {
+  state.isLoading = false;
+  state.totalCalories = payload.totalCalories;
+  state.totalWater = payload.totalWater;
+  state.totalWeight = payload.totalWeight;
+  state.month = payload.month;
 };
 
 const statisticsSlice = createSlice({
   name: 'statistics',
   initialState,
-  reducers: {},
+  reducers: {
+    setRequiredMonth(state, { payload }) {
+      state.requestMonth = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(getStatistics.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(getStatistics.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.totalCalories = action.payload.totalCalories;
-        state.totalWater = action.payload.totalWater;
-        state.month = action.payload.month;
-        state.data = action.payload[action.payload.month];
-      })
-      .addCase(getStatistics.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.payload;
-      });
+      .addCase(getStatistics.pending, handlePending)
+      .addCase(getStatistics.fulfilled, handleStatisticsFullfilled)
+      .addCase(getStatistics.rejected, handleRejected);
   },
 });
 
 export default statisticsSlice.reducer;
+export const { setRequiredMonth } = statisticsSlice.actions;
