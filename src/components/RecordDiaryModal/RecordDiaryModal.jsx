@@ -153,7 +153,6 @@ const RecordDiaryModal = ({
       ...product,
       productId: nanoid(),
     }));
-    console.log('Product: >>>>>>', products);
 
     const dataForBackend = {
       date,
@@ -161,7 +160,6 @@ const RecordDiaryModal = ({
         products,
       },
     };
-    console.log(dataForBackend);
 
     const updateDataForBackend = {
       [category.toLowerCase()]: {
@@ -215,7 +213,7 @@ const RecordDiaryModal = ({
           {({ errors, touched, values, setFieldValue }) => (
             <StyledForm autoComplete="off">
               <FieldArray name="mealsIntake">
-                {({ insert, remove }) => {
+                {({ remove }) => {
                   return (
                     <FieldArrayWrapper>
                       <MealsList>
@@ -336,35 +334,22 @@ const RecordDiaryModal = ({
                           );
                         })}
                       </MealsList>
+
                       <ButtonAddMore
                         type="button"
                         onClick={() => {
-                          if (
-                            values &&
-                            values.mealsIntake &&
-                            values.mealsIntake.length > 0
-                          ) {
-                            const mealsIntake =
-                              values.mealsIntake[values.mealsIntake.length - 1];
-                            console.log(
-                              'Масив спожита їжа:',
-                              values.mealsIntake
-                            );
-                            const fieldEmpty = Object.values(
-                              mealsIntake || {}
-                            ).some(
-                              (value) =>
-                                typeof value === 'string' && !value.trim()
-                            );
-                            if (!fieldEmpty) {
-                              insert(
-                                values.mealsIntake.length,
-                                mealsIntakeTemplate
-                              );
+                          const lastIndex = values.mealsIntake.length - 1;
+                          const lastMealIntake = values.mealsIntake[lastIndex];
+
+                          // Check if the last form is valid before adding a new one
+                          schema.isValid(lastMealIntake).then((valid) => {
+                            if (valid) {
+                              setFieldValue('mealsIntake', [
+                                ...values.mealsIntake,
+                                mealsIntakeTemplate,
+                              ]);
                             }
-                          } else {
-                            insert(0, mealsIntakeTemplate);
-                          }
+                          });
                         }}
                       >
                         <Icon
