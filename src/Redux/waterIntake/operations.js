@@ -2,22 +2,13 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const instance = axios.create({
-  baseURL: 'https://healthyhub-emsa.onrender.com/',
-});
-
 export const addWater = createAsyncThunk(
   'waterIntake/post',
-  async (value, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      const response = await instance.post('api/user/water-intake', {
-        date: new Date().toISOString(),
-        water: value,
-      });
-      console.log(response.data);
+      const response = await axios.post('/user/water-intake', data);
       return response.data;
     } catch (error) {
-      console.error('Error adding water:', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -26,11 +17,9 @@ export const addWater = createAsyncThunk(
 export const resetWater = createAsyncThunk(
   'waterIntake/reset',
   async (date, thunkAPI) => {
+    console.log('OPERATION >>>>>', date);
     try {
-      const response = await instance.post('api/user/water-intake', {
-        date,
-        value: 0,
-      });
+      const response = await axios.delete(`/user/water-intake`, { data: date });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -40,14 +29,9 @@ export const resetWater = createAsyncThunk(
 
 export const getWaterToday = createAsyncThunk(
   'waterIntake/getForToday',
-  async (thunkAPI) => {
+  async (dateToday, thunkAPI) => {
     try {
-      const currentDate = new Date().toISOString();
-      const response = await instance.get('api/user/water-intake', {
-        params: {
-          date: currentDate,
-        },
-      });
+      const response = await axios.post('/user/water-intake', dateToday);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

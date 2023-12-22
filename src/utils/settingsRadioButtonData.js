@@ -1,35 +1,35 @@
 export const activitiesArray = [
   {
-    id: '12',
+    id: '1',
     name: 'levelActivity',
-    value: '1.2',
+    value: 1,
     label: `1.2 - if you do not have physical activity and sedentary
         work`,
   },
   {
-    id: '13',
+    id: '2',
     name: 'levelActivity',
-    value: '  1.375',
+    value: 2,
     label: ` 1.375 - if you do short runs or light gymnastics 1-3 times a
         week`,
   },
   {
-    id: '15',
+    id: '3',
     name: 'levelActivity',
-    value: '1.55',
+    value: 3,
     label: `1.55 - if you play sports with average loads 3-5 times a
         week`,
   },
   {
-    id: '17',
+    id: '4',
     name: 'levelActivity',
-    value: '1.725',
+    value: 4,
     label: `1.725 - if you train fully 6-7 times a week`,
   },
   {
-    id: '19',
+    id: '5',
     name: 'levelActivity',
-    value: '1.9',
+    value: 5,
     label: `1.9 - if your work is related to physical labor, you train 2
         times a day and include strength exercises in your training
         program`,

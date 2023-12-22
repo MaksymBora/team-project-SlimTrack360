@@ -7,5 +7,5 @@ const override = {
 };
 
 export const Loader = () => {
-  return <PulseLoader cssOverride={override} color="#0B44CD" size={9} />;
+  return <PulseLoader cssOverride={override} color="#E3FFA8" size={9} />;
 };

@@ -19,24 +19,38 @@ import {
 import Icon from '../../common/Icon';
 import { WaterChart } from '../WaterChart/WaterChart';
 import { ModalTakeWater } from '../../ModalTakeWater/ModalTakeWater';
-
-let waterConsumtion = 1000; // редакс води waterIntake
-let waterGoal = 1500; /// редакс води waterIntake
-const leftWaterIntake = waterGoal - waterConsumtion;
-
-const waterPercent =
-  waterConsumtion <= 1500 ? Math.round((waterConsumtion * 100) / 1500) : 100;
-
-const offset =
-  waterPercent <= 84 ? Math.ceil((waterPercent / 100) * 176 + 10) : 88;
-const changedColor = waterPercent <= 84 ? 'rgba(182, 195, 255, 1)' : 'green';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectValue } from '../../../Redux/waterIntake/selector';
+import { date } from '../../../utils/dateToday.js';
+import { getWaterToday } from '../../../Redux/waterIntake/operations.js';
+import { resetWater } from '../../../Redux/waterIntake/operations.js';
+import { selectdailyGoalWater } from '../../../Redux/userAuth/selector.js';
 
 export const WaterInfo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const totalWaterToday = useSelector(selectValue);
 
-  const handleOpenModal = () => {
-    setIsModalOpen((prevState) => !prevState);
-  };
+  const dispatch = useDispatch();
+
+  const water = useSelector(selectdailyGoalWater);
+
+  const leftWaterIntake = water - totalWaterToday;
+
+  const waterPercent =
+    totalWaterToday <= water
+      ? Math.round((totalWaterToday * 100) / water)
+      : 100;
+
+  const offset =
+    waterPercent <= 84 ? Math.ceil((waterPercent / 100) * 176 + 10) : 88;
+  const changedColor = waterPercent <= 84 ? 'rgba(182, 195, 255, 1)' : 'green';
+
+  useEffect(() => {
+    const dateToday = {
+      date,
+    };
+    dispatch(getWaterToday(dateToday));
+  }, [dispatch, totalWaterToday]);
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -44,13 +58,24 @@ export const WaterInfo = () => {
         handleOpenModal();
       }
     };
-
     document.addEventListener('keydown', handleKeyPress);
-
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
   }, [isModalOpen]);
+
+  const handleOpenModal = (e) => {
+    e.preventDefault();
+    setIsModalOpen((prevState) => !prevState);
+  };
+
+  const handleOnDelete = () => {
+    const dateToday = {
+      date,
+    };
+    console.log(dateToday);
+    dispatch(resetWater(dateToday));
+  };
 
   return (
     <div>
@@ -68,7 +93,7 @@ export const WaterInfo = () => {
           <InfoTitle>Water consumption</InfoTitle>
           <ValueWrap>
             <InfoNumber>
-              {waterConsumtion}
+              {totalWaterToday}
               <Span>ml</Span>
             </InfoNumber>
             <LeftInfo>
@@ -83,7 +108,7 @@ export const WaterInfo = () => {
             <Icon name={'icon-add-converted'} width={'16px'} height={'16px'} />
             Add water intake
           </Button>
-          <ButtonTrash>
+          <ButtonTrash onClick={handleOnDelete}>
             <Icon
               name={'icon-trash-03'}
               width={'20px'}
@@ -93,7 +118,12 @@ export const WaterInfo = () => {
           </ButtonTrash>
         </InfoWrap>
       </WaterInfoCard>
-      {isModalOpen && <ModalTakeWater onClose={handleOpenModal} />}
+      {isModalOpen && (
+        <ModalTakeWater
+          onClose={handleOpenModal}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </div>
   );
 };

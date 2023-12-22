@@ -8,9 +8,9 @@ export const Wrap = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    max-width: 780px;
-    padding: 24px 6px;
+  @media screen and (min-width: 834px) {
+    max-width: 800px;
+    padding: 24px 10px;
   }
 
   @media screen and (min-width: ${theme.breakpoint.desktop}) {

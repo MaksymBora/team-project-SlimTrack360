@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { theme } from '../../styles/index';
 import {
   Container,
@@ -14,8 +15,24 @@ import { WaterInfo } from '../../components/MainPage/WaterInfo/WaterInfo';
 import { FoodInfo } from '../../components/MainPage/FoodInfo/FoodInfo';
 import { DiaryInfo } from '../../components/MainPage/DiaryInfo/DiaryInfo';
 import RecommendedFood from '../../components/MainPage/RecommendedFood/RecommendedFood';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchFood } from '../../Redux/recommended/operations';
+import { fetchFoodIntake } from '../../Redux/foodIntake/operations';
+import { date } from '../../utils/dateToday.js';
 
 const Main = () => {
+  const dispatch = useDispatch();
+
+  const dateToday = {
+    date,
+  };
+
+  useEffect(() => {
+    dispatch(fetchFood());
+    dispatch(fetchFoodIntake(dateToday));
+  }, [dispatch]);
+
   return (
     <Container>
       <TitleWrap>

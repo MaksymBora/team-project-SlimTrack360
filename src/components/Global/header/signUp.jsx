@@ -2,7 +2,7 @@ import {
   SignInContainer,
   RouterLinkSignUp,
   UserIcon,
-} from './header.styled.jsx';
+} from './header.styled.js';
 import icon from './../../../assets/sprite.svg';
 
 export const SignUp = () => {

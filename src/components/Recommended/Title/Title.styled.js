@@ -6,7 +6,7 @@ export const PageName = styled.h2`
   line-height: 30px;
   margin-bottom: 16px;
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+  @media screen and (min-width: 834px) {
     margin-bottom: 20px;
     font-size: 30px;
     line-height: 36px;

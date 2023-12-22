@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectIsLoading, selectError } from '../../Redux/waterIntake/selector';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading } from '../../Redux/waterIntake/selector';
 import ReactDOM from 'react-dom';
 import {
   Cancel,
@@ -12,53 +11,48 @@ import {
   Overlay,
   Title,
 } from './Modal.styled';
+import { date } from '../../utils/dateToday';
 import { addWater } from '../../Redux/waterIntake/operations';
+import { useState } from 'react';
 
-export const ModalTakeWater = ({ onClose }) => {
-  const [waterAmount, setWaterAmount] = useState('');
-  // const value = useSelector(selectValue);
+export const ModalTakeWater = ({ onClose, setIsModalOpen }) => {
+  const [waterValue, setWaterValue] = useState('');
   const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
-  const handleInputChange = (e) => {
-    setWaterAmount(e.target.value);
-  };
+  const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-    const value = parseFloat(waterAmount);
 
-    if (!isNaN(value)) {
-      const data = {
-        date: new Date().toISOString(),
-        water: value,
-      };
+    const data = {
+      date,
 
-      addWater(value);
+      value: Number(waterValue),
+    };
 
-      console.log(data);
-      onClose();
-    } else {
-      console.error('Input is not a number');
-    }
+    dispatch(addWater(data));
+    setIsModalOpen(false);
   };
 
   return ReactDOM.createPortal(
     <Overlay onClick={onClose}>
       <Content onClick={(e) => e.stopPropagation()}>
         <Title>Add water intake</Title>
-        <Form onSubmit={handleSubmit}>
+
+        <Form onSubmit={handleOnSubmit}>
           <Label>How much water</Label>
           <Input
+            name="water"
             type="text"
             placeholder="Enter milliliters"
-            value={waterAmount}
-            onChange={handleInputChange}
+            value={waterValue}
+            onChange={(e) => setWaterValue(e.target.value)}
           />
+
           <Confirm type="submit" disabled={isLoading}>
             {isLoading ? 'Loading...' : 'Confirm'}
           </Confirm>
-          {error && <p style={{ color: 'red' }}>{error}</p>}
+
           <Cancel type="button" onClick={onClose}>
             Cancel
           </Cancel>
