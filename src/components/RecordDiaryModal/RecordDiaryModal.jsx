@@ -28,8 +28,8 @@ import {
   ButtonDelete,
   ButtonConfirm,
   ButtonCancel,
-} from './RecordDiaryModal.styles';
-import { getFoodIntake } from '../../Redux/foodIntake/selector';
+} from './RecordDiaryModal.styled';
+
 
 Modal.setAppElement('#root');
 
