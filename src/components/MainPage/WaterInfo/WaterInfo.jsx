@@ -24,19 +24,21 @@ import { selectValue } from '../../../Redux/waterIntake/selector';
 import { date } from '../../../utils/dateToday.js';
 import { getWaterToday } from '../../../Redux/waterIntake/operations.js';
 import { resetWater } from '../../../Redux/waterIntake/operations.js';
+import { selectdailyGoalWater } from '../../../Redux/userAuth/selector.js';
 
 export const WaterInfo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const totalWaterToday = useSelector(selectValue);
-  console.log(totalWaterToday);
+
   const dispatch = useDispatch();
 
-  let waterGoal = 1000;
-  const leftWaterIntake = waterGoal - totalWaterToday;
+  const water = useSelector(selectdailyGoalWater);
+
+  const leftWaterIntake = water - totalWaterToday;
 
   const waterPercent =
-    totalWaterToday <= waterGoal
-      ? Math.round((totalWaterToday * 100) / waterGoal)
+    totalWaterToday <= water
+      ? Math.round((totalWaterToday * 100) / water)
       : 100;
 
   const offset =
@@ -50,10 +52,6 @@ export const WaterInfo = () => {
     dispatch(getWaterToday(dateToday));
   }, [dispatch, totalWaterToday]);
 
-  const handleOpenModal = () => {
-    setIsModalOpen((prevState) => !prevState);
-  };
-
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === 'Escape' && isModalOpen) {
@@ -66,8 +64,12 @@ export const WaterInfo = () => {
     };
   }, [isModalOpen]);
 
-  const handleOnDelete = (e) => {
+  const handleOpenModal = (e) => {
     e.preventDefault();
+    setIsModalOpen((prevState) => !prevState);
+  };
+
+  const handleOnDelete = () => {
     const dateToday = {
       date,
     };
@@ -116,7 +118,12 @@ export const WaterInfo = () => {
           </ButtonTrash>
         </InfoWrap>
       </WaterInfoCard>
-      {isModalOpen && <ModalTakeWater onClose={handleOpenModal} />}
+      {isModalOpen && (
+        <ModalTakeWater
+          onClose={handleOpenModal}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </div>
   );
 };

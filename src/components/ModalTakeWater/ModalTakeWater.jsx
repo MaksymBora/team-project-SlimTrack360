@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoading, selectError } from '../../Redux/waterIntake/selector';
+import { selectIsLoading } from '../../Redux/waterIntake/selector';
 import ReactDOM from 'react-dom';
 import {
   Cancel,
@@ -13,20 +13,25 @@ import {
 } from './Modal.styled';
 import { date } from '../../utils/dateToday';
 import { addWater } from '../../Redux/waterIntake/operations';
+import { useState } from 'react';
 
-export const ModalTakeWater = ({ onClose }) => {
+export const ModalTakeWater = ({ onClose, setIsModalOpen }) => {
+  const [waterValue, setWaterValue] = useState('');
   const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   const dispatch = useDispatch();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+
     const data = {
       date,
-      value: Number(e.target.water.value),
+
+      value: Number(waterValue),
     };
+
     dispatch(addWater(data));
+    setIsModalOpen(false);
   };
 
   return ReactDOM.createPortal(
@@ -40,12 +45,14 @@ export const ModalTakeWater = ({ onClose }) => {
             name="water"
             type="text"
             placeholder="Enter milliliters"
-            onChange={(e) => e.target.value}
+            value={waterValue}
+            onChange={(e) => setWaterValue(e.target.value)}
           />
-          <Confirm type="submit" disabled={isLoading} onClick={onClose}>
+
+          <Confirm type="submit" disabled={isLoading}>
             {isLoading ? 'Loading...' : 'Confirm'}
           </Confirm>
-          {error && <p style={{ color: 'red' }}>{error}</p>}
+
           <Cancel type="button" onClick={onClose}>
             Cancel
           </Cancel>
@@ -55,5 +62,3 @@ export const ModalTakeWater = ({ onClose }) => {
     document.getElementById('modal-root')
   );
 };
-
-//test2
