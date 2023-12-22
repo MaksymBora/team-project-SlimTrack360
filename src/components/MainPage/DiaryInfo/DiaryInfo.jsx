@@ -6,7 +6,6 @@ import {
   TitleWrapper,
   DiaryWrap,
 } from './DiaryInfo.styled';
-
 import breakfast from '../../../assets/images/diary/breakfast.png';
 import breakfast2x from '../../../assets/images/diary/breakfast-2x.png';
 import dinner from '../../../assets/images/diary/dinner.png';
@@ -17,11 +16,9 @@ import snack from '../../../assets/images/diary/snack.png';
 import snack2x from '../../../assets/images/diary/snack-2x.png';
 
 export const DiaryInfo = () => {
-
   const carbonohidrates = 60;
   const protein = 40;
   const fat = 20;
-
 
   return (
     <DiaryWrap>
