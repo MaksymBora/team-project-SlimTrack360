@@ -22,7 +22,7 @@ export const DiaryCard = ({
   carbonohidrates,
   protein,
   fat,
-  dataLength = 1,
+  dataLength = 0,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
