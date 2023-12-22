@@ -6,6 +6,7 @@ import {
   TitleWrapper,
   DiaryWrap,
 } from './DiaryInfo.styled';
+
 import breakfast from '../../../assets/images/diary/breakfast.png';
 import breakfast2x from '../../../assets/images/diary/breakfast-2x.png';
 import dinner from '../../../assets/images/diary/dinner.png';
@@ -58,13 +59,7 @@ export const DiaryInfo = () => {
           carbonohidrates={carbonohidrates}
           protein={protein}
           fat={fat}
-          title={'Breakfast'}
-          image={breakfast}
-          image2x={breakfast2x}
         />
-        <DiaryCard title={'Lunch'} image={lunch} image2x={lunch2x} />
-        <DiaryCard title={'Dinner'} image={dinner} image2x={dinner2x} />
-        <DiaryCard title={'Snack'} image={snack} image2x={snack2x} />
       </CardsWrap>
     </DiaryWrap>
   );
