@@ -42,22 +42,22 @@ const SignUp = () => {
                   type="image/webp"
                 />
                 <source
-                  media="(min-width: 768px)"
+                  media="(min-width: 834px)"
                   srcSet={`${_1TabletWebP} 1x, ${_2TabletWebP} 2x`}
                   type="image/webp"
                 />
                 <source
-                  media="(min-width: 768px)"
+                  media="(min-width: 834px)"
                   srcSet={`${_1TabletImg} 1x, ${_2TabletImg} 2x`}
                   type="image/png"
                 />
                 <source
-                  media="(max-width: 767px)"
+                  media="(max-width: 833px)"
                   srcSet={`${_1MobWebP} 1x, ${_2MobWebP} 2x`}
                   type="image/webp"
                 />
                 <source
-                  media="(max-width: 767px)"
+                  media="(max-width: 833px)"
                   srcSet={`${_1MobImg} 1x, ${_2MobImg} 2x`}
                   type="image/png"
                 />
