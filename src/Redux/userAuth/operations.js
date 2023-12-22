@@ -9,16 +9,7 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-// const authDB = axios.create({
-//   baseURL: 'https://healthyhub-emsa.onrender.com/api/',
-//   headers: { accept: 'application/json' },
-//   // Authorization:
-//   //     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODBlMzZiMmU5YzlhMjNhMjhjODQ0ZiIsImlhdCI6MTcwMzAzMjEzNCwiZXhwIjoyMDE4NjA4MTM0fQ.Qe0UVaTrIQnVIITruXa7w3cYJ2o6QdIGBGpip_lBalU',
-//   // },
-// });
-
-// axios.defaults.baseURL = 'https://healthyhub-emsa.onrender.com/api/';
-axios.defaults.baseURL = 'http://localhost:3000/api/';
+axios.defaults.baseURL = 'https://healthyhub-emsa.onrender.com/api/';
 
 export const register = createAsyncThunk(
   'auth/register',
