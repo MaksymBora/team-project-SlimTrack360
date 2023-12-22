@@ -63,8 +63,7 @@ export const DiaryCard = ({
         </InfoWrap>
       ) : (
         <AddButton onClick={openModal}>
-          <Icon name="icon-add" icon-add-more width={16} height={16} /> Record
-          your meal
+          <Icon name="icon-add" width={16} height={16} /> Record your meal
         </AddButton>
       )}
 
