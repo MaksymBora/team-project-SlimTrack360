@@ -31,35 +31,40 @@ export const ImageWrap = styled.div`
 export const Title = styled.h3`
   font-size: 18px;
   font-weight: 500;
-  line-height: 24;
+  line-height: 24px;
 `;
 
 export const InfoWrap = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   row-gap: 20px;
 
   color: ${theme.color.primaryWhite};
 
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.43;
+  line-height: 20px;
 
   @media screen and (min-width: 834px) {
+    flex-wrap: nowrap;
     flex-direction: row;
     column-gap: 20px;
   }
 `;
 
 export const CarbWrap = styled.p`
-  width: 164px;
+  width: 160px;
+  padding-top: 2px;
 `;
 
 export const ProteinWrap = styled.p`
-  width: 92px;
+  width: 88px;
+  padding-top: 2px;
 `;
 export const FatWrap = styled.p`
   width: 62px;
+  padding-top: 2px;
 `;
 export const ValueSpan = styled.span`
   color: ${theme.color.primaryGrey};
