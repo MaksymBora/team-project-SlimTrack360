@@ -150,9 +150,10 @@ const RecordDiaryModal = ({
   // -------------- Відправка даних на бекенд --------------------- //
   const handleSubmit = async (values, { resetForm }) => {
     const products = values.mealsIntake.map((product) => ({
-      productId: nanoid(),
       ...product,
+      productId: nanoid(),
     }));
+    console.log('Product: >>>>>>', products);
 
     const dataForBackend = {
       date,
@@ -160,6 +161,7 @@ const RecordDiaryModal = ({
         products,
       },
     };
+    console.log(dataForBackend);
 
     const updateDataForBackend = {
       [category.toLowerCase()]: {
