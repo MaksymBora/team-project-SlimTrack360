@@ -5,7 +5,7 @@ import { recommendedReducer } from './recommended/recommendedSlice';
 import { authReducer } from './userAuth/userAuthSlice';
 import foodIntakeReducer from './foodIntake/foodIntakeSlice';
 import { waterIntakeReducer } from './waterIntake/waterIntakeSlice';
-import { statisticsReducer } from './statisctics/statisticsSlice';
+import statisticsReducer from './statisctics/statisticsSlice';
 
 const persistConfig = {
   key: 'auth',

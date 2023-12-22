@@ -1,5 +1,3 @@
-// src/Redux/statisctics/statisticsSlice.js
-
 import { createSlice } from '@reduxjs/toolkit';
 import { getStatistics } from './operations';
 
