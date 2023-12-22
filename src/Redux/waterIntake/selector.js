@@ -1,3 +1,5 @@
+// src\Redux\waterIntake\selector.js
+
 // export const selectId = (state) => selectWaterIntake(state).id;
 // export const selectDate = (state) => selectWaterIntake(state).date;
 export const selectValue = (state) => state.waterIntake.value;
