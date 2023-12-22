@@ -26,7 +26,11 @@ const UploadAvatar = ({ handleSelect, avatar, text }) => {
   return (
     <div>
       <UploadPhotoBox>
-        {avatar ? (
+        {!avatar && !uploadedAvatar ? (
+          <AvatarBox $isDefault={true}>
+            <DefaultImage>{text}</DefaultImage>
+          </AvatarBox>
+        ) : (
           <AvatarBox $isDefault={false}>
             <img
               src={
@@ -34,10 +38,6 @@ const UploadAvatar = ({ handleSelect, avatar, text }) => {
               }
               alt="Profile Photo"
             />
-          </AvatarBox>
-        ) : (
-          <AvatarBox $isDefault={true}>
-            <DefaultImage>{text}</DefaultImage>
           </AvatarBox>
         )}
 
