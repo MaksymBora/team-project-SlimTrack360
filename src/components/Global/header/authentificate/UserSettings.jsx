@@ -50,9 +50,8 @@ export const UserSettings = () => {
   };
 
   const user = useSelector(selectUser);
-  console.log(user);
+
   const goal = user.goal;
-  console.log(goal);
 
   return (
     <UserMode>

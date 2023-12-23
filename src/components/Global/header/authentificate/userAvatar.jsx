@@ -19,7 +19,6 @@ export const UserAvatar = () => {
   const avatar = useSelector(selectAvatarurl);
 
   const defaultName = user.name ? user.name.slice(0, 1).toUpperCase() : 'A';
-  console.log(avatar);
 
   const handleOpenModal = () => {
     setProfileModalOpen((prevState) => !prevState);

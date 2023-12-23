@@ -11,12 +11,6 @@ import { useDispatch } from 'react-redux';
 import { logOut } from '../../Redux/userAuth/operations';
 
 export const ModalLogOut = ({ onClose }) => {
-  // const handleConfirm = () => {
-  //   if (onConfirm) {
-  //     onConfirm();
-  //   }
-  //   onClose();
-  // };
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
@@ -41,23 +35,3 @@ export const ModalLogOut = ({ onClose }) => {
     document.getElementById('modal-root')
   );
 };
-
-//  const [isModalOpen, setIsModalOpen] = useState(false);
-
-// const handleOpenModal = () => {
-//   setIsModalOpen((prevState) => !prevState);
-// };
-
-// useEffect(() => {
-//   const handleKeyPress = (event) => {
-//     if (event.key === 'Escape' && isModalOpen) {
-//       handleOpenModal();
-//     }
-//   };
-
-//   document.addEventListener('keydown', handleKeyPress);
-
-//   return () => {
-//     document.removeEventListener('keydown', handleKeyPress);
-//   };
-// }, [isModalOpen]);
