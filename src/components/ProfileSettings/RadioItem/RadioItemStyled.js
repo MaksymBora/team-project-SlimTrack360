@@ -23,7 +23,8 @@ const RadioButton = styled.input`
   &::before {
     display: block;
     content: '';
-    background-image: url('/icons/unchecked.svg');
+    border: 1px solid #b6b6b6;
+    border-radius: 50%;
     background-size: 12px 12px;
     height: 12px;
     width: 12px;
@@ -32,8 +33,10 @@ const RadioButton = styled.input`
   &:checked::before {
     display: block;
     content: ' ';
-    background-image: url('/icons/checked.svg');
-    background-size: 12px 12px;
+    border-radius: 50%;
+    padding: 2.5px;
+    background-clip: content-box;
+    background-color: ${(p) => p.theme.color.primaryGreenLite};
     height: 12px;
     width: 12px;
   }
