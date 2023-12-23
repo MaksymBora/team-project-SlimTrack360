@@ -10,7 +10,6 @@ export const Modal = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    //  padding-bottom: 30px;
   }
   @media screen and (min-width: 834px) {
     box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
@@ -196,7 +195,7 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  // opacity: 80%;
+
   @media screen and (min-width: 834px) {
     top: 100px;
   }

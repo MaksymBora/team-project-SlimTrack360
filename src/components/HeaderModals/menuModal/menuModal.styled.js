@@ -93,7 +93,7 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  // opacity: 80%;
+
   @media screen and (min-width: 768px) {
     top: 100px;
   }

@@ -149,10 +149,11 @@ const initialState = {
     name: null,
     email: null,
     avatarUrl: null,
-    goal: null,
+
     sex: null,
     age: null,
     height: null,
+    goal: null,
     currentWeight: null,
     levelActivity: null,
     dailyGoalCalories: null,

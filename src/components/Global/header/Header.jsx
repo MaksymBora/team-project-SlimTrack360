@@ -12,11 +12,9 @@ import { UserSettings } from './authentificate/UserSettings.jsx';
 import { UserAvatar } from './../header/authentificate/userAvatar.jsx';
 import { selectIsLoggedIn } from './../../../Redux/userAuth/selector.js';
 import { useSelector } from 'react-redux';
-// import {selectUser} from './../../../Redux/userAuth/selector.js'
 
 const Header = () => {
   const IsLoggedIn = useSelector(selectIsLoggedIn);
-  // const user = useSelector(selectUser);
 
   return IsLoggedIn ? (
     <HeaderContainer>

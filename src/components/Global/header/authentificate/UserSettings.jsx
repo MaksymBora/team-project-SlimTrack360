@@ -50,11 +50,13 @@ export const UserSettings = () => {
   };
 
   const user = useSelector(selectUser);
+  console.log(user);
+  const goal = user.goal;
+  console.log(goal);
 
   return (
     <UserMode>
       {isMobile ? (
-        // first
         <PictogramBlock onClick={handleOpenModalMenu}>
           {isModalOpenMenu ? (
             <Pictogram>
@@ -82,7 +84,7 @@ export const UserSettings = () => {
               <Goal>Goal</Goal>
 
               <SettingBtn>
-                <LoseFat>{user.goal || 'No goal'}</LoseFat>
+                <LoseFat>{goal || 'No goal'}</LoseFat>
 
                 <GoalBtn type="button" onClick={handleOpenModal}>
                   <svg>

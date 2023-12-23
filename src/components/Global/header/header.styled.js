@@ -123,7 +123,6 @@ export const UserIcon = styled.div`
 // аватар та ім'я
 export const Navigation = styled.nav`
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
 
   @media screen and (min-width: 320px) {
@@ -141,7 +140,6 @@ export const UserLogoContainer = styled.div`
   width: 126px;
   height: 24px;
   align-items: center;
-  /* justify-content:flex-end; */
   position: relative;
 
   @media screen and (min-width: 834px) {
@@ -153,20 +151,22 @@ export const UserLogoContainer = styled.div`
 export const UserName = styled.p`
   margin-right: 6px;
   color: ${theme.color.primaryWhite};
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.33;
+  line-height: 1.43;
 `;
+
+/* Body text/1 */
 
 export const UserAva = styled.div`
   width: 24px;
   height: 24px;
-  border-radius: 50%;
+
   margin-right: 4px;
 
   @media screen and (min-width: 834px) {
     width: 28px;
-    height: 28px;
+    height: 24px;
   }
 `;
 
@@ -174,8 +174,8 @@ export const UserLogoText = styled.div`
   width: 24px;
   height: 24px;
   margin-right: 4px;
-  border-radius: 50%;
-  border: ${theme.color.primaryBlack2} solid 1px;
+  border-radius: 28px;
+  border: ${theme.color.primaryGrey} solid 1px;
   display: flex;
   align-items: center;
   justify-content: center;

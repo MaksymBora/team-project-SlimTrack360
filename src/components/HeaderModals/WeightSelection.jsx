@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import icon from './../../assets/sprite.svg';
 import {
