@@ -13,7 +13,7 @@ const Recommented = lazy(() => import('../../Pages/Recommented/Recommented'));
 const Main = lazy(() => import('../../Pages/Main/Main'));
 const Verify = lazy(() => import('../../Pages/Verify/Verify'));
 
-export {
+export default {
   Welcome,
   SignIn,
   SignUp,
