@@ -27,7 +27,7 @@ const WeightGraph = () => {
     return Math.round(weightsSum / totalWeightArray.length);
   };
 
-  const generateWeightArray = () => {
+  const generateWeightArray = (daysInMonth, totalWeightArray) => {
     const initialWeights = Array(daysInMonth).fill(null);
     const today = new Date();
     const weights = totalWeightArray.reduce((acc, entry) => {
@@ -47,6 +47,8 @@ const WeightGraph = () => {
     return result;
   };
 
+  const weightsArr = generateWeightArray(daysInMonth, totalWeightArray);
+
   return (
     <GraphContainer className="scroll-container">
       <div className="weightTitle">
@@ -59,7 +61,7 @@ const WeightGraph = () => {
       <ChartContainer className="weight-graph-line">
         <div className="table-container">
           <div className="upper-row">
-            {generateWeightArray()?.map((value, index) => (
+            {weightsArr.map((value, index) => (
               <div key={index} className="table-cell upper">
                 {value}
               </div>
