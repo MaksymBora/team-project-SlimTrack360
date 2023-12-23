@@ -13,8 +13,10 @@ import {
 } from './Modal.styled';
 import { date } from '../../utils/dateToday';
 import { addWater } from '../../Redux/waterIntake/operations';
+import { useState } from 'react';
 
 export const ModalTakeWater = ({ onClose }) => {
+  const [waterValue, setWaterValue] = useState('');
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
@@ -24,9 +26,11 @@ export const ModalTakeWater = ({ onClose }) => {
     e.preventDefault();
     const data = {
       date,
-      value: Number(e.target.water.value),
+      value: Number(waterValue),
     };
+    console.log(data);
     dispatch(addWater(data));
+    onClose();
   };
 
   return ReactDOM.createPortal(
@@ -40,9 +44,9 @@ export const ModalTakeWater = ({ onClose }) => {
             name="water"
             type="text"
             placeholder="Enter milliliters"
-            onChange={(e) => e.target.value}
+            onChange={(e) => setWaterValue(e.target.value)}
           />
-          <Confirm type="submit" disabled={isLoading} onClick={onClose}>
+          <Confirm type="submit" disabled={isLoading}>
             {isLoading ? 'Loading...' : 'Confirm'}
           </Confirm>
           {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -55,5 +59,3 @@ export const ModalTakeWater = ({ onClose }) => {
     document.getElementById('modal-root')
   );
 };
-
-//test2
