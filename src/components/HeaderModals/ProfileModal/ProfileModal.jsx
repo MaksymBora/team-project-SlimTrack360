@@ -1,11 +1,6 @@
 import { Link } from 'react-router-dom';
 import icon from './../../../assets/sprite.svg';
-import {
-  Overlay,
-  Modal,
-  ModalContainer,
-  SettingButton,
-} from './ProfileModal.styled';
+import { Modal, ModalContainer, SettingButton } from './ProfileModal.styled';
 import { useState } from 'react';
 import { ModalLogOut } from '../../modalLogOut/modalLogOut';
 
@@ -27,19 +22,16 @@ export const ProfileModal = ({ onClose }) => {
           </SettingButton>
         </Link>
 
-
-          <Link to={'/'}>
-            <SettingButton type="button" onClick={handleOpenModal}>
-              <svg>
-                <use href={icon + '#icon-logout'}></use>
-              </svg>
-              Log out
-            </SettingButton>
-          </Link>
-          {isModalLogOut && <ModalLogOut onClose={handleOpenModal} />}
-        </ModalContainer>
-      </Modal>
-    </Overlay>
-
+        <Link to={'/'}>
+          <SettingButton type="button" onClick={handleOpenModal}>
+            <svg>
+              <use href={icon + '#icon-logout'}></use>
+            </svg>
+            Log out
+          </SettingButton>
+        </Link>
+        {isModalLogOut && <ModalLogOut onClose={handleOpenModal} />}
+      </ModalContainer>
+    </Modal>
   );
 };
