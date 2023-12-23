@@ -30,7 +30,6 @@ export const addFoodIntake = createAsyncThunk(
 export const updateFoodIntake = createAsyncThunk(
   'foodIntake/update',
   async ({ objectId, updateDataForBackend }, thunkAPI) => {
-    console.log('Operation >>> ', updateDataForBackend);
     try {
       const response = await axios.put(
         `/user/food-intake/${objectId}`,
@@ -48,7 +47,9 @@ export const deleteFoodIntake = createAsyncThunk(
   'foodIntake/delete',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.delete(`/user/food-intake/`, credentials);
+      const response = await axios.delete(`/user/food-intake`, {
+        data: credentials,
+      });
 
       return response.data;
     } catch (error) {

@@ -26,6 +26,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 6px;
+  min-width: 100%;
 `;
 
 export const CardTitleContainer = styled.div`

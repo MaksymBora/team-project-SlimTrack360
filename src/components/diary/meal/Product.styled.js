@@ -27,9 +27,9 @@ export const Div = styled.div`
   }
 `;
 export const ProductTitleContainer = styled.div`
-  /* display: flex;
+  display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;  */
+  justify-content: space-between;
 `;
 export const ProductPower = styled.div`
   display: flex;

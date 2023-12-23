@@ -3,9 +3,9 @@ import { useAuth } from '../../Redux/userAuth/hooks/useAuth';
 
 export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
   const location = useLocation();
-  const { isLoggedIn, isRefreshing } = useAuth();
+  const { isLoggedIn, isRefreshing, isVerify } = useAuth();
 
-  const shouldRedirect = !isLoggedIn && !isRefreshing;
+  const shouldRedirect = !isLoggedIn && !isRefreshing && !isVerify;
 
   return shouldRedirect ? (
     <Navigate to={redirectTo} state={{ from: location }} />

@@ -10,6 +10,7 @@ import {
   ProfileSettings,
   Recommented,
   Main,
+  Verify,
 } from './components/Routing/routesImport';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -52,6 +53,12 @@ const App = () => {
               <RestrictedRoute component={<ForgotPass />} redirectTo="/main" />
             }
           />
+          <Route
+            path="verify/:id"
+            element={
+              <RestrictedRoute component={<Verify />} redirectTo="/main" />
+            }
+          />
 
           <Route
             path="main"
@@ -77,7 +84,7 @@ const App = () => {
               <PrivateRoute component={<Recommented />} redirectTo="/" />
             }
           />
-          <Route path="/*" element={<Navigate raplce to="/" />} />
+          <Route path="/*" element={<Navigate replace to="/" />} />
         </Route>
       </Routes>
     </>

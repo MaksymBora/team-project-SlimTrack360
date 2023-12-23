@@ -15,7 +15,6 @@ import { selectUser } from '../../../../Redux/userAuth/selector.js';
 export const UserAvatar = () => {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
   const user = useSelector(selectUser);
-  console.log('User >>>>>>', user.name);
 
   // const avatar = useSelector(selectAvatarurl);
   // const ava = avatar.avatarUrl;

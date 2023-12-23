@@ -100,7 +100,7 @@ export const FoodStatistics = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    justify-content: start;
+    justify-content: space-evenly;
     width: 1440px;
     column-gap: 106px;
     margin-bottom: 0;

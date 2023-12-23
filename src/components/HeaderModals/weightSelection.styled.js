@@ -4,43 +4,38 @@ import { Field } from 'formik';
 import { Form } from 'formik';
 
 export const Modal = styled.div`
-  background-color: transparent;
   position: absolute;
 
   @media screen and (min-width: 320px) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 30px;
+    //  padding-bottom: 30px;
   }
   @media screen and (min-width: 834px) {
     box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
     border-radius: 12px;
-    right: 148px;
+    right: 220px;
     width: 392px;
-    padding-bottom: 0;
+    top: 0px;
   }
   @media screen and (min-width: 1440px) {
-    right: 36px;
+    right: 34px;
+    top: 0px;
+    height: auto;
   }
 `;
 
 export const ModalWrapper = styled.div`
   @media screen and (min-width: 320px) {
     width: 300px;
-    padding-top: 24px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 0;
+    padding: 24px 10px 0px 10px;
     height: auto;
   }
   @media screen and (min-width: 834px) {
     width: 392px;
 
-    padding-top: 20px;
-    padding-right: 84px;
-    padding-left: 24px;
-    padding-bottom: 40px;
+    padding-top: 20px 24px 40px 24px;
   }
   @media screen and (min-width: 1440px) {
     width: 392px;
@@ -52,6 +47,7 @@ export const ModalWrapper = styled.div`
   }
 `;
 export const CloseBtn = styled.button`
+  display: none;
   background: inherit;
   border: none;
   display: flex;
@@ -64,6 +60,10 @@ export const CloseBtn = styled.button`
   top: 16px;
   fill: ${theme.color.primaryGrey};
   stroke: ${theme.color.primaryGrey};
+
+  @media screen and (max-width: 834px) {
+    display: none;
+  }
 `;
 
 export const Title = styled.h2`

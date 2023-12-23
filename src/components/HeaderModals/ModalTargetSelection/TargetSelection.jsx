@@ -18,10 +18,10 @@ import {
   Overlay,
   TargetSection,
 } from './targetSelection.styled';
-
-import { updateUserGoal } from './../../../Redux/userAuth/operations';
+import ReactDOM from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { updateUserGoal } from './../../../Redux/userAuth/operations';
 
 export const TargetSelection = ({ onClose }) => {
   const [selectedGoal, setSelectedGoal] = useState('Lose fat');
@@ -31,11 +31,11 @@ export const TargetSelection = ({ onClose }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(selectedGoal);
+
     const data = {
       goal: selectedGoal,
     };
-    console.log('cclick');
+
     dispatch(updateUserGoal(data));
     onClose();
   };
@@ -44,7 +44,7 @@ export const TargetSelection = ({ onClose }) => {
     setSelectedGoal(goal);
   };
 
-  return (
+  return ReactDOM.createPortal(
     <Overlay onClick={onClose}>
       <Modal onClick={(e) => e.stopPropagation()}>
         <CloseBtn type="button" onClick={onClose}>
@@ -152,6 +152,7 @@ export const TargetSelection = ({ onClose }) => {
           Cancel
         </CancelBtn>
       </Modal>
-    </Overlay>
+    </Overlay>,
+    document.getElementById('modal-root')
   );
 };

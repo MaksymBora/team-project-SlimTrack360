@@ -1,73 +1,91 @@
+import { useState } from 'react';
 import RecordDiaryModal from '../../../../components/RecordDiaryModal/RecordDiaryModal.jsx';
-
+import Icon from '../../../../components/common/Icon';
 import {
   InfoWrap,
   Title,
   CardWrap,
   CarbWrap,
   ProteinWrap,
+  FatWrap,
+  ValueSpan,
   ImageWrap,
   TitleWrap,
+  ButtonDelete,
+  AddButton,
 } from './DiaryCard.styled';
-
-// const elementSum = (arr, elem) => {
-//   return Math.round((arr.reduce((sum, dish) => sum + dish[elem], 0) * 10) / 10);
-// };
+import { useDispatch } from 'react-redux';
+import { deleteFoodIntake } from '../../../../Redux/foodIntake/operations.js';
 
 export const DiaryCard = ({
-  title,
-  image,
-  image2x,
-  categoryImage,
   category,
+  categoryImage,
+  categoryImage2x,
+  carbonohidrates,
+  protein,
+  fat,
+  dataLength,
+  id,
 }) => {
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
+  const dispatch = useDispatch();
 
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
+  const handleOnModalOpen = () => {
+    setIsModalOpen((prevState) => !prevState);
+  };
+
+  const handleOnClickDelete = () => {
+    const data = {
+      _id: id,
+    };
+
+    const categoryLower = category.toLowerCase();
+
+    data[categoryLower] = {
+      products: [],
+    };
+
+    dispatch(deleteFoodIntake(data));
+  };
 
   return (
     <CardWrap>
       <TitleWrap>
         <ImageWrap>
-          <img srcSet={`${image} 1x, ${image2x} 2x`} src={image} alt="Plate" />
+          <img
+            srcSet={`${categoryImage} 1x, ${categoryImage2x} 2x`}
+            src={categoryImage}
+            alt="Plate"
+          />
         </ImageWrap>
-        <Title>{title}</Title>
+        <Title>{category}</Title>
       </TitleWrap>
-      {/* {info.length !== 0 ? ( */}
-      <InfoWrap>
-        <CarbWrap>
-          Carbonohidrates: 0
-          {/* <Value>{isNaN(carbonohidratesSum) ? 0 : carbonohidratesSum}</Value> */}
-        </CarbWrap>
-        <ProteinWrap>
-          Protein: 0{/* <Value>{isNaN(proteinSum) ? 0 : proteinSum}</Value> */}
-        </ProteinWrap>
-        <p>
-          Fat: 100
-          {/* <Value>{isNaN(fatSum) ? 0 : fatSum}</Value> */}
-        </p>
-      </InfoWrap>
-      {/* ) : ( */}
-      {/* <AddButton >
-          <AddIcon />
-          Record your meal
-        </AddButton> */}
-      {/* )} */}
-      {/* {isOpenModal && (
-        <RecordDiaryModal
-          onClose={handleRecordMeal}
-          type={title.toLowerCase()}
-        /> */}
-      {/* )} */}
+      {dataLength > 0 ? (
+        <InfoWrap>
+          <CarbWrap>
+            Carbonohidrates: <ValueSpan>{carbonohidrates}</ValueSpan>
+          </CarbWrap>
+          <ProteinWrap>
+            Protein: <ValueSpan>{protein}</ValueSpan>
+          </ProteinWrap>
+          <FatWrap>
+            Fat: <ValueSpan>{fat}</ValueSpan>
+          </FatWrap>
+          <ButtonDelete type="button" onClick={handleOnClickDelete}>
+            <Icon name="icon-trash" width={20} height={20} />
+          </ButtonDelete>
+        </InfoWrap>
+      ) : (
+        <AddButton onClick={handleOnModalOpen}>
+          <Icon name="icon-add" icon-add-more width={16} height={16} /> Record
+          your meal
+        </AddButton>
+      )}
+
       <RecordDiaryModal
-        // isModalOpen={isModalOpen}
-        // onClose={closeModal}
+        isModalOpen={isModalOpen}
+        onClose={handleOnModalOpen}
         category={category}
         categoryImage={categoryImage}
       />

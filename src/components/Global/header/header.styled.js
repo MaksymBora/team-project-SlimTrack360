@@ -32,7 +32,7 @@ export const Wrapper = styled.div`
     width: 320px;
   }
   @media screen and (min-width: 834px) {
-    width: 834px;
+    width: 800px;
     padding-right: 27px;
     padding-left: 27px;
   }

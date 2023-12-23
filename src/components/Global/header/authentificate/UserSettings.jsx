@@ -48,9 +48,8 @@ export const UserSettings = () => {
   const handleOpenModalMenu = () => {
     setIsModalOpenMenu((prevState) => !prevState);
   };
-  // const dispatch = useDispatch()
+
   const user = useSelector(selectUser);
-  // console.log(user);
 
   return (
     <UserMode>

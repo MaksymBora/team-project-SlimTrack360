@@ -2,7 +2,7 @@ import { PulseLoader } from 'react-spinners';
 
 const override = {
   display: 'flex',
-  margin: '5rem auto 100vh',
+  margin: '30vh auto 100vh',
   justifyContent: 'center',
 };
 

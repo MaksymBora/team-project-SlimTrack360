@@ -8,6 +8,7 @@ import {
   updateUserGoal,
   updateUserParams,
   updateWeight,
+  verifyUser,
 } from './operations';
 
 const handlePending = (state) => {
@@ -20,6 +21,7 @@ const handleRejected = (state, payload) => {
   state.isRefreshing = false;
   state.token = null;
   state.error = payload;
+  state.user.verify = false;
 };
 
 // -------- Sign In ----------- //
@@ -44,29 +46,12 @@ const handleRefreshFullfilled = (state, { payload }) => {
   state.user = payload;
   state.isRefreshing = false;
   state.isLoggedIn = true;
+  state.user.status = 'fulfilled';
 };
 
 const handleRefreshPending = (state) => {
   state.isRefreshing = true;
 };
-
-// -------- Registration ----------- //
-
-// const handleRegistrationPending = (state) => {
-//   state.isRefreshing = true;
-// };
-
-// const handleRegistrationRejected = (state, { payload }) => {
-//   state.isLoggedIn = false;
-//   state.isRefreshing = false;
-//   state.token = null;
-//   state.error = payload;
-// };
-
-// const handleRegistrationFullfilled = (state, { payload }) => {
-//   state.isLoading = false;
-//   state.isLoggedIn = false;
-// };
 
 // -------- Log Out ----------- //
 
@@ -80,6 +65,7 @@ const handleLogoutFullfilled = (state) => {
   state.token = null;
   state.isRefreshing = false;
   state.isLoggedIn = false;
+  state.user.verify = false;
 };
 
 const handleLogoutPending = (state) => {
@@ -140,6 +126,24 @@ const handleUserGoalFulfilled = (state, action) => {
   state.goal = action.payload.goal;
 };
 
+// -------- User Verify ----------- //
+
+const handleUserVerifyFulfilled = (state, { payload }) => {
+  state.user = payload;
+  state.isLoggedIn = true;
+  state.token = payload.token;
+  state.isRefreshing = false;
+};
+const handleUserVerifyPending = (state) => {
+  state.isRefreshing = true;
+};
+
+const handleUserVerifyRejected = (state, { payload }) => {
+  state.isRefreshing = false;
+  state.error = payload;
+  state.user.status = 'rejected';
+};
+
 const initialState = {
   user: {
     name: null,
@@ -158,6 +162,8 @@ const initialState = {
       protein: null,
       fat: null,
     },
+    verify: false,
+    status: '',
   },
   token: null,
   isLoggedIn: false,
@@ -187,7 +193,10 @@ const userAuthSlice = createSlice({
       .addCase(updateWeight.pending, handleUpdateWeightPending)
       .addCase(updateWeight.fulfilled, handleUpdateWeightFullfilled)
       .addCase(updateWeight.rejected, handleUpdateWeightRejected)
-      .addCase(updateUserGoal.fulfilled, handleUserGoalFulfilled);
+      .addCase(updateUserGoal.fulfilled, handleUserGoalFulfilled)
+      .addCase(verifyUser.pending, handleUserVerifyPending)
+      .addCase(verifyUser.rejected, handleUserVerifyRejected)
+      .addCase(verifyUser.fulfilled, handleUserVerifyFulfilled);
   },
 });
 

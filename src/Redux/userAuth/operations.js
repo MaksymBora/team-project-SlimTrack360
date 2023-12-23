@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -9,15 +10,8 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-// const authDB = axios.create({
-//   baseURL: 'https://healthyhub-emsa.onrender.com/api/',
-//   headers: { accept: 'application/json' },
-//   // Authorization:
-//   //     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODBlMzZiMmU5YzlhMjNhMjhjODQ0ZiIsImlhdCI6MTcwMzAzMjEzNCwiZXhwIjoyMDE4NjA4MTM0fQ.Qe0UVaTrIQnVIITruXa7w3cYJ2o6QdIGBGpip_lBalU',
-//   // },
-// });
-
 axios.defaults.baseURL = 'https://healthyhub-emsa.onrender.com/api/';
+// axios.defaults.baseURL = 'http://localhost:3000/api/';
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -39,9 +33,10 @@ export const logIn = createAsyncThunk(
       const res = await axios.post('/auth/signin', credentials);
 
       setAuthHeader(res.data.token);
+      toast.success('Successful login');
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(toast.error(error.message));
     }
   }
 );
@@ -92,7 +87,6 @@ export const forgotPassword = createAsyncThunk(
 export const updateUserParams = createAsyncThunk(
   'auth/updateUserParams',
   async ({ values, newAvatar }, thunkAPI) => {
-    // const file = ''; // file type
     try {
       const formData = new FormData();
 
@@ -120,10 +114,6 @@ export const updateUserParams = createAsyncThunk(
   }
 );
 
-// передаємо {
-//     date: "2023-12-19",
-//     currentWeight: 120
-// }
 export const updateWeight = createAsyncThunk(
   'auth/updateWeight',
   async (credentials, thunkAPI) => {
@@ -141,6 +131,20 @@ export const updateUserGoal = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.put('user/goal', credentials);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const verifyUser = createAsyncThunk(
+  'auth/verifyUser',
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await axios.get(`auth/verify/${credentials}`);
+
+      setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

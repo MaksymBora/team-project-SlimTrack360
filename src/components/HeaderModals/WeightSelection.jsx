@@ -1,4 +1,5 @@
 // import { useState } from 'react';
+import ReactDOM from 'react-dom';
 import icon from './../../assets/sprite.svg';
 import {
   Modal,
@@ -27,13 +28,7 @@ export const WeightSelectionModal = ({ onClose }) => {
   const userCurrentWeight = useSelector(selectCurrentWeight);
   const dispatch = useDispatch();
 
-  const closeBtnHandler = ({ onClose }) => {
-    console.log(onClose());
-    onClose();
-  };
-  console.log(userCurrentWeight);
-
-  return (
+  return ReactDOM.createPortal(
     <Overlay onClick={onClose}>
       <Modal onClick={(e) => e.stopPropagation()}>
         <CloseBtn type="button" onClick={onClose}>
@@ -58,9 +53,10 @@ export const WeightSelectionModal = ({ onClose }) => {
                 date,
                 currentWeight: Number(values.currentWeight),
               };
-              console.log(data);
+
               dispatch(updateWeight(data));
               resetForm();
+              onClose();
             }}
           >
             <FormWeight>
@@ -69,10 +65,11 @@ export const WeightSelectionModal = ({ onClose }) => {
             </FormWeight>
           </Formik>
         </ModalWrapper>
-        <CancelBtn type="button" onClick={closeBtnHandler}>
+        <CancelBtn type="button" onClick={onClose}>
           Cancel
         </CancelBtn>
       </Modal>
-    </Overlay>
+    </Overlay>,
+    document.getElementById('modal-root')
   );
 };

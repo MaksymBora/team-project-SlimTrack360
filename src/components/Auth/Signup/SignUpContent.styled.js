@@ -67,9 +67,10 @@ export const Label = styled.label`
     margin-bottom: 0px;
     border-color: #e74a3b;
   }
-  // &.input-success {
-  //   border-color: #2d9f6c;
-  // }
+  &.input-success {
+    margin-bottom: 0px;
+    border-color: #2d9f6c;
+  }
 
   @media screen and (min-width: 834px) {
     width: 380px;
@@ -85,6 +86,8 @@ export const Label = styled.label`
     // margin: auto;
   }
 `;
+
+export const Icon = styled.svg``;
 // export const Title = styled.div;
 export const Input = styled.input`
   font-family: Poppins;
@@ -117,6 +120,17 @@ export const Attention = styled.p`
   padding-top: 4px;
   padding-bottom: 14px;
 `;
+export const Valid = styled.p`
+  color: #3cbc81;
+  text-align: left;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  padding-top: 4px;
+  padding-bottom: 14px;
+`;
 export const Wrapper = styled.div`
   padding-top: 24px;
   padding-bottom: 40px;
@@ -126,7 +140,7 @@ export const Wrapper = styled.div`
 
 export const EyeIcon = styled.svg`
   position: absolute;
-  right: 10px;
+  right: -1px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;

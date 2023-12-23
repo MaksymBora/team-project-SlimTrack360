@@ -15,7 +15,8 @@ export const Modal = styled.div`
 
   @media screen and (min-width: 834px) {
     width: 392px;
-    right: 148px;
+    right: 220px;
+    top: 0px;
     padding-bottom: 0;
     box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
     border-radius: 12px;
@@ -28,27 +29,13 @@ export const Modal = styled.div`
 export const ModalWrapper = styled.div`
   @media screen and (min-width: 320px) {
     width: 300px;
-    padding-top: 24px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 0;
+    padding: 24px 10px 0px 10px;
     height: auto;
   }
   @media screen and (min-width: 834px) {
     width: 392px;
 
-    padding-top: 20px;
-    padding-right: 84px;
-    padding-left: 24px;
-    padding-bottom: 40px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 392px;
-
-    padding-top: 20px;
-    padding-right: 84px;
-    padding-left: 24px;
-    padding-bottom: 40px;
+    padding: 20px 84px 40px 24px;
   }
 `;
 
@@ -65,6 +52,9 @@ export const CloseBtn = styled.button`
   top: 16px;
   fill: ${theme.color.primaryGrey};
   stroke: ${theme.color.primaryGrey};
+  @media screen and (max-width: 834px) {
+    display: none;
+  }
 `;
 export const Title = styled.h2`
   color: ${theme.color.primaryWhite};
@@ -170,9 +160,6 @@ export const CancelBtn = styled.button`
     font-weight: 500;
   }
   @media screen and (min-width: 834px) {
-    display: none;
-  }
-  @media screen and (min-width: 1440px) {
     display: none;
   }
 `;
