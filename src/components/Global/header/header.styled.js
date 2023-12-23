@@ -145,6 +145,7 @@ export const UserLogoContainer = styled.div`
   @media screen and (min-width: 834px) {
     width: 130px;
     height: 28px;
+    margin-left: 73px;
   }
 `;
 
@@ -234,8 +235,8 @@ export const UserSet = styled.div`
   display: flex;
   align-items: center;
 
-  @media screen and (min-width: 1440px) {
-    width: 310px;
+  @media screen and (min-width: 834px) {
+    max-width: 310px;
     gap: 40px;
   }
   @media screen and (min-width: 1440px) {
@@ -245,8 +246,10 @@ export const UserSet = styled.div`
 `;
 export const SelectGoals = styled.div`
   display: flex;
+  align-items: center;
   gap: 12px;
 `;
+
 export const GoalPic = styled.div`
   img {
     width: 49px;

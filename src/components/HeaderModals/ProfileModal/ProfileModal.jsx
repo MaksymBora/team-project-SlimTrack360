@@ -6,7 +6,6 @@ import {
   ModalContainer,
   SettingButton,
 } from './ProfileModal.styled';
-
 import { useState } from 'react';
 import { ModalLogOut } from '../../modalLogOut/modalLogOut';
 
@@ -17,17 +16,17 @@ export const ProfileModal = ({ onClose }) => {
   };
 
   return (
-    <Overlay onClick={onClose}>
-      <Modal onClick={(e) => e.stopPropagation()}>
-        <ModalContainer>
-          <Link onClick={onClose} to={'/settings'}>
-            <SettingButton type="button">
-              <svg>
-                <use href={icon + '#icon-setting-2'}></use>
-              </svg>
-              Setting
-            </SettingButton>
-          </Link>
+    <Modal onClick={(e) => e.stopPropagation()}>
+      <ModalContainer>
+        <Link onClick={onClose} to={'/settings'}>
+          <SettingButton type="button">
+            <svg>
+              <use href={icon + '#icon-setting-2'}></use>
+            </svg>
+            Setting
+          </SettingButton>
+        </Link>
+
 
           <Link to={'/'}>
             <SettingButton type="button" onClick={handleOpenModal}>
@@ -41,5 +40,6 @@ export const ProfileModal = ({ onClose }) => {
         </ModalContainer>
       </Modal>
     </Overlay>
+
   );
 };

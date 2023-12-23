@@ -13,7 +13,6 @@ import {
   Input,
   ConfirmBtn,
   CancelBtn,
-  Overlay,
 } from './weightSelection.styled';
 import { useDispatch } from 'react-redux';
 import { date } from './../../utils/dateToday';
@@ -28,47 +27,45 @@ export const WeightSelectionModal = ({ onClose }) => {
   const dispatch = useDispatch();
 
   return ReactDOM.createPortal(
-    <Overlay onClick={onClose}>
-      <Modal onClick={(e) => e.stopPropagation()}>
-        <CloseBtn type="button" onClick={onClose}>
-          <svg>
-            <use href={icon + '#icon-close-circle'}></use>
-          </svg>
-        </CloseBtn>
-        <ModalWrapper>
-          <Title>Enter your current weight</Title>
-          <WeightDescription>
-            You can record your weight once a day
-          </WeightDescription>
-          <DateWrapper>
-            <DateText>Today</DateText>
-            <Date>{date}</Date>
-          </DateWrapper>
+    <Modal onClick={(e) => e.stopPropagation()}>
+      <CloseBtn type="button" onClick={onClose}>
+        <svg>
+          <use href={icon + '#icon-close-circle'}></use>
+        </svg>
+      </CloseBtn>
+      <ModalWrapper>
+        <Title>Enter your current weight</Title>
+        <WeightDescription>
+          You can record your weight once a day
+        </WeightDescription>
+        <DateWrapper>
+          <DateText>Today</DateText>
+          <Date>{date}</Date>
+        </DateWrapper>
 
-          <Formik
-            initialValues={{ currentWeight: userCurrentWeight }}
-            onSubmit={(values, { resetForm }) => {
-              const data = {
-                date,
-                currentWeight: Number(values.currentWeight),
-              };
+        <Formik
+          initialValues={{ currentWeight: userCurrentWeight }}
+          onSubmit={(values, { resetForm }) => {
+            const data = {
+              date,
+              currentWeight: Number(values.currentWeight),
+            };
 
-              dispatch(updateWeight(data));
-              resetForm();
-              onClose();
-            }}
-          >
-            <FormWeight>
-              <Input name="currentWeight" placeholder="Enter your weight" />
-              <ConfirmBtn type="submit">Confirm</ConfirmBtn>
-            </FormWeight>
-          </Formik>
-        </ModalWrapper>
-        <CancelBtn type="button" onClick={onClose}>
-          Cancel
-        </CancelBtn>
-      </Modal>
-    </Overlay>,
+            dispatch(updateWeight(data));
+            resetForm();
+            onClose();
+          }}
+        >
+          <FormWeight>
+            <Input name="currentWeight" placeholder="Enter your weight" />
+            <ConfirmBtn type="submit">Confirm</ConfirmBtn>
+          </FormWeight>
+        </Formik>
+      </ModalWrapper>
+      <CancelBtn type="button" onClick={onClose}>
+        Cancel
+      </CancelBtn>
+    </Modal>,
     document.getElementById('modal-root')
   );
 };

@@ -4,7 +4,14 @@ import { Field } from 'formik';
 import { Form } from 'formik';
 
 export const Modal = styled.div`
+  background-color: ${theme.color.primaryBlack2};
   position: absolute;
+  top: 60px;
+  z-index: 1000;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 302px;
+  height: 100%;
 
   @media screen and (min-width: 320px) {
     display: flex;
@@ -14,14 +21,15 @@ export const Modal = styled.div`
   @media screen and (min-width: 834px) {
     box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
     border-radius: 12px;
-    right: 220px;
+    top: 100px;
+    left: 70%;
+    transform: translateX(-50%);
     width: 392px;
-    top: 0px;
+    height: auto;
   }
   @media screen and (min-width: 1440px) {
-    right: 34px;
-    top: 0px;
     height: auto;
+    left: 76%;
   }
 `;
 
@@ -185,6 +193,7 @@ export const CancelBtn = styled.button`
   }
 `;
 
+
 export const Overlay = styled.div`
   position: fixed;
   top: 60px;
@@ -203,3 +212,4 @@ export const Overlay = styled.div`
     top: 103px;
   }
 `;
+

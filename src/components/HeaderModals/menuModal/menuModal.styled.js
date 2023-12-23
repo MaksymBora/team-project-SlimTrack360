@@ -4,6 +4,9 @@ import { theme } from './../../../styles/theme';
 export const Modal = styled.div`
   position: absolute;
   width: 300px;
+  top: 40px;
+  left: 100%;
+  transform: translateX(-48%);
   height: auto;
   box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
   background-color: ${theme.color.primaryBlack2};
@@ -83,6 +86,7 @@ export const InfoBlockText = styled.div`
   line-height: 1.43;
   display: flex;
 `;
+
 export const Overlay = styled.div`
   position: fixed;
   top: 60px;
@@ -101,3 +105,4 @@ export const Overlay = styled.div`
     top: 103px;
   }
 `;
+

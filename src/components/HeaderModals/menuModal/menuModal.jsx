@@ -13,7 +13,6 @@ import {
   TextContainer,
   Goal,
   GoalIcon,
-  Overlay,
   InfoBlockText,
   Kg,
 } from './menuModal.styled';
@@ -45,57 +44,55 @@ export const ModalMenu = ({ onClose }) => {
   };
 
   return (
-    <Overlay onClose={onClose}>
-      <Modal>
-        <CloseBtn onClick={handleCloseBtn}>
-          <svg>
-            <use href={icon + '#icon-close-circle'}></use>
-          </svg>
-        </CloseBtn>
+    <Modal>
+      <CloseBtn onClick={handleCloseBtn}>
+        <svg>
+          <use href={icon + '#icon-close-circle'}></use>
+        </svg>
+      </CloseBtn>
 
-        <Options>
-          <OptionBlock onClick={handleSwitchTarget}>
-            <IconBlock>
-              <img src={pic} alt="Lose fat image men"></img>
-            </IconBlock>
-            <TextContainer>
-              <Goal>Goal</Goal>
-              <InfoBlockText>
-                Lose fat
-                <GoalIcon>
-                  <svg>
-                    <use href={icon + '#icon-arrowright'}></use>
-                  </svg>
-                </GoalIcon>
-              </InfoBlockText>
-            </TextContainer>
-            {showModalTarget && (
-              <TargetSelection onCloseModal={handleOpenModalTarget} />
-            )}
-          </OptionBlock>
+      <Options>
+        <OptionBlock onClick={handleSwitchTarget}>
+          <IconBlock>
+            <img src={pic} alt="Lose fat image men"></img>
+          </IconBlock>
+          <TextContainer>
+            <Goal>Goal</Goal>
+            <InfoBlockText>
+              Lose fat
+              <GoalIcon>
+                <svg>
+                  <use href={icon + '#icon-arrowright'}></use>
+                </svg>
+              </GoalIcon>
+            </InfoBlockText>
+          </TextContainer>
+          {showModalTarget && (
+            <TargetSelection onCloseModal={handleOpenModalTarget} />
+          )}
+        </OptionBlock>
 
-          <OptionBlock onClick={handleSwitchWeight}>
-            <IconBlock>
-              <img src={png} alt="weight" />
-            </IconBlock>
-            <TextContainer>
-              <Goal>Weight</Goal>
-              <InfoBlockText>
-                65
-                <Kg> kg</Kg>
-                <GoalIcon>
-                  <svg>
-                    <use href={icon + '#icon-edit-weight'}></use>
-                  </svg>
-                </GoalIcon>
-              </InfoBlockText>
-            </TextContainer>
-            {showModalWeight && (
-              <WeightSelectionModal onCloseModal={handleOpenModalWeight} />
-            )}
-          </OptionBlock>
-        </Options>
-      </Modal>
-    </Overlay>
+        <OptionBlock onClick={handleSwitchWeight}>
+          <IconBlock>
+            <img src={png} alt="weight" />
+          </IconBlock>
+          <TextContainer>
+            <Goal>Weight</Goal>
+            <InfoBlockText>
+              65
+              <Kg> kg</Kg>
+              <GoalIcon>
+                <svg>
+                  <use href={icon + '#icon-edit-weight'}></use>
+                </svg>
+              </GoalIcon>
+            </InfoBlockText>
+          </TextContainer>
+          {showModalWeight && (
+            <WeightSelectionModal onCloseModal={handleOpenModalWeight} />
+          )}
+        </OptionBlock>
+      </Options>
+    </Modal>
   );
 };
