@@ -25,7 +25,7 @@ import icon from './../../../../assets/sprite.svg';
 import pict from './../../../../assets/images/goals/Lose fat image men.png';
 import png from './../../../../assets/images/goals/Waight image.png';
 import { useState } from 'react';
-import { TargetSelection } from '../../../HeaderModals/ModalTargetSelection/Target Selection.jsx';
+import { TargetSelection } from '../../../HeaderModals/ModalTargetSelection/TargetSelection.jsx';
 import { WeightSelectionModal } from '../../../HeaderModals/WeightSelection.jsx';
 import { ModalMenu } from './../../../HeaderModals/menuModal/menuModal.jsx';
 import { useSelector } from 'react-redux';
@@ -48,8 +48,9 @@ export const UserSettings = () => {
   const handleOpenModalMenu = () => {
     setIsModalOpenMenu((prevState) => !prevState);
   };
-
+  // const dispatch = useDispatch()
   const user = useSelector(selectUser);
+  // console.log(user);
 
   return (
     <UserMode>
@@ -58,7 +59,6 @@ export const UserSettings = () => {
         <PictogramBlock onClick={handleOpenModalMenu}>
           {isModalOpenMenu ? (
             <Pictogram>
-              n{' '}
               <svg>
                 <use href={icon + '#icon-menu'}></use>
               </svg>
@@ -66,7 +66,7 @@ export const UserSettings = () => {
           ) : (
             <PictogramOpen>
               <svg>
-                <use href={icon + '#ico-menu'}></use>
+                <use href={icon + '#icon-menu'}></use>
               </svg>
             </PictogramOpen>
           )}

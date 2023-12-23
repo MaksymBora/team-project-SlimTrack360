@@ -6,8 +6,17 @@ import {
   ModalContainer,
   SettingButton,
 } from './ProfileModal.styled';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../../Redux/userAuth/operations';
 
 export const ProfileModal = ({ onClose }) => {
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(logOut());
+    onClose();
+  };
+
   return (
     <Overlay onClick={onClose}>
       <Modal onClick={(e) => e.stopPropagation()}>
@@ -22,7 +31,7 @@ export const ProfileModal = ({ onClose }) => {
           </Link>
 
           <Link onClick={onClose} to={'/'}>
-            <SettingButton type="button">
+            <SettingButton onClick={handleLogOut}>
               <svg>
                 <use href={icon + '#icon-logout'}></use>
               </svg>

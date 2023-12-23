@@ -2,7 +2,7 @@ import { useState } from 'react';
 import pic from './../../../assets/images/goals/Lose fat image men.png';
 import png from './../../../assets/images/goals/Waight image.png';
 import icon from './../../../assets/sprite.svg';
-import { TargetSelection } from '../ModalTargetSelection/Target Selection';
+import { TargetSelection } from '../ModalTargetSelection/TargetSelection.jsx';
 import { WeightSelectionModal } from '../WeightSelection.jsx';
 import {
   Modal,

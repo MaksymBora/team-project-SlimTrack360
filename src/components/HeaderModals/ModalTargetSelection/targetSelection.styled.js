@@ -4,7 +4,7 @@ import { theme } from '../../../styles/theme.js';
 export const Modal = styled.div`
   background-color: ${theme.color.primaryBlack2};
   position: absolute;
-
+  z-index: 1000px;
   padding-bottom: 30px;
 
   @media screen and (min-width: 320px) {
@@ -81,7 +81,8 @@ export const ModalDescription = styled.p`
   line-height: 1.43;
   margin-bottom: 16px;
 `;
-export const Form = styled.label`
+
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -93,16 +94,17 @@ export const Form = styled.label`
     width: 166px;
   }
 `;
-export const TargetListBlock = styled.label`
+export const TargetSection = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;
 `;
-export const TargetList = styled.input`
+export const TargetInput = styled.input`
   display: flex;
   position: absolute;
   opacity: 0;
-
+  width: 25px;
+  height: 25px;
   margin-bottom: 16px;
   align-items: center;
   cursor: pointer;
@@ -111,6 +113,13 @@ export const TargetImg = styled.img`
   width: 20px;
   height: 20px;
 `;
+export const TargetListBlock = styled.label`
+  color: ${theme.color.primaryWhite};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.43;
+`;
+
 export const TargetImgBorder = styled.div`
   background-color: transparent;
   width: 40px;
@@ -118,13 +127,13 @@ export const TargetImgBorder = styled.div`
   border: 1px solid ${theme.color.primaryViolet};
   border-radius: 12px;
   padding: 10px;
+  /* &:focus {
+    border: 2px solid #b6c3ff;
+  } */
 `;
-export const TargetImgText = styled.p`
-  color: ${theme.color.primaryWhite};
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.43;
-`;
+// export const TargetImgText = styled.p`
+
+// `;
 export const ConfirmBtn = styled.button`
   width: 100%;
   height: 36px;
@@ -139,9 +148,7 @@ export const ConfirmBtn = styled.button`
   border: none;
   border-radius: 12px;
   margin-bottom: 24px;
-  &:hover {
-    font-weight: 700;
-  }
+  cursor: pointer;
   &:focus {
     font-weight: 700;
   }
