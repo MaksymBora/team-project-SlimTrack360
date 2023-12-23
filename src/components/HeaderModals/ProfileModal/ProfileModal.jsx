@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
 import icon from './../../../assets/sprite.svg';
-import { Modal, ModalContainer, SettingButton } from './ProfileModal.styled';
-import { useDispatch } from 'react-redux';
-import { logOut } from '../../../Redux/userAuth/operations';
+import {
+  Overlay,
+  Modal,
+  ModalContainer,
+  SettingButton,
+} from './ProfileModal.styled';
+import { useState } from 'react';
+import { ModalLogOut } from '../../modalLogOut/modalLogOut';
 
 export const ProfileModal = ({ onClose }) => {
-  const dispatch = useDispatch();
-
-  const handleLogOut = () => {
-    dispatch(logOut());
-    onClose();
+  const [isModalLogOut, setIsModalLogOut] = useState(false);
+  const handleOpenModal = () => {
+    setIsModalLogOut((prevState) => !prevState);
   };
 
   return (
@@ -24,15 +27,19 @@ export const ProfileModal = ({ onClose }) => {
           </SettingButton>
         </Link>
 
-        <Link onClick={onClose} to={'/'}>
-          <SettingButton onClick={handleLogOut}>
-            <svg>
-              <use href={icon + '#icon-logout'}></use>
-            </svg>
-            Log out
-          </SettingButton>
-        </Link>
-      </ModalContainer>
-    </Modal>
+
+          <Link to={'/'}>
+            <SettingButton type="button" onClick={handleOpenModal}>
+              <svg>
+                <use href={icon + '#icon-logout'}></use>
+              </svg>
+              Log out
+            </SettingButton>
+          </Link>
+          {isModalLogOut && <ModalLogOut onClose={handleOpenModal} />}
+        </ModalContainer>
+      </Modal>
+    </Overlay>
+
   );
 };

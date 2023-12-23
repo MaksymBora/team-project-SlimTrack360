@@ -86,21 +86,23 @@ export const InfoBlockText = styled.div`
   line-height: 1.43;
   display: flex;
 `;
-// export const Overlay = styled.div`
-//   position: fixed;
-//   top: 60px;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background: rgba(5, 5, 5, 0.8);
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   // opacity: 80%;
-//   @media screen and (min-width: 768px) {
-//     top: 100px;
-//   }
-//   @media screen and (min-width: 1440px) {
-//     top: 103px;
-//   }
-// `;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 5, 5, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    top: 100px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 103px;
+  }
+`;
+

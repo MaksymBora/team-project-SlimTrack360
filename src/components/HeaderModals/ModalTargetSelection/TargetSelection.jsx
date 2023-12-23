@@ -26,7 +26,6 @@ export const TargetSelection = ({ onClose }) => {
   const [selectedGoal, setSelectedGoal] = useState('Lose fat');
 
   const dispatch = useDispatch();
-  // const isLoading = useSelector(selectIsLoading);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
