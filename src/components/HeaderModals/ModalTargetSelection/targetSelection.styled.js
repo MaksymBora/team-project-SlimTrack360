@@ -4,8 +4,13 @@ import { theme } from '../../../styles/theme.js';
 export const Modal = styled.div`
   background-color: ${theme.color.primaryBlack2};
   position: absolute;
-  z-index: 1000px;
+  z-index: 1000;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
   padding-bottom: 30px;
+  width: 302px;
+  height: 100%;
 
   @media screen and (min-width: 320px) {
     display: flex;
@@ -16,7 +21,10 @@ export const Modal = styled.div`
   @media screen and (min-width: 834px) {
     width: 392px;
     right: 220px;
-    top: 0px;
+    top: 100px;
+    left: 60%;
+    transform: translateX(-50%);
+    height: auto;
     padding-bottom: 0;
     box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
     border-radius: 12px;
@@ -24,6 +32,7 @@ export const Modal = styled.div`
   @media screen and (min-width: 1440px) {
     width: 392px;
     right: 248px;
+    left: 64%;
   }
 `;
 export const ModalWrapper = styled.div`
@@ -163,21 +172,21 @@ export const CancelBtn = styled.button`
     display: none;
   }
 `;
-export const Overlay = styled.div`
-  position: fixed;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(5, 5, 5, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // opacity: 80%;
-  @media screen and (min-width: 834px) {
-    top: 100px;
-  }
-  @media screen and (min-width: 1440px) {
-    top: 103px;
-  }
-`;
+// export const Overlay = styled.div`
+//   position: fixed;
+//   top: 60px;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: rgba(5, 5, 5, 0.8);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   // opacity: 80%;
+//   @media screen and (min-width: 834px) {
+//     top: 100px;
+//   }
+//   @media screen and (min-width: 1440px) {
+//     top: 103px;
+//   }
+// `;

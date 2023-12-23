@@ -4,6 +4,9 @@ import { theme } from './../../../styles/theme';
 export const Modal = styled.div`
   position: absolute;
   width: 300px;
+  top: 40px;
+  left: 100%;
+  transform: translateX(-48%);
   height: auto;
   box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
   background-color: ${theme.color.primaryBlack2};
@@ -83,21 +86,21 @@ export const InfoBlockText = styled.div`
   line-height: 1.43;
   display: flex;
 `;
-export const Overlay = styled.div`
-  position: fixed;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(5, 5, 5, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // opacity: 80%;
-  @media screen and (min-width: 768px) {
-    top: 100px;
-  }
-  @media screen and (min-width: 1440px) {
-    top: 103px;
-  }
-`;
+// export const Overlay = styled.div`
+//   position: fixed;
+//   top: 60px;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: rgba(5, 5, 5, 0.8);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   // opacity: 80%;
+//   @media screen and (min-width: 768px) {
+//     top: 100px;
+//   }
+//   @media screen and (min-width: 1440px) {
+//     top: 103px;
+//   }
+// `;
