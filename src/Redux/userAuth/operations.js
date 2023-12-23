@@ -143,7 +143,7 @@ export const verifyUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.get(`auth/verify/${credentials}`);
-      console.log(response);
+
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {

@@ -18,7 +18,7 @@ import {
 } from './weightSelection.styled';
 import { useDispatch } from 'react-redux';
 import { date } from './../../utils/dateToday';
-// import { udpdateWeight } from './../../Redux/userAuth/operations';
+
 import { Formik } from 'formik';
 import { useSelector } from 'react-redux';
 import { updateWeight } from '../../Redux/userAuth/operations';

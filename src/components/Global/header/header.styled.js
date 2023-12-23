@@ -158,7 +158,7 @@ export const UserName = styled.p`
   line-height: 1.33;
 `;
 
-export const UserAva = styled.img`
+export const UserAva = styled.div`
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -186,9 +186,15 @@ export const UserLogoText = styled.div`
   }
 `;
 
+export const UserLogoIcon = styled.div`
+  width: 14px;
+  height: 14px;
+`;
+
 //Настройки юзера
 
 export const UserMode = styled.div`
+  /* margin-right:200px; */
   position: relative;
 `;
 

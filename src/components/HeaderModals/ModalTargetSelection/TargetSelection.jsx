@@ -9,38 +9,39 @@ import {
   ModalDescription,
   CloseBtn,
   Form,
-  TargetList,
+  TargetInput,
   TargetImg,
   TargetImgBorder,
-  TargetImgText,
   TargetListBlock,
   ConfirmBtn,
   CancelBtn,
   Overlay,
+  TargetSection,
 } from './targetSelection.styled';
 import ReactDOM from 'react-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectIsLoading } from '../../../Redux/waterIntake/selector';
-import { selectUser } from './../../../Redux/userAuth/selector';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { updateUserGoal } from './../../../Redux/userAuth/operations';
 
 export const TargetSelection = ({ onClose }) => {
+  const [selectedGoal, setSelectedGoal] = useState('Lose fat');
+
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const user = useSelector(selectUser);
-  // const userSex = user.sex
-  const currentGoal = user.goal;
-  const [userGoal, setUserGoal] = useState(currentGoal);
+  // const isLoading = useSelector(selectIsLoading);
 
-  const newLosefatGoal = () => setUserGoal('Lose fat');
-  const newMaintainGoal = () => setUserGoal('Maintain');
-  const newGailMuscleGoal = () => setUserGoal('Gain muscle');
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
 
-  const handleNewGoal = (event) => {
-    event.preventDefault();
-    dispatch(updateUserGoal(userGoal));
+    const data = {
+      goal: selectedGoal,
+    };
+
+    dispatch(updateUserGoal(data));
     onClose();
+  };
+
+  const handleGoalChange = (goal) => {
+    setSelectedGoal(goal);
   };
 
   return ReactDOM.createPortal(
@@ -56,87 +57,94 @@ export const TargetSelection = ({ onClose }) => {
           <ModalDescription>
             The service will adjust your calorie intake to your goal
           </ModalDescription>
-          <Form onSubmit={handleNewGoal}>
-            <TargetListBlock>
+
+          <Form onSubmit={handleOnSubmit}>
+            <TargetSection>
               <TargetImgBorder
                 style={{
                   border:
-                    userGoal === 'Lose fat'
+                    selectedGoal === 'Lose fat'
                       ? '2px solid #B6C3FF'
                       : '1px solid #B6B6B6',
                 }}
               >
-                <TargetList
+                <TargetInput
                   type="radio"
                   value="Lose fat"
-                  onChange={newLosefatGoal}
+                  id="lose_fat"
+                  name="goal"
+                  checked={!selectedGoal === 'Lose fat'}
+                  onChange={() => handleGoalChange('Lose fat')}
                 />
                 <TargetImg src={LoseFatMen} alt="Lose fat image men" />
               </TargetImgBorder>
-              <TargetImgText
+
+              <TargetListBlock
                 style={{
-                  color: userGoal === 'Lose fat' ? '#B6C3FF' : '#B6B6B6',
+                  color: selectedGoal === 'Lose fat' ? '#B6C3FF' : '#ffffff',
                 }}
               >
                 Lose fat
-              </TargetImgText>
-            </TargetListBlock>
+              </TargetListBlock>
+            </TargetSection>
 
-            <TargetListBlock>
+            <TargetSection>
               <TargetImgBorder
                 style={{
                   border:
-                    userGoal === 'Maintain'
+                    selectedGoal === 'Maintain'
                       ? '2px solid #B6C3FF'
                       : '1px solid #B6B6B6',
                 }}
               >
-                <TargetList
+                <TargetInput
                   type="radio"
                   value="Maintain"
-                  onChange={newMaintainGoal}
+                  id="maintain"
+                  name="goal"
+                  onChange={() => handleGoalChange('Maintain')}
                 />
                 <TargetImg src={maintakeGirl} alt="yoga" />
               </TargetImgBorder>
 
-              <TargetImgText
+              <TargetListBlock
                 style={{
-                  color: userGoal === 'Maintain' ? '#B6C3FF' : '#B6B6B6',
+                  color: selectedGoal === 'Maintain' ? '#B6C3FF' : '#ffffff',
                 }}
               >
                 Maintain
-              </TargetImgText>
-            </TargetListBlock>
+              </TargetListBlock>
+            </TargetSection>
 
-            <TargetListBlock>
+            <TargetSection>
               <TargetImgBorder
                 style={{
                   border:
-                    userGoal === 'Gain muscle'
+                    selectedGoal === 'Gain muscle'
                       ? '2px solid #B6C3FF'
                       : '1px solid #B6B6B6',
                 }}
               >
-                <TargetList
+                <TargetInput
                   type="radio"
-                  value="muscles"
-                  onChange={newGailMuscleGoal}
+                  name="goal"
+                  id="gain_muscles"
+                  value="Gain Muscle"
+                  onChange={() => handleGoalChange('Gain Muscle')}
                 />
                 <TargetImg src={muscles} alt="muscles" />
               </TargetImgBorder>
 
-              <TargetImgText
+              <TargetListBlock
                 style={{
-                  color: userGoal === 'Gain muscle' ? '#B6C3FF' : '#B6B6B6',
+                  color: selectedGoal === 'Gain muscle' ? '#B6C3FF' : '#ffffff',
                 }}
               >
                 Gain Muscle
-              </TargetImgText>
-            </TargetListBlock>
+              </TargetListBlock>
+            </TargetSection>
 
-            <ConfirmBtn type="submit" disabled={isLoading}>
-              {isLoading ? 'Loading...' : 'Confirm'}
-            </ConfirmBtn>
+            <ConfirmBtn type="submit">Confirm</ConfirmBtn>
           </Form>
         </ModalWrapper>
 
@@ -148,40 +156,3 @@ export const TargetSelection = ({ onClose }) => {
     document.getElementById('modal-root')
   );
 };
-
-// let takeGoal;
-
-// switch (user.sex) {
-//   case 'Female':
-//     switch (user.goal) {
-//       case 'Lose fat':
-//         takeGoal = LoseFatMen;
-//         break;
-
-//       case 'Maintain':
-//         takeGoal = maintakeGirl;
-//         break;
-
-//       default:
-//         takeGoal = muscles;
-//     }
-//     break;
-
-//   case 'Male':
-//     switch (user.goal) {
-//       case 'Lose fat':
-//         takeGoal = LoseFatMen;
-//         break;
-
-//       case 'Maintain':
-//         takeGoal = maintakeGirl;
-//         break;
-
-//       default:
-//        takeGoal =muscles;
-//     }
-//     break;
-
-//   default:
-//     takeGoal = muscles;
-// }

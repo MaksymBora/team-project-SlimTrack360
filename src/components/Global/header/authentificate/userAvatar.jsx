@@ -1,6 +1,6 @@
 import {
   UserName,
-  UserAva,
+  // UserAva,
   UserLogoContainer,
   UserLogoText,
   ProfileBtn,
@@ -8,32 +8,33 @@ import {
 import icon from './../../../../assets/sprite.svg';
 import { ProfileModal } from './../../../HeaderModals/ProfileModal/ProfileModal.jsx';
 import { useState } from 'react';
-// import { useSelector } from 'react-redux/es/hooks/useSelector.js';
-// import { selectUser } from '../../../../Redux/userAuth/selector.js';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../../Redux/userAuth/selector.js';
+// import { selectAvatarurl } from '../../../../Redux/userAuth/selector.js';
 
 export const UserAvatar = () => {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
+  const user = useSelector(selectUser);
+
+  // const avatar = useSelector(selectAvatarurl);
+  // const ava = avatar.avatarUrl;
+  const defaultName = user.name ? user.name.slice(0, 1).toUpperCase() : 'A';
 
   const handleOpenModal = () => {
     setProfileModalOpen((prevState) => !prevState);
   };
-  //  const user = useSelector(selectUser);
-  //     const name = 'alex' ?? user.name;
-  //    const avatar = {} ?? user.avatarURL;
-  //   const defaultName = name ? name.slice(0, 1).toUpperCase() : 'A';
-  //    const avatarUser = useSelector(selectAvatarurl);
-  //     const ava = avatarUser.avatarURL;
 
   return (
     // name && (
     <UserLogoContainer onClick={handleOpenModal}>
-      <UserName>Konstantin</UserName>
-
-      <UserAva />
-
+      <UserName>{user.name}</UserName>
+      {/* {ava ? (
+        <UserAva>{user.name}</UserAva>
+      ) : ( */}
       <UserLogoText>
-        <p> {}</p>
+        <p>{defaultName} </p>
       </UserLogoText>
+      {/* )} */}
 
       <ProfileBtn>
         <svg>

@@ -7,13 +7,12 @@ import { verifyUser } from '../../Redux/userAuth/operations';
 
 const Verify = () => {
   const { id } = useParams();
-  console.log(id);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isVerify = useSelector(selectVerify);
   const status = useSelector(selectStatus);
 
-  console.log(id);
   useEffect(() => {
     dispatch(verifyUser(id));
   }, [dispatch, id]);
