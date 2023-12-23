@@ -27,7 +27,6 @@ import { selectCurrentWeight } from '../../Redux/userAuth/selector';
 export const WeightSelectionModal = ({ onClose }) => {
   const userCurrentWeight = useSelector(selectCurrentWeight);
   const dispatch = useDispatch();
-  console.log(userCurrentWeight);
 
   return ReactDOM.createPortal(
     <Overlay onClick={onClose}>
@@ -54,7 +53,7 @@ export const WeightSelectionModal = ({ onClose }) => {
                 date,
                 currentWeight: Number(values.currentWeight),
               };
-              console.log(data);
+
               dispatch(updateWeight(data));
               resetForm();
               onClose();

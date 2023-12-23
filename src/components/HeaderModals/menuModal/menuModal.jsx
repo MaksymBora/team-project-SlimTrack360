@@ -41,7 +41,6 @@ export const ModalMenu = ({ onClose }) => {
   };
 
   const handleCloseBtn = () => {
-    console.log(onClose());
     onClose();
   };
 

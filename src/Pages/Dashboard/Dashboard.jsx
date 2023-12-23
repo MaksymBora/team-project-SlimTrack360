@@ -16,13 +16,11 @@ export function Dashboard() {
   const requestedMonth = useSelector(selectRequiredMonth);
   const dispatch = useDispatch();
 
-  console.log('select', requestedMonth);
-
   useEffect(() => {
     const dateToday = {
       month: getMonthValue(requestedMonth),
     };
-    console.log(dateToday);
+
     dispatch(getStatistics(dateToday));
   }, [dispatch, requestedMonth]);
 

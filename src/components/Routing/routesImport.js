@@ -11,6 +11,7 @@ const ProfileSettings = lazy(
 );
 const Recommented = lazy(() => import('../../Pages/Recommented/Recommented'));
 const Main = lazy(() => import('../../Pages/Main/Main'));
+const Verify = lazy(() => import('../../Pages/Verify/Verify'));
 
 export {
   Welcome,
@@ -22,4 +23,5 @@ export {
   ProfileSettings,
   Recommented,
   Main,
+  Verify,
 };

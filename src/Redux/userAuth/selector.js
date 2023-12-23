@@ -24,3 +24,7 @@ export const selectDailyGoalFat = (state) =>
   state.userAuth.user.dailyGoalElements.fat;
 
 export const selectToken = (state) => state.userAuth.token;
+
+export const selectVerify = (state) => state.userAuth.user.verify;
+
+export const selectStatus = (state) => state.userAuth.user.status;

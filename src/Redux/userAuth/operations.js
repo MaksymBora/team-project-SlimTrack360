@@ -87,7 +87,6 @@ export const forgotPassword = createAsyncThunk(
 export const updateUserParams = createAsyncThunk(
   'auth/updateUserParams',
   async ({ values, newAvatar }, thunkAPI) => {
-    // const file = ''; // file type
     try {
       const formData = new FormData();
 
@@ -115,10 +114,6 @@ export const updateUserParams = createAsyncThunk(
   }
 );
 
-// передаємо {
-//     date: "2023-12-19",
-//     currentWeight: 120
-// }
 export const updateWeight = createAsyncThunk(
   'auth/updateWeight',
   async (credentials, thunkAPI) => {
@@ -136,6 +131,20 @@ export const updateUserGoal = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.put('user/goal', credentials);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const verifyUser = createAsyncThunk(
+  'auth/verifyUser',
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await axios.get(`auth/verify/${credentials}`);
+      console.log(response);
+      setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import { refreshUser } from './Redux/userAuth/operations';
 import { PrivateRoute } from './Pages/Routes/PrivateRoute';
 import { RestrictedRoute } from './Pages/Routes/RestrictedRoute';
+import Verify from './Pages/Verify/Verify';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -50,6 +51,12 @@ const App = () => {
             path="forgot-password"
             element={
               <RestrictedRoute component={<ForgotPass />} redirectTo="/main" />
+            }
+          />
+          <Route
+            path="verify/:id"
+            element={
+              <RestrictedRoute component={<Verify />} redirectTo="/main" />
             }
           />
 

@@ -46,8 +46,6 @@ export const updateFoodIntake = createAsyncThunk(
 export const deleteFoodIntake = createAsyncThunk(
   'foodIntake/delete',
   async (credentials, thunkAPI) => {
-    console.log('Credentials', credentials);
-
     try {
       const response = await axios.delete(`/user/food-intake`, {
         data: credentials,

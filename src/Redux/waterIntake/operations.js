@@ -17,7 +17,6 @@ export const addWater = createAsyncThunk(
 export const resetWater = createAsyncThunk(
   'waterIntake/reset',
   async (date, thunkAPI) => {
-    console.log('OPERATION >>>>>', date);
     try {
       const response = await axios.delete(`/user/water-intake`, { data: date });
       return response.data;

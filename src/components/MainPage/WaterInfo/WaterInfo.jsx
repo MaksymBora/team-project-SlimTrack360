@@ -73,7 +73,7 @@ export const WaterInfo = () => {
     const dateToday = {
       date,
     };
-    console.log(dateToday);
+
     dispatch(resetWater(dateToday));
   };
 
