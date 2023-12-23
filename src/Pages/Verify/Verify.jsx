@@ -7,6 +7,7 @@ import { verifyUser } from '../../Redux/userAuth/operations';
 
 const Verify = () => {
   const { id } = useParams();
+  console.log(id);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isVerify = useSelector(selectVerify);
@@ -26,7 +27,7 @@ const Verify = () => {
     }
   }, [status, navigate, isVerify]);
 
-  return <div></div>;
+  return <div>TEst</div>;
 };
 
 export default Verify;

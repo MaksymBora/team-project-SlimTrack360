@@ -1,7 +1,6 @@
 /// <reference types="vite/client" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-// import { fileURLToPath, URL } from 'url';
 
 export default defineConfig({
   plugins: [react()],
@@ -12,8 +11,8 @@ export default defineConfig({
       pages: '/src/pages',
     },
   },
-  // base: '/team-project-SlimTrack360/',
-  base: './',
+  base: '/team-project-SlimTrack360/',
+
   build: {
     outDir: './dist',
     commonjsOptions: {
