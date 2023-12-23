@@ -222,6 +222,7 @@ export const CustomRadioInput = styled.input`
   width: 1px;
   height: 1px;
   opacity: 0;
+  outline: none;
 
   &:checked + label::after {
     opacity: 1;
