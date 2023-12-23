@@ -15,7 +15,9 @@ import { date } from '../../utils/dateToday';
 import { addWater } from '../../Redux/waterIntake/operations';
 import { useState } from 'react';
 
-export const ModalTakeWater = ({ onClose, setIsModalOpen }) => {
+
+export const ModalTakeWater = ({ onClose }) => {
+
   const [waterValue, setWaterValue] = useState('');
   const isLoading = useSelector(selectIsLoading);
 
@@ -29,9 +31,10 @@ export const ModalTakeWater = ({ onClose, setIsModalOpen }) => {
 
       value: Number(waterValue),
     };
-
+ 
     dispatch(addWater(data));
-    setIsModalOpen(false);
+    onClose();
+
   };
 
   return ReactDOM.createPortal(
@@ -48,6 +51,7 @@ export const ModalTakeWater = ({ onClose, setIsModalOpen }) => {
             value={waterValue}
             onChange={(e) => setWaterValue(e.target.value)}
           />
+
 
           <Confirm type="submit" disabled={isLoading}>
             {isLoading ? 'Loading...' : 'Confirm'}

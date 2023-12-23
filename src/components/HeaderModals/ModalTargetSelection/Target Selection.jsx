@@ -18,6 +18,7 @@ import {
   CancelBtn,
   Overlay,
 } from './targetSelection.styled';
+import ReactDOM from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLoading } from '../../../Redux/waterIntake/selector';
 import { selectUser } from './../../../Redux/userAuth/selector';
@@ -39,10 +40,10 @@ export const TargetSelection = ({ onClose }) => {
   const handleNewGoal = (event) => {
     event.preventDefault();
     dispatch(updateUserGoal(userGoal));
-    // onClose();
+    onClose();
   };
 
-  return (
+  return ReactDOM.createPortal(
     <Overlay onClick={onClose}>
       <Modal onClick={(e) => e.stopPropagation()}>
         <CloseBtn type="button" onClick={onClose}>
@@ -133,11 +134,8 @@ export const TargetSelection = ({ onClose }) => {
               </TargetImgText>
             </TargetListBlock>
 
-            <ConfirmBtn
-              type="submit"
-              disabled={isLoading ? 'Loading' : 'Confirm'}
-            >
-              Confirm
+            <ConfirmBtn type="submit" disabled={isLoading}>
+              {isLoading ? 'Loading...' : 'Confirm'}
             </ConfirmBtn>
           </Form>
         </ModalWrapper>
@@ -146,7 +144,8 @@ export const TargetSelection = ({ onClose }) => {
           Cancel
         </CancelBtn>
       </Modal>
-    </Overlay>
+    </Overlay>,
+    document.getElementById('modal-root')
   );
 };
 
