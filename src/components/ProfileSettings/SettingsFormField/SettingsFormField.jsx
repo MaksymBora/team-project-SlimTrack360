@@ -11,7 +11,7 @@ const SettingsFormField = ({ label, value, formik }) => {
         <FormInput
           id={value}
           name={value}
-          type={value === 'name' ? 'text' : 'number'}
+          type={'text'}
           value={formik.values[value]}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}

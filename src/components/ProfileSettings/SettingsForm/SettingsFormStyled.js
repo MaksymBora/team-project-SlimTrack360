@@ -73,9 +73,6 @@ const SubmitBtn = styled.button`
   font-weight: 500;
   line-height: 1.4;
 
-  &:hover,
-  &:focus {
-  }
   transition: ${(p) => p.theme.transition.main};
 `;
 
@@ -84,9 +81,14 @@ const CancelBtn = styled.button`
   line-height: 1.4;
   background-color: transparent;
   color: ${(p) => p.theme.color.primaryGrey};
+  border: 1px solid transparent;
+  border-radius: 12px;
+  outline: none;
 
   &:hover,
-  &:focus {
+  &:active {
+    outline: none;
+    border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
   }
 
   transition: ${(p) => p.theme.transition.main};

@@ -19,17 +19,17 @@ const Section = styled.section`
 `;
 
 const Container = styled.div`
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   margin: 0 auto;
 
   @media screen and (min-width: 834px) {
-    max-width: 800px;
-    padding: 0 10px;
+    width: 800px;
+    padding: 0 27px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1372px;
+    width: 1372px;
+    padding: 0 10px;
   }
 `;
 
