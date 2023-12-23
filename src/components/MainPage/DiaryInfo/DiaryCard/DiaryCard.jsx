@@ -14,6 +14,8 @@ import {
   ButtonDelete,
   AddButton,
 } from './DiaryCard.styled';
+import { useDispatch } from 'react-redux';
+import { deleteFoodIntake } from '../../../../Redux/foodIntake/operations.js';
 
 export const DiaryCard = ({
   category,
@@ -22,16 +24,29 @@ export const DiaryCard = ({
   carbonohidrates,
   protein,
   fat,
-  dataLength = 0,
+  dataLength,
+  id,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const dispatch = useDispatch();
+
+  const handleOnModalOpen = () => {
+    setIsModalOpen((prevState) => !prevState);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleOnClickDelete = () => {
+    const data = {
+      _id: id,
+    };
+
+    const categoryLower = category.toLowerCase();
+
+    data[categoryLower] = {
+      products: [],
+    };
+
+    dispatch(deleteFoodIntake(data));
   };
 
   return (
@@ -57,19 +72,20 @@ export const DiaryCard = ({
           <FatWrap>
             Fat: <ValueSpan>{fat}</ValueSpan>
           </FatWrap>
-          <ButtonDelete type="button" onClick={onclick}>
+          <ButtonDelete type="button" onClick={handleOnClickDelete}>
             <Icon name="icon-trash" width={20} height={20} />
           </ButtonDelete>
         </InfoWrap>
       ) : (
-        <AddButton onClick={openModal}>
-          <Icon name="icon-add" width={16} height={16} /> Record your meal
+        <AddButton onClick={handleOnModalOpen}>
+          <Icon name="icon-add" icon-add-more width={16} height={16} /> Record
+          your meal
         </AddButton>
       )}
 
       <RecordDiaryModal
         isModalOpen={isModalOpen}
-        onClose={closeModal}
+        onClose={handleOnModalOpen}
         category={category}
         categoryImage={categoryImage}
       />

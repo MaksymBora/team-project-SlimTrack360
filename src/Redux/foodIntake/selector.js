@@ -2,6 +2,8 @@ export const selectIsLoading = (state) => state.foodIntake.isLoading;
 
 export const getFoodIntake = (state) => state.foodIntake.data;
 
+export const getFoodIntakeId = (state) => state.foodIntake.data._id;
+
 // breakfast
 export const getBreakfastCarbons = (state) =>
   state.foodIntake.data.breakfast.totalCarbonohidretes;

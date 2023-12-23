@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   data: {
-    id: null,
+    _id: null,
     date: null,
     totalCalories: null,
     totalFat: null,
