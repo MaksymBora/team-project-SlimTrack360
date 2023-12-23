@@ -38,3 +38,8 @@ HealthyHub is built using the following technologies:
 - [Husky](https://typicode.github.io/husky/)
 - [Vite](https://vitejs.dev/)
 - [Styled-Components](https://styled-components.com/)
+
+## Links
+
+- [Backend Repo](https://github.com/MaksymBora/Backend-SlimTrack360)
+- [Swagger Docs](https://healthyhub-emsa.onrender.com/api/docs)
