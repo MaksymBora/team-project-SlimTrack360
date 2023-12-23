@@ -39,7 +39,6 @@ export const Modal = styled.div`
     top: 40px;
   }
   @media screen and (min-width: 1440px) {
-    top: -30px;
   }
 `;
 
