@@ -115,6 +115,6 @@ function getTooltipLabel(label) {
   } else if (label === 'Water') {
     return 'Water';
   }
-  // Добавьте дополнительные проверки для других графиков, если необходимо
+
   return '';
 }

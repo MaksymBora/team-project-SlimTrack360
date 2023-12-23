@@ -229,16 +229,27 @@ export const GlobalStyles = createGlobalStyle`
   /* ========================= /Scroll styles ========================= */
 
   ::-webkit-scrollbar {
-    width: 8px;
+    // width: 8px;
+    height: 8px;
+
+
+    margin-top: 20px; // не работатет
+    scroll-padding-bottom: 20px; // не работатет
+    scroll-margin: 20px; // не работатет
+ 
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #E3FFA8;
+    background-color:#333131 ;  // ползунок скроллбара
     border-radius: 12px;
+   
   }
 
   ::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color:  #1f1e1e ; // канавка скроллбара
+    border-radius: 12px;
+   
+  
   }
 
   /* Firefox */

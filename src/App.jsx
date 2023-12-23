@@ -77,7 +77,7 @@ const App = () => {
               <PrivateRoute component={<Recommented />} redirectTo="/" />
             }
           />
-          <Route path="/*" element={<Navigate raplce to="/" />} />
+          <Route path="/*" element={<Navigate replace to="/" />} />
         </Route>
       </Routes>
     </>
