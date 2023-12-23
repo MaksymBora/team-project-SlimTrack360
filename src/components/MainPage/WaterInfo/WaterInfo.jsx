@@ -118,12 +118,7 @@ export const WaterInfo = () => {
           </ButtonTrash>
         </InfoWrap>
       </WaterInfoCard>
-      {isModalOpen && (
-        <ModalTakeWater
-          onClose={handleOpenModal}
-          setIsModalOpen={setIsModalOpen}
-        />
-      )}
+      {isModalOpen && <ModalTakeWater setIsModalOpen={setIsModalOpen} />}
     </div>
   );
 };
