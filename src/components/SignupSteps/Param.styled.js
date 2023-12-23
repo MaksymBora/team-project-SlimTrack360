@@ -196,6 +196,7 @@ export const InputStiles = styled.input`
   border: 1px solid ${theme.color.primaryGreenLite};
   background: ${theme.color.primaryBlack2};
   padding: 8px 10px;
+  outline: none;
 
   &::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
