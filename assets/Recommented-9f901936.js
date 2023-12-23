@@ -1,4 +1,4 @@
-import{u as t,t as r,e as i,j as e,a as s,r as p,o as c,p as x}from"./index-487be230.js";import{s as d,I as h,a as g,b as l}from"./Item-8052166d.js";const w=t.ul`
+import{u as t,t as r,e as i,j as e,a as s,r as p,p as c,q as x}from"./index-3a379c2e.js";import{s as d,I as h,a as g,b as l}from"./Item-d7ea91d5.js";const w=t.ul`
   @media screen and (min-width: 834px) {
     display: flex;
     flex-wrap: wrap;
@@ -75,4 +75,4 @@ import{u as t,t as r,e as i,j as e,a as s,r as p,o as c,p as x}from"./index-487b
     justify-content: center;
     column-gap: 44px;
   }
-`,B=()=>{const o=s(),a=i(g),m=i(l);return p.useEffect(()=>{o(c())},[o]),e.jsxs(z,{children:[e.jsx(j,{}),e.jsxs(F,{children:[e.jsx(E,{}),a&&e.jsx(x,{}),m?e.jsx("p",{children:"Oops...something went wrong! Try again later"}):e.jsx(u,{})]})]})};export{B as default};
+`,q=()=>{const o=s(),a=i(g),m=i(l);return p.useEffect(()=>{o(c())},[o]),e.jsxs(z,{children:[e.jsx(j,{}),e.jsxs(F,{children:[e.jsx(E,{}),a&&e.jsx(x,{}),m?e.jsx("p",{children:"Oops...something went wrong! Try again later"}):e.jsx(u,{})]})]})};export{q as default};
