@@ -10,13 +10,13 @@ import {
   ProfileSettings,
   Recommented,
   Main,
+  Verify,
 } from './components/Routing/routesImport';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from './Redux/userAuth/operations';
 import { PrivateRoute } from './Pages/Routes/PrivateRoute';
 import { RestrictedRoute } from './Pages/Routes/RestrictedRoute';
-import Verify from './Pages/Verify/Verify';
 
 const App = () => {
   const dispatch = useDispatch();
