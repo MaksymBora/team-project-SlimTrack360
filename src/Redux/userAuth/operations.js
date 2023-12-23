@@ -18,10 +18,12 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/auth/signup', credentials);
-
+      toast.success(
+        'A confirmation has been sent to your email. Please confirm your email!'
+      );
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(toast.error(error.message));
     }
   }
 );

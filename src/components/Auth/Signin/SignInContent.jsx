@@ -21,8 +21,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../Redux/userAuth/operations';
 import { basicSchema } from '../Signup/schemas';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 export const SignInContent = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -150,7 +149,6 @@ export const SignInContent = () => {
           </Wrapper>
           <Main>
             <Button type="submit">Sign in</Button>
-            <ToastContainer />
           </Main>
           <Link to="/forgot-password">
             <Paragraph>Forgot your password?</Paragraph>
