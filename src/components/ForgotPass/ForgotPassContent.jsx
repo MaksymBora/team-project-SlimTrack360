@@ -15,6 +15,8 @@ import {
 import { Options, Label } from './ForgotPassContent.styled';
 import { LinkSignup } from '../Auth/Signin/SignInContent.styled';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { forgotPassword } from '../../Redux/userAuth/operations';
 
 const basicSchema = yup.object().shape({
   name: yup.string().required('Name is required*'),
@@ -28,7 +30,10 @@ const basicSchema = yup.object().shape({
     .min(8, 'Password must be at least 8 characters long')
     .max(64, 'Password must not exceed 64 characters'),
 });
+
 export const ForgotPassContent = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -36,7 +41,8 @@ export const ForgotPassContent = () => {
     const data = {
       email: form.elements.email.value,
     };
-    localStorage.setItem('reg', JSON.stringify(data));
+    dispatch(forgotPassword(data));
+    console.log(data);
   };
   const { values, errors, touched, handleBlur, handleChange } = useFormik({
     initialValues: {
@@ -67,10 +73,6 @@ export const ForgotPassContent = () => {
             </Label>
             {errors.email && touched.email && (
               <Attention>{errors.email}</Attention>
-            )}
-
-            {errors.password && touched.password && (
-              <Attention>{errors.password}</Attention>
             )}
           </Wrapper>
           <Main>
