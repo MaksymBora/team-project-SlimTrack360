@@ -21,6 +21,7 @@ const handleRejected = (state, payload) => {
   state.isRefreshing = false;
   state.token = null;
   state.error = payload;
+  state.user.verify = false;
 };
 
 // -------- Sign In ----------- //
@@ -30,7 +31,6 @@ const handleSignInFullfilled = (state, { payload }) => {
   state.token = payload.user.token;
   state.isRefreshing = false;
   state.isLoggedIn = true;
-  state.user.isVerify = true;
 };
 
 // -------- Refresh ----------- //
@@ -46,7 +46,6 @@ const handleRefreshFullfilled = (state, { payload }) => {
   state.user = payload;
   state.isRefreshing = false;
   state.isLoggedIn = true;
-  state.user.isVerify = true;
   state.user.status = 'fulfilled';
 };
 
@@ -66,7 +65,7 @@ const handleLogoutFullfilled = (state) => {
   state.token = null;
   state.isRefreshing = false;
   state.isLoggedIn = false;
-  state.user.isVerify = false;
+  state.user.verify = false;
 };
 
 const handleLogoutPending = (state) => {
