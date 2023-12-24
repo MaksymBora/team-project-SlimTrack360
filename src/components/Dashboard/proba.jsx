@@ -1,77 +1,99 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { SelectorContainerWrapper } from './Styles/Graphs.styled';
-import { IconArrowLeft, IconArrowUp } from '../../assets/spriteSVG';
-import '../Dashboard/Styles/MobStyles/mob.SelCont.css';
-import '../Dashboard/Styles/TabletStyles/tab.SelCont.css';
-import '../Dashboard/Styles/Styles.css';
+// src\components\Dashboard\CaloriesGraph.jsx
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+import { useSelector } from 'react-redux';
+import { selectTotalCalories } from '../../Redux/statisctics/selector';
+import { Line } from 'react-chartjs-2';
+import {
+  commonOptions,
+  commonXAxisOptions,
+  caloriesYAxisOptions,
+} from './GraphsConfig';
+import { GraphContainer, ChartContainer } from './Styles/Graphs.styled';
+import './Styles/MobStyles/mob.Graph.css';
+import './Styles/TabletStyles/tab.Graph.css';
+import './Styles/Graph.css';
 
-const SelectorContainer = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedMonth, setSelectedMonth] = useState('December');
-  const navigate = useNavigate(); // Перенесли вызов хука сюда
+const CaloriesGraph = () => {
+  // Підписка на стор
+  const totalCalories = useSelector(selectTotalCalories);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  if (!totalCalories || totalCalories.length === 0) {
+    return (
+      <GraphContainer className="scroll-container">
+        <div className="caloriesTitle">
+          <h2 className="graphTitle">Calories</h2>
+          <h3 className="graphValue">No calories consumption data available</h3>
+        </div>
+      </GraphContainer>
+    );
+  }
+  // Обчислення середньої кількості спожитих калорій
+  const averageCalories =
+    totalCalories.length > 0
+      ? Math.round(
+          totalCalories.reduce(
+            (accumulator, current) => accumulator + current.totalCalories,
+            0
+          ) / totalCalories.length
+        )
+      : 0;
+
+  // console.log('Average Calories:', averageCalories);
+  // Отримання числової частини дати (від 1 до 31)
+  const extractDate = (dateString) => {
+    const dateObj = new Date(dateString);
+    return dateObj.getDate();
   };
+  // Створення labels з числами від 1 до 31
+  const labels = Array.from({ length: 31 }, (_, i) => i + 1);
 
-  const handleMonthSelect = (month) => {
-    setSelectedMonth(month);
-    setIsDropdownOpen(false);
-  };
-
-  const handleIconClick = () => {
-    navigate('/main');
+  // Оновлений блок даних для графіка
+  const chartData = {
+    labels: labels.map((day) => day),
+    datasets: [
+      {
+        label: 'Calories Intake',
+        data: labels.map((day) => {
+          const caloriesIntake = totalCalories.find(
+            (item) => extractDate(item.date) === day
+          );
+          const caloriesValue = caloriesIntake
+            ? caloriesIntake.totalCalories
+            : 0;
+          // console.log(`Day ${day}: Calories - ${caloriesValue}`);
+          return caloriesValue;
+        }),
+        borderColor: '#e3ffa8',
+        borderWidth: 1,
+        pointBackgroundColor: '#e3ffa8',
+        pointRadius: 2,
+        fill: false,
+      },
+    ],
   };
 
   return (
-    <SelectorContainerWrapper>
-      <div className="monthsArrows">
-        <button className="IconArrowLeft" onClick={handleIconClick}>
-          <IconArrowLeft width={24} height={24} />
-        </button>
-        <label className="monthTitle" htmlFor="monthSelector">
-          Months
-        </label>
-        <div className="IconArrowUp" onClick={toggleDropdown}>
-          <IconArrowUp width={16} height={16} />
-        </div>
+    <GraphContainer className="scroll-container">
+      <div className="caloriesTitle">
+        <h2 className="graphTitle">Calories</h2>
+        <h3 className="graphValue">
+          Average value:
+          <span className="caloriesValue">
+            {!totalCalories ? `0 cal` : `${averageCalories || 0} cal`}
+          </span>
+        </h3>
       </div>
-      <div className={`monthSelector ${isDropdownOpen ? 'open' : ''}`}>
-        <div className="selectedMonth">{selectedMonth}</div>
-        {isDropdownOpen && (
-          <div className="dropdown">
-            {months.map((month) => (
-              <div
-                key={month}
-                className={`monthOption ${
-                  selectedMonth === month ? 'selected' : ''
-                }`}
-                onClick={() => handleMonthSelect(month)}
-              >
-                {month}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </SelectorContainerWrapper>
+      <ChartContainer className="graph-line">
+        <Line
+          options={{
+            ...commonOptions,
+            scales: { x: commonXAxisOptions, y: caloriesYAxisOptions },
+          }}
+          data={chartData}
+        />
+      </ChartContainer>
+    </GraphContainer>
   );
 };
 
-export default SelectorContainer;
+export default CaloriesGraph;
