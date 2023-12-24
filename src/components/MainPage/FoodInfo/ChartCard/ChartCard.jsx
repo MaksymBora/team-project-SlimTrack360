@@ -6,6 +6,7 @@ import {
   ElementsTitle,
   ValueWrap,
   GoalWrap,
+  LeftWrap,
   Value,
   Percentage,
 } from './ChartCard.styled';
@@ -47,9 +48,11 @@ export const ChartCard = (props) => {
             <GoalWrap>
               Goal: <Value>{elementGoal}</Value>
             </GoalWrap>
-            <p>
-              left: <Value>{left}</Value>
-            </p>
+            <LeftWrap>
+              <p>
+                left: <Value>{left}</Value>
+              </p>
+            </LeftWrap>
           </ValueWrap>
         </InfoWrapper>
       </ChartWrapper>

@@ -53,6 +53,7 @@ export const MainTitle = styled.h1`
 
 export const GoalLink = styled(Link)`
   display: flex;
+  align-items: center;
   color: ${theme.color.primaryGrey};
   font-size: 14px;
   font-weight: 500;
