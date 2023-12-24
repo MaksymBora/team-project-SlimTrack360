@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ChartWrapper = styled.div`
   display: flex;
   column-gap: 12px;
-  width: 216px;
+  width: 100%;
   height: 48px;
 
   font-size: 14px;
