@@ -49,9 +49,7 @@ export const ChartCard = (props) => {
               Goal: <Value>{elementGoal}</Value>
             </GoalWrap>
             <LeftWrap>
-              <p>
-                left: <Value>{left}</Value>
-              </p>
+              left: <Value>{left}</Value>
             </LeftWrap>
           </ValueWrap>
         </InfoWrapper>
