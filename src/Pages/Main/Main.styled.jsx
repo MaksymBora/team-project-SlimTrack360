@@ -57,6 +57,7 @@ export const GoalLink = styled(Link)`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
+  align-items: center;
 
   @media screen and (min-width: 834px) {
     font-size: 16px;

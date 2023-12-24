@@ -48,7 +48,7 @@ export const ValueWrap = styled.div`
 
 export const Value = styled.span`
   font-weight: 500;
-  color: var(--text-color-secondary-grey);
+  color: #b6b6b6;
 `;
 
 export const GoalWrap = styled.p`
