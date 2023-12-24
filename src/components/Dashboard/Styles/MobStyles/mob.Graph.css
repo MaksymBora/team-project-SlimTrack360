@@ -20,7 +20,7 @@
 }
 
 .graph-line {
-  background-color: #0f0f0f;
+  background-color: var(--primaryBlack2);
   border-radius: 12px;
   width: 676px;
   height: 382px;
@@ -42,7 +42,7 @@
 .caloriesValue,
 .waterValue,
 .weightValue {
-  color: #b6b6b6;
+  color: var(--primaryGrey);
   margin-left: 8px;
   font-size: 14px;
   line-height: 1.43;
@@ -55,7 +55,7 @@
 }
 
 .weight-graph-line {
-  background-color: #0f0f0f;
+  background-color: var(--primaryBlack2);
   border-radius: 12px;
   width: 1372px;
 }
@@ -70,20 +70,16 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 1.4;
-  color: #ffffff;
+  color: var(--primaryWhite);
 }
 .table-cell.lower {
   font-weight: 400;
   font-size: 10px;
   line-height: 1.4;
-  color: #b6b6b6;
+  color: var(--primaryGrey);
 }
 
 .table-cell {
   text-align: center;
   flex: 1;
-}
-.lkjklj {
-  background-color: #1f1e1e;
-  color: #333131;
 }

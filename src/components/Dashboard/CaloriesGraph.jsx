@@ -1,5 +1,7 @@
 // src\components\Dashboard\CaloriesGraph.jsx
 
+import { useSelector } from 'react-redux';
+import { selectTotalCalories } from '../../Redux/statisctics/selector';
 import { Line } from 'react-chartjs-2';
 import {
   commonOptions,
@@ -11,38 +13,83 @@ import './Styles/MobStyles/mob.Graph.css';
 import './Styles/TabletStyles/tab.Graph.css';
 import './Styles/Graph.css';
 
-const data = {
-  labels: Array.from({ length: 31 }, (_, i) => i + 1),
-  datasets: [
-    {
-      label: '',
-      data: Array.from({ length: 31 }, () => Math.floor(Math.random() * 1000)),
-      borderColor: '#e3ffa8',
-      borderWidth: 1,
-      pointBackgroundColor: '#e3ffa8',
-      pointRadius: 2,
-      fill: false,
-    },
-  ],
-};
-
 const CaloriesGraph = () => {
+  // Підписка на стор
+  const totalCalories = useSelector(selectTotalCalories);
+
+  if (!totalCalories || totalCalories.length === 0) {
+    return (
+      <GraphContainer className="scroll-container">
+        <div className="caloriesTitle">
+          <h2 className="graphTitle">Calories</h2>
+          <h3 className="graphValue">No calories consumption data available</h3>
+        </div>
+      </GraphContainer>
+    );
+  }
+  // Обчислення середньої кількості спожитих калорій
+  const averageCalories =
+    totalCalories.length > 0
+      ? Math.round(
+          totalCalories.reduce(
+            (accumulator, current) => accumulator + current.totalCalories,
+            0
+          ) / totalCalories.length
+        )
+      : 0;
+
+  // console.log('Average Calories:', averageCalories);
+  // Отримання числової частини дати (від 1 до 31)
+  const extractDate = (dateString) => {
+    const dateObj = new Date(dateString);
+    return dateObj.getDate();
+  };
+  // Створення labels з числами від 1 до 31
+  const labels = Array.from({ length: 31 }, (_, i) => i + 1);
+
+  // Оновлений блок даних для графіка
+  const chartData = {
+    labels: labels.map((day) => day),
+    datasets: [
+      {
+        label: 'Calories Intake',
+        data: labels.map((day) => {
+          const caloriesIntake = totalCalories.find(
+            (item) => extractDate(item.date) === day
+          );
+          const caloriesValue = caloriesIntake
+            ? caloriesIntake.totalCalories
+            : 0;
+          // console.log(`Day ${day}: Calories - ${caloriesValue}`);
+          return caloriesValue;
+        }),
+        borderColor: '#e3ffa8',
+        borderWidth: 1,
+        pointBackgroundColor: '#e3ffa8',
+        pointRadius: 2,
+        fill: false,
+      },
+    ],
+  };
+
   return (
     <GraphContainer className="scroll-container">
       <div className="caloriesTitle">
         <h2 className="graphTitle">Calories</h2>
         <h3 className="graphValue">
-          Average value: <span className="caloriesValue">1700 cal</span>
+          Average value:
+          <span className="caloriesValue">
+            {!totalCalories ? `0 cal` : `${averageCalories || 0} cal`}
+          </span>
         </h3>
       </div>
-
       <ChartContainer className="graph-line">
         <Line
           options={{
             ...commonOptions,
             scales: { x: commonXAxisOptions, y: caloriesYAxisOptions },
           }}
-          data={data}
+          data={chartData}
         />
       </ChartContainer>
     </GraphContainer>

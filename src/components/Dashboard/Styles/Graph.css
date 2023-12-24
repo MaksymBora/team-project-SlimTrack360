@@ -8,7 +8,7 @@
   }
 
   .weight-graph-line {
-    background-color: #0f0f0f;
+    background-color: var(--primaryBlack2);
     border-radius: 12px;
     width: 1350px;
   }
@@ -24,10 +24,7 @@
     padding: 24px 24px 28px 21px;
     width: 1372px;
   }
-  .weight-graph-line {
-    background-color: #0f0f0f;
-    border-radius: 12px;
-  }
+
   .upper-row,
   .lower-row {
     display: flex;
