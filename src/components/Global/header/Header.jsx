@@ -13,8 +13,51 @@ import { UserAvatar } from './../header/authentificate/userAvatar.jsx';
 import { selectIsLoggedIn } from './../../../Redux/userAuth/selector.js';
 import { useSelector } from 'react-redux';
 
+import { useState } from 'react';
+
 const Header = () => {
   const IsLoggedIn = useSelector(selectIsLoggedIn);
+
+  const [isModalOpenGoal, setIsModalOpenGoal] = useState(false);
+  const [isModalOpenWeight, setIsModalOpenWeight] = useState(false);
+  const [isModalOpenMenu, setIsModalOpenMenu] = useState(false);
+  const [isProfileModalOpen, setProfileModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    if (isModalOpenWeight || isModalOpenMenu || isProfileModalOpen) {
+      setIsModalOpenWeight(false) ||
+        setIsModalOpenMenu(false) ||
+        setProfileModalOpen(false);
+    }
+    setIsModalOpenGoal((prevState) => !prevState);
+  };
+
+  const handleOpenModalWeight = () => {
+    if (isModalOpenGoal || isModalOpenMenu || isProfileModalOpen) {
+      setIsModalOpenGoal(false) ||
+        setIsModalOpenMenu(false) ||
+        setProfileModalOpen(false);
+    }
+    setIsModalOpenWeight((prevState) => !prevState);
+  };
+
+  const handleOpenModalMenu = () => {
+    if (isModalOpenGoal || isModalOpenWeight || isProfileModalOpen) {
+      setIsModalOpenGoal(false) ||
+        setIsModalOpenWeight(false) ||
+        setProfileModalOpen(false);
+    }
+    setIsModalOpenMenu((prevState) => !prevState);
+  };
+
+  const handleOpenModalProfile = () => {
+    if (isModalOpenGoal || isModalOpenWeight || isProfileModalOpen) {
+      setIsModalOpenGoal(false) ||
+        setIsModalOpenWeight(false) ||
+        setIsModalOpenMenu(false);
+    }
+    setProfileModalOpen((prevState) => !prevState);
+  };
 
   return IsLoggedIn ? (
     <HeaderContainer>
@@ -24,10 +67,20 @@ const Header = () => {
             <Logo></Logo>
           </Link>
 
-          <UserSettings></UserSettings>
+          <UserSettings
+            isModalOpenGoal={isModalOpenGoal}
+            isModalOpenWeight={isModalOpenWeight}
+            isModalOpenMenu={isModalOpenMenu}
+            handleOpenModal={handleOpenModal}
+            handleOpenModalWeight={handleOpenModalWeight}
+            handleOpenModalMenu={handleOpenModalMenu}
+          ></UserSettings>
         </Navigation>
 
-        <UserAvatar></UserAvatar>
+        <UserAvatar
+          isProfileModalOpen={isProfileModalOpen}
+          handleOpenModalProfile={handleOpenModalProfile}
+        ></UserAvatar>
       </Wrapper>
     </HeaderContainer>
   ) : (

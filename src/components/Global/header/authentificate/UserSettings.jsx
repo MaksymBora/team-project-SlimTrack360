@@ -24,30 +24,21 @@ import {
 import icon from './../../../../assets/sprite.svg';
 import pict from './../../../../assets/images/goals/Lose fat image men.png';
 import png from './../../../../assets/images/goals/Waight image.png';
-import { useState } from 'react';
 import { TargetSelection } from '../../../HeaderModals/ModalTargetSelection/TargetSelection.jsx';
 import { WeightSelectionModal } from '../../../HeaderModals/WeightSelection.jsx';
 import { ModalMenu } from './../../../HeaderModals/menuModal/menuModal.jsx';
 import { useSelector } from 'react-redux';
 import { selectUser } from './../../../../Redux/userAuth/selector.js';
 
-export const UserSettings = () => {
+export const UserSettings = ({
+  isModalOpenGoal,
+  isModalOpenWeight,
+  isModalOpenMenu,
+  handleOpenModal,
+  handleOpenModalWeight,
+  handleOpenModalMenu,
+}) => {
   const isMobile = useMediaQuery({ query: '(max-width:767px)' });
-  const [isModalOpenGoal, setIsModalOpenGoal] = useState(false);
-  const [isModalOpenWeight, setIsModalOpenWeight] = useState(false);
-  const [isModalOpenMenu, setIsModalOpenMenu] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpenGoal((prevState) => !prevState);
-  };
-
-  const handleOpenModalWeight = () => {
-    setIsModalOpenWeight((prevState) => !prevState);
-  };
-
-  const handleOpenModalMenu = () => {
-    setIsModalOpenMenu((prevState) => !prevState);
-  };
 
   const user = useSelector(selectUser);
 

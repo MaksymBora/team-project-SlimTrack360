@@ -68,7 +68,7 @@ export const ModalMenu = ({ onClose }) => {
             </InfoBlockText>
           </TextContainer>
           {showModalTarget && (
-            <TargetSelection onCloseModal={handleOpenModalTarget} />
+            <TargetSelection onClose={handleOpenModalTarget} />
           )}
         </OptionBlock>
 
@@ -89,7 +89,7 @@ export const ModalMenu = ({ onClose }) => {
             </InfoBlockText>
           </TextContainer>
           {showModalWeight && (
-            <WeightSelectionModal onCloseModal={handleOpenModalWeight} />
+            <WeightSelectionModal onClose={handleOpenModalWeight} />
           )}
         </OptionBlock>
       </Options>
