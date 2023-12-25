@@ -33,14 +33,14 @@ export const Wrapper = styled.div`
   }
   @media screen and (min-width: 834px) {
     width: 800px;
-    padding-right: 27px;
-    padding-left: 27px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1440px;
-    padding-right: 34px;
-    padding-left: 34px;
+    width: 1372px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 `;
 
@@ -100,12 +100,14 @@ export const RouterLinkSignUp = styled(Link)`
     font-size: 14px;
   }
 `;
+
 export const Slash = styled.span`
   color: ${theme.color.primaryWhite};
   font-size: 12px;
   font-weight: 400;
   line-height: 1.43;
 `;
+
 export const UserIcon = styled.div`
   svg {
     width: 26px;
@@ -124,6 +126,7 @@ export const UserIcon = styled.div`
 export const Navigation = styled.nav`
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
 
   @media screen and (min-width: 320px) {
     gap: 4px;
@@ -135,26 +138,34 @@ export const Navigation = styled.nav`
     gap: 626px;
   }
 `;
+
 export const UserLogoContainer = styled.div`
   display: flex;
-  width: 126px;
+  /* width: 126px; */
   height: 24px;
   align-items: center;
   position: relative;
 
   @media screen and (min-width: 834px) {
-    width: 130px;
+    /* width: 130px; */
     height: 28px;
-    margin-left: 73px;
+    /* margin-left: 73px; */
   }
 `;
 
-export const UserName = styled.p`
+export const UserName = styled.div`
   margin-right: 6px;
-  color: ${theme.color.primaryWhite};
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.43;
+  max-width: 86px;
+  overflow: hidden;
+  white-space: nowrap;
+
+  p {
+    color: ${theme.color.primaryWhite};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.43;
+    text-overflow: clip;
+  }
 `;
 
 /* Body text/1 */
@@ -163,27 +174,54 @@ export const UserAva = styled.div`
   width: 24px;
   height: 24px;
 
-  margin-right: 4px;
-
-  @media screen and (min-width: 834px) {
-    width: 28px;
-    height: 24px;
-  }
-`;
-
-export const UserLogoText = styled.div`
-  width: 24px;
-  height: 24px;
-  margin-right: 4px;
-  border-radius: 28px;
-  border: ${theme.color.primaryGrey} solid 1px;
   display: flex;
   align-items: center;
   justify-content: center;
 
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 4px;
+  background: ${(p) =>
+    p.$isDefault ? p.theme.color.primaryGreenLite : 'transparent'};
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   @media screen and (min-width: 834px) {
     width: 28px;
     height: 28px;
+  }
+`;
+
+// export const UserLogoText = styled.div`
+//   width: 24px;
+//   height: 24px;
+//   margin-right: 4px;
+//   border-radius: 28px;
+//   border: ${theme.color.primaryGrey} solid 1px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+
+//   @media screen and (min-width: 834px) {
+//     width: 28px;
+//     height: 28px;
+//   }
+// `;
+
+export const UserLogoText = styled.div`
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  font-weight: 500;
+  color: ${(p) => p.theme.color.primaryBlack2};
+
+  @media screen and (min-width: 834px) {
+    font-size: 20px;
+    line-height: 20px;
   }
 `;
 
@@ -202,6 +240,10 @@ export const UserMode = styled.div`
 export const ProfileBtn = styled.button`
   border: none;
   background-color: transparent;
+
+  padding: 0;
+  margin: 0;
+  height: 100%;
   svg {
     width: 14px;
     height: 14px;
@@ -214,6 +256,7 @@ export const ProfileBtn = styled.button`
 export const PictogramBlock = styled.div``;
 export const Pictogram = styled.button`
   background-color: transparent;
+
   svg {
     width: 16px;
     height: 16px;
@@ -236,35 +279,35 @@ export const UserSet = styled.div`
   align-items: center;
 
   @media screen and (min-width: 834px) {
-    max-width: 310px;
     gap: 40px;
   }
   @media screen and (min-width: 1440px) {
-    width: 350px;
     gap: 80px;
   }
 `;
+
 export const SelectGoals = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+
+  position: relative;
 `;
 
 export const GoalPic = styled.div`
-  img {
-    width: 49px;
-    padding: 10px;
-    border-radius: 12px;
-    border: 1px solid #5f5e5c;
-  }
+  width: 48px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #5f5e5c;
 `;
 
 export const GoalSelection = styled.div`
   display: flex;
   flex-direction: column;
-  width: 142px;
+
   gap: 2px;
 `;
+
 export const Goal = styled.p`
   color: ${theme.color.primaryWhite};
   font-size: 14px;
@@ -275,7 +318,9 @@ export const Goal = styled.p`
 export const SettingBtn = styled.div`
   display: flex;
   gap: 12px;
+  width: 113px;
 `;
+
 export const LoseFat = styled.p`
   color: ${theme.color.primaryWhite};
   font-size: 14px;
@@ -287,6 +332,10 @@ export const GoalBtn = styled.button`
   border: none;
   background-color: transparent;
   position: relative;
+  width: 14px;
+  padding: 0;
+  margin: 0;
+
   svg {
     width: 14px;
     height: 14px;
@@ -304,18 +353,20 @@ export const SelectWeight = styled.div`
 `;
 
 export const WeightPic = styled.div`
+  width: 48px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #5f5e5c;
+
   img {
-    width: 49px;
-    padding: 10px;
-    border-radius: 12px;
-    border: 1px solid #5f5e5c;
+    width: 100%;
   }
 `;
 
 export const WeightSelection = styled.div`
   display: flex;
   flex-direction: column;
-  width: 142px;
+  /* width: 142px; */
   gap: 2px;
 `;
 
@@ -349,6 +400,9 @@ export const Kg = styled.span`
 export const WeightBtn = styled.button`
   border: none;
   background-color: transparent;
+  padding: 0;
+  margin: 0;
+
   svg {
     width: 16px;
     height: 16px;

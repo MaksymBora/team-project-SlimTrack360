@@ -24,7 +24,7 @@ const Container = styled.div`
 
   @media screen and (min-width: 834px) {
     width: 800px;
-    padding: 0 27px;
+    padding: 0 10px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -55,6 +55,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 24px;
+  justify-content: center;
 
   > img {
     max-width: 536px;

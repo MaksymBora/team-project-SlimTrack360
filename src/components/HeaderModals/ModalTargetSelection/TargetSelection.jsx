@@ -16,6 +16,7 @@ import {
   ConfirmBtn,
   CancelBtn,
   TargetSection,
+  ModalContainer,
 } from './targetSelection.styled';
 import ReactDOM from 'react-dom';
 import { useDispatch } from 'react-redux';
@@ -43,111 +44,121 @@ export const TargetSelection = ({ onClose }) => {
   };
 
   return ReactDOM.createPortal(
-    <Modal onClick={(e) => e.stopPropagation()}>
-      <CloseBtn type="button" onClick={onClose}>
-        <svg>
-          <use href={icon + '#icon-close-circle'}></use>
-        </svg>
-      </CloseBtn>
-      <ModalWrapper>
-        <Title>Target Selection</Title>
-        <ModalDescription>
-          The service will adjust your calorie intake to your goal
-        </ModalDescription>
+    <Modal
+      $height={document.body.clientHeight}
+      onClick={(e) => {
+        e.stopPropagation();
+        if (e.currentTarget == e.target) {
+          onClose();
+        }
+      }}
+    >
+      <ModalContainer>
+        <ModalWrapper>
+          <CloseBtn type="button" onClick={onClose}>
+            <svg>
+              <use href={icon + '#icon-close-circle'}></use>
+            </svg>
+          </CloseBtn>
 
-        <Form onSubmit={handleOnSubmit}>
-          <TargetSection>
-            <TargetImgBorder
-              style={{
-                border:
-                  selectedGoal === 'Lose fat'
-                    ? '2px solid #B6C3FF'
-                    : '1px solid #B6B6B6',
-              }}
-            >
-              <TargetInput
-                type="radio"
-                value="Lose fat"
-                id="lose_fat"
-                name="goal"
-                checked={!selectedGoal === 'Lose fat'}
-                onChange={() => handleGoalChange('Lose fat')}
-              />
-              <TargetImg src={LoseFatMen} alt="Lose fat image men" />
-            </TargetImgBorder>
+          <Title>Target Selection</Title>
+          <ModalDescription>
+            The service will adjust your calorie intake to your goal
+          </ModalDescription>
 
-            <TargetListBlock
-              style={{
-                color: selectedGoal === 'Lose fat' ? '#B6C3FF' : '#ffffff',
-              }}
-            >
-              Lose fat
-            </TargetListBlock>
-          </TargetSection>
+          <Form onSubmit={handleOnSubmit}>
+            <TargetSection>
+              <TargetImgBorder
+                style={{
+                  border:
+                    selectedGoal === 'Lose fat'
+                      ? '2px solid #B6C3FF'
+                      : '1px solid #B6B6B6',
+                }}
+              >
+                <TargetInput
+                  type="radio"
+                  value="Lose fat"
+                  id="lose_fat"
+                  name="goal"
+                  checked={!selectedGoal === 'Lose fat'}
+                  onChange={() => handleGoalChange('Lose fat')}
+                />
+                <TargetImg src={LoseFatMen} alt="Lose fat image men" />
+              </TargetImgBorder>
 
-          <TargetSection>
-            <TargetImgBorder
-              style={{
-                border:
-                  selectedGoal === 'Maintain'
-                    ? '2px solid #B6C3FF'
-                    : '1px solid #B6B6B6',
-              }}
-            >
-              <TargetInput
-                type="radio"
-                value="Maintain"
-                id="maintain"
-                name="goal"
-                onChange={() => handleGoalChange('Maintain')}
-              />
-              <TargetImg src={maintakeGirl} alt="yoga" />
-            </TargetImgBorder>
+              <TargetListBlock
+                style={{
+                  color: selectedGoal === 'Lose fat' ? '#B6C3FF' : '#ffffff',
+                }}
+              >
+                Lose fat
+              </TargetListBlock>
+            </TargetSection>
 
-            <TargetListBlock
-              style={{
-                color: selectedGoal === 'Maintain' ? '#B6C3FF' : '#ffffff',
-              }}
-            >
-              Maintain
-            </TargetListBlock>
-          </TargetSection>
+            <TargetSection>
+              <TargetImgBorder
+                style={{
+                  border:
+                    selectedGoal === 'Maintain'
+                      ? '2px solid #B6C3FF'
+                      : '1px solid #B6B6B6',
+                }}
+              >
+                <TargetInput
+                  type="radio"
+                  value="Maintain"
+                  id="maintain"
+                  name="goal"
+                  onChange={() => handleGoalChange('Maintain')}
+                />
+                <TargetImg src={maintakeGirl} alt="yoga" />
+              </TargetImgBorder>
 
-          <TargetSection>
-            <TargetImgBorder
-              style={{
-                border:
-                  selectedGoal === 'Gain muscle'
-                    ? '2px solid #B6C3FF'
-                    : '1px solid #B6B6B6',
-              }}
-            >
-              <TargetInput
-                type="radio"
-                name="goal"
-                id="gain_muscles"
-                value="Gain Muscle"
-                onChange={() => handleGoalChange('Gain Muscle')}
-              />
-              <TargetImg src={muscles} alt="muscles" />
-            </TargetImgBorder>
+              <TargetListBlock
+                style={{
+                  color: selectedGoal === 'Maintain' ? '#B6C3FF' : '#ffffff',
+                }}
+              >
+                Maintain
+              </TargetListBlock>
+            </TargetSection>
 
-            <TargetListBlock
-              style={{
-                color: selectedGoal === 'Gain muscle' ? '#B6C3FF' : '#ffffff',
-              }}
-            >
-              Gain Muscle
-            </TargetListBlock>
-          </TargetSection>
+            <TargetSection>
+              <TargetImgBorder
+                style={{
+                  border:
+                    selectedGoal === 'Gain muscle'
+                      ? '2px solid #B6C3FF'
+                      : '1px solid #B6B6B6',
+                }}
+              >
+                <TargetInput
+                  type="radio"
+                  name="goal"
+                  id="gain_muscles"
+                  value="Gain Muscle"
+                  onChange={() => handleGoalChange('Gain Muscle')}
+                />
+                <TargetImg src={muscles} alt="muscles" />
+              </TargetImgBorder>
 
-          <ConfirmBtn type="submit">Confirm</ConfirmBtn>
-        </Form>
-      </ModalWrapper>
+              <TargetListBlock
+                style={{
+                  color: selectedGoal === 'Gain muscle' ? '#B6C3FF' : '#ffffff',
+                }}
+              >
+                Gain Muscle
+              </TargetListBlock>
+            </TargetSection>
 
-      <CancelBtn type="button" onClick={onClose}>
-        Cancel
-      </CancelBtn>
+            <ConfirmBtn type="submit">Confirm</ConfirmBtn>
+          </Form>
+          <CancelBtn type="button" onClick={onClose}>
+            Cancel
+          </CancelBtn>
+        </ModalWrapper>
+      </ModalContainer>
     </Modal>,
     document.getElementById('modal-root')
   );

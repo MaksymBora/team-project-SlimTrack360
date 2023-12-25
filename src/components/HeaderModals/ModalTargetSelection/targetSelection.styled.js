@@ -2,49 +2,54 @@ import { styled } from 'styled-components';
 import { theme } from '../../../styles/theme.js';
 
 export const Modal = styled.div`
-  background-color: ${theme.color.primaryBlack2};
   position: absolute;
   z-index: 1000;
-  top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-bottom: 30px;
-  width: 302px;
-  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: ${(p) => p.$height}px;
+`;
+
+export const ModalContainer = styled.div`
+  margin: 0 auto;
+  position: relative;
 
   @media screen and (min-width: 320px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 320px;
+  }
+  @media screen and (min-width: 834px) {
+    width: 800px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 
-  @media screen and (min-width: 834px) {
-    width: 392px;
-    right: 220px;
-    top: 100px;
-    left: 60%;
-    transform: translateX(-50%);
-    height: auto;
-    padding-bottom: 0;
-    box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
-    border-radius: 12px;
-  }
   @media screen and (min-width: 1440px) {
-    width: 392px;
-    right: 248px;
-    left: 64%;
+    width: 1372px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 `;
-export const ModalWrapper = styled.div`
-  @media screen and (min-width: 320px) {
-    width: 300px;
-    padding: 24px 10px 0px 10px;
-    height: auto;
-  }
-  @media screen and (min-width: 834px) {
-    width: 392px;
 
-    padding: 20px 84px 40px 24px;
+export const ModalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  background-color: ${theme.color.primaryBlack2};
+  position: absolute;
+  top: 100px;
+  left: 280px;
+
+  width: 392px;
+  height: auto;
+  padding: 20px 24px 40px 24px;
+
+  box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
+  border-radius: 12px;
+
+  @media screen and (min-width: 1440px) {
+    left: 780px;
   }
 `;
 
@@ -61,10 +66,12 @@ export const CloseBtn = styled.button`
   top: 16px;
   fill: ${theme.color.primaryGrey};
   stroke: ${theme.color.primaryGrey};
+
   @media screen and (max-width: 834px) {
     display: none;
   }
 `;
+
 export const Title = styled.h2`
   color: ${theme.color.primaryWhite};
   margin-bottom: 8px;
@@ -146,7 +153,7 @@ export const ConfirmBtn = styled.button`
   background: ${theme.color.primaryGreenLite};
   border: none;
   border-radius: 12px;
-  margin-bottom: 24px;
+
   cursor: pointer;
   &:focus {
     font-weight: 700;
@@ -159,7 +166,7 @@ export const CancelBtn = styled.button`
   background-color: transparent;
   border: none;
   border-radius: 12px;
-  color: ${theme.color.primaryGrey};
+  color: ${theme.color.primaryWhite};
   text-align: center;
   font-size: 14px;
   font-weight: 400;
@@ -168,6 +175,7 @@ export const CancelBtn = styled.button`
   &:hover {
     font-weight: 500;
   }
+
   @media screen and (min-width: 834px) {
     display: none;
   }

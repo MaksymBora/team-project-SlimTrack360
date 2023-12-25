@@ -14,29 +14,23 @@ import { selectAvatarurl } from '../../../../Redux/userAuth/selector.js';
 export const UserAvatar = ({ isProfileModalOpen, handleOpenModalProfile }) => {
   const user = useSelector(selectUser);
 
-  const avatar = useSelector(selectAvatarurl);
-
+  let avatar = useSelector(selectAvatarurl);
   const defaultName = user.name ? user.name.slice(0, 1).toUpperCase() : 'A';
 
   return (
     // name && (
     <UserLogoContainer onClick={handleOpenModalProfile}>
-      <UserName>{user.name}</UserName>
+      <UserName>
+        <p>{user.name}</p>
+      </UserName>
       {avatar ? (
-        <UserAva>
-          <img
-            alt="avatar"
-            style={{
-              backgroundImage: `url(${avatar})`,
-              width: '100%',
-              height: '100%',
-              borderRadius: '28px',
-              border: ' 1px solid black',
-            }}
-          />
+        <UserAva $isDefault={false}>
+          <img alt="avatar" src={avatar} />
         </UserAva>
       ) : (
-        <UserLogoText>{defaultName}</UserLogoText>
+        <UserAva $isDefault={true}>
+          <UserLogoText>{defaultName}</UserLogoText>
+        </UserAva>
       )}
 
       <ProfileBtn>
