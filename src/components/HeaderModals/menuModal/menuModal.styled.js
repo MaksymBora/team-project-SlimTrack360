@@ -4,7 +4,7 @@ import { theme } from './../../../styles/theme';
 export const Modal = styled.div`
   position: absolute;
   width: 300px;
-  top: 40px;
+  top: 42px;
   left: 100%;
   transform: translateX(-48%);
   height: auto;
@@ -13,6 +13,7 @@ export const Modal = styled.div`
   background-color: ${theme.color.primaryBlack};
   border-radius: 12px;
   padding: 24px 0 24px 24px;
+  z-index: 1000;
 `;
 
 export const CloseBtn = styled.button`

@@ -19,12 +19,14 @@ import {
   ModalContainer,
 } from './targetSelection.styled';
 import ReactDOM from 'react-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { updateUserGoal } from './../../../Redux/userAuth/operations';
+import { selectGoal } from '../../../Redux/userAuth/selector';
 
 export const TargetSelection = ({ onClose }) => {
-  const [selectedGoal, setSelectedGoal] = useState('Lose Fat');
+  const goal = useSelector(selectGoal);
+  const [selectedGoal, setSelectedGoal] = useState(goal);
 
   const dispatch = useDispatch();
 
@@ -111,6 +113,7 @@ export const TargetSelection = ({ onClose }) => {
                   value="Maintain"
                   id="maintain"
                   name="goal"
+                  checked={!selectedGoal === 'Maintain'}
                   onChange={() => handleGoalChange('Maintain')}
                 />
                 <TargetImg src={maintakeGirl} alt="yoga" />
@@ -140,6 +143,7 @@ export const TargetSelection = ({ onClose }) => {
                   name="goal"
                   id="gain_muscles"
                   value="Gain Muscle"
+                  checked={!selectedGoal === 'Gain Muscle'}
                   onChange={() => handleGoalChange('Gain Muscle')}
                 />
                 <TargetImg src={muscles} alt="muscles" />

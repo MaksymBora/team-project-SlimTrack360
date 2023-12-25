@@ -8,6 +8,8 @@ export const selectCurrentWeight = (state) => state.userAuth.user.currentWeight;
 
 export const selectAvatarurl = (state) => state.userAuth.user.avatarUrl;
 
+export const selectGoal = (state) => state.userAuth.user.goal;
+
 export const selectdailyGoalCalories = (state) =>
   state.userAuth.user.dailyGoalCalories;
 

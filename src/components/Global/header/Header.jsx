@@ -80,11 +80,9 @@ const Header = () => {
     <HeaderContainer>
       <Wrapper>
         <Navigation>
-          <div>
-            <Link to={'/main'}>
-              <Logo></Logo>
-            </Link>
-          </div>
+          <Link to={'/main'}>
+            <Logo></Logo>
+          </Link>
 
           <UserSettings
             isModalOpenGoal={isModalOpenGoal}

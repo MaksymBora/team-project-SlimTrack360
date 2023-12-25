@@ -9,17 +9,21 @@ export const Modal = styled.div`
   top: 60px;
   left: 0;
   width: 100%;
-  height: ${(p) => p.$height}px;
+  height: calc(${(p) => p.$height}px - 60px);
 
   @media screen and (min-width: 834px) {
     top: 100px;
+    height: calc(${(p) => p.$height}px - 100px);
   }
 `;
 
 export const ModalContainer = styled.div`
   width: 100%;
   background-color: ${theme.color.primaryBlack};
-  height: 100vh;
+
+  @media screen and (max-width: 833px) {
+    height: 100%;
+  }
 
   @media screen and (min-width: 834px) {
     position: relative;
@@ -27,6 +31,7 @@ export const ModalContainer = styled.div`
     padding-left: 10px;
     margin: 0 auto;
     width: 800px;
+    height: auto;
     background-color: transparent;
   }
 
@@ -48,7 +53,6 @@ export const ModalWrapper = styled.div`
   @media screen and (min-width: 834px) {
     padding: 20px 24px 40px 24px;
     position: absolute;
-    left: 0;
     width: 392px;
     left: 280px;
     box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
@@ -213,7 +217,6 @@ export const CancelBtn = styled.button`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.43;
-  /* height: 36px; */
   border: none;
   border-radius: 12px;
 
