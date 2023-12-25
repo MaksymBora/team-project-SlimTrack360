@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -58,10 +59,13 @@ const SignUpAge = ({ setStep }) => {
       .max(122, 'Age must be at most 122 years old'),
   });
 
+  const initialValuesFromStorage = sessionStorage.getItem('authReg');
+  const parsedInitialValues = JSON.parse(initialValuesFromStorage);
+
   const formik = useFormik({
     initialValues: {
-      sex: 'male',
-      age: '',
+      sex: parsedInitialValues?.sex || 'male',
+      age: parsedInitialValues?.age || '',
     },
     validationSchema,
     onSubmit: (values) => {
@@ -74,6 +78,13 @@ const SignUpAge = ({ setStep }) => {
       setStep((prevState) => (prevState += 1));
     },
   });
+
+  useEffect(() => {
+    formik.setValues({
+      sex: parsedInitialValues?.sex || 'male',
+      age: parsedInitialValues?.age || '',
+    });
+  }, [formik, parsedInitialValues]);
 
   return (
     <StylesSection>
