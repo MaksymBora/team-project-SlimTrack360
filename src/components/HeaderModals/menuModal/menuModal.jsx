@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import pic from './../../../assets/images/goals/Lose fat image men.png';
 import png from './../../../assets/images/goals/Waight image.png';
 import icon from './../../../assets/sprite.svg';
@@ -15,6 +15,8 @@ import {
   GoalIcon,
   InfoBlockText,
   Kg,
+  MenuContainer,
+  ModalWrap,
 } from './menuModal.styled';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../Redux/userAuth/selector.js';
@@ -22,6 +24,14 @@ import { selectUser } from '../../../Redux/userAuth/selector.js';
 export const ModalMenu = ({ onClose }) => {
   const [showModalTarget, setShowModalTarget] = useState(false);
   const [showModalWeight, setShowModalWeight] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  });
 
   const handleOpenModalTarget = () => {
     setShowModalTarget((showModalTarget) => !showModalTarget);
@@ -47,57 +57,70 @@ export const ModalMenu = ({ onClose }) => {
   const user = useSelector(selectUser);
 
   return (
-    <Modal $isBoxShadow={!showModalTarget && !showModalWeight}>
-      <CloseBtn onClick={handleCloseBtn}>
-        <svg>
-          <use href={icon + '#icon-close-circle'}></use>
-        </svg>
-      </CloseBtn>
+    <MenuContainer
+      $height={document.body.clientHeight}
+      onClick={(e) => {
+        e.stopPropagation();
+        if (e.currentTarget == e.target) {
+          handleCloseBtn();
+        }
+      }}
+      className="container"
+    >
+      <ModalWrap>
+        <Modal $isBoxShadow={!showModalTarget && !showModalWeight}>
+          <CloseBtn onClick={handleCloseBtn}>
+            <svg>
+              <use href={icon + '#icon-close-circle'}></use>
+            </svg>
+          </CloseBtn>
 
-      <Options>
-        <OptionBlock onClick={handleSwitchTarget}>
-          <IconBlock>
-            <img src={pic} alt="Lose fat image men"></img>
-          </IconBlock>
-          <TextContainer>
-            <Goal>Goal</Goal>
-            <InfoBlockText>
-              {user.goal}
-              <GoalIcon>
-                <svg>
-                  <use href={icon + '#icon-arrowright'}></use>
-                </svg>
-              </GoalIcon>
-            </InfoBlockText>
-          </TextContainer>
+          <Options>
+            <OptionBlock onClick={handleSwitchTarget}>
+              <IconBlock>
+                <img src={pic} alt="Lose fat image men"></img>
+              </IconBlock>
+              <TextContainer>
+                <Goal>Goal</Goal>
+                <InfoBlockText>
+                  {user.goal}
+                  <GoalIcon>
+                    <svg>
+                      <use href={icon + '#icon-arrowright'}></use>
+                    </svg>
+                  </GoalIcon>
+                </InfoBlockText>
+              </TextContainer>
 
-          {showModalTarget && (
-            <TargetSelection onClose={handleOpenModalTarget} />
-          )}
-        </OptionBlock>
+              {showModalTarget && (
+                <TargetSelection onClose={handleOpenModalTarget} />
+              )}
+            </OptionBlock>
 
-        <OptionBlock onClick={handleSwitchWeight}>
-          <IconBlock>
-            <img src={png} alt="weight" />
-          </IconBlock>
-          <TextContainer>
-            <Goal>Weight</Goal>
-            <InfoBlockText>
-              {user.currentWeight}
-              <Kg> kg</Kg>
-              <GoalIcon>
-                <svg>
-                  <use href={icon + '#icon-edit-weight'}></use>
-                </svg>
-              </GoalIcon>
-            </InfoBlockText>
-          </TextContainer>
+            <OptionBlock onClick={handleSwitchWeight}>
+              <IconBlock>
+                <img src={png} alt="weight" />
+              </IconBlock>
+              <TextContainer>
+                <Goal>Weight</Goal>
+                <InfoBlockText>
+                  {user.currentWeight}
+                  <Kg> kg</Kg>
+                  <GoalIcon>
+                    <svg>
+                      <use href={icon + '#icon-edit-weight'}></use>
+                    </svg>
+                  </GoalIcon>
+                </InfoBlockText>
+              </TextContainer>
 
-          {showModalWeight && (
-            <WeightSelectionModal onClose={handleOpenModalWeight} />
-          )}
-        </OptionBlock>
-      </Options>
-    </Modal>
+              {showModalWeight && (
+                <WeightSelectionModal onClose={handleOpenModalWeight} />
+              )}
+            </OptionBlock>
+          </Options>
+        </Modal>
+      </ModalWrap>
+    </MenuContainer>
   );
 };
