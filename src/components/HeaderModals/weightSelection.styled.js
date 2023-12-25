@@ -17,11 +17,7 @@ export const ModalContainer = styled.div`
   position: relative;
   padding-right: 10px;
   padding-left: 10px;
-  width: 320px;
-
-  @media screen and (min-width: 834px) {
-    width: 800px;
-  }
+  width: 800px;
 
   @media screen and (min-width: 1440px) {
     width: 1372px;

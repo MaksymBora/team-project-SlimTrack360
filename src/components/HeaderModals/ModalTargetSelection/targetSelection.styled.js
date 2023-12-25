@@ -13,22 +13,16 @@ export const Modal = styled.div`
 export const ModalContainer = styled.div`
   margin: 0 auto;
   position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 320px;
 
-  @media screen and (min-width: 320px) {
-    padding-right: 10px;
-    padding-left: 10px;
-    width: 320px;
-  }
   @media screen and (min-width: 834px) {
     width: 800px;
-    padding-right: 10px;
-    padding-left: 10px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 1372px;
-    padding-right: 10px;
-    padding-left: 10px;
   }
 `;
 
