@@ -8,8 +8,9 @@ export const Modal = styled.div`
   left: 100%;
   transform: translateX(-48%);
   height: auto;
-  box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
-  background-color: ${theme.color.primaryBlack2};
+  box-shadow: ${(p) =>
+    p.$isBoxShadow ? '0 4px 14px 0 rgba(227, 255, 168, 0.2)' : 'none'};
+  background-color: ${theme.color.primaryBlack};
   border-radius: 12px;
   padding: 24px 0 24px 24px;
 `;
@@ -27,6 +28,14 @@ export const CloseBtn = styled.button`
   top: 16px;
   fill: ${theme.color.primaryGrey};
   stroke: ${theme.color.primaryGrey};
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    fill: ${theme.color.primaryWhite};
+    stroke: ${theme.color.primaryWhite};
+  }
 `;
 
 export const Options = styled.div`
@@ -105,4 +114,3 @@ export const Overlay = styled.div`
     top: 103px;
   }
 `;
-

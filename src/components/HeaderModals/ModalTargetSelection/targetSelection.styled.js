@@ -4,21 +4,28 @@ import { theme } from '../../../styles/theme.js';
 export const Modal = styled.div`
   position: absolute;
   z-index: 1000;
-  top: 0;
+  top: 60px;
   left: 0;
   width: 100%;
   height: ${(p) => p.$height}px;
+
+  @media screen and (min-width: 834px) {
+    top: 100px;
+  }
 `;
 
 export const ModalContainer = styled.div`
-  margin: 0 auto;
-  position: relative;
-  padding-right: 10px;
-  padding-left: 10px;
-  width: 320px;
+  width: 100%;
+  background-color: ${theme.color.primaryBlack};
+  height: 100vh;
 
   @media screen and (min-width: 834px) {
+    position: relative;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 0 auto;
     width: 800px;
+    background-color: transparent;
   }
 
   @media screen and (min-width: 1440px) {
@@ -27,20 +34,24 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
+  padding: 24px 10px;
   display: flex;
   flex-direction: column;
-
-  background-color: ${theme.color.primaryBlack2};
-  position: absolute;
-  top: 100px;
-  left: 280px;
-
-  width: 392px;
-  height: auto;
-  padding: 20px 24px 40px 24px;
-
-  box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
+  margin: 0 auto;
   border-radius: 12px;
+  width: 320px;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 834px) {
+    padding: 20px 24px 40px 24px;
+    position: absolute;
+    left: 280px;
+    width: 392px;
+    box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
+    height: auto;
+    background-color: ${theme.color.primaryBlack2};
+  }
 
   @media screen and (min-width: 1440px) {
     left: 780px;
@@ -60,6 +71,15 @@ export const CloseBtn = styled.button`
   top: 16px;
   fill: ${theme.color.primaryGrey};
   stroke: ${theme.color.primaryGrey};
+
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    fill: ${theme.color.primaryWhite};
+    stroke: ${theme.color.primaryWhite};
+  }
 
   svg {
     width: 26px;
@@ -123,6 +143,8 @@ export const TargetListBlock = styled.label`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
+
+  cursor: pointer;
 `;
 
 export const TargetImgBorder = styled.div`
@@ -154,8 +176,26 @@ export const ConfirmBtn = styled.button`
   border-radius: 12px;
 
   cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid transparent;
+    animation: 1s ease-in-out infinite;
+    background-color: transparent;
+    color: ${(p) => p.theme.color.primaryWhite};
+    border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
+  }
   &:focus {
+    background-color: ${(p) => p.theme.color.primaryGreenLite};
+    border: 1px solid transparent;
     font-weight: 700;
+    color: ${(p) => p.theme.color.primaryBlack};
+  }
+
+  @media screen and (min-width: 834px) {
+    margin-bottom: 0;
   }
 `;
 
@@ -165,20 +205,23 @@ export const CancelBtn = styled.button`
   background-color: transparent;
   border: none;
   border-radius: 12px;
-  color: ${theme.color.primaryWhite};
+  color: ${theme.color.primaryGrey};
   text-align: center;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.43px;
 
-  &:hover {
-    font-weight: 500;
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.color.primaryWhite};
   }
+  transition: all 0.3s ease-in-out;
 
   @media screen and (min-width: 834px) {
     display: none;
   }
 `;
+
 // export const Overlay = styled.div`
 //   position: fixed;
 //   top: 60px;

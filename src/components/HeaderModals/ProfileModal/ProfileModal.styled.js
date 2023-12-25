@@ -34,7 +34,11 @@ export const ModalWrap = styled.div`
   position: relative;
   padding-right: 10px;
   padding-left: 10px;
-  width: 800px;
+  width: 320px;
+
+  @media screen and (min-width: 834px) {
+    width: 800px;
+  }
 
   @media screen and (min-width: 1440px) {
     width: 1372px;
@@ -74,10 +78,18 @@ export const SettingButton = styled.button`
   line-height: 1.43;
   width: 110px;
   height: 20px;
+  transition: all 0.3s ease-in-out;
+  fill: ${theme.color.primaryWhite};
+  stroke: ${theme.color.primaryWhite};
+
+  &:hover,
+  &:focus {
+    color: ${theme.color.primaryGreenLite};
+    fill: ${theme.color.primaryGreenLite};
+    stroke: ${theme.color.primaryGreenLite};
+  }
 
   svg {
     width: 16px;
-    fill: ${theme.color.primaryWhite};
-    stroke: ${theme.color.primaryWhite};
   }
 `;

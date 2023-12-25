@@ -91,6 +91,7 @@ export const TargetSelection = ({ onClose }) => {
                 style={{
                   color: selectedGoal === 'Lose Fat' ? '#B6C3FF' : '#ffffff',
                 }}
+                htmlFor="lose_fat"
               >
                 Lose fat
               </TargetListBlock>
@@ -119,6 +120,7 @@ export const TargetSelection = ({ onClose }) => {
                 style={{
                   color: selectedGoal === 'Maintain' ? '#B6C3FF' : '#ffffff',
                 }}
+                htmlFor="maintain"
               >
                 Maintain
               </TargetListBlock>
@@ -147,6 +149,7 @@ export const TargetSelection = ({ onClose }) => {
                 style={{
                   color: selectedGoal === 'Gain Muscle' ? '#B6C3FF' : '#ffffff',
                 }}
+                htmlFor="gain_muscles"
               >
                 Gain Muscle
               </TargetListBlock>
@@ -154,10 +157,10 @@ export const TargetSelection = ({ onClose }) => {
 
             <ConfirmBtn type="submit">Confirm</ConfirmBtn>
           </Form>
-          <CancelBtn type="button" onClick={onClose}>
-            Cancel
-          </CancelBtn>
         </ModalWrapper>
+        <CancelBtn type="button" onClick={onClose}>
+          Cancel
+        </CancelBtn>
       </ModalContainer>
     </Modal>,
     document.getElementById('modal-root')

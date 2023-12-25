@@ -16,6 +16,8 @@ import {
   InfoBlockText,
   Kg,
 } from './menuModal.styled';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../Redux/userAuth/selector.js';
 
 export const ModalMenu = ({ onClose }) => {
   const [showModalTarget, setShowModalTarget] = useState(false);
@@ -30,21 +32,22 @@ export const ModalMenu = ({ onClose }) => {
   };
 
   const handleSwitchTarget = () => {
-    onClose();
     setShowModalTarget((showModalTarget) => !showModalTarget);
+    // onClose();
   };
 
   const handleSwitchWeight = () => {
-    onClose();
     setShowModalWeight((showModalWeight) => !showModalWeight);
+    // onClose();
   };
 
   const handleCloseBtn = () => {
     onClose();
   };
+  const user = useSelector(selectUser);
 
   return (
-    <Modal>
+    <Modal $isBoxShadow={!showModalTarget && !showModalWeight}>
       <CloseBtn onClick={handleCloseBtn}>
         <svg>
           <use href={icon + '#icon-close-circle'}></use>
@@ -59,7 +62,7 @@ export const ModalMenu = ({ onClose }) => {
           <TextContainer>
             <Goal>Goal</Goal>
             <InfoBlockText>
-              Lose fat
+              {user.goal}
               <GoalIcon>
                 <svg>
                   <use href={icon + '#icon-arrowright'}></use>
@@ -67,6 +70,7 @@ export const ModalMenu = ({ onClose }) => {
               </GoalIcon>
             </InfoBlockText>
           </TextContainer>
+
           {showModalTarget && (
             <TargetSelection onClose={handleOpenModalTarget} />
           )}
@@ -79,7 +83,7 @@ export const ModalMenu = ({ onClose }) => {
           <TextContainer>
             <Goal>Weight</Goal>
             <InfoBlockText>
-              65
+              {user.currentWeight}
               <Kg> kg</Kg>
               <GoalIcon>
                 <svg>
@@ -88,6 +92,7 @@ export const ModalMenu = ({ onClose }) => {
               </GoalIcon>
             </InfoBlockText>
           </TextContainer>
+
           {showModalWeight && (
             <WeightSelectionModal onClose={handleOpenModalWeight} />
           )}
