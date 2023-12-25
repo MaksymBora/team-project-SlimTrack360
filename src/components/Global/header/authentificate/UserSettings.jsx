@@ -38,7 +38,7 @@ export const UserSettings = ({
   handleOpenModalWeight,
   handleOpenModalMenu,
 }) => {
-  const isMobile = useMediaQuery({ query: '(max-width:767px)' });
+  const isMobile = useMediaQuery({ query: '(max-width:833px)' });
 
   const user = useSelector(selectUser);
 
@@ -84,6 +84,7 @@ export const UserSettings = ({
               </SettingBtn>
             </GoalSelection>
           </SelectGoals>
+
           {isModalOpenGoal && <TargetSelection onClose={handleOpenModal} />}
 
           <SelectWeight>
@@ -106,6 +107,7 @@ export const UserSettings = ({
               </SetBtn>
             </WeightSelection>
           </SelectWeight>
+
           {isModalOpenWeight && (
             <WeightSelectionModal onClose={handleOpenModalWeight} />
           )}

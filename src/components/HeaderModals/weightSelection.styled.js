@@ -4,55 +4,47 @@ import { Field } from 'formik';
 import { Form } from 'formik';
 
 export const Modal = styled.div`
-  background-color: ${theme.color.primaryBlack2};
   position: absolute;
-  top: 60px;
   z-index: 1000;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 302px;
-  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: ${(p) => p.$height}px;
+`;
 
-  @media screen and (min-width: 320px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  @media screen and (min-width: 834px) {
-    box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
-    border-radius: 12px;
-    top: 100px;
-    left: 70%;
-    transform: translateX(-50%);
-    width: 392px;
-    height: auto;
-  }
+export const ModalContainer = styled.div`
+  margin: 0 auto;
+  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 800px;
+
   @media screen and (min-width: 1440px) {
-    height: auto;
-    left: 76%;
+    width: 1372px;
   }
 `;
 
 export const ModalWrapper = styled.div`
-  @media screen and (min-width: 320px) {
-    width: 300px;
-    padding: 24px 10px 0px 10px;
-    height: auto;
-  }
-  @media screen and (min-width: 834px) {
-    width: 392px;
+  position: absolute;
+  top: 100px;
+  left: 280px;
 
-    padding-top: 20px 24px 40px 24px;
-  }
+  /* height: auto; */
+  width: 392px;
+  padding: 20px 24px 40px 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
+  border-radius: 12px;
+  background-color: ${theme.color.primaryBlack2};
+
   @media screen and (min-width: 1440px) {
-    width: 392px;
-
-    padding-top: 20px;
-    padding-right: 84px;
-    padding-left: 24px;
-    padding-bottom: 40px;
+    left: 1030px;
   }
 `;
+
 export const CloseBtn = styled.button`
   display: none;
   background: inherit;
@@ -67,7 +59,10 @@ export const CloseBtn = styled.button`
   top: 16px;
   fill: ${theme.color.primaryGrey};
   stroke: ${theme.color.primaryGrey};
-
+  svg {
+    width: 26px;
+    height: 26px;
+  }
   @media screen and (max-width: 834px) {
     display: none;
   }
@@ -158,7 +153,6 @@ export const ConfirmBtn = styled.button`
   height: 36px;
   border: none;
   border-radius: 12px;
-  margin-bottom: 24px;
   &:focus {
     font-weight: 700;
   }
@@ -193,7 +187,6 @@ export const CancelBtn = styled.button`
   }
 `;
 
-
 export const Overlay = styled.div`
   position: fixed;
   top: 60px;
@@ -212,4 +205,3 @@ export const Overlay = styled.div`
     top: 103px;
   }
 `;
-

@@ -22,31 +22,44 @@ import { theme } from './../../../styles/theme';
 
 export const Modal = styled.div`
   position: absolute;
-  width: 158px;
-  border-radius: 12px;
-  left: -20px;
-  top: 60px;
+  z-index: 1000;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: ${(p) => p.$height}px;
+`;
 
-  background-color: ${theme.color.primaryBlack2};
-  box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
-  padding: 0;
+export const ModalWrap = styled.div`
+  margin: 0 auto;
+  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 800px;
 
-  @media screen and (min-width: 320px) {
-    top: 36px;
-  }
-  @media screen and (min-width: 834px) {
-    left: -40px;
-    top: 40px;
-  }
   @media screen and (min-width: 1440px) {
+    width: 1372px;
   }
 `;
 
 export const ModalContainer = styled.div`
+  position: absolute;
+  right: 10px;
+  top: 54px;
+
   display: flex;
   flex-direction: column;
-  padding: 24px;
   gap: 16px;
+
+  padding: 24px;
+  width: 158px;
+
+  border-radius: 12px;
+  background-color: ${theme.color.primaryBlack2};
+  box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
+
+  @media screen and (min-width: 834px) {
+    top: 80px;
+  }
 `;
 
 export const SettingButton = styled.button`
