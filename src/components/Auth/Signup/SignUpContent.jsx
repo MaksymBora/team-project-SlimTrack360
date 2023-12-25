@@ -19,6 +19,7 @@ import {
   Form,
   EyeIcon,
   Valid,
+  Des,
 } from './SignUpContent.styled';
 
 export const SignUpContent = ({ setStep }) => {
@@ -214,7 +215,9 @@ export const SignUpContent = ({ setStep }) => {
         </Form>
         <Options>
           <Subsection>Do you already have an account?</Subsection>
-          <Link to="/signin">Sign in</Link>
+          <Link to="/signin">
+            <Des>Sign in</Des>
+          </Link>
         </Options>
       </Div>
     </>
