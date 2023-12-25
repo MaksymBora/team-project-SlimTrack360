@@ -17,19 +17,9 @@ const CaloriesGraph = () => {
   // Підписка на стор
   const totalCalories = useSelector(selectTotalCalories);
 
-  if (!totalCalories || totalCalories.length === 0) {
-    return (
-      <GraphContainer className="scroll-container">
-        <div className="caloriesTitle">
-          <h2 className="graphTitle">Calories</h2>
-          <h3 className="graphValue">No calories consumption data available</h3>
-        </div>
-      </GraphContainer>
-    );
-  }
   // Обчислення середньої кількості спожитих калорій
   const averageCalories =
-    totalCalories.length > 0
+    totalCalories && totalCalories.length > 0
       ? Math.round(
           totalCalories.reduce(
             (accumulator, current) => accumulator + current.totalCalories,
@@ -38,12 +28,12 @@ const CaloriesGraph = () => {
         )
       : 0;
 
-  // console.log('Average Calories:', averageCalories);
   // Отримання числової частини дати (від 1 до 31)
   const extractDate = (dateString) => {
     const dateObj = new Date(dateString);
     return dateObj.getDate();
   };
+
   // Створення labels з числами від 1 до 31
   const labels = Array.from({ length: 31 }, (_, i) => i + 1);
 
@@ -54,13 +44,13 @@ const CaloriesGraph = () => {
       {
         label: 'Calories Intake',
         data: labels.map((day) => {
-          const caloriesIntake = totalCalories.find(
-            (item) => extractDate(item.date) === day
-          );
+          const caloriesIntake = totalCalories
+            ? totalCalories.find((item) => extractDate(item.date) === day)
+            : null;
           const caloriesValue = caloriesIntake
             ? caloriesIntake.totalCalories
             : 0;
-          // console.log(`Day ${day}: Calories - ${caloriesValue}`);
+
           return caloriesValue;
         }),
         borderColor: '#e3ffa8',
@@ -72,6 +62,32 @@ const CaloriesGraph = () => {
     ],
   };
 
+  // Проверка наличия данных
+  if (!totalCalories || totalCalories.length === 0) {
+    // Рендерим график с нулевыми значениями за каждый день месяца
+    return (
+      <GraphContainer className="scroll-container">
+        <div className="caloriesTitle">
+          <h2 className="graphTitle">Calories</h2>
+          <h3 className="graphValue">No calories consumption data available</h3>
+        </div>
+        <ChartContainer className="graph-line">
+          <Line
+            options={{
+              ...commonOptions,
+              scales: {
+                x: commonXAxisOptions,
+                y: { ...caloriesYAxisOptions, min: 0 },
+              },
+            }}
+            data={chartData}
+          />
+        </ChartContainer>
+      </GraphContainer>
+    );
+  }
+
+  // Рендерим график с настоящими данными
   return (
     <GraphContainer className="scroll-container">
       <div className="caloriesTitle">
