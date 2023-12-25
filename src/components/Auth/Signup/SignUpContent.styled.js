@@ -155,6 +155,7 @@ export const Button = styled.button`
   padding: 8px 10px;
   align-items: flex-start;
   gap: 10px;
+  transition: all 0.3s ease-in-out;
   border-radius: 12px;
   background: ${theme.color.primaryGreenLite};
   width: 100%;
@@ -165,9 +166,23 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
+  border: 1px solid transparent;
   &:disabled {
     opacity: 0.35;
     cursor: not-allowed;
+  }
+  &:hover {
+    cursor: pointer;
+    border: 1px solid transparent;
+    animation: 1s ease-in-out infinite;
+    background-color: transparent;
+    color: ${theme.color.primaryWhite};
+    border: 1px solid ${theme.color.primaryGreenLite};
+  }
+  &:focus {
+    background-color: ${theme.color.primaryGreenLite};
+    border: 1px solid transparent;
+    color: ${theme.color.primaryBlack};
   }
 `;
 export const Subsection = styled.p`
@@ -256,4 +271,19 @@ export const ErrorMessage = styled.p`
   font-size: 14px;
   color: red;
   visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
+`;
+export const Des = styled.div`
+  transition: all 0.3s ease-in-out;
+  animation: 1s ease-in-out infinite;
+  color: ${theme.color.primaryWhite};
+  &:hover {
+    cursor: pointer;
+    animation: 1s ease-in-out infinite;
+    color: ${theme.color.primaryGreenLite};
+  }
+  &:focus {
+    background-color: ${theme.color.primaryGreenLite};
+    border: 1px solid transparent;
+    color: ${theme.color.primaryBlack};
+  }
 `;
