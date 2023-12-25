@@ -15,7 +15,7 @@ export const selectdailyGoalWater = (state) =>
   state.userAuth.user.dailyGoalWater;
 
 export const selectDailyGoalCarbonohidrates = (state) =>
-  state.userAuth.user.dailyGoalElements.carbonohidretes;
+  state.userAuth.user.dailyGoalElements.carbonohidrates;
 
 export const selectDailyGoalProtein = (state) =>
   state.userAuth.user.dailyGoalElements.protein;

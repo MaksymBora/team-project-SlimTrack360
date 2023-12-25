@@ -24,7 +24,7 @@ import { useState } from 'react';
 import { updateUserGoal } from './../../../Redux/userAuth/operations';
 
 export const TargetSelection = ({ onClose }) => {
-  const [selectedGoal, setSelectedGoal] = useState('Lose fat');
+  const [selectedGoal, setSelectedGoal] = useState('Lose Fat');
 
   console.log('target mounted');
   const dispatch = useDispatch();
@@ -72,25 +72,25 @@ export const TargetSelection = ({ onClose }) => {
               <TargetImgBorder
                 style={{
                   border:
-                    selectedGoal === 'Lose fat'
+                    selectedGoal === 'Lose Fat'
                       ? '2px solid #B6C3FF'
                       : '1px solid #B6B6B6',
                 }}
               >
                 <TargetInput
                   type="radio"
-                  value="Lose fat"
+                  value="Lose Fat"
                   id="lose_fat"
                   name="goal"
-                  checked={!selectedGoal === 'Lose fat'}
-                  onChange={() => handleGoalChange('Lose fat')}
+                  checked={!selectedGoal === 'Lose Fat'}
+                  onChange={() => handleGoalChange('Lose Fat')}
                 />
                 <TargetImg src={LoseFatMen} alt="Lose fat image men" />
               </TargetImgBorder>
 
               <TargetListBlock
                 style={{
-                  color: selectedGoal === 'Lose fat' ? '#B6C3FF' : '#ffffff',
+                  color: selectedGoal === 'Lose Fat' ? '#B6C3FF' : '#ffffff',
                 }}
                 htmlFor="lose_fat"
               >

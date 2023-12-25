@@ -14,17 +14,48 @@ import './Styles/Graph.css';
 const WaterGraph = () => {
   // Підписка на стор
   const totalWater = useSelector(selectTotalWater);
+  // Створення labels з числами від 1 до 31
+  const labels = Array.from({ length: 31 }, (_, i) => i + 1);
 
   if (!totalWater || totalWater.length === 0) {
+    const randomData = {
+      labels,
+      datasets: [
+        {
+          label: '',
+          data: Array.from({ length: 31 }, () =>
+            Math.floor(Math.random() * 1000)
+          ),
+          borderColor: '#e3ffa8',
+          borderWidth: 1,
+          pointBackgroundColor: '#e3ffa8',
+          pointRadius: 2,
+          fill: false,
+        },
+      ],
+    };
+
     return (
       <GraphContainer className="scroll-container">
         <div className="waterTitle">
           <h2 className="graphTitle">Water</h2>
-          <h3 className="graphValue">No water consumption data available</h3>
+          <h3 className="graphValue">
+            Your data may appear here later after entry
+          </h3>
         </div>
+        <ChartContainer className="graph-line">
+          <Line
+            options={{
+              ...commonOptions,
+              scales: { x: commonXAxisOptions, y: waterYAxisOptions },
+            }}
+            data={randomData}
+          />
+        </ChartContainer>
       </GraphContainer>
     );
   }
+
   // Обчислення середньої кількості спожитої води
   const averageWater = totalWater
     ? Math.round(
@@ -39,8 +70,6 @@ const WaterGraph = () => {
     const dateObj = new Date(dateString);
     return dateObj.getDate();
   };
-  // Створення labels з числами від 1 до 31
-  const labels = Array.from({ length: 31 }, (_, i) => i + 1);
 
   // Оновлений блок даних для графіка
   const chartData = {
@@ -59,6 +88,7 @@ const WaterGraph = () => {
         pointBackgroundColor: '#e3ffa8',
         pointRadius: 2,
         fill: false,
+        cubicInterpolationMode: 'monotone',
       },
     ],
   };

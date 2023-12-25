@@ -84,11 +84,14 @@ export const SignInButton = styled.button`
     cursor: pointer;
     border: 1px solid transparent;
     animation: 1s ease-in-out infinite;
+    background-color: transparent;
+    color: ${theme.color.primaryWhite};
+    border: 1px solid ${theme.color.primaryGreenLite};
   }
   &:focus {
-    background-color: transparent;
-    border: 1px solid ${theme.color.primaryGreenLite};
-    color: ${theme.color.primaryWhite};
+    background-color: ${theme.color.primaryGreenLite};
+    border: 1px solid transparent;
+    color: ${theme.color.primaryBlack};
   }
   @media screen and (min-width: 834px) {
     width: 192px;

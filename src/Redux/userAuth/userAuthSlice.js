@@ -96,7 +96,7 @@ const handleUpdateParamsRejected = (state, { payload }) => {
 
 const handleUpdateParamsFullfilled = (state, { payload }) => {
   state.isRefreshing = false;
-  state.user = payload;
+  state.user = payload.user;
   toast.success('Settings changed successfully');
 };
 
@@ -113,7 +113,7 @@ const handleUpdateWeightRejected = (state, { payload }) => {
 
 const handleUpdateWeightFullfilled = (state, { payload }) => {
   state.isRefreshing = false;
-  state.user.currentWeight = payload.currentWeight;
+  state.user = payload.user;
 };
 
 const handleUpdateWeightPending = (state) => {
@@ -122,8 +122,8 @@ const handleUpdateWeightPending = (state) => {
 
 // -------- User Goal ----------- //
 
-const handleUserGoalFulfilled = (state, action) => {
-  state.goal = action.payload.goal;
+const handleUserGoalFulfilled = (state, { payload }) => {
+  state.user = payload.user;
 };
 
 // -------- User Verify ----------- //
@@ -159,7 +159,7 @@ const initialState = {
     dailyGoalCalories: null,
     dailyGoalWater: null,
     dailyGoalElements: {
-      carbonohidretes: null,
+      carbonohidrates: null,
       protein: null,
       fat: null,
     },

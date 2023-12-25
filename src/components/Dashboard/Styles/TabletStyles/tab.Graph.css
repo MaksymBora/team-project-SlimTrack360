@@ -10,7 +10,6 @@
 
   .scroll-container {
     overflow-x: hidden;
-    /* background-color: brown; */
   }
   .graphTitle {
     font-size: 22px;
@@ -28,7 +27,9 @@
     margin-top: 3px;
     margin-bottom: 6px;
   }
-
+  .table-container {
+    width: 780px;
+  }
   .upper-row,
   .lower-row {
     gap: 11px;
