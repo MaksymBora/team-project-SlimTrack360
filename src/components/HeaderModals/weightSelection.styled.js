@@ -59,7 +59,10 @@ export const CloseBtn = styled.button`
   top: 16px;
   fill: ${theme.color.primaryGrey};
   stroke: ${theme.color.primaryGrey};
-
+  svg {
+    width: 26px;
+    height: 26px;
+  }
   @media screen and (max-width: 834px) {
     display: none;
   }
