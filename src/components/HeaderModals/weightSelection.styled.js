@@ -6,18 +6,29 @@ import { Form } from 'formik';
 export const Modal = styled.div`
   position: absolute;
   z-index: 1000;
-  top: 0;
+  top: 60px;
   left: 0;
   width: 100%;
   height: ${(p) => p.$height}px;
+
+  @media screen and (min-width: 834px) {
+    top: 100px;
+  }
 `;
 
 export const ModalContainer = styled.div`
-  margin: 0 auto;
-  position: relative;
-  padding-right: 10px;
-  padding-left: 10px;
-  width: 800px;
+  width: 100%;
+  background-color: ${theme.color.primaryBlack};
+  height: 100vh;
+
+  @media screen and (min-width: 834px) {
+    position: relative;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 0 auto;
+    width: 800px;
+    background-color: transparent;
+  }
 
   @media screen and (min-width: 1440px) {
     width: 1372px;
@@ -25,20 +36,25 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
-  position: absolute;
-  top: 100px;
-  left: 280px;
-
-  /* height: auto; */
-  width: 392px;
-  padding: 20px 24px 40px 24px;
-
+  padding: 24px 10px;
   display: flex;
   flex-direction: column;
-
-  box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
+  margin: 0 auto;
   border-radius: 12px;
-  background-color: ${theme.color.primaryBlack2};
+  width: 320px;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 834px) {
+    padding: 20px 24px 40px 24px;
+    position: absolute;
+    left: 0;
+    width: 392px;
+    left: 280px;
+    box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
+    height: auto;
+    background-color: ${theme.color.primaryBlack2};
+  }
 
   @media screen and (min-width: 1440px) {
     left: 1030px;
@@ -59,10 +75,18 @@ export const CloseBtn = styled.button`
   top: 16px;
   fill: ${theme.color.primaryGrey};
   stroke: ${theme.color.primaryGrey};
+  transition: all 0.3s ease-in-out;
+  &:hover,
+  &:focus {
+    fill: ${theme.color.primaryWhite};
+    stroke: ${theme.color.primaryWhite};
+  }
+
   svg {
     width: 26px;
     height: 26px;
   }
+
   @media screen and (max-width: 834px) {
     display: none;
   }
@@ -153,8 +177,24 @@ export const ConfirmBtn = styled.button`
   height: 36px;
   border: none;
   border-radius: 12px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid transparent;
+    animation: 1s ease-in-out infinite;
+    background-color: transparent;
+    color: ${(p) => p.theme.color.primaryWhite};
+    border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
+  }
   &:focus {
+    background-color: ${(p) => p.theme.color.primaryGreenLite};
+    border: 1px solid transparent;
     font-weight: 700;
+    color: ${(p) => p.theme.color.primaryBlack};
   }
 
   @media screen and (min-width: 320px) {
@@ -162,6 +202,7 @@ export const ConfirmBtn = styled.button`
   }
   @media screen and (min-width: 834px) {
     width: 166px;
+    margin-bottom: 0;
   }
 `;
 
@@ -172,12 +213,15 @@ export const CancelBtn = styled.button`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.43;
-  height: 36px;
+  /* height: 36px; */
   border: none;
   border-radius: 12px;
-  &:hover {
-    font-weight: medium;
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.color.primaryWhite};
   }
+  transition: all 0.3s ease-in-out;
 
   @media screen and (min-width: 320px) {
     width: 100%;

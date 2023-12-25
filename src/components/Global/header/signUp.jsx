@@ -5,10 +5,12 @@ import {
 } from './header.styled.js';
 import icon from './../../../assets/sprite.svg';
 
-export const SignUp = () => {
+export const SignUp = ({ isActive }) => {
   return (
     <SignInContainer>
-      <RouterLinkSignUp to="signup">Sign up</RouterLinkSignUp>
+      <RouterLinkSignUp $isActive={isActive} to="signup">
+        Sign up
+      </RouterLinkSignUp>
 
       <UserIcon>
         <svg>

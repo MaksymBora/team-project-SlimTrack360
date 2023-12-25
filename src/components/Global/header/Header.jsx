@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   HeaderContainer,
   Wrapper,
@@ -13,7 +13,7 @@ import { UserAvatar } from './../header/authentificate/userAvatar.jsx';
 import { selectIsLoggedIn } from './../../../Redux/userAuth/selector.js';
 import { useSelector } from 'react-redux';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
   const IsLoggedIn = useSelector(selectIsLoggedIn);
@@ -23,6 +23,14 @@ const Header = () => {
   const [isModalOpenMenu, setIsModalOpenMenu] = useState(false);
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
 
+  const [isSignActive, setSignActive] = useState('');
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setSignActive(location.pathname);
+  }, [location.pathname]);
+
   const handleOpenModal = () => {
     if (isModalOpenWeight || isModalOpenMenu || isProfileModalOpen) {
       setIsModalOpenWeight(false) ||
@@ -31,6 +39,10 @@ const Header = () => {
     }
     setIsModalOpenGoal((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    console.log('isModalOpenMenu', isModalOpenMenu);
+  }, [isModalOpenMenu]);
 
   const handleOpenModalWeight = () => {
     if (isModalOpenGoal || isModalOpenMenu || isProfileModalOpen) {
@@ -47,18 +59,26 @@ const Header = () => {
         setIsModalOpenWeight(false) ||
         setProfileModalOpen(false);
     }
+
     setIsModalOpenMenu((prevState) => !prevState);
   };
 
   const handleOpenModalProfile = () => {
-    if (isModalOpenGoal || isModalOpenWeight || isProfileModalOpen) {
-      setIsModalOpenGoal(false) ||
+    if (
+      isModalOpenMenu ||
+      isModalOpenGoal ||
+      isModalOpenWeight ||
+      isProfileModalOpen
+    ) {
+      setIsModalOpenMenu(false) ||
+        setIsModalOpenGoal(false) ||
         setIsModalOpenWeight(false) ||
         setIsModalOpenMenu(false);
     }
     setProfileModalOpen((prevState) => !prevState);
   };
 
+  console.log('currentURL.includes()', location.pathname === '/signin');
   return IsLoggedIn ? (
     <HeaderContainer>
       <Wrapper>
@@ -92,8 +112,8 @@ const Header = () => {
           <Logo></Logo>
         </Link>
         <SignInWrapper>
-          <SignIn></SignIn>
-          <SignUp></SignUp>
+          <SignIn isActive={isSignActive === '/signin'}></SignIn>
+          <SignUp isActive={isSignActive === '/signup'}></SignUp>
         </SignInWrapper>
       </Wrapper>
     </HeaderContainer>

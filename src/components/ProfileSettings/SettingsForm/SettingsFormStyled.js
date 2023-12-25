@@ -73,7 +73,22 @@ const SubmitBtn = styled.button`
   font-weight: 500;
   line-height: 1.4;
 
-  transition: ${(p) => p.theme.transition.main};
+  transition: all 0.3s ease-in-out;
+  border: 1px solid transparent;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid transparent;
+    animation: 1s ease-in-out infinite;
+    background-color: transparent;
+    color: ${(p) => p.theme.color.primaryWhite};
+    border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
+  }
+  &:focus {
+    background-color: ${(p) => p.theme.color.primaryGreenLite};
+    border: 1px solid transparent;
+    color: ${(p) => p.theme.color.primaryBlack};
+  }
 `;
 
 const CancelBtn = styled.button`
@@ -81,17 +96,13 @@ const CancelBtn = styled.button`
   line-height: 1.4;
   background-color: transparent;
   color: ${(p) => p.theme.color.primaryGrey};
-  border: 1px solid transparent;
   border-radius: 12px;
-  outline: none;
 
   &:hover,
-  &:active {
-    outline: none;
-    border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
+  &:focus {
+    color: ${(p) => p.theme.color.primaryWhite};
   }
-
-  transition: ${(p) => p.theme.transition.main};
+  transition: all 0.3s ease-in-out;
 `;
 
 export {

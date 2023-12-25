@@ -26,6 +26,7 @@ import { updateUserGoal } from './../../../Redux/userAuth/operations';
 export const TargetSelection = ({ onClose }) => {
   const [selectedGoal, setSelectedGoal] = useState('Lose fat');
 
+  console.log('target mounted');
   const dispatch = useDispatch();
 
   const handleOnSubmit = (e) => {
@@ -91,6 +92,7 @@ export const TargetSelection = ({ onClose }) => {
                 style={{
                   color: selectedGoal === 'Lose fat' ? '#B6C3FF' : '#ffffff',
                 }}
+                htmlFor="lose_fat"
               >
                 Lose fat
               </TargetListBlock>
@@ -119,6 +121,7 @@ export const TargetSelection = ({ onClose }) => {
                 style={{
                   color: selectedGoal === 'Maintain' ? '#B6C3FF' : '#ffffff',
                 }}
+                htmlFor="maintain"
               >
                 Maintain
               </TargetListBlock>
@@ -128,7 +131,7 @@ export const TargetSelection = ({ onClose }) => {
               <TargetImgBorder
                 style={{
                   border:
-                    selectedGoal === 'Gain muscle'
+                    selectedGoal === 'Gain Muscle'
                       ? '2px solid #B6C3FF'
                       : '1px solid #B6B6B6',
                 }}
@@ -145,8 +148,9 @@ export const TargetSelection = ({ onClose }) => {
 
               <TargetListBlock
                 style={{
-                  color: selectedGoal === 'Gain muscle' ? '#B6C3FF' : '#ffffff',
+                  color: selectedGoal === 'Gain Muscle' ? '#B6C3FF' : '#ffffff',
                 }}
+                htmlFor="gain_muscles"
               >
                 Gain Muscle
               </TargetListBlock>
@@ -154,10 +158,10 @@ export const TargetSelection = ({ onClose }) => {
 
             <ConfirmBtn type="submit">Confirm</ConfirmBtn>
           </Form>
-          <CancelBtn type="button" onClick={onClose}>
-            Cancel
-          </CancelBtn>
         </ModalWrapper>
+        <CancelBtn type="button" onClick={onClose}>
+          Cancel
+        </CancelBtn>
       </ModalContainer>
     </Modal>,
     document.getElementById('modal-root')

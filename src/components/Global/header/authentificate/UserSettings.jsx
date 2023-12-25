@@ -47,22 +47,25 @@ export const UserSettings = ({
   return (
     <UserMode>
       {isMobile ? (
-        <PictogramBlock onClick={handleOpenModalMenu}>
-          {isModalOpenMenu ? (
-            <Pictogram>
-              <svg>
-                <use href={icon + '#icon-menu'}></use>
-              </svg>
-            </Pictogram>
-          ) : (
-            <PictogramOpen>
-              <svg>
-                <use href={icon + '#icon-menu'}></use>
-              </svg>
-            </PictogramOpen>
-          )}
+        <>
+          <PictogramBlock onClick={handleOpenModalMenu}>
+            {isModalOpenMenu ? (
+              <Pictogram>
+                <svg>
+                  <use href={icon + '#icon-menu'}></use>
+                </svg>
+              </Pictogram>
+            ) : (
+              <PictogramOpen>
+                <svg>
+                  <use href={icon + '#icon-menu'}></use>
+                </svg>
+              </PictogramOpen>
+            )}
+          </PictogramBlock>
+
           {isModalOpenMenu && <ModalMenu onClose={handleOpenModalMenu} />}
-        </PictogramBlock>
+        </>
       ) : (
         <UserSet>
           <SelectGoals>

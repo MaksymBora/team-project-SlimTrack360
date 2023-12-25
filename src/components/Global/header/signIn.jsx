@@ -1,10 +1,12 @@
 import { RouterLink, Slash, SignInContainer } from './header.styled';
 
 // вхід/реєстрація
-export const SignIn = () => {
+export const SignIn = ({ isActive }) => {
   return (
     <SignInContainer>
-      <RouterLink to="/signin">Sign in</RouterLink>
+      <RouterLink $isActive={isActive} to="/signin">
+        Sign in
+      </RouterLink>
 
       <Slash>/</Slash>
     </SignInContainer>
