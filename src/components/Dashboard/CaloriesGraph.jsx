@@ -16,6 +16,8 @@ import './Styles/Graph.css';
 const CaloriesGraph = () => {
   // Підписка на стор
   const totalCalories = useSelector(selectTotalCalories);
+  // Створення labels з числами від 1 до 31
+  const labels = Array.from({ length: 31 }, (_, i) => i + 1);
 
   // Обчислення середньої кількості спожитих калорій
   const averageCalories =
@@ -33,9 +35,6 @@ const CaloriesGraph = () => {
     const dateObj = new Date(dateString);
     return dateObj.getDate();
   };
-
-  // Створення labels з числами від 1 до 31
-  const labels = Array.from({ length: 31 }, (_, i) => i + 1);
 
   // Оновлений блок даних для графіка
   const chartData = {
@@ -64,12 +63,30 @@ const CaloriesGraph = () => {
 
   // Проверка наличия данных
   if (!totalCalories || totalCalories.length === 0) {
-    // Рендерим график с нулевыми значениями за каждый день месяца
+    // Рендерим график с рандомными значениями за каждый день месяца
+    const randomData = {
+      labels,
+      datasets: [
+        {
+          label: '',
+          data: Array.from({ length: 31 }, () =>
+            Math.floor(Math.random() * 1000)
+          ),
+          borderColor: '#e3ffa8',
+          borderWidth: 1,
+          pointBackgroundColor: '#e3ffa8',
+          pointRadius: 2,
+          fill: false,
+        },
+      ],
+    };
     return (
       <GraphContainer className="scroll-container">
         <div className="caloriesTitle">
           <h2 className="graphTitle">Calories</h2>
-          <h3 className="graphValue">No calories consumption data available</h3>
+          <h3 className="graphValue">
+            Your data may appear here later after entry
+          </h3>
         </div>
         <ChartContainer className="graph-line">
           <Line
@@ -80,7 +97,7 @@ const CaloriesGraph = () => {
                 y: { ...caloriesYAxisOptions, min: 0 },
               },
             }}
-            data={chartData}
+            data={randomData}
           />
         </ChartContainer>
       </GraphContainer>
