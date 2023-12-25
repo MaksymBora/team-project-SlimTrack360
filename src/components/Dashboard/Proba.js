@@ -16,10 +16,29 @@ import './Styles/Graph.css';
 const CaloriesGraph = () => {
   // Підписка на стор
   const totalCalories = useSelector(selectTotalCalories);
+  if (!totalCalories || totalCalories.length === 0) {
+    return (
+      <GraphContainer className="scroll-container">
+        <div className="caloriesTitle">
+          <h2 className="graphTitle">Calories</h2>
+          <h3 className="graphValue">No calories consumption data available</h3>
+        </div>
+        <ChartContainer className="graph-line">
+          <Line
+            options={{
+              ...commonOptions,
+              scales: { x: commonXAxisOptions, y: caloriesYAxisOptions },
+            }}
+            data={chartData}
+          />
+        </ChartContainer>
+      </GraphContainer>
+    );
+  }
 
   // Обчислення середньої кількості спожитих калорій
   const averageCalories =
-    totalCalories && totalCalories.length > 0
+    totalCalories.length > 0
       ? Math.round(
           totalCalories.reduce(
             (accumulator, current) => accumulator + current.totalCalories,
@@ -33,7 +52,6 @@ const CaloriesGraph = () => {
     const dateObj = new Date(dateString);
     return dateObj.getDate();
   };
-
   // Створення labels з числами від 1 до 31
   const labels = Array.from({ length: 31 }, (_, i) => i + 1);
 
@@ -44,9 +62,9 @@ const CaloriesGraph = () => {
       {
         label: 'Calories Intake',
         data: labels.map((day) => {
-          const caloriesIntake = totalCalories
-            ? totalCalories.find((item) => extractDate(item.date) === day)
-            : null;
+          const caloriesIntake = totalCalories.find(
+            (item) => extractDate(item.date) === day
+          );
           const caloriesValue = caloriesIntake
             ? caloriesIntake.totalCalories
             : 0;
@@ -62,7 +80,7 @@ const CaloriesGraph = () => {
     ],
   };
 
-  // Проверка наличия данных
+  // Изменен блок проверки на наличие данных
   if (!totalCalories || totalCalories.length === 0) {
     // Рендерим график с нулевыми значениями за каждый день месяца
     return (
@@ -87,7 +105,7 @@ const CaloriesGraph = () => {
     );
   }
 
-  // Рендерим график с настоящими данными
+  // Рендер графика с данными
   return (
     <GraphContainer className="scroll-container">
       <div className="caloriesTitle">
