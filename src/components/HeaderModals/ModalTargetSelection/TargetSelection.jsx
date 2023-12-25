@@ -26,7 +26,6 @@ import { updateUserGoal } from './../../../Redux/userAuth/operations';
 export const TargetSelection = ({ onClose }) => {
   const [selectedGoal, setSelectedGoal] = useState('Lose Fat');
 
-  console.log('target mounted');
   const dispatch = useDispatch();
 
   const handleOnSubmit = (e) => {

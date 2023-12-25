@@ -28,8 +28,10 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    setSignActive(location.pathname);
-  }, [location.pathname]);
+    if (!IsLoggedIn) {
+      setSignActive(location.pathname);
+    }
+  }, [IsLoggedIn, location.pathname]);
 
   const handleOpenModal = () => {
     if (isModalOpenWeight || isModalOpenMenu || isProfileModalOpen) {
@@ -39,10 +41,6 @@ const Header = () => {
     }
     setIsModalOpenGoal((prevState) => !prevState);
   };
-
-  useEffect(() => {
-    console.log('isModalOpenMenu', isModalOpenMenu);
-  }, [isModalOpenMenu]);
 
   const handleOpenModalWeight = () => {
     if (isModalOpenGoal || isModalOpenMenu || isProfileModalOpen) {
@@ -78,7 +76,6 @@ const Header = () => {
     setProfileModalOpen((prevState) => !prevState);
   };
 
-  console.log('currentURL.includes()', location.pathname === '/signin');
   return IsLoggedIn ? (
     <HeaderContainer>
       <Wrapper>
