@@ -37,6 +37,7 @@ export const FoodInfo = () => {
   const totalCarbon = useSelector(selectTotalCarbon);
   const totalFat = useSelector(selectTotalFat);
   const totalCalories = useSelector(getDiaryCalories);
+  const displayTotalCalories = totalCalories || 0;
 
   let caloriesChartBcg = '#45FFBC';
 
@@ -47,11 +48,11 @@ export const FoodInfo = () => {
         <CaloriesChart>
           <DoughnutChart
             dailyCalories={dailyCalories}
-            inputValue={totalCalories}
+            inputValue={displayTotalCalories}
             chartBcg={caloriesChartBcg}
           />
           <ChartInfoWrap>
-            <p>{totalCalories}</p>
+            <p>{displayTotalCalories}</p>
             <p>calories</p>
           </ChartInfoWrap>
         </CaloriesChart>

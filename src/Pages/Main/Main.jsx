@@ -40,7 +40,7 @@ const Main = () => {
         <GoalLink to="/dashboard">
           <TextLink>On the way to the goal</TextLink>
           <Icon
-            name={'icon-arrow-right'}
+            name={'icon-arrowright'}
             width={'16px'}
             height={'16px'}
             fill={`${theme.color.primaryGrey}`}

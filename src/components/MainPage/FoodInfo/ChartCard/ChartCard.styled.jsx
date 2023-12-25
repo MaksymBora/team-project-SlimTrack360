@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../../../styles/theme';
 
 export const ChartWrapper = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ export const Percentage = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  color: var(--text-color-secondary-grey);
+  color: ${theme.color.primaryGrey};
   font-size: 14px;
   font-weight: 400;
 `;
@@ -34,7 +35,7 @@ export const InfoWrapper = styled.div`
 `;
 
 export const ElementsTitle = styled.h3`
-  color: var(--text-color-primary-white);
+  color: ${theme.color.primaryWhite};
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -48,9 +49,13 @@ export const ValueWrap = styled.div`
 
 export const Value = styled.span`
   font-weight: 500;
-  color: var(--text-color-secondary-grey);
+  color: ${theme.color.primaryGrey};
 `;
 
 export const GoalWrap = styled.p`
+  width: 78px;
+`;
+
+export const LeftWrap = styled.p`
   width: 78px;
 `;
