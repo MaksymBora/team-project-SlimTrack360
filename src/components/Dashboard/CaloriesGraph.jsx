@@ -77,6 +77,7 @@ const CaloriesGraph = () => {
           pointBackgroundColor: '#e3ffa8',
           pointRadius: 2,
           fill: false,
+          cubicInterpolationMode: 'monotone',
         },
       ],
     };
