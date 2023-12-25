@@ -159,7 +159,7 @@ const initialState = {
     dailyGoalCalories: null,
     dailyGoalWater: null,
     dailyGoalElements: {
-      carbonohidrates: null,
+      carbonohidretes: null,
       protein: null,
       fat: null,
     },
