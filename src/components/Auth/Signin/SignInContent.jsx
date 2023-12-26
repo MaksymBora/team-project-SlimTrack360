@@ -32,7 +32,7 @@ export const SignInContent = () => {
     const form = e.currentTarget;
 
     const data = {
-      email: form.elements.email.value,
+      email: form.elements.email.value.toLowerCase(),
       password: form.elements.password.value,
     };
 
