@@ -76,6 +76,11 @@ export const TextIndexSpan = styled.span`
   line-height: 1.43;
   color: ${theme.color.primaryGreenLite};
   width: 160px;
+  transition: ${theme.transition.main};
+  &:hover {
+    transform: scale(1.2);
+    animation: 1s ease-in-out infinite;
+  }
 `;
 
 export const ListMeatContainer = styled.div`

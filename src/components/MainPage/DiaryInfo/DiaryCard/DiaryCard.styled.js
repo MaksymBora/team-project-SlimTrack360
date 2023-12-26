@@ -91,4 +91,17 @@ export const AddButton = styled.button`
   background-color: transparent;
   outline: none;
   padding: 0;
+  transition: ${theme.transition.main};
+  @media screen and (min-width: 320px) {
+    &:hover {
+      transform: none;
+      animation: none;
+  }
+  @media screen and (min-width: 834px) {
+    &:hover {
+      transform: scale(1.1);
+      animation: 1s ease-in-out infinite;
+    }
+  }
+ 
 `;

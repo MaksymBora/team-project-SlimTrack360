@@ -78,7 +78,8 @@ export const SignInButton = styled.button`
   border-radius: 12px;
   background: ${theme.color.primaryGreenLite};
   border: 1px solid transparent;
-  transition: all 0.3s ease-in-out;
+  // transition: all 0.3s ease-in-out;
+  transition: ${theme.transition.main};
   width: 142px;
   &:hover {
     cursor: pointer;
@@ -114,7 +115,8 @@ export const SignUpButton = styled.button`
   background: ${theme.color.primaryGreenLite};
   width: 142px;
   background-color: transparent;
-  transition: all 0.3s ease-in-out;
+  transition: ${theme.transition.main};
+  // transition: all 0.3s ease-in-out;
   border: 1px solid transparent;
   &:hover {
     cursor: pointer;

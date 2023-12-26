@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { theme } from '../../styles/index';
 export const Overlay = styled.div`
   position: fixed;
   top: 0px;
@@ -99,26 +99,21 @@ export const Confirm = styled.button`
   padding: 8px 10px 8px 10px;
   border-radius: 12px;
   gap: 10px;
-  background-color: ${(p) => p.theme.color.primaryGreenLite};
 
-  cursor: pointer;
-
+  background: #e3ffa8;
   transition: all 0.3s ease-in-out;
-  border: 1px solid transparent;
-  cursor: pointer;
-
   &:hover {
+    cursor: pointer;
     border: 1px solid transparent;
     animation: 1s ease-in-out infinite;
     background-color: transparent;
-    color: ${(p) => p.theme.color.primaryWhite};
-    border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
+    color: ${theme.color.primaryWhite};
+    border: 1px solid ${theme.color.primaryGreenLite};
   }
   &:focus {
-    background-color: ${(p) => p.theme.color.primaryGreenLite};
+    background-color: ${theme.color.primaryGreenLite};
     border: 1px solid transparent;
-    font-weight: 700;
-    color: ${(p) => p.theme.color.primaryBlack};
+    color: ${theme.color.primaryBlack};
   }
 
   @media screen and (min-width: 834px) {
@@ -134,6 +129,11 @@ export const Cancel = styled.button`
   background: transparent;
   color: #b6b6b6;
   margin-top: 8px;
+  transition: ${theme.transition.main};
+  &:hover,
+  &:focus {
+    color: ${theme.color.primaryGreenLite};
+  }
   cursor: pointer;
 
   @media screen and (min-width: 834px) {

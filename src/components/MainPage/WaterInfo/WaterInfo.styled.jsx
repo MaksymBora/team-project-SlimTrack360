@@ -168,18 +168,34 @@ export const LeftNumber = styled.span`
 export const Button = styled.button`
   display: flex;
   align-items: center;
-  column-gap: 8px;
+  gap: 7px;
+  // column-gap: 8px;
   width: 166px;
   height: 36px;
   border-radius: 12px;
-  border: none;
+  border: 1px solid transparent;
   padding: 8px 10px;
   background-color: ${theme.color.primaryGreenLite};
-
   color: ${theme.color.primaryBlack2};
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
+  transition: ${theme.transition.main};
+  cursor: pointer;
+  &:hover {
+    fill: ${theme.color.primaryWhite};
+    border: 1px solid transparent;
+    animation: 1s ease-in-out infinite;
+    background-color: transparent;
+    color: ${theme.color.primaryWhite};
+    border: 1px solid ${theme.color.primaryGreenLite};
+  }
+  &:focus {
+    fill: ${theme.color.primaryBlack};
+    background-color: ${theme.color.primaryGreenLite};
+    border: 1px solid transparent;
+    color: ${theme.color.primaryBlack};
+  }
 `;
 
 export const ButtonTrash = styled.button`
@@ -189,9 +205,16 @@ export const ButtonTrash = styled.button`
   width: 20px;
   height: 20px;
   padding: 0;
-
   background-color: transparent;
-
+  transition: ${theme.transition.main};
+  &:hover {
+    transform: scale(1.2);
+    animation: 1s ease-in-out infinite;
+    fill: ${theme.color.primaryWhite};
+  }
+  &:focus {
+    fill: ${theme.color.primaryLiteGreen};
+  }
   @media screen and (min-width: 834px) {
     right: 24px;
     top: 24px;
