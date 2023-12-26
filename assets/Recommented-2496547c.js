@@ -1,4 +1,4 @@
-import{u as t,t as r,e as i,j as e,a as s,r as p,p as c,q as x}from"./index-ff45d174.js";import{s as d,I as h,a as g,b as l}from"./Item-1493df0c.js";const w=t.ul`
+import{u as t,t as r,e as i,j as e,a as s,r as p,p as c,q as x}from"./index-be36e875.js";import{s as d,I as h,a as g,b as w}from"./Item-21d8dc9c.js";const l=t.ul`
   @media screen and (min-width: 834px) {
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +20,7 @@ import{u as t,t as r,e as i,j as e,a as s,r as p,p as c,q as x}from"./index-ff45
     width: calc((100% - 20px) / 2);
     margin-bottom: 0px;
   }
-`,u=()=>{const o=i(d);return e.jsx(w,{children:o.map(a=>e.jsx(b,{children:e.jsx(h,{item:a})},a._id))})},f=t.h2`
+`,u=()=>{const o=i(d);return e.jsx(l,{children:o.map(a=>e.jsx(b,{children:e.jsx(h,{item:a})},a._id))})},f=t.h2`
   font-size: 24px;
   line-height: 30px;
   margin-bottom: 16px;
@@ -64,15 +64,15 @@ import{u as t,t as r,e as i,j as e,a as s,r as p,p as c,q as x}from"./index-ff45
   }
 
   @media screen and (min-width: ${r.breakpoint.desktop}) {
-    max-width: 1372px;
-    padding: 20px 10px;
+    max-width: 1382px;
+    padding: 20px 5px;
   }
 `,F=t.div`
   @media screen and (min-width: ${r.breakpoint.desktop}) {
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     column-gap: 44px;
   }
-`,q=()=>{const o=s(),a=i(g),m=i(l);return p.useEffect(()=>{o(c())},[o]),e.jsxs(z,{children:[e.jsx(j,{}),e.jsxs(F,{children:[e.jsx(E,{}),a&&e.jsx(x,{}),m?e.jsx("p",{children:"Oops...something went wrong! Try again later"}):e.jsx(u,{})]})]})};export{q as default};
+`,q=()=>{const o=s(),a=i(g),m=i(w);return p.useEffect(()=>{o(c())},[o]),e.jsxs(z,{children:[e.jsx(j,{}),e.jsxs(F,{children:[e.jsx(E,{}),a&&e.jsx(x,{}),m?e.jsx("p",{children:"Oops...something went wrong! Try again later"}):e.jsx(u,{})]})]})};export{q as default};
