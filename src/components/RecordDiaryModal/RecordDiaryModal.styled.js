@@ -139,6 +139,9 @@ export const MealItem = styled.li`
       grid-column-end: 4;
     }
   }
+  @media screen and (min-width:1440px){
+    overflow: hidden;
+  }
 `;
 
 export const FieldWrapper = styled.div`
@@ -203,7 +206,7 @@ export const ButtonDelete = styled.button`
   background-color: transparent;
   transition: ${theme.transition.main};
   &:hover {
-    transform: scale(0.9);
+    transform: scale(1.1);
     animation: 1s ease-in-out infinite;
   }
 `;

@@ -75,6 +75,11 @@ export const ButtonDelete = styled.button`
   padding: 0;
   margin: 0;
   background-color: transparent;
+  transition: ${theme.transition.main};
+  &:hover {
+    transform: scale(1.1);
+    animation: 1s ease-in-out infinite;
+  }
 `;
 
 export const AddButton = styled.button`
