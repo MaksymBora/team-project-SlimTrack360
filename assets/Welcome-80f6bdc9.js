@@ -1,4 +1,4 @@
-import{u as t,t as i,j as e,L as n}from"./index-143551b4.js";import{S as l,W as p,C as c,_ as x,a as d,b as r,c as m,d as g,e as h,f,g as u,h as y,i as w,j as b,k as j,I as $}from"./SignUpContent.styled-a0115f27.js";import"./index-387d7a00.js";const k=t.div`
+import{u as t,t as i,j as e,L as n}from"./index-4a3eaae5.js";import{S as l,W as p,C as c,_ as x,a as d,b as r,c as m,d as g,e as h,f,g as u,h as y,i as w,j as b,k as j,I as $}from"./SignUpContent.styled-dd96c72b.js";import"./index-387d7a00.js";const k=t.div`
   // max-width: 833px;
   display: flex;
   flex-direction: column;
@@ -84,7 +84,8 @@ import{u as t,t as i,j as e,L as n}from"./index-143551b4.js";import{S as l,W as 
   border-radius: 12px;
   background: ${i.color.primaryGreenLite};
   border: 1px solid transparent;
-  transition: all 0.3s ease-in-out;
+  // transition: all 0.3s ease-in-out;
+  transition: ${i.transition.main};
   width: 142px;
   &:hover {
     cursor: pointer;
@@ -119,7 +120,8 @@ import{u as t,t as i,j as e,L as n}from"./index-143551b4.js";import{S as l,W as 
   background: ${i.color.primaryGreenLite};
   width: 142px;
   background-color: transparent;
-  transition: all 0.3s ease-in-out;
+  transition: ${i.transition.main};
+  // transition: all 0.3s ease-in-out;
   border: 1px solid transparent;
   &:hover {
     cursor: pointer;
