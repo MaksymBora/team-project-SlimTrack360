@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../../styles';
 
 const Form = styled.form`
   display: grid;
@@ -68,29 +69,45 @@ const SubmitBtn = styled.button`
   padding: 8px 10px;
   border-radius: 12px;
   background-color: ${(p) => p.theme.color.primaryGreenLite};
-
+  border: 1px solid transparent;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
 
   transition: ${(p) => p.theme.transition.main};
+  &:hover {
+    color: ${theme.color.primaryWhite};
+    background-color: transparent;
+    border: 1px solid ${theme.color.primaryGreenLite};
+  }
+  &:focus {
+    color: ${theme.color.primaryBlack};
+    background-color: ${theme.color.primaryGreenLite};
+  }
 `;
 
 const CancelBtn = styled.button`
   font-size: 14px;
   line-height: 1.4;
   background-color: transparent;
+  padding: 8px 10px;
   color: ${(p) => p.theme.color.primaryGrey};
   border: 1px solid transparent;
   border-radius: 12px;
   outline: none;
 
-  &:hover,
+  &:hover {
+    color: ${theme.color.primaryWhite};
+    border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
+  }
   &:active {
     outline: none;
     border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
   }
-
+  &:focus {
+    background-color: ${theme.color.primaryGreenLite};
+    color: ${theme.color.primaryBlack};
+  }
   transition: ${(p) => p.theme.transition.main};
 `;
 

@@ -23,6 +23,15 @@ export const MainTitle = styled.h2`
 export const ButtonStyle = styled.button`
   background-color: transparent;
   border: none;
+  transition: ${theme.transition.main};
+  &:hover {
+    transform: scale(1.1);
+    animation: 1s ease-in-out infinite;
+    fill: ${theme.color.primaryWhite};
+  }
+  &:focus {
+    fill: ${theme.color.primaryLiteGreen};
+  }
 `;
 
 export const SvgArrowRight = styled.svg`
@@ -81,6 +90,9 @@ export const TextIndexSpan = styled.span`
     transform: scale(1.2);
     animation: 1s ease-in-out infinite;
   }
+  // &:focus {
+
+  // }
 `;
 
 export const ListMeatContainer = styled.div`

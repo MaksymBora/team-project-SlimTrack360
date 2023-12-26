@@ -38,7 +38,13 @@ export const DiaryLink = styled(Link)`
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-
+  transition: ${theme.transition.main};
+  &:hover {
+    color: ${theme.color.primaryWhite};
+  }
+  &:focus {
+    color: ${theme.color.primaryGrey};
+  }
   @media screen and (min-width: 834px) {
     font-size: 16px;
     line-height: 22px;
