@@ -1,6 +1,3 @@
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-
 import genderAgeDesc1xPng from '../../assets/imgGenderAge/genderAge-desctop-1x-min.png';
 import genderAgeDesc2xPng from '../../assets/imgGenderAge/genderAge-desctop-2x-min.png';
 import genderAgeDesc3xPng from '../../assets/imgGenderAge/genderAge-desctop-3x-min.png';
@@ -20,7 +17,6 @@ import genderAgeTab3xWebp from '../../assets/imgGenderAge/genderAge-tablet-3x-mi
 import genderAgeMob1xWebp from '../../assets/imgGenderAge/genderAge-mobile-1x-min.webp';
 import genderAgeMob2xWebp from '../../assets/imgGenderAge/genderAge-mobile-2x-min.webp';
 import genderAgeMob3xWebp from '../../assets/imgGenderAge/genderAge-mobile-3x-min.webp';
-
 import {
   Container,
   DescWrapper,
@@ -45,35 +41,17 @@ import {
   StylesErrorSvg,
   BackLinkwrapper,
 } from './Age.styled';
+import { useState } from 'react';
 
-const SignUpAge = ({ setStep }) => {
-  const validationSchema = Yup.object().shape({
-    sex: Yup.string().required('Please select your gender'),
-    age: Yup.number()
-      .typeError('Age must be a number')
-      .required('Please enter your age')
-      .positive('Age must be a positive number')
-      .integer('Age must be an integer')
-      .min(18, 'Age must be at least 18 years old')
-      .max(122, 'Age must be at most 122 years old'),
-  });
+const SignUpAge = ({ setStep, formik }) => {
+  const [validation, setValidation] = useState('');
 
-  const formik = useFormik({
-    initialValues: {
-      sex: 'male',
-      age: '',
-    },
-    validationSchema,
-    onSubmit: (values) => {
-      const retrievedData = sessionStorage.getItem('authReg');
-      const parsedData = JSON.parse(retrievedData);
-      parsedData.sex = values.sex;
-      parsedData.age = values.age;
-      const updatedJsonData = JSON.stringify(parsedData);
-      sessionStorage.setItem('authReg', updatedJsonData);
+  const onClickBtnNext = () => {
+    setValidation('validation');
+    if (formik.values.age !== '' && !formik.errors.age) {
       setStep((prevState) => (prevState += 1));
-    },
-  });
+    }
+  };
 
   return (
     <StylesSection>
@@ -119,7 +97,7 @@ const SignUpAge = ({ setStep }) => {
             </StyleSubtitle>
             <StyleBtnColumn>
               <SubtitleGenderForm>Gender</SubtitleGenderForm>
-              <StylesForm onSubmit={formik.handleSubmit}>
+              <StylesForm>
                 <StylesRadioBtn>
                   <CustomRadio>
                     <CustomRadioInput
@@ -128,7 +106,7 @@ const SignUpAge = ({ setStep }) => {
                       name="sex"
                       value="male"
                       onChange={formik.handleChange}
-                      defaultChecked
+                      defaultChecked={formik.values.sex === 'male'}
                     />
                     <StylesLabelForm htmlFor="male">Male</StylesLabelForm>
                   </CustomRadio>
@@ -139,6 +117,7 @@ const SignUpAge = ({ setStep }) => {
                       name="sex"
                       value="female"
                       onChange={formik.handleChange}
+                      defaultChecked={formik.values.sex === 'female'}
                     />
                     <StylesLabelForm htmlFor="female">Female</StylesLabelForm>
                   </CustomRadio>
@@ -146,6 +125,13 @@ const SignUpAge = ({ setStep }) => {
                 <AgeInputWrapper>
                   <AgeInputLabel htmlFor="ageInput">Your age</AgeInputLabel>
                   <AgeInputStiles
+                    className={
+                      validation === 'validation'
+                        ? formik.errors.age
+                          ? 'error'
+                          : 'correct'
+                        : ''
+                    }
                     type="number"
                     id="ageInput"
                     name="age"
@@ -177,7 +163,14 @@ const SignUpAge = ({ setStep }) => {
                     </StylesErrorAge>
                   ) : null}
                 </AgeInputWrapper>
-                <StylesBtnForm type="submit">Next</StylesBtnForm>
+                <StylesBtnForm
+                  type="button"
+                  onClick={() => {
+                    onClickBtnNext();
+                  }}
+                >
+                  Next
+                </StylesBtnForm>
               </StylesForm>
               <BackLinkwrapper>
                 <StyleBackLink

@@ -1,5 +1,3 @@
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import goalsDesc1xPng from '../../assets/imgGoal/goals-desctop-1x-min.png';
 import goalsDesc2xPng from '../../assets/imgGoal/goals-desctop-2x-min.png';
 import goalsDesc3xPng from '../../assets/imgGoal/goals-desctop-3x-min.png';
@@ -39,27 +37,7 @@ import {
   BackLinkwrapper,
 } from './Goal.styled';
 
-const SignUpGoal = ({ setStep }) => {
-  const validationSchema = Yup.object().shape({
-    goal: Yup.string().required(),
-  });
-
-  const formik = useFormik({
-    initialValues: {
-      goal: 'Lose Fat',
-    },
-    validationSchema,
-    onSubmit: (values) => {
-      const retrievedData = sessionStorage.getItem('authReg');
-      const parsedData = JSON.parse(retrievedData);
-      parsedData.goal = values.goal;
-      const updatedJsonData = JSON.stringify(parsedData);
-      sessionStorage.setItem('authReg', updatedJsonData);
-
-      setStep((prevState) => (prevState += 1));
-    },
-  });
-
+const SignUpGoal = ({ setStep, formik }) => {
   return (
     <StylesSection>
       <Container>
@@ -145,7 +123,12 @@ const SignUpGoal = ({ setStep }) => {
                     </StylesLabelForm>
                   </CustomRadio>
                 </StylesRadioBtn>
-                <StylesBtnForm type="submit">Next</StylesBtnForm>
+                <StylesBtnForm
+                  type="button"
+                  onClick={() => setStep((prevState) => (prevState += 1))}
+                >
+                  Next
+                </StylesBtnForm>
               </StylesForm>
               <BackLinkwrapper>
                 <StyleBackLink

@@ -13,7 +13,5 @@ export const basicSchema = yup.object().shape({
   password: yup
     .string()
     .required('Password is required*')
-    // .min(8, 'Must be at least 8 characters long*')
-    // .max(64, 'Must not exceed 64 characters*')
     .matches(passwordRegExp, 'Password must meet the requirements*'),
 });

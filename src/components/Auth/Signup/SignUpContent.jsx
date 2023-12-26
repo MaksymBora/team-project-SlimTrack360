@@ -1,8 +1,5 @@
-import { useFormik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { basicSchema } from './schemas';
-
 import {
   Div,
   Input,
@@ -22,38 +19,23 @@ import {
   Des,
 } from './SignUpContent.styled';
 
-export const SignUpContent = ({ setStep }) => {
+export const SignUpContent = ({ setStep, formik }) => {
   const [showPassword, setShowPassword] = useState(false);
-  // const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const [validation, setValidation] = useState('');
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const form = e.currentTarget;
-
-  //   const data = {
-  //     name: form.elements.name.value,
-  //     email: form.elements.email.value,
-  //     password: form.elements.password.value,
-  //   };
-
-  //   setStep((prevState) => (prevState += 1));
-  // };
-
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues: {
-        name: '',
-        email: '',
-        password: '',
-      },
-      onSubmit: (values) => {
-        const jsonData = JSON.stringify(values);
-        sessionStorage.setItem('authReg', jsonData);
-
-        setStep((prevState) => (prevState += 1));
-      },
-      validationSchema: basicSchema,
-    });
+  const onClickBtnNext = () => {
+    setValidation('validation');
+    if (
+      formik.values.name !== '' &&
+      formik.values.email !== '' &&
+      formik.values.password !== '' &&
+      !formik.errors.name &&
+      !formik.errors.email &&
+      !formik.errors.password
+    ) {
+      setStep((prevState) => (prevState += 1));
+    }
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -64,51 +46,78 @@ export const SignUpContent = ({ setStep }) => {
       <Div>
         <MainText>Sign up</MainText>
         <Subtitle>You need to register to use the service</Subtitle>
-        <Form onSubmit={handleSubmit}>
+        <Form>
           <Wrapper>
-            <Label className={errors.name && touched.name ? 'input-error' : ''}>
+            <Label
+              className={
+                formik.errors.name && formik.touched.name ? 'input-error' : ''
+              }
+            >
               <Input
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.name}
+                className={
+                  validation === 'validation'
+                    ? formik.errors.name
+                      ? 'error'
+                      : 'correct'
+                    : ''
+                }
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.name}
                 name="name"
                 placeholder="Name"
                 required
               />
             </Label>
-            {errors.name && touched.name && (
-              <Attention>{errors.name}</Attention>
+            {formik.errors.name && formik.touched.name && (
+              <Attention>{formik.errors.name}</Attention>
             )}
             <Label
-              className={errors.email && touched.email ? 'input-error' : ''}
+              className={
+                formik.errors.email && formik.touched.email ? 'input-error' : ''
+              }
             >
               <Input
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
+                className={
+                  validation === 'validation'
+                    ? formik.errors.name
+                      ? 'error'
+                      : 'correct'
+                    : ''
+                }
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
                 name="email"
                 placeholder="E-mail"
                 required
               />
             </Label>
-            {errors.email && touched.email && (
-              <Attention>{errors.email}</Attention>
+            {formik.errors.email && formik.touched.email && (
+              <Attention>{formik.errors.email}</Attention>
             )}
 
             <Label
               className={
-                errors.password && touched.password
+                formik.errors.password && formik.touched.password
                   ? 'input-error'
-                  : touched.password
+                  : formik.touched.password
                     ? 'input-success'
                     : ''
               }
             >
               <Input
+                className={
+                  validation === 'validation'
+                    ? formik.errors.name
+                      ? 'error'
+                      : 'correct'
+                    : ''
+                }
                 type={showPassword ? 'text' : 'password'}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
                 name="password"
                 placeholder="Password"
                 required
@@ -171,7 +180,7 @@ export const SignUpContent = ({ setStep }) => {
                   </EyeIcon>
                 )}
               </Span>
-              {errors.password && touched.password ? (
+              {formik.errors.password && formik.touched.password ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -184,7 +193,7 @@ export const SignUpContent = ({ setStep }) => {
                     fill="#E74A3B"
                   />
                 </svg>
-              ) : touched.password ? (
+              ) : formik.touched.password ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -201,16 +210,23 @@ export const SignUpContent = ({ setStep }) => {
                 ''
               )}
             </Label>
-            {errors.password && touched.password ? (
-              <Attention>{errors.password}</Attention>
-            ) : touched.password ? (
+            {formik.errors.password && formik.touched.password ? (
+              <Attention>{formik.errors.password}</Attention>
+            ) : formik.touched.password ? (
               <Valid>Password is secure</Valid>
             ) : (
               ''
             )}
           </Wrapper>
           <Main>
-            <Button type="submit">Next</Button>
+            <Button
+              type="button"
+              onClick={() => {
+                onClickBtnNext();
+              }}
+            >
+              Next
+            </Button>
           </Main>
         </Form>
         <Options>
