@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useEffect } from 'react';
 
 import genderAgeDesc1xPng from '../../assets/imgGenderAge/genderAge-desctop-1x-min.png';
 import genderAgeDesc2xPng from '../../assets/imgGenderAge/genderAge-desctop-2x-min.png';
@@ -48,6 +48,15 @@ import {
 } from './Age.styled';
 
 const SignUpAge = ({ setStep }) => {
+  const saveDataToLocalStorage = (values) => {
+    localStorage.setItem('ageSexReg', JSON.stringify(values));
+  };
+
+  const loadFormDataFromLocalStorage = () => {
+    const savedData = localStorage.getItem('ageSexReg');
+    return savedData ? JSON.parse(savedData) : { sex: 'male', age: '' };
+  };
+
   const validationSchema = Yup.object().shape({
     sex: Yup.string().required('Please select your gender'),
     age: Yup.number()
@@ -59,32 +68,26 @@ const SignUpAge = ({ setStep }) => {
       .max(122, 'Age must be at most 122 years old'),
   });
 
-  const initialValuesFromStorage = sessionStorage.getItem('authReg');
-  const parsedInitialValues = JSON.parse(initialValuesFromStorage);
-
   const formik = useFormik({
-    initialValues: {
-      sex: parsedInitialValues?.sex || 'male',
-      age: parsedInitialValues?.age || '',
-    },
+    initialValues: loadFormDataFromLocalStorage(),
     validationSchema,
     onSubmit: (values) => {
-      const retrievedData = sessionStorage.getItem('authReg');
-      const parsedData = JSON.parse(retrievedData);
-      parsedData.sex = values.sex;
-      parsedData.age = values.age;
-      const updatedJsonData = JSON.stringify(parsedData);
-      sessionStorage.setItem('authReg', updatedJsonData);
-      setStep((prevState) => (prevState += 1));
+      saveDataToLocalStorage(values);
+      setStep((prevState) => prevState + 1);
     },
   });
 
+  const handleRadioChange = (e) => {
+    const fieldName = e.target.name;
+    const fieldValue = e.target.value;
+    formik.setFieldValue(fieldName, fieldValue);
+  };
+
   useEffect(() => {
-    formik.setValues({
-      sex: parsedInitialValues?.sex || 'male',
-      age: parsedInitialValues?.age || '',
-    });
-  }, [formik, parsedInitialValues]);
+    return () => {
+      saveDataToLocalStorage(formik.values);
+    };
+  }, [formik.values]);
 
   return (
     <StylesSection>
@@ -138,7 +141,11 @@ const SignUpAge = ({ setStep }) => {
                       id="male"
                       name="sex"
                       value="male"
-                      onChange={formik.handleChange}
+                      onChange={(e) => {
+                        handleRadioChange(e);
+                        formik.handleChange(e);
+                      }}
+                      checked={formik.values.sex === 'male'}
                       defaultChecked
                     />
                     <StylesLabelForm htmlFor="male">Male</StylesLabelForm>
@@ -149,7 +156,11 @@ const SignUpAge = ({ setStep }) => {
                       id="female"
                       name="sex"
                       value="female"
-                      onChange={formik.handleChange}
+                      onChange={(e) => {
+                        handleRadioChange(e);
+                        formik.handleChange(e);
+                      }}
+                      checked={formik.values.sex === 'female'}
                     />
                     <StylesLabelForm htmlFor="female">Female</StylesLabelForm>
                   </CustomRadio>

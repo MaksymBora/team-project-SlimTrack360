@@ -1,5 +1,7 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useEffect } from 'react';
+
 import goalsDesc1xPng from '../../assets/imgGoal/goals-desctop-1x-min.png';
 import goalsDesc2xPng from '../../assets/imgGoal/goals-desctop-2x-min.png';
 import goalsDesc3xPng from '../../assets/imgGoal/goals-desctop-3x-min.png';
@@ -40,25 +42,34 @@ import {
 } from './Goal.styled';
 
 const SignUpGoal = ({ setStep }) => {
+  const saveDataToSessionStorage = (values) => {
+    sessionStorage.setItem('goalhReg', JSON.stringify(values));
+  };
+
+  const loadFormDataFromSessionStorage = () => {
+    const savedData = sessionStorage.getItem('goalhReg');
+    return savedData ? JSON.parse(savedData) : { goal: 'Lose Fat' };
+  };
+
   const validationSchema = Yup.object().shape({
     goal: Yup.string().required(),
   });
 
   const formik = useFormik({
-    initialValues: {
-      goal: 'Lose Fat',
-    },
+    initialValues: loadFormDataFromSessionStorage(),
     validationSchema,
     onSubmit: (values) => {
-      const retrievedData = sessionStorage.getItem('authReg');
-      const parsedData = JSON.parse(retrievedData);
-      parsedData.goal = values.goal;
-      const updatedJsonData = JSON.stringify(parsedData);
-      sessionStorage.setItem('authReg', updatedJsonData);
-
+      saveDataToSessionStorage(values);
       setStep((prevState) => (prevState += 1));
     },
   });
+
+  useEffect(() => {
+    const storedValues = JSON.parse(sessionStorage.getItem('goalhReg'));
+    if (storedValues) {
+      formik.setValues(storedValues);
+    }
+  }, []);
 
   return (
     <StylesSection>
@@ -126,6 +137,7 @@ const SignUpGoal = ({ setStep }) => {
                       value="Maintain"
                       onChange={formik.handleChange}
                       checked={formik.values.goal === 'Maintain'}
+                      defaultChecked
                     />
                     <StylesLabelForm htmlFor="maintain">
                       Maintain

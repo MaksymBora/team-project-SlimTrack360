@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useEffect } from 'react';
 
 import bodyParamDesc1xPng from '../../assets/imgBodyParam/bodyParam-desctop-1x-min.png';
 import bodyParamDesc2xPng from '../../assets/imgBodyParam/bodyParam-desctop-2x-min.png';
@@ -44,6 +45,15 @@ import {
 } from './Param.styled';
 
 const SignUpParams = ({ setStep }) => {
+  const saveDataToLocalStorage = (values) => {
+    localStorage.setItem('paramReg', JSON.stringify(values));
+  };
+
+  const loadFormDataFromLocalStorage = () => {
+    const savedData = localStorage.getItem('paramReg');
+    return savedData ? JSON.parse(savedData) : { heigh: '', weight: '' };
+  };
+
   const validationSchema = Yup.object().shape({
     height: Yup.number()
       .typeError('Height must be a number')
@@ -63,21 +73,19 @@ const SignUpParams = ({ setStep }) => {
   });
 
   const formik = useFormik({
-    initialValues: {
-      height: '',
-      weight: '',
-    },
+    initialValues: loadFormDataFromLocalStorage(),
     validationSchema,
     onSubmit: (values) => {
-      const retrievedData = sessionStorage.getItem('authReg');
-      const parsedData = JSON.parse(retrievedData);
-      parsedData.height = values.height;
-      parsedData.currentWeight = values.weight;
-      const updatedJsonData = JSON.stringify(parsedData);
-      sessionStorage.setItem('authReg', updatedJsonData);
-      setStep((prevState) => (prevState += 1));
+      saveDataToLocalStorage(values);
+      setStep((prevState) => prevState + 1);
     },
   });
+
+  useEffect(() => {
+    return () => {
+      saveDataToLocalStorage(formik.values);
+    };
+  }, [formik.values]);
 
   return (
     <StylesSection>
