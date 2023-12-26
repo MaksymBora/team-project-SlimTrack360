@@ -9,6 +9,7 @@ import {
   InfoAmount,
   Span,
   InfoWrapper,
+  ItemGoal,
 } from './DailyGoal.styled';
 import { useSelector } from 'react-redux';
 import {
@@ -25,29 +26,33 @@ export const DailyGoal = () => {
       <Title>Daily goal</Title>
       <DailyInfoCard>
         <InfoCardWrapper>
-          <Icon
-            name={'icon-bubble'}
-            width={'80px'}
-            height={'80px'}
-            fill={`${theme.color.primaryLiteGreen}`}
-          />
-          <InfoWrapper>
-            <InfoTitle>Calories</InfoTitle>
-            <InfoAmount>{calories}</InfoAmount>
-          </InfoWrapper>
-          <Icon
-            name={'icon-milk'}
-            width={'80px'}
-            height={'80px'}
-            fill={`${theme.color.primaryViolet}`}
-          />
-          <InfoWrapper>
-            <InfoTitle>Water</InfoTitle>
-            <InfoAmount>
-              {water}
-              <Span>ml</Span>
-            </InfoAmount>
-          </InfoWrapper>
+          <ItemGoal>
+            <Icon
+              name={'icon-bubble'}
+              width={'80px'}
+              height={'80px'}
+              fill={`${theme.color.primaryLiteGreen}`}
+            />
+            <InfoWrapper>
+              <InfoTitle>Calories</InfoTitle>
+              <InfoAmount>{calories}</InfoAmount>
+            </InfoWrapper>
+          </ItemGoal>
+          <ItemGoal>
+            <Icon
+              name={'icon-milk'}
+              width={'80px'}
+              height={'80px'}
+              fill={`${theme.color.primaryViolet}`}
+            />
+            <InfoWrapper>
+              <InfoTitle>Water</InfoTitle>
+              <InfoAmount>
+                {water}
+                <Span>ml</Span>
+              </InfoAmount>
+            </InfoWrapper>
+          </ItemGoal>
         </InfoCardWrapper>
       </DailyInfoCard>
     </div>

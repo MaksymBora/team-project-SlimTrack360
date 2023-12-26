@@ -8,16 +8,18 @@ export const ContainerDiary = styled.div`
 
   @media screen and (min-width: 320px) {
     padding: 16px 10px;
-    min-width: 320px;
+    width: 320px;
   }
 
   @media screen and (min-width: 834px) {
-    min-width: 800px;
+    width: 800px;
     padding: 24px 10px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1372px;
+    width: 1382px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 `;
 

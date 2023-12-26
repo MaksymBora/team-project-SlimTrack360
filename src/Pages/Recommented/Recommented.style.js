@@ -14,8 +14,8 @@ export const Wrap = styled.div`
   }
 
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    max-width: 1372px;
-    padding: 20px 10px;
+    max-width: 1382px;
+    padding: 20px 5px;
   }
 `;
 export const InnerWrap = styled.div`
@@ -23,7 +23,7 @@ export const InnerWrap = styled.div`
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     column-gap: 44px;
   }
 `;

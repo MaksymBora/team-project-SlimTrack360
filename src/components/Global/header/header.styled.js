@@ -29,19 +29,19 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 320px) {
     padding-right: 10px;
     padding-left: 10px;
-    min-width: 320px;
+    width: 320px;
   }
 
   @media screen and (min-width: 834px) {
-    min-width: 800px;
+    width: 800px;
     padding-right: 10px;
     padding-left: 10px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1372px;
-    padding-right: 10px;
-    padding-left: 10px;
+    width: 1382px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 `;
 
@@ -131,7 +131,6 @@ export const UserIcon = styled.div`
 export const Navigation = styled.nav`
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
 
   @media screen and (min-width: 320px) {
     gap: 4px;
@@ -146,15 +145,13 @@ export const Navigation = styled.nav`
 
 export const UserLogoContainer = styled.div`
   display: flex;
-  /* width: 126px; */
+
   height: 24px;
   align-items: center;
   position: relative;
 
   @media screen and (min-width: 834px) {
-    /* width: 130px; */
     height: 28px;
-    /* margin-left: 73px; */
   }
 `;
 
@@ -201,22 +198,6 @@ export const UserAva = styled.div`
   }
 `;
 
-// export const UserLogoText = styled.div`
-//   width: 24px;
-//   height: 24px;
-//   margin-right: 4px;
-//   border-radius: 28px;
-//   border: ${theme.color.primaryGrey} solid 1px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   @media screen and (min-width: 834px) {
-//     width: 28px;
-//     height: 28px;
-//   }
-// `;
-
 export const UserLogoText = styled.div`
   font-size: 16px;
   line-height: 16px;
@@ -238,7 +219,6 @@ export const UserLogoIcon = styled.div`
 //Настройки юзера
 
 export const UserMode = styled.div`
-  /* margin-right:200px; */
   position: relative;
 `;
 
@@ -373,7 +353,7 @@ export const WeightPic = styled.div`
 export const WeightSelection = styled.div`
   display: flex;
   flex-direction: column;
-  /* width: 142px; */
+
   gap: 2px;
 `;
 

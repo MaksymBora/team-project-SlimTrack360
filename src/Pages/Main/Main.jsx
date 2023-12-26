@@ -8,7 +8,6 @@ import {
   TextLink,
   BlocksWrap,
   FoodStatistics,
-  Wrapper,
 } from './Main.styled';
 import { DailyGoal } from '../../components/MainPage/DailyGoal/DailyGoal';
 import Icon from '../../components/common/Icon';
@@ -36,29 +35,27 @@ const Main = () => {
 
   return (
     <Container>
-      <Wrapper>
-        <TitleWrap>
-          <MainTitle>Today</MainTitle>
-          <GoalLink to="/dashboard">
-            <TextLink>On the way to the goal</TextLink>
-            <Icon
-              name={'icon-arrowright'}
-              width={'16px'}
-              height={'16px'}
-              fill={`${theme.color.primaryGrey}`}
-            />
-          </GoalLink>
-        </TitleWrap>
-        <BlocksWrap>
-          <DailyGoal />
-          <WaterInfo />
-          <FoodInfo />
-        </BlocksWrap>
-        <FoodStatistics>
-          <DiaryInfo />
-          <RecommendedFood />
-        </FoodStatistics>
-      </Wrapper>
+      <TitleWrap>
+        <MainTitle>Today</MainTitle>
+        <GoalLink to="/dashboard">
+          <TextLink>On the way to the goal</TextLink>
+          <Icon
+            name={'icon-arrowright'}
+            width={'16px'}
+            height={'16px'}
+            fill={`${theme.color.primaryGrey}`}
+          />
+        </GoalLink>
+      </TitleWrap>
+      <BlocksWrap>
+        <DailyGoal />
+        <WaterInfo />
+        <FoodInfo />
+      </BlocksWrap>
+      <FoodStatistics>
+        <DiaryInfo />
+        <RecommendedFood />
+      </FoodStatistics>
     </Container>
   );
 };

@@ -17,7 +17,6 @@ export const Title = styled.h2`
 export const DailyInfoCard = styled.div`
   padding: 16px 12px;
   width: 300px;
-  height: 212px;
   border-radius: 12px;
   background-color: ${theme.color.primaryBlack2};
 
@@ -26,26 +25,33 @@ export const DailyInfoCard = styled.div`
 
   @media screen and (min-width: 834px) {
     width: 380px;
-    height: 240px;
-    padding: 24px 40px;
+    padding-bottom: 24px;
+    padding-top: 24px;
+    padding-left: 40px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 328px;
-    height: 240px;
-    padding: 24px 40px;
+    padding-bottom: 24px;
+    padding-top: 24px;
+    padding-left: 40px;
   }
 `;
 
 export const InfoCardWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 20px;
 
   @media screen and (min-width: 834px) {
-    height: 192px;
     row-gap: 32px;
   }
+`;
+
+export const ItemGoal = styled.div`
+  display: flex;
+  gap: 20px;
 `;
 
 export const InfoWrapper = styled.div`

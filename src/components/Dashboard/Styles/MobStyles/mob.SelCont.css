@@ -1,5 +1,4 @@
 .monthsArrows {
-  /* background-color: brown; */
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -8,7 +7,7 @@
 }
 
 .monthsArrows button {
-  background-color: #000;
+  background-color: transparent;
   padding: 0;
 }
 .IconArrowLeft svg {
@@ -26,7 +25,7 @@
 .IconArrowUp :hover,
 .IconArrowLeft svg:hover {
   cursor: pointer;
-  fill: var(--primaryGreenLite);
+  fill: #e3ffa8;
 }
 .selectedMonth {
   font-weight: 500;

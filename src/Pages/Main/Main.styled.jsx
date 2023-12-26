@@ -1,27 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
 import { theme } from '../../styles/index';
-
-// export const Container = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   padding: 16px 10px;
-//   margin: 0 auto;
-//   background-color: ${theme.color.primaryBlack};
-//   color: ${theme.color.primaryWhite};
-
-//   @media screen and (min-width: 834px) {
-//     padding: 24px 10px;
-//     min-width: 800px;
-//   }
-
-//   @media screen and (min-width: 1440px) {
-//     padding: 20px 10px;
-//     width: 100%;
-//   }
-// `;
 
 export const Container = styled.div`
   display: flex;
@@ -30,36 +9,18 @@ export const Container = styled.div`
   margin: 0 auto;
 
   @media screen and (min-width: 320px) {
+    width: 320px;
     padding: 16px 10px;
   }
 
   @media screen and (min-width: 834px) {
-    padding: 16px 10px;
-  }
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: auto;
-
-  @media screen and (min-width: 320px) {
-    padding-right: 10px;
-    padding-left: 10px;
-    min-width: 320px;
-  }
-
-  @media screen and (min-width: 834px) {
-    min-width: 800px;
-    padding-right: 10px;
-    padding-left: 10px;
+    width: 800px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1372px;
-    padding-right: 10px;
-    padding-left: 10px;
+    width: 1382px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 `;
 
@@ -68,15 +29,7 @@ export const TitleWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  width: 300px;
-
-  @media screen and (min-width: 834px) {
-    width: 780px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 1372px;
-  }
+  width: 100%;
 `;
 
 export const MainTitle = styled.h1`
