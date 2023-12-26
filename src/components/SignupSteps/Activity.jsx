@@ -1,5 +1,5 @@
 import { register } from '../../Redux/userAuth/operations';
-import { Loader } from '../../utils/Loader';
+
 import activityDesc1xPng from '../../assets/imgActivity/activity-desctop-1x-min.png';
 import activityDesc2xPng from '../../assets/imgActivity/activity-desctop-2x-min.png';
 import activityDesc3xPng from '../../assets/imgActivity/activity-desctop-3x-min.png';
@@ -19,7 +19,6 @@ import activityTab3xWebp from '../../assets/imgActivity/activity-tablet-3x-min.w
 import activityMob1xWebp from '../../assets/imgActivity/activity-mobile-1x-min.webp';
 import activityMob2xWebp from '../../assets/imgActivity/activity-mobile-2x-min.webp';
 import activityMob3xWebp from '../../assets/imgActivity/activity-mobile-3x-min.webp';
-
 import {
   Container,
   DescWrapper,
@@ -40,17 +39,13 @@ import {
 } from './Activity.styled';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 const SignUpActivity = ({ setStep, formik }) => {
-  const [sending, setSending] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmitForm = async () => {
     try {
-      setSending('loading');
-
       const {
         age,
         currentWeight,
@@ -74,11 +69,10 @@ const SignUpActivity = ({ setStep, formik }) => {
         sex,
       };
       await dispatch(register(data)).unwrap();
+      navigate('/signin');
     } catch (err) {
       navigate('/signin');
       return err;
-    } finally {
-      setSending('');
     }
   };
 
@@ -209,7 +203,7 @@ const SignUpActivity = ({ setStep, formik }) => {
                     handleSubmitForm();
                   }}
                 >
-                  {sending === 'loading' ? <Loader /> : 'Sign Up'}
+                  Sign Up
                 </StylesBtnForm>
               </StylesForm>
 
