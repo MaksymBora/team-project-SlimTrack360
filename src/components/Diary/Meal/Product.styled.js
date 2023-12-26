@@ -33,7 +33,6 @@ export const ProductTitleContainer = styled.div`
 `;
 export const ProductPower = styled.div`
   display: flex;
-  /* gap: 7px; */
   margin-left: 25px;
   @media (min-width: 834px) {
     gap: 32px;
@@ -89,6 +88,15 @@ export const EditButton = styled.button`
   display: flex;
   align-items: center;
   gap: 6px;
+  transition: ${theme.transition.main};
+  &:hover {
+    color: ${theme.color.primaryWhite};
+    animation: 1s ease-in-out infinite;
+    fill: ${theme.color.primaryWhite};
+  }
+  &:focus {
+    color: ${theme.color.primaryGrey};
+  }
 `;
 export const Svg = styled.svg`
   stroke: ${theme.color.primaryGrey};

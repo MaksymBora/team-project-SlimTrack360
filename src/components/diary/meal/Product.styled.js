@@ -33,7 +33,6 @@ export const ProductTitleContainer = styled.div`
 `;
 export const ProductPower = styled.div`
   display: flex;
-  /* gap: 7px; */
   margin-left: 25px;
   @media (min-width: 834px) {
     gap: 32px;
