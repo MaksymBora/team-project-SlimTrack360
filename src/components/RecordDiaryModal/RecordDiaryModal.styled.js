@@ -186,17 +186,26 @@ export const ButtonAddMore = styled.button`
   align-items: center;
   gap: 6px;
   padding: 0;
-
   background-color: inherit;
   font-size: 14px;
   font-weight: 500; //PoppinsMedium;
   line-height: 20px;
   color: ${theme.color.primaryGreenLite};
+  transition: ${theme.transition.main};
+  &:hover {
+    transform: scale(1.1);
+    animation: 1s ease-in-out infinite;
+  }
 `;
 export const ButtonDelete = styled.button`
   padding: 0;
   margin: 0;
   background-color: transparent;
+  transition: ${theme.transition.main};
+  &:hover {
+    transform: scale(0.9);
+    animation: 1s ease-in-out infinite;
+  }
 `;
 
 export const ButtonsContainer = styled.div`
@@ -218,9 +227,18 @@ export const ButtonConfirm = styled.button`
   font-size: 14px;
   font-weight: 500; // PoppinsMedium
   line-height: 20px;
-
+  transition: ${theme.transition.main};
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 212px;
+  }
+  &:hover {
+    animation: 1s ease-in-out infinite;
+    background-color: ${theme.color.primaryBlack};
+    color: ${theme.color.primaryWhite};
+  }
+  &:focus {
+    background-color: ${theme.color.primaryGreenLite};
+    color: ${theme.color.primaryBlack};
   }
 `;
 export const ButtonCancel = styled.button`
@@ -233,11 +251,18 @@ export const ButtonCancel = styled.button`
   font-weight: 400; //PoppinsRegular
   line-height: 20px;
   color: ${theme.color.primaryGrey};
-
+  transition: ${theme.transition.main};
+  border: 1.5px solid transparent;
   &:hover {
     border: 1.5px solid ${theme.color.primaryGreenLite};
+    animation: 1s ease-in-out infinite;
+    background-color: ${theme.color.primaryBlack};
+    color: ${theme.color.primaryWhite};
   }
-
+  &:focus {
+    background-color: ${theme.color.primaryGreenLite};
+    color: ${theme.color.primaryBlack};
+  }
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 212px;
   }

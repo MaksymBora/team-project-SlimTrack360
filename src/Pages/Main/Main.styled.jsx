@@ -58,10 +58,17 @@ export const GoalLink = styled(Link)`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
-
+  transition: ${theme.transition.main};
   @media screen and (min-width: 834px) {
     font-size: 16px;
     line-height: 22px;
+  }
+  &:hover {
+    animation: 1s ease-in-out infinite;
+    color: ${theme.color.primaryWhite};
+  }
+  &:focus {
+    color: ${theme.color.primaryGrey};
   }
 `;
 

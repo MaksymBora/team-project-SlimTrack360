@@ -167,6 +167,7 @@ export const Button = styled.button`
   font-weight: 500;
   line-height: 20px;
   border: 1px solid transparent;
+  transition: ${theme.transition.main};
   &:disabled {
     opacity: 0.35;
     cursor: not-allowed;

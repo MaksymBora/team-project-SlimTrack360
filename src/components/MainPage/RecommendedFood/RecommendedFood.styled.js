@@ -47,7 +47,14 @@ export const ButtonText = styled.p`
   color: ${theme.color.primaryGrey};
   font-size: 14px;
   line-height: 20px;
-
+  transition: ${theme.transition.main};
+  &:hover {
+    animation: 1s ease-in-out infinite;
+    color: ${theme.color.primaryWhite};
+  }
+  &:focus {
+    color: ${theme.color.primaryGrey};
+  }
   @media screen and (min-width: 834px) {
     font-size: 16px;
     line-height: 22px;

@@ -178,8 +178,12 @@ export const StylesBtnForm = styled.button`
   line-height: 1.42;
   border: 1px solid;
   transition: ${theme.transition.main};
-
-  &:hover,
+  cursor: pointer;
+  &:hover {
+    background-color: transparent;
+    border: 1px solid ${theme.color.primaryGreenLite};
+    color: ${theme.color.primaryWhite};
+  }
   &:focus {
     cursor: pointer;
     border: 1px solid ${theme.color.primaryGreenLite};

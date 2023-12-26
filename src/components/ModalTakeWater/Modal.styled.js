@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { theme } from '../../styles/index';
 export const Overlay = styled.div`
   position: fixed;
   top: 60px;
@@ -107,6 +107,20 @@ export const Confirm = styled.button`
   border-radius: 12px;
   gap: 10px;
   background: #e3ffa8;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    border: 1px solid transparent;
+    animation: 1s ease-in-out infinite;
+    background-color: transparent;
+    color: ${theme.color.primaryWhite};
+    border: 1px solid ${theme.color.primaryGreenLite};
+  }
+  &:focus {
+    background-color: ${theme.color.primaryGreenLite};
+    border: 1px solid transparent;
+    color: ${theme.color.primaryBlack};
+  }
   @media screen and (min-width: 834px) {
     width: 212px;
   }
@@ -119,7 +133,11 @@ export const Cancel = styled.button`
   background: transparent;
   color: #b6b6b6;
   margin-top: 8px;
-
+  transition: ${theme.transition.main};
+  &:hover,
+  &:focus {
+    color: ${theme.color.primaryGreenLite};
+  }
   @media screen and (min-width: 834px) {
     width: 212px;
     height: 36px;
