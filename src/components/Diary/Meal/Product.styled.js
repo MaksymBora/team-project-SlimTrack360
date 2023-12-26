@@ -92,7 +92,6 @@ export const EditButton = styled.button`
   &:hover {
     color: ${theme.color.primaryWhite};
     animation: 1s ease-in-out infinite;
-    fill: ${theme.color.primaryWhite};
   }
   &:focus {
     color: ${theme.color.primaryGrey};

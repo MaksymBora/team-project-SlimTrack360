@@ -28,8 +28,8 @@ const Container = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1372px;
-    padding: 0 10px;
+    width: 1382px;
+    padding: 0 5px;
   }
 `;
 
