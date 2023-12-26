@@ -1,4 +1,4 @@
-import{u as n,t,e as r,j as i,r as j,a as L,f as S,L as F,h as z}from"./index-be36e875.js";import{g as D,a as M,b as W,c as T,d as I,e as E,f as G,h as R,i as O,j as A,k as H,l as N,m as q,R as J,n as K,o as Q,p as U,s as V,q as X,r as Y,t as Z,u as _}from"./RecordDiaryModal-ab9bc9a5.js";import{I as ii}from"./Icon-ccc71669.js";import"./index-387d7a00.js";import"./index.esm-fbb2a4fc.js";const ni=n.div`
+import{u as n,t,e as r,j as i,r as j,a as L,f as S,L as F,h as z}from"./index-d4fc9059.js";import{g as D,a as W,b as M,c as T,d as I,e as G,f as E,h as R,i as O,j as A,k as H,l as N,m as q,R as J,n as K,o as Q,p as U,s as V,q as X,r as Y,t as Z,u as _}from"./RecordDiaryModal-1cd1c35c.js";import{I as ii}from"./Icon-a9ba65ce.js";import"./index-387d7a00.js";import"./index.esm-7c99a174.js";const ni=n.div`
   margin-right: auto;
   margin-left: auto;
   padding: 20px 10px;
@@ -226,12 +226,12 @@ import{u as n,t,e as r,j as i,r as j,a as L,f as S,L as F,h as z}from"./index-be
   ${x}
   background-color: transparent;
   width: 16px;
-`;const ai=n.div`
+`;const oi=n.div`
   display: flex;
   gap: 12px;
   align-items: center;
   margin-bottom: 16px;
-`,oi=n.div`
+`,ai=n.div`
   display: flex;
   gap: 16px;
   flex-direction: column;
@@ -264,7 +264,7 @@ import{u as n,t,e as r,j as i,r as j,a as L,f as S,L as F,h as z}from"./index-be
   display: flex;
   flex-direction: row;
   gap: 20px;
-`,pi=({title:e})=>{const a=r(D),o=r(M),d=r(W),p=r(T),h=r(I),c=r(E),l=r(G),m=r(R),s=r(O),g=r(A),v=r(H),P=r(N),$=()=>{if(e==="Breakfast")return a;if(e==="Lunch")return p;if(e==="Dinner")return l;if(e==="Snack")return g},C=()=>{if(e==="Breakfast")return o;if(e==="Lunch")return h;if(e==="Dinner")return m;if(e==="Snack")return v},B=()=>{if(e==="Breakfast")return d;if(e==="Lunch")return c;if(e==="Dinner")return s;if(e==="Snack")return P};return i.jsxs(si,{children:[i.jsxs(u,{children:["Carbonohidrates:",i.jsx(w,{children:$()})]}),i.jsxs(di,{children:[i.jsxs(u,{children:["Protein:",i.jsx(w,{children:B()})]}),i.jsxs(u,{children:["Fat:",i.jsx(w,{children:C()})]})]})]})},ci=n.div`
+`,pi=({title:e})=>{const o=r(D),a=r(W),d=r(M),p=r(T),h=r(I),c=r(G),l=r(E),m=r(R),s=r(O),g=r(A),$=r(H),v=r(N),P=()=>{if(e==="Breakfast")return o;if(e==="Lunch")return p;if(e==="Dinner")return l;if(e==="Snack")return g},C=()=>{if(e==="Breakfast")return a;if(e==="Lunch")return h;if(e==="Dinner")return m;if(e==="Snack")return $},B=()=>{if(e==="Breakfast")return d;if(e==="Lunch")return c;if(e==="Dinner")return s;if(e==="Snack")return v};return i.jsxs(si,{children:[i.jsxs(u,{children:["Carbonohidrates:",i.jsx(w,{children:P()})]}),i.jsxs(di,{children:[i.jsxs(u,{children:["Protein:",i.jsx(w,{children:B()})]}),i.jsxs(u,{children:["Fat:",i.jsx(w,{children:C()})]})]})]})},ci=n.div`
   border-radius: 12px;
   background-color: ${t.color.primaryBlack2};
   height: 240px;
@@ -300,7 +300,6 @@ import{u as n,t,e as r,j as i,r as j,a as L,f as S,L as F,h as z}from"./index-be
   justify-content: space-between;
 `,mi=n.div`
   display: flex;
-  /* gap: 7px; */
   margin-left: 25px;
   @media (min-width: 834px) {
     gap: 32px;
@@ -351,6 +350,15 @@ import{u as n,t,e as r,j as i,r as j,a as L,f as S,L as F,h as z}from"./index-be
   display: flex;
   align-items: center;
   gap: 6px;
+  transition: ${t.transition.main};
+  &:hover {
+    color: ${t.color.primaryWhite};
+    animation: 1s ease-in-out infinite;
+    fill: ${t.color.primaryWhite};
+  }
+  &:focus {
+    color: ${t.color.primaryGrey};
+  }
 `;n.svg`
   stroke: ${t.color.primaryGrey};
   width: 16px;
@@ -361,7 +369,7 @@ import{u as n,t,e as r,j as i,r as j,a as L,f as S,L as F,h as z}from"./index-be
 `;const ui=n.p`
   color: ${t.color.primaryWhite};
   margin-right: 16px;
-`,wi=({title:e,setEditModal:a,setIsModal:o})=>{const{breakfast:{products:d},lunch:{products:p},dinner:{products:h},snack:{products:c}}=r(q),l=e==="Lunch"?p:e==="Breakfast"?d:e==="Dinner"?h:e==="Snack"?c:[],m=()=>{o(s=>!s),a(!0)};return i.jsx(i.Fragment,{children:i.jsxs(li,{children:[i.jsx(hi,{children:l.map((s,g)=>i.jsxs(xi,{children:[i.jsx(ui,{children:g+1}),i.jsx(fi,{children:s.name}),i.jsxs(mi,{children:[i.jsxs(y,{children:[i.jsx(k,{children:"Carb. "}),s.carbonohidretes]}),i.jsxs(y,{children:[i.jsx(k,{children:"Prot. "}),s.protein]}),i.jsxs(y,{children:[i.jsx(k,{children:"Fat. "}),s.fat]})]})]},s.productId))}),i.jsxs(gi,{onClick:m,children:[i.jsx(ii,{name:"icon-edit-2",width:"16px",height:"16px",fill:"#B6B6B6"}),"Edit"]})]})})},yi=({categoryImage:e,category:a,title:o})=>{const[d,p]=j.useState(!1),[h,c]=j.useState(!1),l=()=>{p(m=>!m),c(!1)};return i.jsxs(ci,{children:[i.jsx(wi,{title:o,setEditModal:c,setIsModal:p}),i.jsx(b,{onClick:l,children:i.jsx(ri,{children:"+ Record your meal"})}),i.jsx(J,{isModalOpen:d,onClose:l,category:a,categoryImage:e,item:h})]})},ki=n.div`
+`,wi=({title:e,setEditModal:o,setIsModal:a})=>{const{breakfast:{products:d},lunch:{products:p},dinner:{products:h},snack:{products:c}}=r(q),l=e==="Lunch"?p:e==="Breakfast"?d:e==="Dinner"?h:e==="Snack"?c:[],m=()=>{a(s=>!s),o(!0)};return i.jsx(i.Fragment,{children:i.jsxs(li,{children:[i.jsx(hi,{children:l.map((s,g)=>i.jsxs(xi,{children:[i.jsx(ui,{children:g+1}),i.jsx(fi,{children:s.name}),i.jsxs(mi,{children:[i.jsxs(y,{children:[i.jsx(k,{children:"Carb. "}),s.carbonohidretes]}),i.jsxs(y,{children:[i.jsx(k,{children:"Prot. "}),s.protein]}),i.jsxs(y,{children:[i.jsx(k,{children:"Fat. "}),s.fat]})]})]},s.productId))}),i.jsxs(gi,{onClick:m,children:[i.jsx(ii,{name:"icon-edit-2",width:"16px",height:"16px",fill:"#B6B6B6"}),"Edit"]})]})})},yi=({categoryImage:e,category:o,title:a})=>{const[d,p]=j.useState(!1),[h,c]=j.useState(!1),l=()=>{p(m=>!m),c(!1)};return i.jsxs(ci,{children:[i.jsx(wi,{title:a,setEditModal:c,setIsModal:p}),i.jsx(b,{onClick:l,children:i.jsx(ri,{children:"+ Record your meal"})}),i.jsx(J,{isModalOpen:d,onClose:l,category:o,categoryImage:e,item:h})]})},ki=n.div`
   font-family: Poppins;
 
   @media (min-width: 834px) {
@@ -389,7 +397,7 @@ import{u as n,t,e as r,j as i,r as j,a as L,f as S,L as F,h as z}from"./index-be
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
-`,vi=n.h3`
+`,$i=n.h3`
   font-size: 22px;
   font-weight: 400;
   line-height: 1.45;
@@ -409,4 +417,4 @@ import{u as n,t,e as r,j as i,r as j,a as L,f as S,L as F,h as z}from"./index-be
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
-`;const f=({title:e})=>{const a=e,o=e==="Lunch"?K:e==="Breakfast"?Q:e==="Dinner"?U:e==="Snack"?V:"",d=e==="Lunch"?X:e==="Breakfast"?Y:e==="Dinner"?Z:e==="Snack"?_:"";return i.jsxs(ki,{children:[i.jsxs(ji,{children:[i.jsxs(bi,{children:[i.jsx("img",{srcSet:`${o} 1x, ${d} 2x`,src:o,alt:"breakfast",width:"32",height:"32"}),i.jsx(vi,{children:e})]}),i.jsx(pi,{title:e})]}),i.jsx(yi,{category:a,categoryImage:o,title:e})]})},Pi=()=>i.jsx(b,{children:i.jsx(ti,{children:i.jsxs("svg",{width:"16",height:"16",viewBox:"0 0 16 16",fill:"none",xmlns:"http://www.w3.org/2000/svg",children:[i.jsx("path",{d:"M9.62012 3.95312L13.6668 7.99979L9.62012 12.0465",stroke:"#B6B6B6",strokeMiterlimit:"10",strokeLinecap:"round",strokeLinejoin:"round"}),i.jsx("path",{d:"M2.33301 8H13.553",stroke:"#B6B6B6",strokeMiterlimit:"10",strokeLinecap:"round",strokeLinejoin:"round"})]})})}),Fi=()=>{const e=L(),a={date:z};return j.useEffect(()=>{e(S(a))},[e]),i.jsxs(ni,{children:[i.jsxs(ai,{children:[i.jsx(F,{to:"/",children:i.jsx(Pi,{})}),i.jsx(ei,{children:"Diary"})]}),i.jsxs(oi,{children:[i.jsx(f,{title:"Breakfast"}),i.jsx(f,{title:"Dinner"}),i.jsx(f,{title:"Lunch"}),i.jsx(f,{title:"Snack"})]})]})};export{Fi as default};
+`;const f=({title:e})=>{const o=e,a=e==="Lunch"?K:e==="Breakfast"?Q:e==="Dinner"?U:e==="Snack"?V:"",d=e==="Lunch"?X:e==="Breakfast"?Y:e==="Dinner"?Z:e==="Snack"?_:"";return i.jsxs(ki,{children:[i.jsxs(ji,{children:[i.jsxs(bi,{children:[i.jsx("img",{srcSet:`${a} 1x, ${d} 2x`,src:a,alt:"breakfast",width:"32",height:"32"}),i.jsx($i,{children:e})]}),i.jsx(pi,{title:e})]}),i.jsx(yi,{category:o,categoryImage:a,title:e})]})},vi=()=>i.jsx(b,{children:i.jsx(ti,{children:i.jsxs("svg",{width:"16",height:"16",viewBox:"0 0 16 16",fill:"none",xmlns:"http://www.w3.org/2000/svg",children:[i.jsx("path",{d:"M9.62012 3.95312L13.6668 7.99979L9.62012 12.0465",stroke:"#B6B6B6",strokeMiterlimit:"10",strokeLinecap:"round",strokeLinejoin:"round"}),i.jsx("path",{d:"M2.33301 8H13.553",stroke:"#B6B6B6",strokeMiterlimit:"10",strokeLinecap:"round",strokeLinejoin:"round"})]})})}),Fi=()=>{const e=L(),o={date:z};return j.useEffect(()=>{e(S(o))},[e]),i.jsxs(ni,{children:[i.jsxs(oi,{children:[i.jsx(F,{to:"/",children:i.jsx(vi,{})}),i.jsx(ei,{children:"Diary"})]}),i.jsxs(ai,{children:[i.jsx(f,{title:"Breakfast"}),i.jsx(f,{title:"Dinner"}),i.jsx(f,{title:"Lunch"}),i.jsx(f,{title:"Snack"})]})]})};export{Fi as default};
