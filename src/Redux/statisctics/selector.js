@@ -11,3 +11,5 @@ export const selectRequiredMonth = (state) => state.statistic.requestMonth;
 export const selectError = (state) => state.statistic.error;
 
 export const selectStatus = (state) => state.statistic.isLoading;
+
+export const selectStatisticUser = (state) => state.statistic.user;

@@ -31,6 +31,7 @@ export const Wrapper = styled.div`
     padding-left: 10px;
     width: 320px;
   }
+
   @media screen and (min-width: 834px) {
     width: 800px;
     padding-right: 10px;
@@ -73,8 +74,10 @@ export const SignInContainer = styled.div`
   display: flex;
   align-items: center;
 `;
+
 export const RouterLink = styled(Link)`
-  color: ${theme.color.primaryWhite};
+  color: ${(p) =>
+    p.$isActive ? p.theme.color.primaryGreenLite : p.theme.color.primaryWhite};
   font-size: 12px;
   font-weight: 400;
   line-height: 1.33;
@@ -87,7 +90,9 @@ export const RouterLink = styled(Link)`
 `;
 
 export const RouterLinkSignUp = styled(Link)`
-  color: ${theme.color.primaryWhite};
+  color: ${(p) =>
+    p.$isActive ? p.theme.color.primaryGreenLite : p.theme.color.primaryWhite};
+
   margin-right: 6px;
   font-size: 12px;
   font-weight: 400;
@@ -319,6 +324,8 @@ export const SettingBtn = styled.div`
   display: flex;
   gap: 12px;
   width: 113px;
+
+  cursor: pointer;
 `;
 
 export const LoseFat = styled.p`
@@ -380,6 +387,7 @@ export const Weight = styled.p`
 export const SetBtn = styled.div`
   display: flex;
   gap: 12px;
+  cursor: pointer;
 `;
 
 export const NumKg = styled.p`

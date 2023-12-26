@@ -19,12 +19,14 @@ import {
   ModalContainer,
 } from './targetSelection.styled';
 import ReactDOM from 'react-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { updateUserGoal } from './../../../Redux/userAuth/operations';
+import { selectGoal } from '../../../Redux/userAuth/selector';
 
 export const TargetSelection = ({ onClose }) => {
-  const [selectedGoal, setSelectedGoal] = useState('Lose fat');
+  const goal = useSelector(selectGoal);
+  const [selectedGoal, setSelectedGoal] = useState(goal);
 
   const dispatch = useDispatch();
 
@@ -71,26 +73,27 @@ export const TargetSelection = ({ onClose }) => {
               <TargetImgBorder
                 style={{
                   border:
-                    selectedGoal === 'Lose fat'
+                    selectedGoal === 'Lose Fat'
                       ? '2px solid #B6C3FF'
                       : '1px solid #B6B6B6',
                 }}
               >
                 <TargetInput
                   type="radio"
-                  value="Lose fat"
+                  value="Lose Fat"
                   id="lose_fat"
                   name="goal"
-                  checked={!selectedGoal === 'Lose fat'}
-                  onChange={() => handleGoalChange('Lose fat')}
+                  checked={!selectedGoal === 'Lose Fat'}
+                  onChange={() => handleGoalChange('Lose Fat')}
                 />
                 <TargetImg src={LoseFatMen} alt="Lose fat image men" />
               </TargetImgBorder>
 
               <TargetListBlock
                 style={{
-                  color: selectedGoal === 'Lose fat' ? '#B6C3FF' : '#ffffff',
+                  color: selectedGoal === 'Lose Fat' ? '#B6C3FF' : '#ffffff',
                 }}
+                htmlFor="lose_fat"
               >
                 Lose fat
               </TargetListBlock>
@@ -110,6 +113,7 @@ export const TargetSelection = ({ onClose }) => {
                   value="Maintain"
                   id="maintain"
                   name="goal"
+                  checked={!selectedGoal === 'Maintain'}
                   onChange={() => handleGoalChange('Maintain')}
                 />
                 <TargetImg src={maintakeGirl} alt="yoga" />
@@ -119,6 +123,7 @@ export const TargetSelection = ({ onClose }) => {
                 style={{
                   color: selectedGoal === 'Maintain' ? '#B6C3FF' : '#ffffff',
                 }}
+                htmlFor="maintain"
               >
                 Maintain
               </TargetListBlock>
@@ -128,7 +133,7 @@ export const TargetSelection = ({ onClose }) => {
               <TargetImgBorder
                 style={{
                   border:
-                    selectedGoal === 'Gain muscle'
+                    selectedGoal === 'Gain Muscle'
                       ? '2px solid #B6C3FF'
                       : '1px solid #B6B6B6',
                 }}
@@ -138,6 +143,7 @@ export const TargetSelection = ({ onClose }) => {
                   name="goal"
                   id="gain_muscles"
                   value="Gain Muscle"
+                  checked={!selectedGoal === 'Gain Muscle'}
                   onChange={() => handleGoalChange('Gain Muscle')}
                 />
                 <TargetImg src={muscles} alt="muscles" />
@@ -145,8 +151,9 @@ export const TargetSelection = ({ onClose }) => {
 
               <TargetListBlock
                 style={{
-                  color: selectedGoal === 'Gain muscle' ? '#B6C3FF' : '#ffffff',
+                  color: selectedGoal === 'Gain Muscle' ? '#B6C3FF' : '#ffffff',
                 }}
+                htmlFor="gain_muscles"
               >
                 Gain Muscle
               </TargetListBlock>
@@ -154,10 +161,10 @@ export const TargetSelection = ({ onClose }) => {
 
             <ConfirmBtn type="submit">Confirm</ConfirmBtn>
           </Form>
-          <CancelBtn type="button" onClick={onClose}>
-            Cancel
-          </CancelBtn>
         </ModalWrapper>
+        <CancelBtn type="button" onClick={onClose}>
+          Cancel
+        </CancelBtn>
       </ModalContainer>
     </Modal>,
     document.getElementById('modal-root')

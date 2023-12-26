@@ -47,9 +47,9 @@ export const caloriesYAxisOptions = {
   type: 'linear',
   position: 'left',
   min: 0,
-  max: 15000,
+  max: 6000,
   ticks: {
-    stepSize: 5000,
+    stepSize: 2000,
     callback: (value) => `${value / 1000}K`,
   },
   grid: {
