@@ -4,6 +4,7 @@ import SignUpAge from '../../components/SignupSteps/Age';
 import SignUpParams from '../../components/SignupSteps/Params';
 import SignUpActivity from '../../components/SignupSteps/Activity';
 import { Div, Img, Wrapper } from './SignUp.styled';
+import { useFormik } from 'formik';
 // png
 import _1DesktopImg from './images/Illustration_desk@1x.png';
 import _2DesktopImg from './images/Illustration_desk@2x.png';
@@ -20,9 +21,25 @@ import _1MobWebP from './images/Illustration_mob@1x.webp';
 import _2MobWebP from './images/Illustration_mob@2x.webp';
 import { useState } from 'react';
 import { SignUpContent } from '../../components/Auth/Signup/SignUpContent';
+import { signUpSchema } from './signUpValidation';
 
 const SignUp = () => {
   const [step, setStep] = useState(1);
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+      goal: 'Lose Fat',
+      sex: 'male',
+      age: '',
+      height: '',
+      currentWeight: '',
+      levelActivity: '1',
+    },
+    validationSchema: signUpSchema,
+  });
 
   return (
     <>
@@ -63,14 +80,14 @@ const SignUp = () => {
                 />
                 <Img src={_1DesktopImg} alt="Responsive" />
               </picture>
-              <SignUpContent setStep={setStep} />
+              <SignUpContent setStep={setStep} formik={formik} />
             </Div>
           </Container>
         )}
-        {step === 2 && <SignupGoal setStep={setStep} />}
-        {step === 3 && <SignUpAge setStep={setStep} />}
-        {step === 4 && <SignUpParams setStep={setStep} />}
-        {step === 5 && <SignUpActivity setStep={setStep} />}
+        {step === 2 && <SignupGoal setStep={setStep} formik={formik} />}
+        {step === 3 && <SignUpAge setStep={setStep} formik={formik} />}
+        {step === 4 && <SignUpParams setStep={setStep} formik={formik} />}
+        {step === 5 && <SignUpActivity setStep={setStep} formik={formik} />}
       </Wrapper>
     </>
   );

@@ -1,6 +1,3 @@
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-
 import bodyParamDesc1xPng from '../../assets/imgBodyParam/bodyParam-desctop-1x-min.png';
 import bodyParamDesc2xPng from '../../assets/imgBodyParam/bodyParam-desctop-2x-min.png';
 import bodyParamDesc3xPng from '../../assets/imgBodyParam/bodyParam-desctop-3x-min.png';
@@ -42,42 +39,23 @@ import {
   StylesErrorSvg,
   BackLinkwrapper,
 } from './Param.styled';
+import { useState } from 'react';
 
-const SignUpParams = ({ setStep }) => {
-  const validationSchema = Yup.object().shape({
-    height: Yup.number()
-      .typeError('Height must be a number')
-      .required('Please enter your height')
-      .positive('Height must be a positive number')
-      .integer('Height must be an integer')
-      .min(70, 'Height must be at least 70 cm')
-      .max(251, 'Height must be at most 251 cm'),
+const SignUpParams = ({ setStep, formik }) => {
+  const [validation, setValidation] = useState('');
 
-    weight: Yup.number()
-      .typeError('Weight must be a number')
-      .required('Please enter your weight')
-      .positive('Weight must be a positive number')
-      .integer('Weight must be an integer')
-      .min(10, 'Weight must be at least 10 kg')
-      .max(560, 'Weight must be at most 560 kg'),
-  });
+  const onClickBtnNext = () => {
+    setValidation('validation');
 
-  const formik = useFormik({
-    initialValues: {
-      height: '',
-      weight: '',
-    },
-    validationSchema,
-    onSubmit: (values) => {
-      const retrievedData = sessionStorage.getItem('authReg');
-      const parsedData = JSON.parse(retrievedData);
-      parsedData.height = values.height;
-      parsedData.currentWeight = values.weight;
-      const updatedJsonData = JSON.stringify(parsedData);
-      sessionStorage.setItem('authReg', updatedJsonData);
+    if (
+      formik.values.height !== '' &&
+      !formik.errors.height &&
+      formik.values.weight !== '' &&
+      !formik.errors.weight
+    ) {
       setStep((prevState) => (prevState += 1));
-    },
-  });
+    }
+  };
 
   return (
     <StylesSection>
@@ -122,10 +100,17 @@ const SignUpParams = ({ setStep }) => {
               Enter your parameters for correct performance tracking
             </StyleSubtitle>
             <StyleBtnColumn>
-              <StylesForm onSubmit={formik.handleSubmit}>
+              <StylesForm>
                 <HeightInputWrapper>
                   <InputLabel htmlFor="heightInput">Height</InputLabel>
                   <InputStiles
+                    className={
+                      validation === 'validation'
+                        ? formik.errors.height
+                          ? 'error'
+                          : 'correct'
+                        : ''
+                    }
                     type="number"
                     id="heightInput"
                     name="height"
@@ -160,22 +145,31 @@ const SignUpParams = ({ setStep }) => {
                 <WeightInputWrapper>
                   <InputLabel htmlFor="weightInput">Weight</InputLabel>
                   <InputStiles
+                    className={
+                      validation === 'validation'
+                        ? formik.errors.currentWeight
+                          ? 'error'
+                          : 'correct'
+                        : ''
+                    }
                     type="number"
                     id="weightInput"
-                    name="weight"
+                    name="currentWeight"
                     placeholder="Enter your weight"
                     onChange={formik.handleChange}
-                    value={formik.values.weight}
+                    value={formik.values.currentWeight}
                     style={{
                       border:
-                        formik.errors.weight && formik.touched.weight
+                        formik.errors.currentWeight &&
+                        formik.touched.currentWeight
                           ? '1px solid #e74a3b'
                           : '1px solid #E3FFA8',
                     }}
                   />
-                  {formik.errors.weight && formik.touched.weight ? (
+                  {formik.errors.currentWeight &&
+                  formik.touched.currentWeight ? (
                     <StylesErrorWeight>
-                      {formik.errors.weight}
+                      {formik.errors.currentWeight}
                       <StylesErrorSvg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -191,10 +185,18 @@ const SignUpParams = ({ setStep }) => {
                     </StylesErrorWeight>
                   ) : null}
                 </WeightInputWrapper>
-                <StylesBtnForm type="submit">Next</StylesBtnForm>
+                <StylesBtnForm
+                  type="button"
+                  onClick={() => {
+                    onClickBtnNext();
+                  }}
+                >
+                  Next
+                </StylesBtnForm>
               </StylesForm>
               <BackLinkwrapper>
                 <StyleBackLink
+                  type="button"
                   onClick={() => setStep((prevState) => (prevState -= 1))}
                 >
                   Back

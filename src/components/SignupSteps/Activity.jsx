@@ -1,6 +1,5 @@
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-
+import { register } from '../../Redux/userAuth/operations';
+import { Loader } from '../../utils/Loader';
 import activityDesc1xPng from '../../assets/imgActivity/activity-desctop-1x-min.png';
 import activityDesc2xPng from '../../assets/imgActivity/activity-desctop-2x-min.png';
 import activityDesc3xPng from '../../assets/imgActivity/activity-desctop-3x-min.png';
@@ -41,34 +40,47 @@ import {
 } from './Activity.styled';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { register } from '../../Redux/userAuth/operations';
+import { useState } from 'react';
 
-const SignUpActivity = ({ setStep }) => {
+const SignUpActivity = ({ setStep, formik }) => {
+  const [sending, setSending] = useState('');
   const navigate = useNavigate();
-
-  const validationSchema = Yup.object().shape({
-    activity: Yup.number().required(),
-  });
-
   const dispatch = useDispatch();
 
-  const formik = useFormik({
-    initialValues: {
-      activity: 1,
-    },
-    validationSchema,
-    onSubmit: (values) => {
-      const activityValue = parseFloat(values.activity);
-      const formattedValues = { activity: activityValue };
-      const retrievedData = sessionStorage.getItem('authReg');
-      const parsedData = JSON.parse(retrievedData);
-      parsedData.levelActivity = formattedValues.activity;
+  const handleSubmitForm = async () => {
+    try {
+      setSending('loading');
 
-      dispatch(register(parsedData));
-      sessionStorage.clear();
+      const {
+        age,
+        currentWeight,
+        email,
+        goal,
+        height,
+        levelActivity,
+        name,
+        password,
+        sex,
+      } = formik.values;
+      const data = {
+        age,
+        currentWeight,
+        email,
+        goal,
+        height,
+        levelActivity: Number(levelActivity),
+        name,
+        password,
+        sex,
+      };
+      await dispatch(register(data)).unwrap();
+    } catch (err) {
       navigate('/signin');
-    },
-  });
+      return err;
+    } finally {
+      setSending('');
+    }
+  };
 
   return (
     <StylesSection>
@@ -118,13 +130,13 @@ const SignUpActivity = ({ setStep }) => {
                   <CustomRadio>
                     <CustomRadioInput
                       type="radio"
-                      id="1.2"
-                      name="activity"
-                      value={1}
+                      id="1"
+                      name="levelActivity"
+                      value="1"
                       onChange={formik.handleChange}
-                      defaultChecked
+                      defaultChecked={formik.values.levelActivity === '1'}
                     />
-                    <StylesLabelForm htmlFor="1.2">
+                    <StylesLabelForm htmlFor="1">
                       1.2 - if you do not have physical activity and sedentary
                       work
                     </StylesLabelForm>
@@ -133,12 +145,13 @@ const SignUpActivity = ({ setStep }) => {
                   <CustomRadio>
                     <CustomRadioInput
                       type="radio"
-                      id="1.375"
-                      name="activity"
-                      value={2}
+                      id="2"
+                      name="levelActivity"
+                      value="2"
                       onChange={formik.handleChange}
+                      defaultChecked={formik.values.levelActivity === '2'}
                     />
-                    <StylesLabelForm htmlFor="1.375">
+                    <StylesLabelForm htmlFor="2">
                       1.375 - if you do short runs or light gymnastics 1-3 times
                       a week
                     </StylesLabelForm>
@@ -147,12 +160,13 @@ const SignUpActivity = ({ setStep }) => {
                   <CustomRadio>
                     <CustomRadioInput
                       type="radio"
-                      id="1.55"
-                      name="activity"
-                      value={3}
+                      id="3"
+                      name="levelActivity"
+                      value="3"
                       onChange={formik.handleChange}
+                      defaultChecked={formik.values.levelActivity === '3'}
                     />
-                    <StylesLabelForm htmlFor="1.55">
+                    <StylesLabelForm htmlFor="3">
                       1.55 - if you play sports with average loads 3-5 times a
                       week
                     </StylesLabelForm>
@@ -161,12 +175,13 @@ const SignUpActivity = ({ setStep }) => {
                   <CustomRadio>
                     <CustomRadioInput
                       type="radio"
-                      id="1.725"
-                      name="activity"
-                      value={4}
+                      id="4"
+                      name="levelActivity"
+                      value="4"
                       onChange={formik.handleChange}
+                      defaultChecked={formik.values.levelActivity === '4'}
                     />
-                    <StylesLabelForm htmlFor="1.725">
+                    <StylesLabelForm htmlFor="4">
                       1.725 - if you train fully 6-7 times a week
                     </StylesLabelForm>
                   </CustomRadio>
@@ -174,12 +189,13 @@ const SignUpActivity = ({ setStep }) => {
                   <CustomRadio>
                     <CustomRadioInput
                       type="radio"
-                      id="1.9"
-                      name="activity"
-                      value={5}
+                      id="5"
+                      name="levelActivity"
+                      value="5"
                       onChange={formik.handleChange}
+                      defaultChecked={formik.values.levelActivity === '5'}
                     />
-                    <StylesLabelForm htmlFor="1.9">
+                    <StylesLabelForm htmlFor="5">
                       1.9 - if your work is related to physical labor, you train
                       2 times a day and include strength exercises in your
                       training program
@@ -187,11 +203,19 @@ const SignUpActivity = ({ setStep }) => {
                   </CustomRadio>
                 </StylesRadioBtn>
 
-                <StylesBtnForm type="submit">Sign Up</StylesBtnForm>
+                <StylesBtnForm
+                  type="submit"
+                  onClick={() => {
+                    handleSubmitForm();
+                  }}
+                >
+                  {sending === 'loading' ? <Loader /> : 'Sign Up'}
+                </StylesBtnForm>
               </StylesForm>
 
               <BackLinkwrapper>
                 <StyleBackLink
+                  type="button"
                   onClick={() => setStep((prevState) => (prevState -= 1))}
                 >
                   Back
