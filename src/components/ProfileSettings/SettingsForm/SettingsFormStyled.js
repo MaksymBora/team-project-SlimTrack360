@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../../styles';
 
 const Form = styled.form`
   display: grid;
@@ -68,26 +69,26 @@ const SubmitBtn = styled.button`
   padding: 8px 10px;
   border-radius: 12px;
   background-color: ${(p) => p.theme.color.primaryGreenLite};
-
+  border: 1px solid transparent;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
-
-  transition: all 0.3s ease-in-out;
+ transition: ${(p) => p.theme.transition.main};
   border: 1px solid transparent;
 
   &:hover {
     cursor: pointer;
     border: 1px solid transparent;
     animation: 1s ease-in-out infinite;
-    background-color: transparent;
     color: ${(p) => p.theme.color.primaryWhite};
-    border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
+     background-color: transparent;
+    border: 1px solid ${theme.color.primaryGreenLite};
   }
   &:focus {
-    background-color: ${(p) => p.theme.color.primaryGreenLite};
-    border: 1px solid transparent;
-    color: ${(p) => p.theme.color.primaryBlack};
+  border: 1px solid transparent;
+    color: ${theme.color.primaryBlack};
+    background-color: ${theme.color.primaryGreenLite};
+
   }
 `;
 
@@ -95,14 +96,24 @@ const CancelBtn = styled.button`
   font-size: 14px;
   line-height: 1.4;
   background-color: transparent;
+  padding: 8px 10px;
   color: ${(p) => p.theme.color.primaryGrey};
   border-radius: 12px;
 
-  &:hover,
-  &:focus {
-    color: ${(p) => p.theme.color.primaryWhite};
+  &:hover {
+    color: ${theme.color.primaryWhite};
+    border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
   }
-  transition: all 0.3s ease-in-out;
+  &:active {
+    outline: none;
+    border: 1px solid ${(p) => p.theme.color.primaryGreenLite};
+  }
+  &:focus {
+    background-color: ${theme.color.primaryGreenLite};
+    color: ${theme.color.primaryBlack};
+  }
+  transition: ${(p) => p.theme.transition.main};
+
 `;
 
 export {
