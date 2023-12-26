@@ -46,7 +46,19 @@ export const ModalTakeWater = ({ setIsModalOpen }) => {
             type="text"
             placeholder="Enter milliliters"
             value={waterValue}
-            onChange={(e) => setWaterValue(e.target.value)}
+            // onChange={(e) => setWaterValue(e.target.value)}
+            onChange={(e) => {
+              const input = e.target.value;
+              if (/^\d*$/.test(input)) {
+                setWaterValue(input);
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Backspace' || e.key === 'Delete') {
+                setWaterValue('');
+              }
+            }}
+            pattern="\d*"
           />
 
           <Confirm type="submit" disabled={isLoading}>
