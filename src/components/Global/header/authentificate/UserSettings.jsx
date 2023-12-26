@@ -76,10 +76,10 @@ export const UserSettings = ({
             <GoalSelection>
               <Goal>Goal</Goal>
 
-              <SettingBtn>
+              <SettingBtn onClick={handleOpenModal}>
                 <LoseFat>{goal || 'No goal'}</LoseFat>
 
-                <GoalBtn type="button" onClick={handleOpenModal}>
+                <GoalBtn type="button">
                   <svg>
                     <use href={icon + '#icon-arrow-down'}></use>
                   </svg>
@@ -97,12 +97,12 @@ export const UserSettings = ({
 
             <WeightSelection>
               <Weight>Weight</Weight>
-              <SetBtn>
+              <SetBtn onClick={handleOpenModalWeight}>
                 <NumKg>
                   {user.currentWeight || 0}
                   <Kg>kg</Kg>
                 </NumKg>
-                <WeightBtn type="button" onClick={handleOpenModalWeight}>
+                <WeightBtn type="button">
                   <svg>
                     <use href={icon + '#icon-edit-weight'}></use>
                   </svg>

@@ -324,6 +324,8 @@ export const SettingBtn = styled.div`
   display: flex;
   gap: 12px;
   width: 113px;
+
+  cursor: pointer;
 `;
 
 export const LoseFat = styled.p`
@@ -385,6 +387,7 @@ export const Weight = styled.p`
 export const SetBtn = styled.div`
   display: flex;
   gap: 12px;
+  cursor: pointer;
 `;
 
 export const NumKg = styled.p`

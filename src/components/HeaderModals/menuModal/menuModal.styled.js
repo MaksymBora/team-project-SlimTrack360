@@ -1,18 +1,47 @@
 import { styled } from 'styled-components';
 import { theme } from './../../../styles/theme';
 
+export const MenuContainer = styled.div`
+  position: fixed;
+  z-index: 1000;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+export const ModalWrap = styled.div`
+  margin: 0 auto;
+  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 300px;
+
+  @media screen and (min-width: 834px) {
+    width: 800px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1372px;
+  }
+`;
+
 export const Modal = styled.div`
   position: absolute;
   width: 300px;
-  top: 40px;
-  left: 100%;
-  transform: translateX(-48%);
+  top: 0;
+  left: 0;
+  /* position: relative; */
+  /* top: 42px; */
+  /* left: 100%; */
+  /* transform: translateX(-48%); */
   height: auto;
   box-shadow: ${(p) =>
     p.$isBoxShadow ? '0 4px 14px 0 rgba(227, 255, 168, 0.2)' : 'none'};
   background-color: ${theme.color.primaryBlack};
   border-radius: 12px;
   padding: 24px 0 24px 24px;
+  z-index: 1000;
 `;
 
 export const CloseBtn = styled.button`
@@ -87,6 +116,7 @@ export const Kg = styled.span`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.43;
+  margin-left: 4px;
 `;
 export const InfoBlockText = styled.div`
   color: ${theme.color.primaryWhite};

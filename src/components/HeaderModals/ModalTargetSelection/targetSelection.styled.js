@@ -7,17 +7,21 @@ export const Modal = styled.div`
   top: 60px;
   left: 0;
   width: 100%;
-  height: ${(p) => p.$height}px;
+  height: calc(${(p) => p.$height}px - 60px);
 
   @media screen and (min-width: 834px) {
     top: 100px;
+    height: calc(${(p) => p.$height}px - 100px);
   }
 `;
 
 export const ModalContainer = styled.div`
   width: 100%;
   background-color: ${theme.color.primaryBlack};
-  height: 100vh;
+
+  @media screen and (max-width: 833px) {
+    height: 100%;
+  }
 
   @media screen and (min-width: 834px) {
     position: relative;
@@ -49,7 +53,6 @@ export const ModalWrapper = styled.div`
     left: 280px;
     width: 392px;
     box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
-    height: auto;
     background-color: ${theme.color.primaryBlack2};
   }
 
