@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme } from '../../styles/index';
 export const Overlay = styled.div`
   position: fixed;
-  top: 60px;
+  top: 0px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -10,27 +10,21 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 67px
   overflow-y: auto;
-
-  @media screen and (min-width: 834px) {
-    top: 100px;
-  }
-  @media screen and (min-width: 1440px) {
-    top: 103px;
-  }
+  z-index: 100000;
 `;
+
 export const Content = styled.div`
   position: fixed;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  z-index: 1000;
   width: 300px;
   height: 266px;
   border-radius: 12px;
   background: #0f0f0f;
   padding: 24px 10px 24px 10px;
+  z-index: 1000000;
   @media screen and (min-width: 834px) {
     width: 338px;
     height: 280px;
@@ -65,6 +59,7 @@ export const Form = styled.form`
     width: 212px;
     height: 232px;
     margin: auto;
+  }
 `;
 export const Label = styled.p`
   color: #ffffff;
@@ -74,8 +69,6 @@ export const Label = styled.p`
   letter-spacing: 0em;
   text-align: left;
   margin-bottom: 12px;
- 
-  }
 `;
 
 export const Input = styled.input`
@@ -86,7 +79,7 @@ export const Input = styled.input`
   border: 1px solid #e3ffa8;
   background: inherit;
   color: white;
-  @media screen and (min-width: 834px){
+  @media screen and (min-width: 834px) {
     width: 212px;
   }
 
@@ -97,15 +90,16 @@ export const Input = styled.input`
     letter-spacing: 0em;
     text-align: left;
     color: #b6b6b6;
-
-    
+  }
 `;
+
 export const Confirm = styled.button`
   width: 276px;
   height: 36px;
   padding: 8px 10px 8px 10px;
   border-radius: 12px;
   gap: 10px;
+
   background: #e3ffa8;
   transition: all 0.3s ease-in-out;
   &:hover {
@@ -121,10 +115,12 @@ export const Confirm = styled.button`
     border: 1px solid transparent;
     color: ${theme.color.primaryBlack};
   }
+
   @media screen and (min-width: 834px) {
     width: 212px;
   }
 `;
+
 export const Cancel = styled.button`
   width: 276px;
   height: 36px;
@@ -138,11 +134,20 @@ export const Cancel = styled.button`
   &:focus {
     color: ${theme.color.primaryGreenLite};
   }
+  cursor: pointer;
+
   @media screen and (min-width: 834px) {
     width: 212px;
     height: 36px;
   }
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.color.primaryWhite};
+  }
+  transition: all 0.3s ease-in-out;
 `;
+
 export const Question = styled.div`
   display: flex;
   flex-direction: column;

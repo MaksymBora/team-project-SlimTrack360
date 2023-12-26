@@ -24,7 +24,7 @@ const handleStatisticsFullfilled = (state, { payload }) => {
   state.isLoading = false;
   state.totalCalories = payload.totalCalories;
   state.totalWater = payload.totalWater;
-  state.totalWeight = payload.totalWeight;
+  state.user = payload.user;
   state.month = payload.month;
 };
 
