@@ -1,4 +1,3 @@
-// src\Pages\Dashboard\Dashboard.styled.js
 import styled from 'styled-components';
 
 export const DashboardContainer = styled.div`
@@ -15,11 +14,9 @@ export const DashboardContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1372px;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 1382px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-bottom: 40px;
   }
 `;
-
-// самые главные стили

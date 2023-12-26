@@ -2,13 +2,24 @@ import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 
 export const ContainerDiary = styled.div`
-  padding: 20px 34px 52px 34px;
-  background-color: ${theme.color.primaryBlack};
-  @media (min-width: 320px) {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px 10px;
+
+  @media screen and (min-width: 320px) {
     padding: 16px 10px;
+    width: 320px;
   }
-  @media (min-width: 834px) {
-    padding: 24px 27px;
+
+  @media screen and (min-width: 834px) {
+    width: 800px;
+    padding: 24px 10px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1382px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 `;
 
