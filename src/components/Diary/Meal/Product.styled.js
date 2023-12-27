@@ -36,7 +36,6 @@ export const ProductPower = styled.div`
   margin-left: 25px;
   @media (min-width: 834px) {
     gap: 32px;
-    margin-left: 100px;
   }
 `;
 export const Index = styled.p`
@@ -52,7 +51,10 @@ export const ProductName = styled.p`
   line-height: 1.43;
   width: 178px;
   @media (min-width: 834px) {
-    width: 260px;
+    width: 280px;
+  }
+  @media (min-width: 1440px) {
+    width: 200px;
   }
 `;
 export const Text = styled.p`
