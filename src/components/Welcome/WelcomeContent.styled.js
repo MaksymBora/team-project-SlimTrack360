@@ -164,4 +164,5 @@ export const DescriptionItem = styled.li`
     margin-right: 10px;
   }
 `;
+
 export const Dot = styled.span``;
