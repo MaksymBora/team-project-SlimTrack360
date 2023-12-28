@@ -48,6 +48,10 @@ const App = () => {
             }
           />
           <Route
+            path="verify"
+            element={<RestrictedRoute component={<Verify />} redirectTo="/" />}
+          />
+          <Route
             path="forgot-password"
             element={
               <RestrictedRoute component={<ForgotPass />} redirectTo="/main" />

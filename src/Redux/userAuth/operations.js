@@ -75,10 +75,9 @@ export const refreshUser = createAsyncThunk(
 export const forgotPassword = createAsyncThunk(
   'auth/forgot-password',
   async (credentials, thunkAPI) => {
-    console.log(credentials, 'credentials');
     try {
       const { data } = await axios.post('auth/forgot-password', credentials);
-      // setAuthHeader(data.user.token);
+
       toast.success('A new password has been sent to your email.');
       return data;
     } catch (e) {

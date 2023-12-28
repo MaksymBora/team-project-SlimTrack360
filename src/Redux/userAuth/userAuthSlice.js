@@ -129,10 +129,12 @@ const handleUserGoalFulfilled = (state, { payload }) => {
 // -------- User Verify ----------- //
 
 const handleUserVerifyFulfilled = (state, { payload }) => {
-  state.user = payload;
-  state.isLoggedIn = true;
-  state.token = payload.token;
   state.isRefreshing = false;
+  state.user = payload.user;
+  state.token = payload.token;
+  state.status = payload.user.status;
+
+  state.isLoggedIn = true;
 };
 const handleUserVerifyPending = (state) => {
   state.isRefreshing = true;
@@ -142,6 +144,7 @@ const handleUserVerifyRejected = (state, { payload }) => {
   state.isRefreshing = false;
   state.error = payload;
   state.user.status = 'rejected';
+  state.isLoggedIn = false;
 };
 
 const initialState = {
@@ -149,7 +152,6 @@ const initialState = {
     name: null,
     email: null,
     avatarUrl: null,
-
     sex: null,
     age: null,
     height: null,
