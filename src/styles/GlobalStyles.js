@@ -257,5 +257,10 @@ export const GlobalStyles = createGlobalStyle`
     scrollbar-color: #b6c3ff rgba(255, 255, 255, 0.12);
   }
 
-  /* ========================= /Scroll styles ========================= */
+
+
+  .google-link:hover svg {
+  transform: scale(1.1); 
+  filter: drop-shadow(0px 0px 5px #E3FFA8);
+}
 `;
