@@ -1,1 +1,0 @@
-import{$ as f,c as o,a as u,e as r,a0 as n,a1 as l,r as c,a2 as d,j as p}from"./index-0153069f.js";const x=()=>{const{id:t}=f(),s=o(),a=u(),i=r(n),e=r(l);return c.useEffect(()=>{a(d(t))},[a,t]),c.useEffect(()=>{e==="fulfilled"&&s("/main"),e==="rejected"&&!i&&s("/")},[e,s,i]),p.jsx("div",{children:"TEst"})};export{x as default};
