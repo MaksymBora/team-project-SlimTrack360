@@ -14,23 +14,9 @@ import {
 } from '../Auth/Signup/SignUpContent.styled';
 import { Options, Label } from './ForgotPassContent.styled';
 import { LinkSignup } from '../Auth/Signin/SignInContent.styled';
-// import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { forgotPassword } from '../../Redux/userAuth/operations';
 import { basicSchema } from '../Auth/Signup/schemas';
-
-// const basicSchema = yup.object().shape({
-//   name: yup.string().required('Name is required*'),
-//   email: yup
-//     .string()
-//     .email('Enter a valid Email*')
-//     .required('Email is required*'),
-//   password: yup
-//     .string()
-//     .required('Password is required*')
-//     .min(8, 'Password must be at least 8 characters long')
-//     .max(64, 'Password must not exceed 64 characters'),
-// });
 
 export const ForgotPassContent = () => {
   const dispatch = useDispatch();
