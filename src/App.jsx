@@ -47,21 +47,17 @@ const App = () => {
               <RestrictedRoute component={<SignUp />} redirectTo="/main" />
             }
           />
-          <Route
-            path="verify"
-            element={<RestrictedRoute component={<Verify />} redirectTo="/" />}
-          />
+
           <Route
             path="forgot-password"
             element={
               <RestrictedRoute component={<ForgotPass />} redirectTo="/main" />
             }
           />
+
           <Route
-            path="verify/:id"
-            element={
-              <RestrictedRoute component={<Verify />} redirectTo="/main" />
-            }
+            path="verify"
+            element={<RestrictedRoute component={<Verify />} redirectTo="/" />}
           />
 
           <Route
