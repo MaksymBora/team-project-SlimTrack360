@@ -1,4 +1,4 @@
-import{u as r,t as e}from"./index-962478ea.js";import{c as a,a as i}from"./index.esm-fa2967b7.js";const p=r.p`
+import{u as r,t as e}from"./index-f617b153.js";import{c as a,a as i}from"./index.esm-cd5ea19d.js";const p=r.p`
   color: ${e.color.primaryGrey};
   text-align: center;
   font-size: 14px;
