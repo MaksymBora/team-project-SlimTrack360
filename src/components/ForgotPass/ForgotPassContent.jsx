@@ -43,7 +43,6 @@ export const ForgotPassContent = () => {
       email: form.elements.email.value,
     };
     dispatch(forgotPassword(data));
-    console.log(data);
   };
   const { values, errors, touched, handleBlur, handleChange } = useFormik({
     initialValues: {

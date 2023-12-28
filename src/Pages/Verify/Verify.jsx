@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectStatus, selectVerify } from '../../Redux/userAuth/selector';
 import { verifyUser } from '../../Redux/userAuth/operations';
 
 const Verify = () => {
-  const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const [query] = useState(searchParams.get('searchQuery') ?? '');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -14,8 +15,8 @@ const Verify = () => {
   const status = useSelector(selectStatus);
 
   useEffect(() => {
-    dispatch(verifyUser(id));
-  }, [dispatch, id]);
+    dispatch(verifyUser(query));
+  }, [dispatch, query]);
 
   useEffect(() => {
     if (status === 'fulfilled') {
@@ -26,7 +27,7 @@ const Verify = () => {
     }
   }, [status, navigate, isVerify]);
 
-  return <div>TEst</div>;
+  return <div></div>;
 };
 
 export default Verify;
