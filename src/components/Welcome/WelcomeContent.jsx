@@ -52,7 +52,7 @@ export const WelcomeContent = () => {
           ))}
         </BenefitsList>
         <a
-          href="http://localhost:3000/api/auth/google"
+          href="https://healthyhub-emsa.onrender.com/api/auth/google"
           style={{
             cursor: 'pointer',
             margin: '0 auto',
