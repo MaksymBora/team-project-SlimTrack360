@@ -1,1 +1,0 @@
-import{$ as f,r as a,c as o,a as n,e as i,a0 as l,a1 as m,a2 as p,j as y}from"./index-0d9e66ab.js";const h=()=>{const[u]=f(),[t]=a.useState(u.get("searchQuery")??""),s=o(),r=n(),c=i(l),e=i(m);return a.useEffect(()=>{r(p(t))},[r,t]),a.useEffect(()=>{e==="fulfilled"&&s("/main"),e==="rejected"&&!c&&s("/")},[e,s,c]),y.jsx("div",{})};export{h as default};
