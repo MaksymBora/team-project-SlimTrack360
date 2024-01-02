@@ -1,3 +1,5 @@
+// src\components\Dashboard\WaterGraph.jsx
+
 import { useSelector } from 'react-redux';
 import { selectTotalWater } from '../../Redux/statisctics/selector';
 import { Line } from 'react-chartjs-2';

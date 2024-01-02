@@ -30,11 +30,11 @@
   .table-container {
     width: 780px;
   }
-  .upper-row,
+  /* .upper-row,
   .lower-row {
     gap: 11px;
     margin-bottom: 12px;
-  }
+  } */
   .table-cell.upper {
     font-size: 10px;
     line-height: 1.6;
