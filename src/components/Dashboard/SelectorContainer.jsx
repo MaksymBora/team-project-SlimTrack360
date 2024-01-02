@@ -5,6 +5,7 @@ import { IconArrowLeft, IconArrowUp } from '../../assets/spriteSVG';
 import '../Dashboard/Styles/MobStyles/mob.SelCont.css';
 import '../Dashboard/Styles/TabletStyles/tab.SelCont.css';
 import '../Dashboard/Styles/Styles.css';
+import { currentMonth } from '../../utils/currentMonth';
 import { setRequiredMonth } from '../../Redux/statisctics/statisticsSlice';
 import { useDispatch } from 'react-redux';
 
@@ -25,7 +26,7 @@ const months = [
 
 const SelectorContainer = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedMonth, setSelectedMonth] = useState('December');
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth());
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
