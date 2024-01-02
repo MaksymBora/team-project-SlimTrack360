@@ -1,4 +1,4 @@
-import{u as t,t as r,e as i,j as e,a as s,r as p,p as c,q as x}from"./index-f617b153.js";import{s as d,I as h,a as g,b as w}from"./Item-e25c0be1.js";const l=t.ul`
+import{u as t,t as r,e as i,j as e,a as s,r as p,q as c,v as x}from"./index-a089e988.js";import{s as d,I as h,a as g,b as w}from"./Item-59723d6d.js";const l=t.ul`
   @media screen and (min-width: 834px) {
     display: flex;
     flex-wrap: wrap;
@@ -51,7 +51,7 @@ import{u as t,t as r,e as i,j as e,a as s,r as p,p as c,q as x}from"./index-f617
     max-width: 536px;
     max-height: 560px;
   }
-`,E=()=>e.jsxs("picture",{children:[e.jsx("source",{srcSet:`${$} 1x, ${k} 2x`,media:"(min-width: 1440px)",type:"image/webp"}),e.jsx("source",{srcSet:`${L} 1x, ${n} 2x`,media:"(min-width: 1440px)",type:"image/png"}),e.jsx("source",{srcSet:`${M} 1x, ${I} 2x`,media:"(min-width: 768px)",type:"image/webp"}),e.jsx("source",{srcSet:`${D} 1x, ${W} 2x`,media:"(min-width: 768px)",type:"image/png"}),e.jsx("source",{srcSet:`${y} 1x, ${T} 2x`,media:"(max-width: 767px)",type:"image/webp"}),e.jsx("source",{srcSet:`${R} 1x, ${U} 2x`,media:"(max-width: 767px)",type:"image/png"}),e.jsx(S,{src:n,alt:"recommended food"})]}),z=t.div`
+`,E=()=>e.jsxs("picture",{children:[e.jsx("source",{srcSet:`${$} 1x, ${k} 2x`,media:"(min-width: 1440px)",type:"image/webp"}),e.jsx("source",{srcSet:`${L} 1x, ${n} 2x`,media:"(min-width: 1440px)",type:"image/png"}),e.jsx("source",{srcSet:`${M} 1x, ${I} 2x`,media:"(min-width: 768px)",type:"image/webp"}),e.jsx("source",{srcSet:`${D} 1x, ${W} 2x`,media:"(min-width: 768px)",type:"image/png"}),e.jsx("source",{srcSet:`${y} 1x, ${T} 2x`,media:"(max-width: 767px)",type:"image/webp"}),e.jsx("source",{srcSet:`${R} 1x, ${U} 2x`,media:"(max-width: 767px)",type:"image/png"}),e.jsx(S,{src:n,alt:"recommended food"})]}),v=t.div`
   max-width: 300px;
   padding-top: 16px;
   padding-bottom: 40px;
@@ -67,7 +67,7 @@ import{u as t,t as r,e as i,j as e,a as s,r as p,p as c,q as x}from"./index-f617
     max-width: 1382px;
     padding: 20px 5px;
   }
-`,F=t.div`
+`,z=t.div`
   @media screen and (min-width: ${r.breakpoint.desktop}) {
     margin-left: auto;
     margin-right: auto;
@@ -75,4 +75,4 @@ import{u as t,t as r,e as i,j as e,a as s,r as p,p as c,q as x}from"./index-f617
     justify-content: space-between;
     column-gap: 44px;
   }
-`,q=()=>{const o=s(),a=i(g),m=i(w);return p.useEffect(()=>{o(c())},[o]),e.jsxs(z,{children:[e.jsx(j,{}),e.jsxs(F,{children:[e.jsx(E,{}),a&&e.jsx(x,{}),m?e.jsx("p",{children:"Oops...something went wrong! Try again later"}):e.jsx(u,{})]})]})};export{q as default};
+`,q=()=>{const o=s(),a=i(g),m=i(w);return p.useEffect(()=>{o(c())},[o]),e.jsxs(v,{children:[e.jsx(j,{}),e.jsxs(z,{children:[e.jsx(E,{}),a&&e.jsx(x,{}),m?e.jsx("p",{children:"Oops...something went wrong! Try again later"}):e.jsx(u,{})]})]})};export{q as default};
