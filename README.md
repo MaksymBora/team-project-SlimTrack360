@@ -69,7 +69,7 @@ form of clear and convenient graphs
 
 ## Links
 
-- [Backend Repo](https://github.com/MaksymBora/Backend-SlimTrack360)
+- [Backend Repo](https://github.com/MaksymChukhrai/team-project-SlimTrack360-Backend)
 - [Swagger Docs](https://healthyhub-emsa.onrender.com/api-docs/)
 
 ## Contributors
