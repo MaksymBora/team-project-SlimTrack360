@@ -89,8 +89,7 @@ export const commonOptions = {
         label: (context) => {
           const label = context.dataset.label || '';
           const value = context.parsed.y;
-          console.log('Label:', label);
-          console.log('Value:', value);
+       
           return `${getTooltipLabel(label)} ${value} ${getTooltipUnit(label)}`;
         },
       },

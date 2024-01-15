@@ -11,7 +11,8 @@ import { persistor, store } from './Redux/store.js';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename="/team-project-SlimTrack360/">
+      {/* <BrowserRouter basename="/team-project-SlimTrack360/"> */}
+      <BrowserRouter basename="/">
         <Provider store={store}>
           <GlobalStyles />
           <PersistGate loading={null} persistor={persistor}>
